@@ -1,0 +1,193 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="rfidModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.6" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="absmedical">
+    <Key>
+      <PropertyRef Name="Guid" />
+      <PropertyRef Name="VisitDate" />
+      <PropertyRef Name="StudentGuid" />
+    </Key>
+    <Property Name="StartDate" Type="datetime" Precision="0" />
+    <Property Name="EndDate" Type="datetime" Precision="0" />
+    <Property Name="Note" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="Guid" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="VisitDate" Type="datetime" Precision="0" Nullable="false" />
+    <Property Name="StudentGuid" Type="varchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="country">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="doctor">
+    <Key>
+      <PropertyRef Name="Guid" />
+    </Key>
+    <Property Name="Guid" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Lastname" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Firstname" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Address" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="PostalCode" Type="varchar" MaxLength="7" Nullable="false" />
+    <Property Name="City" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Email" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="Password" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="CountryId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="school">
+    <Key>
+      <PropertyRef Name="Guid" />
+    </Key>
+    <Property Name="Guid" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="75" Nullable="false" />
+    <Property Name="Address" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="PostalCode" Type="varchar" MaxLength="7" Nullable="false" />
+    <Property Name="City" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Email" Type="varchar" MaxLength="255" />
+    <Property Name="Tel" Type="varchar" MaxLength="25" />
+    <Property Name="TypeId" Type="int" Nullable="false" />
+    <Property Name="CountryId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="student">
+    <Key>
+      <PropertyRef Name="Guid" />
+    </Key>
+    <Property Name="Guid" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Lastname" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Firstname" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Email" Type="varchar" MaxLength="255" />
+    <Property Name="StudentId" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="SocialSecurityNumber" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Address" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="PostalCode" Type="varchar" MaxLength="5" Nullable="false" />
+    <Property Name="City" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="CountryId" Type="int" Nullable="false" />
+    <Property Name="SchoolGuid" Type="varchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="visit">
+    <Key>
+      <PropertyRef Name="VisitDate" />
+    </Key>
+    <Property Name="VisitDate" Type="datetime" Precision="0" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_AbsMedical_Guid">
+    <End Role="doctor" Type="Self.doctor" Multiplicity="1" />
+    <End Role="absmedical" Type="Self.absmedical" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="doctor">
+        <PropertyRef Name="Guid" />
+      </Principal>
+      <Dependent Role="absmedical">
+        <PropertyRef Name="Guid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AbsMedical_Guid_Student">
+    <End Role="student" Type="Self.student" Multiplicity="1" />
+    <End Role="absmedical" Type="Self.absmedical" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="student">
+        <PropertyRef Name="Guid" />
+      </Principal>
+      <Dependent Role="absmedical">
+        <PropertyRef Name="StudentGuid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AbsMedical_VisitDate">
+    <End Role="visit" Type="Self.visit" Multiplicity="1" />
+    <End Role="absmedical" Type="Self.absmedical" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="visit">
+        <PropertyRef Name="VisitDate" />
+      </Principal>
+      <Dependent Role="absmedical">
+        <PropertyRef Name="VisitDate" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Doctor_Id">
+    <End Role="country" Type="Self.country" Multiplicity="1" />
+    <End Role="doctor" Type="Self.doctor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="country">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="doctor">
+        <PropertyRef Name="CountryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_School_Id">
+    <End Role="country" Type="Self.country" Multiplicity="1" />
+    <End Role="school" Type="Self.school" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="country">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="school">
+        <PropertyRef Name="CountryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Student_Guid_School">
+    <End Role="school" Type="Self.school" Multiplicity="1" />
+    <End Role="student" Type="Self.student" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="school">
+        <PropertyRef Name="Guid" />
+      </Principal>
+      <Dependent Role="student">
+        <PropertyRef Name="SchoolGuid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Student_Id">
+    <End Role="country" Type="Self.country" Multiplicity="1" />
+    <End Role="student" Type="Self.student" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="country">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="student">
+        <PropertyRef Name="CountryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="rfidModelStoreContainer">
+    <EntitySet Name="absmedical" EntityType="Self.absmedical" Schema="rfid" store:Type="Tables" />
+    <EntitySet Name="country" EntityType="Self.country" Schema="rfid" store:Type="Tables" />
+    <EntitySet Name="doctor" EntityType="Self.doctor" Schema="rfid" store:Type="Tables" />
+    <EntitySet Name="school" EntityType="Self.school" Schema="rfid" store:Type="Tables" />
+    <EntitySet Name="student" EntityType="Self.student" Schema="rfid" store:Type="Tables" />
+    <EntitySet Name="visit" EntityType="Self.visit" Schema="rfid" store:Type="Tables" />
+    <AssociationSet Name="FK_AbsMedical_Guid" Association="Self.FK_AbsMedical_Guid">
+      <End Role="doctor" EntitySet="doctor" />
+      <End Role="absmedical" EntitySet="absmedical" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AbsMedical_Guid_Student" Association="Self.FK_AbsMedical_Guid_Student">
+      <End Role="student" EntitySet="student" />
+      <End Role="absmedical" EntitySet="absmedical" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AbsMedical_VisitDate" Association="Self.FK_AbsMedical_VisitDate">
+      <End Role="visit" EntitySet="visit" />
+      <End Role="absmedical" EntitySet="absmedical" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Doctor_Id" Association="Self.FK_Doctor_Id">
+      <End Role="country" EntitySet="country" />
+      <End Role="doctor" EntitySet="doctor" />
+    </AssociationSet>
+    <AssociationSet Name="FK_School_Id" Association="Self.FK_School_Id">
+      <End Role="country" EntitySet="country" />
+      <End Role="school" EntitySet="school" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Student_Guid_School" Association="Self.FK_Student_Guid_School">
+      <End Role="school" EntitySet="school" />
+      <End Role="student" EntitySet="student" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Student_Id" Association="Self.FK_Student_Id">
+      <End Role="country" EntitySet="country" />
+      <End Role="student" EntitySet="student" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
