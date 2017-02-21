@@ -53,3 +53,29 @@ C:\Users\Stefano\Desktop\RFID PROJECT\AbsMedical\src\AbsMedical\AbsMedical\obj\D
 C:\Users\Stefano\Desktop\RFID PROJECT\AbsMedical\src\AbsMedical\AbsMedical\obj\Debug\AbsMedical.g.resources
 C:\Users\Stefano\Desktop\RFID PROJECT\AbsMedical\src\AbsMedical\AbsMedical\obj\Debug\AbsMedical.Properties.Resources.resources
 C:\Users\Stefano\Desktop\RFID PROJECT\AbsMedical\src\AbsMedical\AbsMedical\obj\Debug\AbsMedical.csproj.GenerateResource.Cache
+C:\Users\Stefano\GitHub\GitRFID\AbsMedical\src\AbsMedical\AbsMedical\bin\Debug\AbsMedical.exe.config
+C:\Users\Stefano\GitHub\GitRFID\AbsMedical\src\AbsMedical\AbsMedical\obj\Debug\AbsMedical.exe
+C:\Users\Stefano\GitHub\GitRFID\AbsMedical\src\AbsMedical\AbsMedical\obj\Debug\AbsMedical.pdb
+C:\Users\Stefano\GitHub\GitRFID\AbsMedical\src\AbsMedical\AbsMedical\bin\Debug\AbsMedical.exe
+C:\Users\Stefano\GitHub\GitRFID\AbsMedical\src\AbsMedical\AbsMedical\bin\Debug\AbsMedical.pdb
+C:\Users\Stefano\GitHub\GitRFID\AbsMedical\src\AbsMedical\AbsMedical\bin\Debug\AbsMedical.Data.dll
+C:\Users\Stefano\GitHub\GitRFID\AbsMedical\src\AbsMedical\AbsMedical\bin\Debug\EntityFramework.dll
+C:\Users\Stefano\GitHub\GitRFID\AbsMedical\src\AbsMedical\AbsMedical\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Stefano\GitHub\GitRFID\AbsMedical\src\AbsMedical\AbsMedical\bin\Debug\MySql.Data.dll
+C:\Users\Stefano\GitHub\GitRFID\AbsMedical\src\AbsMedical\AbsMedical\bin\Debug\MySql.Data.Entity.EF6.dll
+C:\Users\Stefano\GitHub\GitRFID\AbsMedical\src\AbsMedical\AbsMedical\bin\Debug\AbsMedical.Data.pdb
+C:\Users\Stefano\GitHub\GitRFID\AbsMedical\src\AbsMedical\AbsMedical\bin\Debug\EntityFramework.xml
+C:\Users\Stefano\GitHub\GitRFID\AbsMedical\src\AbsMedical\AbsMedical\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Stefano\GitHub\GitRFID\AbsMedical\src\AbsMedical\AbsMedical\bin\Debug\fr\EntityFramework.resources.dll
+C:\Users\Stefano\GitHub\GitRFID\AbsMedical\src\AbsMedical\AbsMedical\bin\Debug\fr\EntityFramework.SqlServer.resources.dll
+C:\Users\Stefano\GitHub\GitRFID\AbsMedical\src\AbsMedical\AbsMedical\obj\Debug\AbsMedical.csprojResolveAssemblyReference.cache
+C:\Users\Stefano\GitHub\GitRFID\AbsMedical\src\AbsMedical\AbsMedical\obj\Debug\Forms\HomeWindow.g.cs
+C:\Users\Stefano\GitHub\GitRFID\AbsMedical\src\AbsMedical\AbsMedical\obj\Debug\MainWindow.g.cs
+C:\Users\Stefano\GitHub\GitRFID\AbsMedical\src\AbsMedical\AbsMedical\obj\Debug\App.g.cs
+C:\Users\Stefano\GitHub\GitRFID\AbsMedical\src\AbsMedical\AbsMedical\obj\Debug\AbsMedical_MarkupCompile.cache
+C:\Users\Stefano\GitHub\GitRFID\AbsMedical\src\AbsMedical\AbsMedical\obj\Debug\AbsMedical_MarkupCompile.lref
+C:\Users\Stefano\GitHub\GitRFID\AbsMedical\src\AbsMedical\AbsMedical\obj\Debug\Forms\HomeWindow.baml
+C:\Users\Stefano\GitHub\GitRFID\AbsMedical\src\AbsMedical\AbsMedical\obj\Debug\MainWindow.baml
+C:\Users\Stefano\GitHub\GitRFID\AbsMedical\src\AbsMedical\AbsMedical\obj\Debug\AbsMedical.g.resources
+C:\Users\Stefano\GitHub\GitRFID\AbsMedical\src\AbsMedical\AbsMedical\obj\Debug\AbsMedical.Properties.Resources.resources
+C:\Users\Stefano\GitHub\GitRFID\AbsMedical\src\AbsMedical\AbsMedical\obj\Debug\AbsMedical.csproj.GenerateResource.Cache
