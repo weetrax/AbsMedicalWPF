@@ -20,9 +20,10 @@
                     <MenuItem Header="View"/>
                 </MenuItem>
             </Menu>
-            <StackPanel>
-                
-            </StackPanel>
+            <Canvas>
+                <Image x:Name="image" Height="100" Margin="300,200,50,50" Width="100" Source="/AbsMedical;component/Images/plus.png"/>
+                <Label x:Name="lblRegister" Content="Register a student justification now" Canvas.Left="405" Canvas.Top="220" FontSize="36"/>
+            </Canvas>
         </DockPanel>
     </Grid>
 </Window>
