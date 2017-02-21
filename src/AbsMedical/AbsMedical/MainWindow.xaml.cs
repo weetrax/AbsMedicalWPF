@@ -28,8 +28,6 @@ namespace AbsMedical
         public MainWindow()
         {
             InitializeComponent();
-            NFCReader.SelectDevice();
-            NFCReader.establishContext();
         }
 
         private void btnOK_Click(object sender, RoutedEventArgs e)
@@ -41,7 +39,7 @@ namespace AbsMedical
 
             if(currentDoctor != null)
             {
-                HomeWindow form = new HomeWindow();
+                HomeWindow form = new HomeWindow(currentDoctor);
                 form.Show();
                 this.Close();
             }
@@ -54,8 +52,7 @@ namespace AbsMedical
 
         private void btnExit_Click(object sender, RoutedEventArgs e)
         {
-            //this.Close();
-            if (NFCReader.connectCard()) { MessageBox.Show(NFCReader.getcardUID()); }
+            this.Close();
         }
     }
 }
