@@ -10,12 +10,13 @@ namespace AbsMedical.Controllers
 {
     public class DoctorController
     {
-        public static bool IsValid(string email, string password)
+        public static doctor Find(string email, string password)
         {
             string md5Password = Encryption.GetMD5Hash(password);
             using (rfidEntities db = new rfidEntities())
             {
-                var query =  db.doctor.Where(w => w.Email == email && w.Password == md5Password).Any();
+                var query = db.doctor.FirstOrDefault(d => d.Email == email && d.Password == md5Password);
+                //var query2 = (from d in db.doctor where d.Email == email && d.Password == md5Password select d).FirstOrDefault();
                 return query;
             }
         }

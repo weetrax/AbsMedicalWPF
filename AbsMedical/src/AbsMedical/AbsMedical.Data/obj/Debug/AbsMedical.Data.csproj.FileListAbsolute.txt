@@ -11,3 +11,16 @@ C:\Users\Stefano\Desktop\RFID PROJECT\XAML VERSION\AbsMedical\AbsMedical.Data\bi
 C:\Users\Stefano\Desktop\RFID PROJECT\XAML VERSION\AbsMedical\AbsMedical.Data\bin\Debug\MySql.Data.Entity.EF6.dll
 C:\Users\Stefano\Desktop\RFID PROJECT\XAML VERSION\AbsMedical\AbsMedical.Data\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\Stefano\Desktop\RFID PROJECT\XAML VERSION\AbsMedical\AbsMedical.Data\bin\Debug\fr\EntityFramework.SqlServer.resources.dll
+C:\Users\Stefano\Desktop\RFID PROJECT\AbsMedical\src\AbsMedical\AbsMedical.Data\bin\Debug\AbsMedical.Data.dll.config
+C:\Users\Stefano\Desktop\RFID PROJECT\AbsMedical\src\AbsMedical\AbsMedical.Data\bin\Debug\AbsMedical.Data.dll
+C:\Users\Stefano\Desktop\RFID PROJECT\AbsMedical\src\AbsMedical\AbsMedical.Data\bin\Debug\AbsMedical.Data.pdb
+C:\Users\Stefano\Desktop\RFID PROJECT\AbsMedical\src\AbsMedical\AbsMedical.Data\bin\Debug\EntityFramework.dll
+C:\Users\Stefano\Desktop\RFID PROJECT\AbsMedical\src\AbsMedical\AbsMedical.Data\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Stefano\Desktop\RFID PROJECT\AbsMedical\src\AbsMedical\AbsMedical.Data\bin\Debug\MySql.Data.dll
+C:\Users\Stefano\Desktop\RFID PROJECT\AbsMedical\src\AbsMedical\AbsMedical.Data\bin\Debug\MySql.Data.Entity.EF6.dll
+C:\Users\Stefano\Desktop\RFID PROJECT\AbsMedical\src\AbsMedical\AbsMedical.Data\bin\Debug\EntityFramework.xml
+C:\Users\Stefano\Desktop\RFID PROJECT\AbsMedical\src\AbsMedical\AbsMedical.Data\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Stefano\Desktop\RFID PROJECT\AbsMedical\src\AbsMedical\AbsMedical.Data\bin\Debug\fr\EntityFramework.resources.dll
+C:\Users\Stefano\Desktop\RFID PROJECT\AbsMedical\src\AbsMedical\AbsMedical.Data\bin\Debug\fr\EntityFramework.SqlServer.resources.dll
+C:\Users\Stefano\Desktop\RFID PROJECT\AbsMedical\src\AbsMedical\AbsMedical.Data\obj\Debug\AbsMedical.Data.dll
+C:\Users\Stefano\Desktop\RFID PROJECT\AbsMedical\src\AbsMedical\AbsMedical.Data\obj\Debug\AbsMedical.Data.pdb

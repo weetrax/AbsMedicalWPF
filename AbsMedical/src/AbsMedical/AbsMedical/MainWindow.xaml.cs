@@ -35,11 +35,18 @@ namespace AbsMedical
             string password = txtPassword.Text;
             string email = txtEmail.Text;
 
-            if(DoctorController.IsValid(email,password))
+            doctor currentDoctor = DoctorController.Find(email, password);
+
+            if(currentDoctor != null)
             {
                 HomeWindow form = new HomeWindow();
                 form.Show();
                 this.Close();
+            }
+            else
+            {
+                lblError.Visibility = Visibility.Visible;
+                lblError.Content = "Mail address or password invalid.";
             }
         }
 

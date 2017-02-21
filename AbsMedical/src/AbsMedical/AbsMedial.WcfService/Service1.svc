@@ -1,1 +1,0 @@
-﻿<%@ ServiceHost Language="C#" Debug="true" Service="AbsMedial.WcfService.Service1" CodeBehind="Service1.svc.cs" %>
