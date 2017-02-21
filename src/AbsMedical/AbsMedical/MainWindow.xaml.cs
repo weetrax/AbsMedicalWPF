@@ -16,6 +16,7 @@ using AbsMedical.Data;
 using AbsMedical.Controllers;
 using AbsMedical.Forms;
 using AbsMedical.Utils;
+using AbsMedical.Utils.NFCReader;
 
 namespace AbsMedical
 {
@@ -27,7 +28,8 @@ namespace AbsMedical
         public MainWindow()
         {
             InitializeComponent();
-            
+            NFCReader.SelectDevice();
+            NFCReader.establishContext();
         }
 
         private void btnOK_Click(object sender, RoutedEventArgs e)
@@ -52,7 +54,8 @@ namespace AbsMedical
 
         private void btnExit_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            //this.Close();
+            if (NFCReader.connectCard()) { MessageBox.Show(NFCReader.getcardUID()); }
         }
     }
 }

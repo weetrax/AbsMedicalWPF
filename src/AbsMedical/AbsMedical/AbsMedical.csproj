@@ -79,6 +79,8 @@
       <DependentUpon>HomeWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Utils\Encryption.cs" />
+    <Compile Include="Utils\NFCReader\Card.cs" />
+    <Compile Include="Utils\NFCReader\NFCReader.cs" />
     <Page Include="Forms\HomeWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
