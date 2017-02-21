@@ -5,14 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AbsMedical.Forms"
         mc:Ignorable="d"
-        Title="Justificatif d'absence médicale" Height="567.456" Width="652.97">
+        Title="Justificatif d'absence médicale" Height="487.456" Width="652.97">
     <Grid>
-        <Canvas HorizontalAlignment="Left" Height="382" Margin="10,45,0,0" VerticalAlignment="Top" Width="625">
-            <Button x:Name="send" Content="Send" Canvas.Left="338" Canvas.Top="316" Width="101" Height="36"/>
-            <Label x:Name="student" Content="Student:" Canvas.Left="124" Canvas.Top="112" Width="56"/>
-            <Label x:Name="lastname" Content="Lastname" Canvas.Left="261" Canvas.Top="112"/>
-            <Label x:Name="firstname" Content="Firstname" Canvas.Left="185" Canvas.Top="112"/>
-            <GroupBox x:Name="groupBox" Header="GroupBox" Canvas.Left="112" Canvas.Top="74" Height="227" Width="265"/>
-        </Canvas>
+        <GroupBox x:Name="grpBxStudent" Header="Student" Margin="10,29,0,10" HorizontalAlignment="Left" Width="276">
+            <Label x:Name="lblName" Content="Name" Canvas.Left="10" Canvas.Top="34" Margin="10,10,10,0" Height="27" VerticalAlignment="Top"/>
+        </GroupBox>
+        <GroupBox x:Name="grpBxProof" Header="Proof" Canvas.Left="276" Margin="0,29,10,59" HorizontalAlignment="Right" Width="349"/>
+        <Button x:Name="btnPrint" Content="Print" Canvas.Left="421" Canvas.Top="421" Margin="0,0,10,10" Height="34" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="101"/>
+        <Button x:Name="btnSend" Content="Send" Margin="0,0,116,10" HorizontalAlignment="Right" Width="105" Height="34" VerticalAlignment="Bottom"/>
     </Grid>
 </Window>
