@@ -1,0 +1,18 @@
+﻿<Window x:Class="AbsMedical.Forms.AbsMedWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AbsMedical.Forms"
+        mc:Ignorable="d"
+        Title="Justificatif d'absence médicale" Height="567.456" Width="652.97">
+    <Grid>
+        <Canvas HorizontalAlignment="Left" Height="382" Margin="10,45,0,0" VerticalAlignment="Top" Width="625">
+            <Button x:Name="send" Content="Send" Canvas.Left="338" Canvas.Top="316" Width="101" Height="36"/>
+            <Label x:Name="student" Content="Student:" Canvas.Left="124" Canvas.Top="112" Width="56"/>
+            <Label x:Name="lastname" Content="Lastname" Canvas.Left="261" Canvas.Top="112"/>
+            <Label x:Name="firstname" Content="Firstname" Canvas.Left="185" Canvas.Top="112"/>
+            <GroupBox x:Name="groupBox" Header="GroupBox" Canvas.Left="112" Canvas.Top="74" Height="227" Width="265"/>
+        </Canvas>
+    </Grid>
+</Window>

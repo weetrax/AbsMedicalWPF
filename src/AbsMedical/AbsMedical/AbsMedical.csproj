@@ -75,12 +75,19 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Forms\AbsMedWindow.xaml.cs">
+      <DependentUpon>AbsMedWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Forms\HomeWindow.xaml.cs">
       <DependentUpon>HomeWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Utils\Encryption.cs" />
     <Compile Include="Utils\NFCReader\Card.cs" />
     <Compile Include="Utils\NFCReader\NFCReader.cs" />
+    <Page Include="Forms\AbsMedWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Forms\HomeWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
