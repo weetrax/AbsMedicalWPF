@@ -1,11 +1,15 @@
-﻿using System;
+﻿using System.Collections.Generic;
+using System.Windows.Forms;
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Forms;
 
-namespace AbsMedical.Utils.NFCReader
+namespace AbsMedical.NFC
 {
     public class NFCReader
     {
@@ -21,12 +25,12 @@ namespace AbsMedical.Utils.NFCReader
         public static Card.SCARD_READERSTATE RdrState;
         public static Card.SCARD_IO_REQUEST pioSendRequest;
 
-        internal static void establishContext()
+        public static void establishContext()
         {
             retCode = Card.SCardEstablishContext(Card.SCARD_SCOPE_SYSTEM, 0, 0, ref hContext);
             if (retCode != Card.SCARD_S_SUCCESS)
             {
-                MessageBox.Show("Check your device and please restart again", "Reader not connected", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("Check your device and please restart again", "Reader not connected", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 connActive = false;
                 return;
             }
@@ -97,7 +101,7 @@ namespace AbsMedical.Utils.NFCReader
 
             if (retCode != Card.SCARD_S_SUCCESS)
             {
-                MessageBox.Show(Card.GetScardErrMsg(retCode), "Card not available", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show(Card.GetScardErrMsg(retCode), "Card not available", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 connActive = false;
                 return false;
             }

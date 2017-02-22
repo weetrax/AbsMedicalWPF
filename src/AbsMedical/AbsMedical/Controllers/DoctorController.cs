@@ -39,8 +39,8 @@ namespace AbsMedical.Controllers
                 try
                 {
                     db.doctor.Add(doctor);
-                    db.SaveChanges();
-                    return true;
+                    int result = db.SaveChanges();
+                    return result > 0;
                 }
                 catch (Exception)
                 {
@@ -61,8 +61,8 @@ namespace AbsMedical.Controllers
                 try
                 {
                     db.doctor.Attach(doctor);
-                    db.SaveChanges();
-                    return true;
+                    int result = db.SaveChanges();
+                    return result > 0;
                 }
                 catch (Exception)
                 {

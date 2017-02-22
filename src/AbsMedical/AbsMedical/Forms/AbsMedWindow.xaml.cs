@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AbsMedical.Data;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,9 +20,22 @@ namespace AbsMedical.Forms
     /// </summary>
     public partial class AbsMedWindow : Window
     {
-        public AbsMedWindow()
+        private student CurrentStudent
         {
+            get;
+            set;
+        }
+
+        public AbsMedWindow(student student)
+        {
+            this.CurrentStudent = student;
             InitializeComponent();
+        }
+
+        private void BindStudentData()
+        {
+            //faire tout les Bind ici avec l'objet CurrentStudent:
+            //exemple: lblName.Content = CurrentStudent.Firstname;
         }
     }
 }

@@ -5,7 +5,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AbsMedical.Utils.NFCReader
+namespace AbsMedical.NFC
 {
     public class Card
     {

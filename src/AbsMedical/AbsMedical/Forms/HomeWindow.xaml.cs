@@ -12,6 +12,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using AbsMedical.NFC;
+using AbsMedical.Controllers;
 
 namespace AbsMedical.Forms
 {
@@ -28,6 +30,8 @@ namespace AbsMedical.Forms
 
         public HomeWindow(doctor doctor)
         {
+            NFCReader.establishContext();
+            NFCReader.SelectDevice();
             this.CurrentDoctor = doctor;
             InitializeComponent();
             SetTitle();
@@ -35,7 +39,7 @@ namespace AbsMedical.Forms
 
         protected void MenuItemClose_Click(object sender, RoutedEventArgs e)
         {
-
+            this.Close();
         }
 
         private void MenuItemUpdateProfile_Click(object sender, RoutedEventArgs e)
@@ -46,6 +50,20 @@ namespace AbsMedical.Forms
         private void SetTitle()
         {
             this.Title += " - Logged as " + CurrentDoctor.Firstname;
+        }
+
+        private void btnRegister_Click(object sender, RoutedEventArgs e)
+        {
+            if(NFCReader.connectCard())
+            {
+                string studentGuid = NFCReader.getcardUID();
+                student student = StudentController.Find(studentGuid);
+                if(student != null)
+                {
+                    AbsMedWindow window = new AbsMedWindow(student);
+                    window.Show();
+                }
+            }
         }
     }
 }

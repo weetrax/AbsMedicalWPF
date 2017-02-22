@@ -75,6 +75,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Controllers\StudentController.cs" />
     <Compile Include="Forms\AbsMedWindow.xaml.cs">
       <DependentUpon>AbsMedWindow.xaml</DependentUpon>
     </Compile>
@@ -82,8 +83,6 @@
       <DependentUpon>HomeWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Utils\Encryption.cs" />
-    <Compile Include="Utils\NFCReader\Card.cs" />
-    <Compile Include="Utils\NFCReader\NFCReader.cs" />
     <Page Include="Forms\AbsMedWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -141,6 +140,10 @@
     <ProjectReference Include="..\AbsMedical.Data\AbsMedical.Data.csproj">
       <Project>{44257ec8-e4f1-4695-8a0c-bbbeb900d8fc}</Project>
       <Name>AbsMedical.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AbsMedical.NFC\AbsMedical.NFC.csproj">
+      <Project>{5de044d9-ea0d-46b8-8598-dfb5e0eedf3e}</Project>
+      <Name>AbsMedical.NFC</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

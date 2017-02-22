@@ -15,8 +15,6 @@ using System.Windows.Shapes;
 using AbsMedical.Data;
 using AbsMedical.Controllers;
 using AbsMedical.Forms;
-using AbsMedical.Utils;
-using AbsMedical.Utils.NFCReader;
 
 namespace AbsMedical
 {
@@ -39,8 +37,8 @@ namespace AbsMedical
 
             if(currentDoctor != null)
             {
-                HomeWindow form = new HomeWindow(currentDoctor);
-                form.Show();
+                HomeWindow window = new HomeWindow(currentDoctor);
+                window.Show();
                 this.Close();
             }
             else
