@@ -81,6 +81,21 @@ CREATE TABLE Visit(
 
 
 #------------------------------------------------------------
+# Table: Mail
+#------------------------------------------------------------
+
+CREATE TABLE Mail(
+        Email    Varchar (255) NOT NULL ,
+        Password Varchar (255) NOT NULL ,
+        Smtp     Varchar (150) NOT NULL ,
+        Port     Int NOT NULL ,
+        Provider Varchar (100) NOT NULL ,
+        DoctorGuid     Varchar (100) NOT NULL ,
+        PRIMARY KEY (Email )
+)ENGINE=InnoDB;
+
+
+#------------------------------------------------------------
 # Table: AbsMedical
 #------------------------------------------------------------
 
@@ -98,6 +113,7 @@ ALTER TABLE Student ADD CONSTRAINT FK_Student_Id FOREIGN KEY (CountryId) REFEREN
 ALTER TABLE Student ADD CONSTRAINT FK_Student_Guid_School FOREIGN KEY (SchoolGuid) REFERENCES School(Guid);
 ALTER TABLE Doctor ADD CONSTRAINT FK_Doctor_Id FOREIGN KEY (CountryId) REFERENCES Country(Id);
 ALTER TABLE School ADD CONSTRAINT FK_School_Id FOREIGN KEY (CountryId) REFERENCES Country(Id);
+ALTER TABLE Mail ADD CONSTRAINT FK_Mail_Guid FOREIGN KEY (DoctorGuid) REFERENCES Doctor(Guid);
 ALTER TABLE AbsMedical ADD CONSTRAINT FK_AbsMedical_Guid FOREIGN KEY (Guid) REFERENCES Doctor(Guid);
 ALTER TABLE AbsMedical ADD CONSTRAINT FK_AbsMedical_VisitDate FOREIGN KEY (VisitDate) REFERENCES Visit(VisitDate);
 ALTER TABLE AbsMedical ADD CONSTRAINT FK_AbsMedical_Guid_Student FOREIGN KEY (StudentGuid) REFERENCES Student(Guid);
