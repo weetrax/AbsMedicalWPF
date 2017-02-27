@@ -8,13 +8,13 @@
         Title="Justificatif d'absence médicale" Height="543.456" Width="734.97">
     <Grid>
         <GroupBox x:Name="grpBxStudent" Header="Student" Margin="10,29,0,10" HorizontalAlignment="Left" Width="321">
-            <Canvas>
-                <Label x:Name="lblName" Content="Name" Canvas.Left="10" Canvas.Top="34" Margin="10,10,10,0" Height="27" VerticalAlignment="Top"/>
-                <Label x:Name="lblName2" Content="Name" Canvas.Left="20" Canvas.Top="88" Height="27" VerticalAlignment="Top"/>
+            <Canvas Margin="5,5,5,5">
+                <Label x:Name="lblName" Content="Firstname:" Canvas.Left="10" Canvas.Top="10" Height="27" VerticalAlignment="Top"/>
+                <Label x:Name="lblName2" Content="Lastname:" Canvas.Left="10" Canvas.Top="42" Height="27" VerticalAlignment="Top"/>
             </Canvas>
         </GroupBox>
         <GroupBox x:Name="grpBxProof" Header="Proof" Canvas.Left="276" Margin="0,29,10,59" HorizontalAlignment="Right" Width="381">
-            <Canvas>
+            <Canvas Margin="5,5,5,5">
                 <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="85" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="347" Canvas.Left="12" Canvas.Top="48"/>
                 <DatePicker Name="dtStart" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="210" Canvas.Top="140"/>
                 <DatePicker Name="dtEnd" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="12" Canvas.Top="140"/>
