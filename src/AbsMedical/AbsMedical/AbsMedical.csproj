@@ -83,6 +83,7 @@
       <DependentUpon>HomeWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Utils\Encryption.cs" />
+    <Compile Include="Utils\Mail.cs" />
     <Page Include="Forms\AbsMedWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
