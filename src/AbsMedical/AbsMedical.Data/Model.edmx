@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="rfidModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.6" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="rfidModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.6" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="absmedical">
           <Key>
             <PropertyRef Name="Guid" />
@@ -38,6 +38,17 @@
           <Property Name="Email" Type="varchar" MaxLength="255" Nullable="false" />
           <Property Name="Password" Type="varchar" MaxLength="255" Nullable="false" />
           <Property Name="CountryId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="mail">
+          <Key>
+            <PropertyRef Name="Email" />
+          </Key>
+          <Property Name="Email" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Smtp" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="Port" Type="int" Nullable="false" />
+          <Property Name="Provider" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="DoctorGuid" Type="varchar" MaxLength="100" Nullable="false" />
         </EntityType>
         <EntityType Name="school">
           <Key>
@@ -123,6 +134,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Mail_Guid">
+          <End Role="doctor" Type="Self.doctor" Multiplicity="1" />
+          <End Role="mail" Type="Self.mail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="doctor">
+              <PropertyRef Name="Guid" />
+            </Principal>
+            <Dependent Role="mail">
+              <PropertyRef Name="DoctorGuid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_School_Id">
           <End Role="country" Type="Self.country" Multiplicity="1" />
           <End Role="school" Type="Self.school" Multiplicity="*" />
@@ -163,6 +186,7 @@
           <EntitySet Name="absmedical" EntityType="Self.absmedical" Schema="rfid" store:Type="Tables" />
           <EntitySet Name="country" EntityType="Self.country" Schema="rfid" store:Type="Tables" />
           <EntitySet Name="doctor" EntityType="Self.doctor" Schema="rfid" store:Type="Tables" />
+          <EntitySet Name="mail" EntityType="Self.mail" Schema="rfid" store:Type="Tables" />
           <EntitySet Name="school" EntityType="Self.school" Schema="rfid" store:Type="Tables" />
           <EntitySet Name="student" EntityType="Self.student" Schema="rfid" store:Type="Tables" />
           <EntitySet Name="visit" EntityType="Self.visit" Schema="rfid" store:Type="Tables" />
@@ -182,6 +206,10 @@
             <End Role="country" EntitySet="country" />
             <End Role="doctor" EntitySet="doctor" />
           </AssociationSet>
+          <AssociationSet Name="FK_Mail_Guid" Association="Self.FK_Mail_Guid">
+            <End Role="doctor" EntitySet="doctor" />
+            <End Role="mail" EntitySet="mail" />
+          </AssociationSet>
           <AssociationSet Name="FK_School_Id" Association="Self.FK_School_Id">
             <End Role="country" EntitySet="country" />
             <End Role="school" EntitySet="school" />
@@ -195,8 +223,7 @@
             <End Role="student" EntitySet="student" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="rfidModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -241,6 +268,7 @@
           <Property Name="CountryId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="absmedical" Relationship="Self.FK_AbsMedical_Guid" FromRole="doctor" ToRole="absmedical" />
           <NavigationProperty Name="country" Relationship="Self.FK_Doctor_Id" FromRole="doctor" ToRole="country" />
+          <NavigationProperty Name="mail" Relationship="rfidModel.FK_Mail_Guid" FromRole="doctor" ToRole="mail" />
         </EntityType>
         <EntityType Name="school">
           <Key>
@@ -403,7 +431,36 @@
             <End Role="school" EntitySet="school" />
             <End Role="student" EntitySet="student" />
           </AssociationSet>
+          <EntitySet Name="mail" EntityType="rfidModel.mail" />
+          <AssociationSet Name="FK_Mail_Guid" Association="rfidModel.FK_Mail_Guid">
+            <End Role="doctor" EntitySet="doctor" />
+            <End Role="mail" EntitySet="mail" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="mail">
+          <Key>
+            <PropertyRef Name="Email" />
+          </Key>
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Smtp" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="Port" Type="Int32" Nullable="false" />
+          <Property Name="Provider" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="DoctorGuid" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="doctor" Relationship="rfidModel.FK_Mail_Guid" FromRole="mail" ToRole="doctor" />
+        </EntityType>
+        <Association Name="FK_Mail_Guid">
+          <End Type="rfidModel.doctor" Role="doctor" Multiplicity="1" />
+          <End Type="rfidModel.mail" Role="mail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="doctor">
+              <PropertyRef Name="Guid" />
+            </Principal>
+            <Dependent Role="mail">
+              <PropertyRef Name="DoctorGuid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -481,6 +538,18 @@
             <EntityTypeMapping TypeName="rfidModel.visit">
               <MappingFragment StoreEntitySet="visit">
                 <ScalarProperty Name="VisitDate" ColumnName="VisitDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="mail">
+            <EntityTypeMapping TypeName="rfidModel.mail">
+              <MappingFragment StoreEntitySet="mail">
+                <ScalarProperty Name="DoctorGuid" ColumnName="DoctorGuid" />
+                <ScalarProperty Name="Provider" ColumnName="Provider" />
+                <ScalarProperty Name="Port" ColumnName="Port" />
+                <ScalarProperty Name="Smtp" ColumnName="Smtp" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

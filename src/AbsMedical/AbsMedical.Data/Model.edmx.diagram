@@ -18,6 +18,8 @@
         <AssociationConnector Association="rfidModel.FK_School_Id" ManuallyRouted="false" />
         <AssociationConnector Association="rfidModel.FK_Student_Id" ManuallyRouted="false" />
         <AssociationConnector Association="rfidModel.FK_Student_Guid_School" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="rfidModel.mail" Width="1.5" PointX="0.75" PointY="0.875" />
+        <AssociationConnector Association="rfidModel.FK_Mail_Guid" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

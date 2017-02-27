@@ -31,5 +31,6 @@ namespace AbsMedical.Data
         public DbSet<school> school { get; set; }
         public DbSet<student> student { get; set; }
         public DbSet<visit> visit { get; set; }
+        public DbSet<mail> mail { get; set; }
     }
 }

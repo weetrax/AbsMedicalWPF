@@ -31,17 +31,18 @@ namespace AbsMedical.Utils
                     mail.Attachments.Add(attachment);
                 }
 
+                SmtpServer.UseDefaultCredentials = false;
                 SmtpServer.Credentials = new NetworkCredential(fromEmail, fromPassword);
-                SmtpServer.Port = 25;
+                SmtpServer.Port = 587;
                 SmtpServer.EnableSsl = true;
                 SmtpServer.Send(mail);
                 return true;
             }
-            catch (Exception)
+            catch (SmtpException e)
             {
                 return false;
+                throw e;
             }
-
-        } 
+        }
     }
 }

@@ -12,26 +12,15 @@ namespace AbsMedical.Data
     using System;
     using System.Collections.Generic;
     
-    public partial class doctor
+    public partial class mail
     {
-        public doctor()
-        {
-            this.absmedical = new HashSet<absmedical>();
-            this.mail = new HashSet<mail>();
-        }
-    
-        public string Guid { get; set; }
-        public string Lastname { get; set; }
-        public string Firstname { get; set; }
-        public string Address { get; set; }
-        public string PostalCode { get; set; }
-        public string City { get; set; }
         public string Email { get; set; }
         public string Password { get; set; }
-        public int CountryId { get; set; }
+        public string Smtp { get; set; }
+        public int Port { get; set; }
+        public string Provider { get; set; }
+        public string DoctorGuid { get; set; }
     
-        public virtual ICollection<absmedical> absmedical { get; set; }
-        public virtual country country { get; set; }
-        public virtual ICollection<mail> mail { get; set; }
+        public virtual doctor doctor { get; set; }
     }
 }
