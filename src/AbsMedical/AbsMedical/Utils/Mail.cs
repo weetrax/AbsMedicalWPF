@@ -12,13 +12,13 @@ namespace AbsMedical.Utils
     public class Mail
     {
 
-        /********GMAIL*********/
+        /*******GMAIL*********/
         //https://www.google.com/settings/security/lesssecureapps a activé ! pour l'expediteur
+
 
         private static string fromEmail = "martines.magnin@gmail.com";
         private static string fromPassword = "stefanoadrien06";
-        //mail address: martines.magnin@gmail.com
-        //password: stefanoadrien06
+
         public static bool Send(string to, string subject, StringBuilder body, Attachment attachment)
         {
             try
@@ -41,6 +41,7 @@ namespace AbsMedical.Utils
                 SmtpServer.Port = 587;
                 SmtpServer.EnableSsl = true;
                 SmtpServer.Send(mail);
+                mail.DeliveryNotificationOptions = DeliveryNotificationOptions.OnSuccess;
                 return true;
             }
             catch (SmtpException)
@@ -54,19 +55,24 @@ namespace AbsMedical.Utils
         {
             try
             {
+                /***** Configuration of the message to send *****/
                 MailMessage mailMessage = new MailMessage();
-                SmtpClient client = new SmtpClient(mail.Smtp);
-
+                //Receiver
                 mailMessage.From = new MailAddress(mail.Email);
+                //Sender
                 mailMessage.To.Add(to);
+                //Subject
                 mailMessage.Subject = subject;
+                //Body
                 mailMessage.Body = body.ToString();
-
+                //Attachment
                 if (attachment != null)
                 {
                     mailMessage.Attachments.Add(attachment);
                 }
 
+                /***** Configuration of the Smtp Client *****/
+                SmtpClient client = new SmtpClient(mail.Smtp);
                 client.UseDefaultCredentials = false;
                 client.Credentials = new NetworkCredential(mail.Email, mail.Password);
                 client.Port = mail.Port;
