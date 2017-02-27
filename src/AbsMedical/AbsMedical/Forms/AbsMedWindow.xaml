@@ -14,9 +14,12 @@
             </Canvas>
         </GroupBox>
         <GroupBox x:Name="grpBxProof" Header="Proof" Canvas.Left="276" Margin="0,29,10,59" HorizontalAlignment="Right" Width="381">
-            <Label x:Name="lblMotive" Content="Motive:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+            <Canvas>
+                <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="85" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="347" Canvas.Left="12" Canvas.Top="48"/>
+                <DatePicker Name="dtStart" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="210" Canvas.Top="140"/>
+                <DatePicker Name="dtEnd" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="12" Canvas.Top="140"/>
+            </Canvas>
         </GroupBox>
-        <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="85" Margin="356,86,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="347"/>
         <Button x:Name="btnPrint" Content="Print" Canvas.Left="421" Canvas.Top="421" Margin="0,0,10,10" Height="34" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="101"/>
         <Button x:Name="btnSend" Content="Send" Margin="0,0,127,10" HorizontalAlignment="Right" Width="105" Height="34" VerticalAlignment="Bottom"/>
     </Grid>
