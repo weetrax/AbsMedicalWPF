@@ -8,7 +8,10 @@
         Title="Justificatif d'absence médicale" Height="543.456" Width="734.97">
     <Grid>
         <GroupBox x:Name="grpBxStudent" Header="Student" Margin="10,29,0,10" HorizontalAlignment="Left" Width="321">
-            <Label x:Name="lblName" Content="Name" Canvas.Left="10" Canvas.Top="34" Margin="10,10,10,0" Height="27" VerticalAlignment="Top"/>
+            <Canvas>
+                <Label x:Name="lblName" Content="Name" Canvas.Left="10" Canvas.Top="34" Margin="10,10,10,0" Height="27" VerticalAlignment="Top"/>
+                <Label x:Name="lblName2" Content="Name" Canvas.Left="20" Canvas.Top="88" Height="27" VerticalAlignment="Top"/>
+            </Canvas>
         </GroupBox>
         <GroupBox x:Name="grpBxProof" Header="Proof" Canvas.Left="276" Margin="0,29,10,59" HorizontalAlignment="Right" Width="381">
             <Label x:Name="lblMotive" Content="Motive:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>

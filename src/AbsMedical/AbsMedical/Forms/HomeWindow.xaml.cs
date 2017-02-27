@@ -60,7 +60,7 @@ namespace AbsMedical.Forms
                 student student = StudentController.Find(studentGuid);
                 if(student != null)
                 {
-                    AbsMedWindow window = new AbsMedWindow(student);
+                    AbsMedWindow window = new AbsMedWindow(student, CurrentDoctor);
                     window.Show();
                 }
             }

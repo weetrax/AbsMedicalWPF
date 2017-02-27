@@ -25,11 +25,14 @@ namespace AbsMedical.Forms
             get;
             set;
         }
+        private doctor CurrentDoctor
+        { get; set; }
 
-        public AbsMedWindow(student student)
+        public AbsMedWindow(student student, doctor doctor)
         {
             this.CurrentStudent = student;
             InitializeComponent();
+            BindStudentData();
         }
 
         private void BindStudentData()

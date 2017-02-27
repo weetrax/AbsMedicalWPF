@@ -5,6 +5,7 @@ using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
 using System.Net;
+using AbsMedical.Data;
 
 namespace AbsMedical.Utils
 {
@@ -42,10 +43,40 @@ namespace AbsMedical.Utils
                 SmtpServer.Send(mail);
                 return true;
             }
-            catch (SmtpException e)
+            catch (SmtpException)
             {
                 return false;
-                throw e;
+            }
+        }
+
+
+        public static bool Send(mail mail, string to, string subject, StringBuilder body, Attachment attachment)
+        {
+            try
+            {
+                MailMessage mailMessage = new MailMessage();
+                SmtpClient client = new SmtpClient(mail.Smtp);
+
+                mailMessage.From = new MailAddress(mail.Email);
+                mailMessage.To.Add(to);
+                mailMessage.Subject = subject;
+                mailMessage.Body = body.ToString();
+
+                if (attachment != null)
+                {
+                    mailMessage.Attachments.Add(attachment);
+                }
+
+                client.UseDefaultCredentials = false;
+                client.Credentials = new NetworkCredential(mail.Email, mail.Password);
+                client.Port = mail.Port;
+                client.EnableSsl = true;
+                client.Send(mailMessage);
+                return true;
+            }
+            catch (SmtpException)
+            {
+                return false;
             }
         }
     }
