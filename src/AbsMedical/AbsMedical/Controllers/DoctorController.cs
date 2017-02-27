@@ -36,16 +36,9 @@ namespace AbsMedical.Controllers
         {
             using (rfidEntities db = new rfidEntities())
             {
-                try
-                {
-                    db.doctor.Add(doctor);
-                    int result = db.SaveChanges();
-                    return result > 0;
-                }
-                catch (Exception)
-                {
-                    return false;
-                }
+                db.doctor.Add(doctor);
+                int result = db.SaveChanges();
+                return result > 0;
             }
         }
 
@@ -58,16 +51,9 @@ namespace AbsMedical.Controllers
         {
             using (rfidEntities db = new rfidEntities())
             {
-                try
-                {
-                    db.doctor.Attach(doctor);
-                    int result = db.SaveChanges();
-                    return result > 0;
-                }
-                catch (Exception)
-                {
-                    return false;
-                }
+                db.doctor.Attach(doctor);
+                int result = db.SaveChanges();
+                return result > 0;
             }
         }
     }
