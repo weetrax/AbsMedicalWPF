@@ -10,6 +10,10 @@ namespace AbsMedical.Utils
 {
     public class Mail
     {
+
+        /********GMAIL*********/
+        //https://www.google.com/settings/security/lesssecureapps a activé ! pour l'expediteur
+
         private static string fromEmail = "martines.magnin@gmail.com";
         private static string fromPassword = "stefanoadrien06";
         //mail address: martines.magnin@gmail.com

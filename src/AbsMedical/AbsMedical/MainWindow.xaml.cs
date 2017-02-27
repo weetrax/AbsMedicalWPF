@@ -51,21 +51,7 @@ namespace AbsMedical
 
         private void btnExit_Click(object sender, RoutedEventArgs e)
         {
-            //this.Close();
-            StringBuilder body = new StringBuilder();
-            body.AppendLine("Justificatif absence Mr MARTINES STEFANO");
-            body.AppendLine("Motif:");
-            body.AppendLine("znfulizerberjdreifbzndjernjkfvberbfuribcvzehrlhvbelfjbn");
-            if (Mail.Send("adrien-06@hotmail.fr", "Justificatif absence", body, null))
-            {
-                MessageBox.Show("Email send");
-            }
-            else
-            {
-
-                MessageBox.Show("Error during sent email");
-            }
-
+            this.Close();
         }
     }
 }
