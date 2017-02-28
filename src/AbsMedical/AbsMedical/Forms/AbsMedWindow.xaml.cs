@@ -1,4 +1,6 @@
-﻿using AbsMedical.Data;
+﻿using AbsMedical.Controllers;
+using AbsMedical.Data;
+using AbsMedical.Utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -57,8 +59,17 @@ namespace AbsMedical.Forms
             schoolMail.Content = CurrentStudent.school.Email;
 
             //Proof
-            Date.Content = DateTime.Now.ToString("dd/MM/yyyy");
+            lblDate.Content = DateTime.Now.ToString("dd/MM/yyyy");
             dtStart.SelectedDate = DateTime.Now;
+        }
+
+        private void btnSend_Click(object sender, RoutedEventArgs e)
+        {
+            mailconfiguration mailConfig = DoctorController.GetMailConfiguration(CurrentDoctor.Guid);  //TODO
+            List<string> sendTo = new List<string> { CurrentStudent.school.Email, CurrentStudent.Email };
+            StringBuilder body = new StringBuilder();
+            body.Append(txtBxMotive.Text);
+            Utils.Mail.Send(mailConfig, sendTo, "Justificatif Absence Médicale du " + lblDate , body, null);
         }
     }
 }
