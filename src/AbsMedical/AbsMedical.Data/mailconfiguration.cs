@@ -12,7 +12,7 @@ namespace AbsMedical.Data
     using System;
     using System.Collections.Generic;
     
-    public partial class mail
+    public partial class mailconfiguration
     {
         public string Email { get; set; }
         public string Password { get; set; }

@@ -28,9 +28,9 @@ namespace AbsMedical.Data
         public DbSet<absmedical> absmedical { get; set; }
         public DbSet<country> country { get; set; }
         public DbSet<doctor> doctor { get; set; }
+        public DbSet<mailconfiguration> mailconfiguration { get; set; }
         public DbSet<school> school { get; set; }
         public DbSet<student> student { get; set; }
         public DbSet<visit> visit { get; set; }
-        public DbSet<mail> mail { get; set; }
     }
 }

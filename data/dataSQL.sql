@@ -81,10 +81,10 @@ CREATE TABLE Visit(
 
 
 #------------------------------------------------------------
-# Table: Mail
+# Table: MailConfiguration
 #------------------------------------------------------------
 
-CREATE TABLE Mail(
+CREATE TABLE MailConfiguration(
         Email    Varchar (255) NOT NULL ,
         Password Varchar (255) NOT NULL ,
         Smtp     Varchar (150) NOT NULL ,
@@ -103,17 +103,17 @@ CREATE TABLE AbsMedical(
         StartDate    Datetime ,
         EndDate      Datetime ,
         Note         Varchar (255) NOT NULL ,
-        Guid         Varchar (100) NOT NULL ,
+        DoctorGuid         Varchar (100) NOT NULL ,
         VisitDate    Datetime NOT NULL ,
         StudentGuid Varchar (100) NOT NULL ,
-        PRIMARY KEY (Guid ,VisitDate ,StudentGuid )
+        PRIMARY KEY (DoctorGuid ,VisitDate ,StudentGuid )
 )ENGINE=InnoDB;
 
 ALTER TABLE Student ADD CONSTRAINT FK_Student_Id FOREIGN KEY (CountryId) REFERENCES Country(Id);
 ALTER TABLE Student ADD CONSTRAINT FK_Student_Guid_School FOREIGN KEY (SchoolGuid) REFERENCES School(Guid);
 ALTER TABLE Doctor ADD CONSTRAINT FK_Doctor_Id FOREIGN KEY (CountryId) REFERENCES Country(Id);
 ALTER TABLE School ADD CONSTRAINT FK_School_Id FOREIGN KEY (CountryId) REFERENCES Country(Id);
-ALTER TABLE Mail ADD CONSTRAINT FK_Mail_Guid FOREIGN KEY (DoctorGuid) REFERENCES Doctor(Guid);
-ALTER TABLE AbsMedical ADD CONSTRAINT FK_AbsMedical_Guid FOREIGN KEY (Guid) REFERENCES Doctor(Guid);
+ALTER TABLE MailConfiguration ADD CONSTRAINT FK_MailConfiguration_Guid FOREIGN KEY (DoctorGuid) REFERENCES Doctor(Guid);
+ALTER TABLE AbsMedical ADD CONSTRAINT FK_AbsMedical_Guid FOREIGN KEY (DoctorGuid) REFERENCES Doctor(Guid);
 ALTER TABLE AbsMedical ADD CONSTRAINT FK_AbsMedical_VisitDate FOREIGN KEY (VisitDate) REFERENCES Visit(VisitDate);
 ALTER TABLE AbsMedical ADD CONSTRAINT FK_AbsMedical_Guid_Student FOREIGN KEY (StudentGuid) REFERENCES Student(Guid);

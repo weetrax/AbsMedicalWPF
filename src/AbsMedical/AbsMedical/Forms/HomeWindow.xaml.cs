@@ -44,7 +44,8 @@ namespace AbsMedical.Forms
 
         private void MenuItemUpdateProfile_Click(object sender, RoutedEventArgs e)
         {
-
+            ProfileWindow window = new ProfileWindow(CurrentDoctor);
+            window.Show();
         }
 
         private void SetTitle()

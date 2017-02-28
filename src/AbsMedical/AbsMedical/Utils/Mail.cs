@@ -50,15 +50,19 @@ namespace AbsMedical.Utils
             }
         }
 
+        public static bool IsValidClient(mailconfiguration config)
+        {
+            return (Send(config, "martines.magnin@gmail.com", "Mail configuration - Validation test", new StringBuilder("This is a test"), null));
+        }
 
-        public static bool Send(mail mail, string to, string subject, StringBuilder body, Attachment attachment)
+        public static bool Send(mailconfiguration config, string to, string subject, StringBuilder body, Attachment attachment)
         {
             try
             {
                 /***** Configuration of the message to send *****/
                 MailMessage mailMessage = new MailMessage();
                 //Receiver
-                mailMessage.From = new MailAddress(mail.Email);
+                mailMessage.From = new MailAddress(config.Email);
                 //Sender
                 mailMessage.To.Add(to);
                 //Subject
@@ -72,10 +76,10 @@ namespace AbsMedical.Utils
                 }
 
                 /***** Configuration of the Smtp Client *****/
-                SmtpClient client = new SmtpClient(mail.Smtp);
+                SmtpClient client = new SmtpClient(config.Smtp);
                 client.UseDefaultCredentials = false;
-                client.Credentials = new NetworkCredential(mail.Email, mail.Password);
-                client.Port = mail.Port;
+                client.Credentials = new NetworkCredential(config.Email, config.Password);
+                client.Port = config.Port;
                 client.EnableSsl = true;
                 client.Send(mailMessage);
                 return true;

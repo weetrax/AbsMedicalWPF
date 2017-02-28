@@ -19,12 +19,12 @@ namespace AbsMedical.Controllers
         public static doctor Find(string email, string password)
         {
             string md5Password = Encryption.GetMD5Hash(password);
-            using (rfidEntities db = new rfidEntities())
-            {
+            rfidEntities db = new rfidEntities();
+            
                 var query = db.doctor.FirstOrDefault(d => d.Email == email && d.Password == md5Password);
                 //var query2 = (from d in db.doctor where d.Email == email && d.Password == md5Password select d).FirstOrDefault();
                 return query;
-            }
+            
         }
 
         /// <summary>
@@ -52,6 +52,34 @@ namespace AbsMedical.Controllers
             using (rfidEntities db = new rfidEntities())
             {
                 db.doctor.Attach(doctor);
+                int result = db.SaveChanges();
+                return result > 0;
+            }
+        }
+
+        /// <summary>
+        /// Get the mailconfiguration of the doctor
+        /// </summary>
+        /// <param name="doctorGuid">Identifier of the doctor</param>
+        /// <returns>A mailconfiguration object</returns>
+        public static mailconfiguration GetMailConfiguration(string doctorGuid)
+        {
+            using (rfidEntities db = new rfidEntities())
+            {
+                return db.mailconfiguration.FirstOrDefault(m => m.DoctorGuid == doctorGuid);
+            }
+        }
+
+        /// <summary>
+        /// Register a mailconfiguration to the Database
+        /// </summary>
+        /// <param name="mailConfig">mailconfiguration object to add</param>
+        /// <returns>Boolean indicating if the insertion was made</returns>
+        public static bool RegisterMailConfiguration(mailconfiguration mailConfig)
+        {
+            using (rfidEntities db = new rfidEntities())
+            {
+                db.mailconfiguration.Add(mailConfig);
                 int result = db.SaveChanges();
                 return result > 0;
             }

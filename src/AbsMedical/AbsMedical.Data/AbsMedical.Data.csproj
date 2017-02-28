@@ -68,7 +68,7 @@
     <Compile Include="doctor.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="mail.cs">
+    <Compile Include="mailconfiguration.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Model.Context.cs">
