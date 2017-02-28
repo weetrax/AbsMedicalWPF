@@ -16,10 +16,10 @@ namespace AbsMedical.Controllers
         /// <returns>student object</returns>
         public static student Find(string studentGuid)
         {
-            using (rfidEntities db = new rfidEntities())
-            {
-                return db.student.FirstOrDefault(w => w.Guid == studentGuid);
-            }
+            rfidEntities db = new rfidEntities();
+            
+            return db.student.FirstOrDefault(w => w.Guid == studentGuid);
+            
         }
     }
 }

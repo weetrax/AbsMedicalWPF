@@ -26,6 +26,7 @@ namespace AbsMedical.Forms
         private doctor CurrentDoctor
         {
             get;
+            set;
         }
 
         public ProfileWindow(doctor doctor)
@@ -35,6 +36,7 @@ namespace AbsMedical.Forms
             BindDoctorData();
         }
 
+        #region Data Bindings
         private void BindCountries()
         {
             cbCountries.ItemsSource = CountryController.GetCountries();
@@ -72,23 +74,11 @@ namespace AbsMedical.Forms
             txtAddress.Text = CurrentDoctor.Address;
             txtCity.Text = CurrentDoctor.City;
             txtPostalCode.Text = CurrentDoctor.PostalCode;
-            cbCountries.SelectedValue = CurrentDoctor.country.Id;
+            cbCountries.SelectedValue = CurrentDoctor.CountryId;
         }
+        #endregion
 
-        private mailconfiguration GetMailConfigurationValues()
-        {
-            mailconfiguration mailConfig = new mailconfiguration()
-            {
-                Email = txtEmailConf.Text,
-                Password = txtPasswordConf.Text,
-                Smtp = txtSmtpConf.Text,
-                Port = Convert.ToInt32(txtPortConf.Text),
-                Provider = "",
-                DoctorGuid = CurrentDoctor.Guid
-            };
-            return mailConfig;
-        }
-
+        #region Button Save and Check
         private void btnSaveConf_Click(object sender, RoutedEventArgs e)
         {
             
@@ -96,6 +86,7 @@ namespace AbsMedical.Forms
             {
                 if(DoctorController.RegisterMailConfiguration(GetMailConfigurationValues()))
                 {
+                    MessageBox.Show("Mail configuration successfully registered.");
                     lblMessageConf.Foreground = Brushes.Green;
                     lblMessageConf.Content = "Mail configuration successfully registered.";
                 }
@@ -109,26 +100,6 @@ namespace AbsMedical.Forms
             {
                 lblMessageConf.Foreground = Brushes.Red;
                 lblMessageConf.Content = "Email or password invalid.";
-            }
-        }
-
-        private void txtEmailConf_SelectionChanged(object sender, RoutedEventArgs e)
-        {
-            TextBox textbox = (TextBox)sender;
-            if (textbox.Text.Contains("@gmail"))
-            {
-                txtSmtpConf.Text = "smtp.gmail.com";
-                txtPortConf.Text = "587";
-            }
-            if(textbox.Text.Contains("@hotmail"))
-            {
-                txtSmtpConf.Text = "smtp.live.com";
-                txtPortConf.Text = "587";
-            }
-            if(textbox.Text.Contains("@yahoo"))
-            {
-                txtSmtpConf.Text = "smtp.mail.yahoo.com";
-                txtPortConf.Text = "587";
             }
         }
 
@@ -147,6 +118,115 @@ namespace AbsMedical.Forms
                 lblMessageConf.Foreground = Brushes.Red;
                 lblMessageConf.Content = "Mail configuration invalid.";
             }
+        }
+
+        private void btnSavePassword_Click(object sender, RoutedEventArgs e)
+        {
+            string currentMD5Password = CurrentDoctor.Password;
+            string currentPassword = txtCurrentPassword.Text;
+            string newPassword = txtNewPassword.Text;
+            string confirmNewPassword = txtConfirmPassword.Text;
+
+            if (currentMD5Password == Encryption.GetMD5Hash(currentPassword))
+            {
+                if (newPassword == confirmNewPassword)
+                {
+                    if (DoctorController.UpdatePassword(CurrentDoctor.Guid, newPassword))
+                    {
+                        MessageBox.Show("Your password has been updated.");
+                        lblMessagePassword.Foreground = Brushes.Green;
+                        lblMessagePassword.Content = "Password has been updated.";
+                    }
+                }
+                else
+                {
+                    lblMessagePassword.Foreground = Brushes.Red;
+                    lblMessagePassword.Content = "Passwords are not the same.";
+                }
+            }
+            else
+            {
+                lblMessagePassword.Foreground = Brushes.Red;
+                lblMessagePassword.Content = "Current password is invalid";
+            }
+        }
+        #endregion
+
+        private mailconfiguration GetMailConfigurationValues()
+        {
+            mailconfiguration mailConfig = new mailconfiguration()
+            {
+                Email = txtEmailConf.Text,
+                Password = txtPasswordConf.Text,
+                Smtp = txtSmtpConf.Text,
+                Port = Convert.ToInt32(txtPortConf.Text),
+                Provider = "",
+                DoctorGuid = CurrentDoctor.Guid
+            };
+            return mailConfig;
+        }
+
+        private void txtEmailConf_SelectionChanged(object sender, RoutedEventArgs e)
+        {
+            TextBox textbox = (TextBox)sender;
+            if (textbox.Text.Contains("@gmail"))
+            {
+                txtSmtpConf.Text = "smtp.gmail.com";
+                txtPortConf.Text = "587";
+            }
+            if (textbox.Text.Contains("@hotmail"))
+            {
+                txtSmtpConf.Text = "smtp.live.com";
+                txtPortConf.Text = "587";
+            }
+            if (textbox.Text.Contains("@yahoo"))
+            {
+                txtSmtpConf.Text = "smtp.mail.yahoo.com";
+                txtPortConf.Text = "587";
+            }
+        }
+
+        private void btnSaveProfil_Click(object sender, RoutedEventArgs e)
+        {
+            doctor editedDoctor = new doctor()
+            {
+                Guid = CurrentDoctor.Guid,
+                Password = CurrentDoctor.Password,
+                Firstname = txtFirstname.Text,
+                Lastname = txtLastname.Text,
+                Email = txtEmail.Text,
+                Address = txtAddress.Text,
+                CountryId = Convert.ToInt32(cbCountries.SelectedValue),
+                City = txtCity.Text,
+                PostalCode = txtPostalCode.Text,
+            };
+
+            if(DoctorController.Update(editedDoctor))
+            {
+                lblMessageProfile.Foreground = Brushes.Green;
+                lblMessageProfile.Content = "Profile successfully updated.";
+                CurrentDoctor = editedDoctor;
+                BindDoctorData();
+                
+            }
+            else
+            {
+                lblMessageProfile.Foreground = Brushes.Red;
+                lblMessageProfile.Content = "Error on update.";
+            }
+        }
+
+        private void btnUpdateProfile_Click(object sender, RoutedEventArgs e)
+        {
+            btnSaveProfil.Visibility = Visibility.Visible;
+
+            txtFirstname.IsEnabled = true;
+            txtLastname.IsEnabled = true;
+            txtEmail.IsEnabled = true;
+            txtCity.IsEnabled = true;
+            txtPostalCode.IsEnabled = true;
+            txtAddress.IsEnabled = true;
+            cbCountries.IsEnabled = true;
         }
     }
 }

@@ -5,42 +5,50 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AbsMedical.Forms"
         mc:Ignorable="d"
-        Title="ProfileWindow" Height="435.989" Width="814.286">
+        Title="ProfileWindow" Height="491.209" Width="814.286" ResizeMode="NoResize">
     <Grid RenderTransformOrigin="0.449,0.526">
-        <GroupBox x:Name="groupBox" Margin="10,20,0,0" Header="My profile" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="29" Canvas.Top="40" Width="343" Height="375">
+        <GroupBox x:Name="groupBox" Margin="10,20,0,0" Header="My profile" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="29" Canvas.Top="40" Width="343" Height="398">
             <Canvas>
                 <!-- Firstname -->
                 <Label x:Name="lblFirstname"  Content="Firstname: " Canvas.Top="5" Canvas.Left="5" Width="75"></Label>
-                <TextBox x:Name="txtFirstname" Canvas.Top="10" Width="185" Canvas.Left="134"></TextBox>
+                <TextBox x:Name="txtFirstname" IsEnabled="False" Canvas.Top="10" Width="185" Canvas.Left="134"></TextBox>
 
                 <!-- Lastname -->
                 <Label x:Name="lblLastname"  Content="Lastname: " Canvas.Top="45" Canvas.Left="5" Width="75"></Label>
-                <TextBox x:Name="txtLastname" Canvas.Top="50" Width="185" Canvas.Left="134"></TextBox>
+                <TextBox x:Name="txtLastname" IsEnabled="False" Canvas.Top="50" Width="185" Canvas.Left="134"></TextBox>
 
                 <!-- Email -->
                 <Label x:Name="lblEmail"  Content="Email: " Canvas.Top="85" Canvas.Left="5"></Label>
-                <TextBox x:Name="txtEmail" Canvas.Top="90" Width="185" Canvas.Left="134"></TextBox>
+                <TextBox x:Name="txtEmail" IsEnabled="False" Canvas.Top="90" Width="185" Canvas.Left="134"></TextBox>
 
                 <!-- Adress -->
                 <Label x:Name="lblAddress"  Content="Address: " Canvas.Top="125" Canvas.Left="5"></Label>
-                <TextBox x:Name="txtAddress" Canvas.Top="130" Width="185" Canvas.Left="134"></TextBox>
+                <TextBox x:Name="txtAddress" IsEnabled="False" Canvas.Top="130" Width="185" Canvas.Left="134"></TextBox>
 
                 <!-- Phone number -->
+
+
                 <!-- Country -->
                 <Label x:Name="lblCountry"  Content="Country: " Canvas.Top="170" Canvas.Left="5"></Label>
-                <ComboBox x:Name="cbCountries" Canvas.Top="175" Canvas.Left="134" Width="185"></ComboBox>
+                <ComboBox x:Name="cbCountries" IsEnabled="False" Canvas.Top="175" Canvas.Left="134" Width="185"></ComboBox>
 
                 <!-- City-->
                 <Label x:Name="lblCity"  Content="City: " Canvas.Top="210" Canvas.Left="5"></Label>
-                <TextBox x:Name="txtCity" Canvas.Top="215" Width="185" Canvas.Left="134"></TextBox>
+                <TextBox x:Name="txtCity" IsEnabled="False" Canvas.Top="215" Width="185" Canvas.Left="134"></TextBox>
 
                 <!-- Postal Code -->
                 <Label x:Name="lblPostalCode" Content="Postal code" Canvas.Top="250" Canvas.Left="5"></Label>
-                <TextBox x:Name="txtPostalCode" Canvas.Top="255" Width="185" Canvas.Left="134"></TextBox>
+                <TextBox x:Name="txtPostalCode" IsEnabled="False" Canvas.Top="255" Width="185" Canvas.Left="134"></TextBox>
+
+                <!-- Button Save -->
+                <Button x:Name="btnSaveProfil" Visibility="Hidden" Click="btnSaveProfil_Click" Content="Save" Canvas.Left="193" Canvas.Top="294" Width="54"></Button>
+                <Button x:Name="btnUpdateProfile" Click="btnUpdateProfile_Click" Content="Update" Canvas.Left="265" Canvas.Top="294" Width="54"/>
+                
+                <Label x:Name="lblMessageProfile" Content="" Canvas.Top="293" Canvas.Left="10" Width="161"></Label>
             </Canvas>
         </GroupBox>
 
-        <GroupBox x:Name="groupBoxEmail" Margin="371,20,0,0" Header="Email configuration" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="29" Canvas.Top="40" Width="425" Height="178">
+        <GroupBox x:Name="groupBoxEmailConf" Margin="371,20,0,0" Header="Email configuration" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="29" Canvas.Top="40" Width="425" Height="178">
             <Canvas>
                 <!-- Email configuration -->
                 <Label x:Name="lblEmailConf"  Content="Email: " Canvas.Top="5" Canvas.Left="5" Width="75"></Label>
@@ -66,6 +74,28 @@
             </Canvas>
         </GroupBox>
 
-        <GroupBox x:Name="gbPassword" Margin="10,10,10,10" Header="Password"></GroupBox>
+        <GroupBox x:Name="gbPassword" Margin="371,203,10,44" Header="Edit Password">
+            <Canvas>
+                <!-- Label intro-->
+                <Label x:Name="lblIntroPassword" Canvas.Top="5" Canvas.Left="5" Content="Set your current password of your account and the new one to change it."></Label>
+
+                <!-- Current Password -->
+                <Label x:Name="lblCurrentPassword"  Content="Current Password: " Canvas.Top="45" Canvas.Left="5" Width="115"></Label>
+                <TextBox x:Name="txtCurrentPassword" Canvas.Top="50" Width="269" Canvas.Left="134" SelectionChanged="txtEmailConf_SelectionChanged"></TextBox>
+
+                <!-- New password -->
+                <Label x:Name="lblNewPassword"  Content="New Password: " Canvas.Top="85" Canvas.Left="5" Width="115"></Label>
+                <TextBox x:Name="txtNewPassword" Canvas.Top="90" Width="269" Canvas.Left="134" SelectionChanged="txtEmailConf_SelectionChanged"></TextBox>
+
+                <!-- Confirm password -->
+                <Label x:Name="lblConfirmPassword"  Content="Confirm Password: " Canvas.Top="125" Canvas.Left="5" Width="115"></Label>
+                <TextBox x:Name="txtConfirmPassword" Canvas.Top="130" Width="269" Canvas.Left="134" SelectionChanged="txtEmailConf_SelectionChanged"></TextBox>
+
+                <!-- Button save change -->
+                <Button x:Name="btnSavePassword" Click="btnSavePassword_Click" Content="Update password" Canvas.Left="295" Canvas.Top="163" Width="108"></Button>
+
+                <Label x:Name="lblMessagePassword"  Content="" Canvas.Top="159" Canvas.Left="10" Width="247"></Label>
+            </Canvas>
+        </GroupBox>
     </Grid>
 </Window>

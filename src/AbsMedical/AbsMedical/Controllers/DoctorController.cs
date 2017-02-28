@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using AbsMedical.Data;
 using AbsMedical.Utils;
+using System.Data.Entity.Core;
 
 namespace AbsMedical.Controllers
 {
@@ -51,10 +52,39 @@ namespace AbsMedical.Controllers
         {
             using (rfidEntities db = new rfidEntities())
             {
-                db.doctor.Attach(doctor);
+                var query = (from d in db.doctor where d.Guid == doctor.Guid select d).First();
+                query.Firstname = doctor.Firstname;
+                query.Lastname = doctor.Lastname;
+                query.Email = doctor.Email;
+                query.PostalCode = doctor.PostalCode;
+                query.City = doctor.City;
+                query.CountryId = doctor.CountryId;
+                query.Address = doctor.Address;
+
                 int result = db.SaveChanges();
                 return result > 0;
             }
+
+        }
+
+        /// <summary>
+        /// Update the password of the doctor
+        /// </summary>
+        /// <param name="doctorGuid">Identifier of the doctor</param>
+        /// <param name="newPassword">New password</param>
+        /// <returns></returns>
+        public static bool UpdatePassword(string doctorGuid, string newPassword)
+        {
+            string md5password = Encryption.GetMD5Hash(newPassword);
+
+            using (rfidEntities db = new rfidEntities())
+            {
+                doctor doctor = db.doctor.First(d => d.Guid == doctorGuid);
+                doctor.Password = md5password;
+                int result = db.SaveChanges();
+                return result > 0;
+            }
+
         }
 
         /// <summary>
@@ -77,12 +107,41 @@ namespace AbsMedical.Controllers
         /// <returns>Boolean indicating if the insertion was made</returns>
         public static bool RegisterMailConfiguration(mailconfiguration mailConfig)
         {
+            int result = 0;
             using (rfidEntities db = new rfidEntities())
             {
-                db.mailconfiguration.Add(mailConfig);
-                int result = db.SaveChanges();
+                if(!MailConfigurationAlreadyExist(mailConfig.DoctorGuid, db))
+                {
+                    string md5Password = Encryption.GetMD5Hash(mailConfig.Password);
+                    mailConfig.Password = md5Password;
+                    db.mailconfiguration.Add(mailConfig);
+                }
+                else
+                {
+                    string md5Password = Encryption.GetMD5Hash(mailConfig.Password);
+                    var query = db.mailconfiguration.First(m => m.DoctorGuid == mailConfig.DoctorGuid);
+                    query.Email = mailConfig.Email;
+                    query.Password = mailConfig.Password;
+                    query.Port = mailConfig.Port;
+                    query.Smtp = mailConfig.Smtp;
+                    query.Provider = mailConfig.Provider;
+                }
+                result = db.SaveChanges();
                 return result > 0;
             }
+        }
+
+        /// <summary>
+        /// Verify if a doctor has already configure a mail configuration
+        /// </summary>
+        /// <param name="doctorGuid">Identifier of the doctor</param>
+        /// <param name="db">Database contect</param>
+        /// <returns>Boolean</returns>
+        private static bool MailConfigurationAlreadyExist(string doctorGuid, rfidEntities db)
+        {
+            bool res = (from m in db.mailconfiguration where m.DoctorGuid == doctorGuid select m).Any();
+            return res;
+            
         }
     }
 }
