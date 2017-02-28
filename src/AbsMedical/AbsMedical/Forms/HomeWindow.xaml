@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AbsMedical.Forms"
         mc:Ignorable="d"
-        Title="AbsMedical - Home" Height="597.287" Width="1233.515" ResizeMode="NoResize">
+        Title="AbsMedical - Home" Height="426.287" Width="945.515" ResizeMode="NoResize">
     <Grid>
         <DockPanel>
             <Menu DockPanel.Dock="Top" FontSize="20">
@@ -21,8 +21,8 @@
                 </MenuItem>
             </Menu>
             <Canvas>
-                <Label x:Name="lblRegister" Content="Register a student justification now" Canvas.Left="405" Canvas.Top="220" FontSize="36"/>
-                <Button x:Name="button" Content="" Click="btnRegister_Click" Canvas.Left="300" Canvas.Top="207" Width="100" Height="100" BorderThickness="0">
+                <Label x:Name="lblRegister" Content="Register a student justification now" Canvas.Left="235" Canvas.Top="149" FontSize="36"/>
+                <Button x:Name="button" Content="" Click="btnRegister_Click" Canvas.Left="156" Canvas.Top="142" Width="79" Height="76" BorderThickness="0">
                     <Button.Background>
                         <ImageBrush ImageSource="/AbsMedical;component/Images/plus.png"/>
                     </Button.Background>
