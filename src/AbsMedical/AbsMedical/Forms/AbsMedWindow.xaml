@@ -20,19 +20,23 @@
                 <Label x:Name="lblAddress" Content="Address:" Canvas.Left="10" Canvas.Top="138" Height="27" VerticalAlignment="Top"/>
                 <Label x:Name="address" Content="[Address]" Canvas.Left="142" Canvas.Top="138" Height="27" VerticalAlignment="Top"/>
                 <Label x:Name="address2" Content="[Address]" Canvas.Left="142" Canvas.Top="170" Height="27" VerticalAlignment="Top"/>
+                <Label x:Name="lblPhone" Content="Phone number:" Canvas.Left="10" Canvas.Top="202" Height="27" VerticalAlignment="Top"/>
+                <Label x:Name="Phone" Content="[Phone number]" Canvas.Left="142" Canvas.Top="202" Height="27" VerticalAlignment="Top"/>
+                <Label x:Name="lblMail" Content="Mail address:" Canvas.Left="10" Canvas.Top="234" Height="27" VerticalAlignment="Top"/>
+                <Label x:Name="Mail" Content="[Mail address]" Canvas.Left="142" Canvas.Top="234" Height="27" VerticalAlignment="Top"/>
             </Canvas>
         </GroupBox>
         <GroupBox x:Name="grpBxSchool" Header="School" Margin="10,431,0,10" HorizontalAlignment="Left" Width="471">
             <Canvas>
                 <Label x:Name="lblSchool" Content="School:" Canvas.Left="10" Canvas.Top="10" Height="27" VerticalAlignment="Top"/>
-                <Label x:Name="school" Content="[School Name]" Canvas.Left="142" Canvas.Top="10" Height="27" VerticalAlignment="Top"/>
+                <Label x:Name="school" Content="[School name]" Canvas.Left="142" Canvas.Top="10" Height="27" VerticalAlignment="Top"/>
                 <Label x:Name="lblSchoolAdrs" Content="Address:" Canvas.Left="10" Canvas.Top="42" Height="27" VerticalAlignment="Top"/>
-                <Label x:Name="schoolAdrs" Content="[School Address]" Canvas.Left="142" Canvas.Top="42" Height="27" VerticalAlignment="Top"/>
-                <Label x:Name="schoolAdrs2" Content="[School Address]" Canvas.Left="142" Canvas.Top="74" Height="27" VerticalAlignment="Top"/>
+                <Label x:Name="schoolAdrs" Content="[School address]" Canvas.Left="142" Canvas.Top="42" Height="27" VerticalAlignment="Top"/>
+                <Label x:Name="schoolAdrs2" Content="[School address]" Canvas.Left="142" Canvas.Top="74" Height="27" VerticalAlignment="Top"/>
                 <Label x:Name="lblSchoolPhone" Content="Phone number:" Canvas.Left="10" Canvas.Top="106" Height="27" VerticalAlignment="Top"/>
-                <Label x:Name="schoolPhone" Content="[School Phone]" Canvas.Left="142" Canvas.Top="106" Height="27" VerticalAlignment="Top"/>
+                <Label x:Name="schoolPhone" Content="[School phone]" Canvas.Left="142" Canvas.Top="106" Height="27" VerticalAlignment="Top"/>
                 <Label x:Name="lblSchoolMail" Content="Mail address:" Canvas.Left="10" Canvas.Top="138" Height="27" VerticalAlignment="Top"/>
-                <Label x:Name="schoolMail" Content="[School Mail]" Canvas.Left="142" Canvas.Top="138" Height="27" VerticalAlignment="Top"/>
+                <Label x:Name="schoolMail" Content="[School mail]" Canvas.Left="142" Canvas.Top="138" Height="27" VerticalAlignment="Top"/>
             </Canvas>
         </GroupBox>
         <GroupBox x:Name="grpBxProof" Header="Proof" Canvas.Left="276" Margin="0,29,10,59" HorizontalAlignment="Right" Width="559">
