@@ -52,10 +52,10 @@ namespace AbsMedical.Utils
 
         public static bool IsValidClient(mailconfiguration config)
         {
-            return (Send(config, "martines.magnin@gmail.com", "Mail configuration - Validation test", new StringBuilder("This is a test"), null));
+            return (Send(config, new List<string> { "martines.magnin@gmail.com" }, "Mail configuration - Validation test", new StringBuilder("This is a test"), null));
         }
 
-        public static bool Send(mailconfiguration config, string to, string subject, StringBuilder body, Attachment attachment)
+        public static bool Send(mailconfiguration config, List<string> to, string subject, StringBuilder body, Attachment attachment)
         {
             try
             {
@@ -64,7 +64,10 @@ namespace AbsMedical.Utils
                 //Receiver
                 mailMessage.From = new MailAddress(config.Email);
                 //Sender
-                mailMessage.To.Add(to);
+                foreach(string mailAddress in to)
+                {
+                    mailMessage.To.Add(mailAddress);
+                }
                 //Subject
                 mailMessage.Subject = subject;
                 //Body
