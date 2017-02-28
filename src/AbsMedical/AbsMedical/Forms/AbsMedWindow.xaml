@@ -5,9 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AbsMedical.Forms"
         mc:Ignorable="d"
-        Title= "Medical Certificate" Height="721.456" Width="973.97" MinWidth="973.97">
+        Title= "Medical Certificate" Height="646.456" Width="973.97" ResizeMode="NoResize">
     <Grid>
-        <GroupBox x:Name="grpBxStudent" Header="Student" Margin="10,10,0,279" HorizontalAlignment="Left" Width="431">
+        <GroupBox x:Name="grpBxStudent" Header="Student" Margin="10,10,0,223" HorizontalAlignment="Left" Width="431">
             <Canvas Margin="5,5,5,5">
                 <Label x:Name="lblId" Content="Student ID:" Canvas.Top="10" Height="27" VerticalAlignment="Top" Canvas.Left="10"/>
                 <Label x:Name="Id" Content="[StudentID]" Canvas.Left="117" Canvas.Top="10" Height="27" VerticalAlignment="Top"/>
@@ -30,7 +30,7 @@
                 <Label x:Name="Mail" Content="[Mail address]" Canvas.Left="117" Canvas.Top="298" Height="27" VerticalAlignment="Top"/>
             </Canvas>
         </GroupBox>
-        <GroupBox x:Name="grpBxSchool" Header="School" Margin="10,416,0,10" HorizontalAlignment="Left" Width="431">
+        <GroupBox x:Name="grpBxSchool" Header="School" Margin="10,385,0,10" HorizontalAlignment="Left" Width="431">
             <Canvas>
                 <Label x:Name="lblSchool" Content="School:" Canvas.Left="10" Canvas.Top="10" Height="27" VerticalAlignment="Top"/>
                 <Label x:Name="school" Content="[School name]" Canvas.Left="117" Canvas.Top="10" Height="27" VerticalAlignment="Top"/>
@@ -46,17 +46,18 @@
         <GroupBox x:Name="grpBxProof" Header="Proof" Canvas.Left="276" Margin="446,10,10,59">
             <Canvas Margin="5,5,5,5">
                 <Label x:Name="lblDateVisit" Content="Date:" Canvas.Left="10" Canvas.Top="10"/>
-                <Label x:Name="Date" Content="[Date of the day]" Canvas.Left="76" Canvas.Top="10"/>
+                <Label x:Name="Date" Content="[Date of the day]" Canvas.Left="80" Canvas.Top="10"/>
                 <Label x:Name="lblMotive" Content="Motive:" Canvas.Left="10" Canvas.Top="41" RenderTransformOrigin="-0.132,-0.462"/>
-                <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="172" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="481" Canvas.Left="10" Canvas.Top="72"/>
-                <Label x:Name="lblStart" Content="Start Date:" Canvas.Left="10" Canvas.Top="254"/>
-                <DatePicker Name="dtEnd" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="80" Canvas.Top="255"/>
-                <Label x:Name="lblEnd" Content="End Date:" Canvas.Left="276" Canvas.Top="254"/>
-                <DatePicker Name="dtStart" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="342" Canvas.Top="255"/>
+                <TextBox x:Name="txtBxMotive" HorizontalAlignment="Left" Height="172" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="468" Canvas.Left="10" Canvas.Top="72"/>
+                <Label x:Name="lblStart" Content="Start date:" Canvas.Left="10" Canvas.Top="254"/>
+                <DatePicker Name="dtStart" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="75" Canvas.Top="255"/>
+                <Label x:Name="lblEnd" Content="End date:" Canvas.Left="268" Canvas.Top="254"/>
+                <DatePicker Name="dtEnd" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="329" Canvas.Top="255"/>
             </Canvas>
         </GroupBox>
-        <Button x:Name="btnSend" Content="Send by mail" Canvas.Left="421" Canvas.Top="421" Margin="0,0,21,10" Height="34" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="101"/>
-        <Button x:Name="btnPrint" Content="Print" Margin="0,0,144,10" HorizontalAlignment="Right" Width="105" Height="34" VerticalAlignment="Bottom"/>
-        <Button x:Name="btnExport" Content="Export to PDF" Canvas.Left="421" Canvas.Top="421" Margin="0,0,273,10" Height="34" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="101"/>
+        <Button x:Name="btnClose" Content="Close" Canvas.Left="421" Canvas.Top="421" Margin="0,0,382,10" Height="34" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="101"/>
+        <Button x:Name="btnSend" Content="Send by mail" Canvas.Left="421" Canvas.Top="421" Margin="0,0,20,10" Height="34" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="101"/>
+        <Button x:Name="btnPrint" Content="Print" Margin="0,0,137,10" HorizontalAlignment="Right" Width="105" Height="34" VerticalAlignment="Bottom"/>
+        <Button x:Name="btnExport" Content="Export to PDF" Canvas.Left="421" Canvas.Top="421" Margin="0,0,261,10" Height="34" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="101"/>
     </Grid>
 </Window>

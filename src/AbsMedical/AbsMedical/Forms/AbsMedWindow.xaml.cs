@@ -57,7 +57,8 @@ namespace AbsMedical.Forms
             schoolMail.Content = CurrentStudent.school.Email;
 
             //Proof
-            Date.Content = DateTime.Today;
+            Date.Content = DateTime.Now.ToString("dd/MM/yyyy");
+            dtStart.SelectedDate = DateTime.Now;
         }
     }
 }
