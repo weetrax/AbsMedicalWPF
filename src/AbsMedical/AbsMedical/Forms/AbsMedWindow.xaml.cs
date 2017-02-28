@@ -32,13 +32,32 @@ namespace AbsMedical.Forms
         {
             this.CurrentStudent = student;
             InitializeComponent();
-            BindStudentData();
+            BindData();
         }
 
-        private void BindStudentData()
+        private void BindData()
         {
-            //faire tout les Bind ici avec l'objet CurrentStudent:
-            //exemple: lblName.Content = CurrentStudent.Firstname;
+            //Student
+            Id.Content = CurrentStudent.StudentId;
+            firstname.Content = CurrentStudent.Firstname;
+            lastname.Content = CurrentStudent.Lastname;
+            securityNo.Content = CurrentStudent.SocialSecurityNumber;
+            birth.Content = "TODO";
+            birthPlace.Content = "TODO";
+            address.Content = CurrentStudent.Address;
+            address2.Content = CurrentStudent.PostalCode + " " + CurrentStudent.City + ", " + CurrentStudent.country.Name;
+            Phone.Content = "TODO";
+            Mail.Content = CurrentStudent.Email;
+
+            //School
+            school.Content = CurrentStudent.school.Name;
+            schoolAdrs.Content = CurrentStudent.school.Address;
+            schoolAdrs2.Content = CurrentStudent.school.PostalCode + " " + CurrentStudent.school.City + ", " + CurrentStudent.school.country.Name;
+            schoolPhone.Content = CurrentStudent.school.Tel;
+            schoolMail.Content = CurrentStudent.school.Email;
+
+            //Proof
+            Date.Content = DateTime.Today;
         }
     }
 }
