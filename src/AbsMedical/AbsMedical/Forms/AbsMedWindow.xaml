@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AbsMedical.Forms"
         mc:Ignorable="d"
-        Title= "Medical Certificate" Height="721.456" Width="973.97" MinWidth="">
+        Title= "Medical Certificate" Height="721.456" Width="973.97" MinWidth="973.97">
     <Grid>
         <GroupBox x:Name="grpBxStudent" Header="Student" Margin="10,10,0,279" HorizontalAlignment="Left" Width="431">
             <Canvas Margin="5,5,5,5">
