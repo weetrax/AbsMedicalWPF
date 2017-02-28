@@ -4,3 +4,5 @@ INSERT INTO `rfid`.`school` (`Guid`, `Name`, `Address`, `PostalCode`, `City`, `E
  
 INSERT INTO `rfid`.`doctor` (`Guid`, `Lastname`, `Firstname`, `Address`, `PostalCode`, `City`, `Email`, `Password`, `CountryId`) VALUES ('5372adb6-078f-4ec6-a2fc-b52e63c570b7 ', 'Jean', 'Medecin', '16 avenue du vieux port', '06000', 'Nice', 'jean@nice.fr', '9e5267ca171a20b9a28d63ff7237f2b8', '1');
 
+INSERT INTO `rfid`.`student` (`Guid`, `Lastname`, `Firstname`, `Email`, `StudentId`, `SocialSecurityNumber`, `Address`, `PostalCode`, `City`, `CountryId`, `SchoolGuid`) VALUES ('ab839316', 'White', 'Card', 'white.card@gmail.com', 'ab839316', 'ab839316ab839316', '16 avenue des pins', '06000', 'Nice', '1', '317c4e0a-d008-4a38-abe9-cfa91e2dc4d0');
+INSERT INTO `rfid`.`student` (`Guid`, `Lastname`, `Firstname`, `Email`, `StudentId`, `SocialSecurityNumber`, `Address`, `PostalCode`, `City`, `CountryId`, `SchoolGuid`) VALUES ('04617c4a', 'Martines', 'Stefano', 'stefano.martines@hotmail.com', '04617c4a', '04617c4a04617c4a', '13 avenue miramar', '06590', 'Theoule', '1', '317c4e0a-d008-4a38-abe9-cfa91e2dc4d0');
