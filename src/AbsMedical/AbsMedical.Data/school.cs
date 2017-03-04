@@ -25,8 +25,7 @@ namespace AbsMedical.Data
         public string PostalCode { get; set; }
         public string City { get; set; }
         public string Email { get; set; }
-        public string Tel { get; set; }
-        public int TypeId { get; set; }
+        public string Phone { get; set; }
         public int CountryId { get; set; }
     
         public virtual country country { get; set; }

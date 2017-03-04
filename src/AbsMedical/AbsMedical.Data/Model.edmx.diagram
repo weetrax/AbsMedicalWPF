@@ -5,20 +5,20 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="7a2eac1728fd43d891f685ab458d65a1" Name="Diagram1">
-        <EntityTypeShape EntityType="rfidModel.absmedical" Width="1.5" PointX="5.125" PointY="4" />
-        <EntityTypeShape EntityType="rfidModel.country" Width="1.5" PointX="0.625" PointY="6.25" />
-        <EntityTypeShape EntityType="rfidModel.doctor" Width="1.5" PointX="2.875" PointY="3.625" />
-        <EntityTypeShape EntityType="rfidModel.mailconfiguration" Width="1.5" PointX="0.625" PointY="3.5" />
-        <EntityTypeShape EntityType="rfidModel.school" Width="1.5" PointX="2.875" PointY="7.75" />
-        <EntityTypeShape EntityType="rfidModel.student" Width="1.5" PointX="7.25" PointY="5.625" />
-        <EntityTypeShape EntityType="rfidModel.visit" Width="1.5" PointX="7.75" PointY="3.375" />
+        <EntityTypeShape EntityType="rfidModel.absmedical" Width="1.5" PointX="7.5" PointY="5.5" />
+        <EntityTypeShape EntityType="rfidModel.country" Width="1.5" PointX="0.75" PointY="5.875" />
+        <EntityTypeShape EntityType="rfidModel.doctor" Width="1.5" PointX="3" PointY="6.875" />
+        <EntityTypeShape EntityType="rfidModel.mailconfiguration" Width="1.5" PointX="5.25" PointY="11" />
+        <EntityTypeShape EntityType="rfidModel.school" Width="1.5" PointX="3" PointY="3.25" />
+        <EntityTypeShape EntityType="rfidModel.student" Width="1.5" PointX="5.25" PointY="3.375" />
+        <EntityTypeShape EntityType="rfidModel.visit" Width="1.5" PointX="5.25" PointY="1.25" />
         <AssociationConnector Association="rfidModel.FK_AbsMedical_Guid" />
         <AssociationConnector Association="rfidModel.FK_AbsMedical_Guid_Student" />
         <AssociationConnector Association="rfidModel.FK_AbsMedical_VisitDate" />
         <AssociationConnector Association="rfidModel.FK_Doctor_Id" />
         <AssociationConnector Association="rfidModel.FK_School_Id" />
         <AssociationConnector Association="rfidModel.FK_Student_Id" />
-        <AssociationConnector Association="rfidModel.FK_MailConfiguration_Guid" />
+        <AssociationConnector Association="rfidModel.FK_MailConfiguration_Guid_Doctor" />
         <AssociationConnector Association="rfidModel.FK_Student_Guid_School" />
       </Diagram>
     </edmx:Diagrams>

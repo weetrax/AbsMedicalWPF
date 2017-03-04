@@ -23,6 +23,9 @@ namespace AbsMedical.Data
         public string Lastname { get; set; }
         public string Firstname { get; set; }
         public string Email { get; set; }
+        public string Phone { get; set; }
+        public System.DateTime Birthdate { get; set; }
+        public string Birthplace { get; set; }
         public string StudentId { get; set; }
         public string SocialSecurityNumber { get; set; }
         public string Address { get; set; }

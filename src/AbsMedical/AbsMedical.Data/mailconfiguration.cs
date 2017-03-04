@@ -14,11 +14,11 @@ namespace AbsMedical.Data
     
     public partial class mailconfiguration
     {
+        public string Guid { get; set; }
         public string Email { get; set; }
         public string Password { get; set; }
         public string Smtp { get; set; }
         public int Port { get; set; }
-        public string Provider { get; set; }
         public string DoctorGuid { get; set; }
     
         public virtual doctor doctor { get; set; }

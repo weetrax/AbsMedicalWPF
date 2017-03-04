@@ -24,15 +24,22 @@ namespace AbsMedical.Forms
     {
         private doctor CurrentDoctor
         {
-            get;
-            set;
+            get
+            {
+                return DoctorController.Get(CurrentDoctorGuid);
+            }
         }
 
-        public HomeWindow(doctor doctor)
+        private string CurrentDoctorGuid
+        {
+            get;
+        }
+
+        public HomeWindow(string doctorGuid)
         {
             NFCReader.establishContext();
             NFCReader.SelectDevice();
-            this.CurrentDoctor = doctor;
+            this.CurrentDoctorGuid = doctorGuid;
             InitializeComponent();
             SetTitle();
         }
@@ -44,7 +51,7 @@ namespace AbsMedical.Forms
 
         private void MenuItemUpdateProfile_Click(object sender, RoutedEventArgs e)
         {
-            ProfileWindow window = new ProfileWindow(CurrentDoctor);
+            ProfileWindow window = new ProfileWindow(CurrentDoctorGuid);
             window.Show();
         }
 
@@ -61,7 +68,7 @@ namespace AbsMedical.Forms
                 student student = StudentController.Find(studentGuid);
                 if(student != null)
                 {
-                    AbsMedWindow window = new AbsMedWindow(student, CurrentDoctor);
+                    AbsMedWindow window = new AbsMedWindow(student, CurrentDoctorGuid);
                     window.Show();
                 }
             }

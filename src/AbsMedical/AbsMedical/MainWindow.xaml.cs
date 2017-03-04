@@ -38,7 +38,7 @@ namespace AbsMedical
 
             if(currentDoctor != null)
             {
-                HomeWindow window = new HomeWindow(currentDoctor);
+                HomeWindow window = new HomeWindow(currentDoctor.Guid);
                 window.Show();
                 this.Close();
             }

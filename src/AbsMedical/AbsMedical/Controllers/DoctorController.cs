@@ -12,6 +12,17 @@ namespace AbsMedical.Controllers
     public class DoctorController
     {
         /// <summary>
+        /// Get a doctor object in the Database by its identifier
+        /// </summary>
+        /// <param name="doctorGuid">Identifier of the doctor</param>
+        /// <returns>A doctor object</returns>
+        public static doctor Get(string doctorGuid)
+        {
+            rfidEntities db = new rfidEntities();
+            return db.doctor.FirstOrDefault(d => d.Guid == doctorGuid);
+        }
+
+        /// <summary>
         /// Get a doctor object in the Database by its email and password
         /// </summary>
         /// <param name="email">Email of the doctor</param>
@@ -22,9 +33,8 @@ namespace AbsMedical.Controllers
             string md5Password = Encryption.GetMD5Hash(password);
             rfidEntities db = new rfidEntities();
             
-                var query = db.doctor.FirstOrDefault(d => d.Email == email && d.Password == md5Password);
-                //var query2 = (from d in db.doctor where d.Email == email && d.Password == md5Password select d).FirstOrDefault();
-                return query;
+            var query = db.doctor.FirstOrDefault(d => d.Email == email && d.Password == md5Password);
+            return query;
             
         }
 
@@ -64,7 +74,6 @@ namespace AbsMedical.Controllers
                 int result = db.SaveChanges();
                 return result > 0;
             }
-
         }
 
         /// <summary>
@@ -110,7 +119,7 @@ namespace AbsMedical.Controllers
             int result = 0;
             using (rfidEntities db = new rfidEntities())
             {
-                if(!MailConfigurationAlreadyExist(mailConfig.DoctorGuid, db))
+                if(!MailConfigurationAlreadyExist(mailConfig.DoctorGuid))
                 {
                     string md5Password = Encryption.GetMD5Hash(mailConfig.Password);
                     mailConfig.Password = md5Password;
@@ -124,7 +133,6 @@ namespace AbsMedical.Controllers
                     query.Password = mailConfig.Password;
                     query.Port = mailConfig.Port;
                     query.Smtp = mailConfig.Smtp;
-                    query.Provider = mailConfig.Provider;
                 }
                 result = db.SaveChanges();
                 return result > 0;
@@ -135,13 +143,10 @@ namespace AbsMedical.Controllers
         /// Verify if a doctor has already configure a mail configuration
         /// </summary>
         /// <param name="doctorGuid">Identifier of the doctor</param>
-        /// <param name="db">Database contect</param>
         /// <returns>Boolean</returns>
-        private static bool MailConfigurationAlreadyExist(string doctorGuid, rfidEntities db)
+        private static bool MailConfigurationAlreadyExist(string doctorGuid)
         {
-            bool res = (from m in db.mailconfiguration where m.DoctorGuid == doctorGuid select m).Any();
-            return res;
-            
+            return GetMailConfiguration(doctorGuid) != null;
         }
     }
 }

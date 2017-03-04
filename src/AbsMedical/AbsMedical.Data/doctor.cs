@@ -28,6 +28,7 @@ namespace AbsMedical.Data
         public string City { get; set; }
         public string Email { get; set; }
         public string Password { get; set; }
+        public string Phone { get; set; }
         public int CountryId { get; set; }
     
         public virtual ICollection<absmedical> absmedical { get; set; }

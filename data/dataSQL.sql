@@ -12,6 +12,9 @@ CREATE TABLE Student(
         Lastname             Varchar (50) NOT NULL ,
         Firstname            Varchar (50) NOT NULL ,
         Email                Varchar (255) ,
+        Phone                Varchar (10) NOT NULL ,
+        Birthdate            Date NOT NULL ,
+        Birthplace           Varchar (50) NOT NULL ,
         StudentId            Varchar (50) NOT NULL ,
         SocialSecurityNumber Varchar (50) NOT NULL ,
         Address              Varchar (100) NOT NULL ,
@@ -36,6 +39,7 @@ CREATE TABLE Doctor(
         City       Varchar (50) NOT NULL ,
         Email      Varchar (255) NOT NULL ,
         Password   Varchar (255) NOT NULL ,
+        Phone      Varchar (10) NOT NULL ,
         CountryId         Int NOT NULL ,
         PRIMARY KEY (Guid )
 )ENGINE=InnoDB;
@@ -63,8 +67,7 @@ CREATE TABLE School(
         PostalCode Varchar (7) NOT NULL ,
         City       Varchar (50) NOT NULL ,
         Email      Varchar (255) ,
-        Tel        Varchar (25) ,
-        TypeId     Int NOT NULL ,
+        Phone      Varchar (25) ,
         CountryId         Int NOT NULL ,
         PRIMARY KEY (Guid )
 )ENGINE=InnoDB;
@@ -85,13 +88,13 @@ CREATE TABLE Visit(
 #------------------------------------------------------------
 
 CREATE TABLE MailConfiguration(
-        Email    Varchar (255) NOT NULL ,
-        Password Varchar (255) NOT NULL ,
-        Smtp     Varchar (150) NOT NULL ,
-        Port     Int NOT NULL ,
-        Provider Varchar (100) NOT NULL ,
-        DoctorGuid     Varchar (100) NOT NULL ,
-        PRIMARY KEY (Email )
+        Guid        Varchar (100) NOT NULL ,
+        Email       Varchar (255) NOT NULL ,
+        Password    Varchar (255) NOT NULL ,
+        Smtp        Varchar (150) NOT NULL ,
+        Port        Int NOT NULL ,
+        DoctorGuid Varchar (100) NOT NULL ,
+        PRIMARY KEY (Guid )
 )ENGINE=InnoDB;
 
 
@@ -113,7 +116,7 @@ ALTER TABLE Student ADD CONSTRAINT FK_Student_Id FOREIGN KEY (CountryId) REFEREN
 ALTER TABLE Student ADD CONSTRAINT FK_Student_Guid_School FOREIGN KEY (SchoolGuid) REFERENCES School(Guid);
 ALTER TABLE Doctor ADD CONSTRAINT FK_Doctor_Id FOREIGN KEY (CountryId) REFERENCES Country(Id);
 ALTER TABLE School ADD CONSTRAINT FK_School_Id FOREIGN KEY (CountryId) REFERENCES Country(Id);
-ALTER TABLE MailConfiguration ADD CONSTRAINT FK_MailConfiguration_Guid FOREIGN KEY (DoctorGuid) REFERENCES Doctor(Guid);
+ALTER TABLE MailConfiguration ADD CONSTRAINT FK_MailConfiguration_Guid_Doctor FOREIGN KEY (DoctorGuid) REFERENCES Doctor(Guid);
 ALTER TABLE AbsMedical ADD CONSTRAINT FK_AbsMedical_Guid FOREIGN KEY (DoctorGuid) REFERENCES Doctor(Guid);
 ALTER TABLE AbsMedical ADD CONSTRAINT FK_AbsMedical_VisitDate FOREIGN KEY (VisitDate) REFERENCES Visit(VisitDate);
 ALTER TABLE AbsMedical ADD CONSTRAINT FK_AbsMedical_Guid_Student FOREIGN KEY (StudentGuid) REFERENCES Student(Guid);

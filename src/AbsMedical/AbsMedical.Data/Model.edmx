@@ -37,17 +37,18 @@
           <Property Name="City" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Email" Type="varchar" MaxLength="255" Nullable="false" />
           <Property Name="Password" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Phone" Type="varchar" MaxLength="10" Nullable="false" />
           <Property Name="CountryId" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="mailconfiguration">
           <Key>
-            <PropertyRef Name="Email" />
+            <PropertyRef Name="Guid" />
           </Key>
+          <Property Name="Guid" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="Email" Type="varchar" MaxLength="255" Nullable="false" />
           <Property Name="Password" Type="varchar" MaxLength="255" Nullable="false" />
           <Property Name="Smtp" Type="varchar" MaxLength="150" Nullable="false" />
           <Property Name="Port" Type="int" Nullable="false" />
-          <Property Name="Provider" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="DoctorGuid" Type="varchar" MaxLength="100" Nullable="false" />
         </EntityType>
         <EntityType Name="school">
@@ -60,8 +61,7 @@
           <Property Name="PostalCode" Type="varchar" MaxLength="7" Nullable="false" />
           <Property Name="City" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Email" Type="varchar" MaxLength="255" />
-          <Property Name="Tel" Type="varchar" MaxLength="25" />
-          <Property Name="TypeId" Type="int" Nullable="false" />
+          <Property Name="Phone" Type="varchar" MaxLength="25" />
           <Property Name="CountryId" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="student">
@@ -72,6 +72,9 @@
           <Property Name="Lastname" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Firstname" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Email" Type="varchar" MaxLength="255" />
+          <Property Name="Phone" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Birthdate" Type="date" Nullable="false" />
+          <Property Name="Birthplace" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="StudentId" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="SocialSecurityNumber" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Address" Type="varchar" MaxLength="100" Nullable="false" />
@@ -134,7 +137,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_MailConfiguration_Guid">
+        <Association Name="FK_MailConfiguration_Guid_Doctor">
           <End Role="doctor" Type="Self.doctor" Multiplicity="1" />
           <End Role="mailconfiguration" Type="Self.mailconfiguration" Multiplicity="*" />
           <ReferentialConstraint>
@@ -206,7 +209,7 @@
             <End Role="country" EntitySet="country" />
             <End Role="doctor" EntitySet="doctor" />
           </AssociationSet>
-          <AssociationSet Name="FK_MailConfiguration_Guid" Association="Self.FK_MailConfiguration_Guid">
+          <AssociationSet Name="FK_MailConfiguration_Guid_Doctor" Association="Self.FK_MailConfiguration_Guid_Doctor">
             <End Role="doctor" EntitySet="doctor" />
             <End Role="mailconfiguration" EntitySet="mailconfiguration" />
           </AssociationSet>
@@ -259,7 +262,7 @@
             <End Role="country" EntitySet="country" />
             <End Role="student" EntitySet="student" />
           </AssociationSet>
-          <AssociationSet Name="FK_MailConfiguration_Guid" Association="rfidModel.FK_MailConfiguration_Guid">
+          <AssociationSet Name="FK_MailConfiguration_Guid_Doctor" Association="rfidModel.FK_MailConfiguration_Guid_Doctor">
             <End Role="doctor" EntitySet="doctor" />
             <End Role="mailconfiguration" EntitySet="mailconfiguration" />
           </AssociationSet>
@@ -306,22 +309,23 @@
           <Property Name="City" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Email" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="Password" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Phone" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Name="CountryId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="absmedical" Relationship="rfidModel.FK_AbsMedical_Guid" FromRole="doctor" ToRole="absmedical" />
           <NavigationProperty Name="country" Relationship="rfidModel.FK_Doctor_Id" FromRole="doctor" ToRole="country" />
-          <NavigationProperty Name="mailconfiguration" Relationship="rfidModel.FK_MailConfiguration_Guid" FromRole="doctor" ToRole="mailconfiguration" />
+          <NavigationProperty Name="mailconfiguration" Relationship="rfidModel.FK_MailConfiguration_Guid_Doctor" FromRole="doctor" ToRole="mailconfiguration" />
         </EntityType>
         <EntityType Name="mailconfiguration">
           <Key>
-            <PropertyRef Name="Email" />
+            <PropertyRef Name="Guid" />
           </Key>
+          <Property Name="Guid" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="Email" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="Password" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="Smtp" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
           <Property Name="Port" Type="Int32" Nullable="false" />
-          <Property Name="Provider" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="DoctorGuid" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="doctor" Relationship="rfidModel.FK_MailConfiguration_Guid" FromRole="mailconfiguration" ToRole="doctor" />
+          <NavigationProperty Name="doctor" Relationship="rfidModel.FK_MailConfiguration_Guid_Doctor" FromRole="mailconfiguration" ToRole="doctor" />
         </EntityType>
         <EntityType Name="school">
           <Key>
@@ -333,8 +337,7 @@
           <Property Name="PostalCode" Type="String" Nullable="false" MaxLength="7" FixedLength="false" Unicode="false" />
           <Property Name="City" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="Tel" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
-          <Property Name="TypeId" Type="Int32" Nullable="false" />
+          <Property Name="Phone" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
           <Property Name="CountryId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="country" Relationship="rfidModel.FK_School_Id" FromRole="school" ToRole="country" />
           <NavigationProperty Name="student" Relationship="rfidModel.FK_Student_Guid_School" FromRole="school" ToRole="student" />
@@ -347,6 +350,9 @@
           <Property Name="Lastname" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Firstname" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Phone" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Birthdate" Type="DateTime" Nullable="false" />
+          <Property Name="Birthplace" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="StudentId" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="SocialSecurityNumber" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Address" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
@@ -437,7 +443,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_MailConfiguration_Guid">
+        <Association Name="FK_MailConfiguration_Guid_Doctor">
           <End Type="rfidModel.doctor" Role="doctor" Multiplicity="1" />
           <End Type="rfidModel.mailconfiguration" Role="mailconfiguration" Multiplicity="*" />
           <ReferentialConstraint>
@@ -491,6 +497,7 @@
             <EntityTypeMapping TypeName="rfidModel.doctor">
               <MappingFragment StoreEntitySet="doctor">
                 <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
                 <ScalarProperty Name="Password" ColumnName="Password" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="City" ColumnName="City" />
@@ -506,11 +513,11 @@
             <EntityTypeMapping TypeName="rfidModel.mailconfiguration">
               <MappingFragment StoreEntitySet="mailconfiguration">
                 <ScalarProperty Name="DoctorGuid" ColumnName="DoctorGuid" />
-                <ScalarProperty Name="Provider" ColumnName="Provider" />
                 <ScalarProperty Name="Port" ColumnName="Port" />
                 <ScalarProperty Name="Smtp" ColumnName="Smtp" />
                 <ScalarProperty Name="Password" ColumnName="Password" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Guid" ColumnName="Guid" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -518,8 +525,7 @@
             <EntityTypeMapping TypeName="rfidModel.school">
               <MappingFragment StoreEntitySet="school">
                 <ScalarProperty Name="CountryId" ColumnName="CountryId" />
-                <ScalarProperty Name="TypeId" ColumnName="TypeId" />
-                <ScalarProperty Name="Tel" ColumnName="Tel" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="City" ColumnName="City" />
                 <ScalarProperty Name="PostalCode" ColumnName="PostalCode" />
@@ -539,6 +545,9 @@
                 <ScalarProperty Name="Address" ColumnName="Address" />
                 <ScalarProperty Name="SocialSecurityNumber" ColumnName="SocialSecurityNumber" />
                 <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+                <ScalarProperty Name="Birthplace" ColumnName="Birthplace" />
+                <ScalarProperty Name="Birthdate" ColumnName="Birthdate" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="Firstname" ColumnName="Firstname" />
                 <ScalarProperty Name="Lastname" ColumnName="Lastname" />

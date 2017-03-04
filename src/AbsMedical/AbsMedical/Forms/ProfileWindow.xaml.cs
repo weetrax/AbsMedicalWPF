@@ -25,13 +25,20 @@ namespace AbsMedical.Forms
     {
         private doctor CurrentDoctor
         {
-            get;
-            set;
+            get
+            {
+                return DoctorController.Get(CurrentDoctorGuid);
+            }
         }
 
-        public ProfileWindow(doctor doctor)
+        private string CurrentDoctorGuid
         {
-            this.CurrentDoctor = doctor;
+            get;
+        }
+
+        public ProfileWindow(string doctorGuid)
+        {
+            this.CurrentDoctorGuid = doctorGuid;
             InitializeComponent();
             BindDoctorData();
         }
@@ -79,6 +86,48 @@ namespace AbsMedical.Forms
         #endregion
 
         #region Button Save and Check
+
+        private void btnSaveProfil_Click(object sender, RoutedEventArgs e)
+        {
+            doctor editedDoctor = new doctor()
+            {
+                Guid = CurrentDoctor.Guid,
+                Password = CurrentDoctor.Password,
+                Firstname = txtFirstname.Text,
+                Lastname = txtLastname.Text,
+                Email = txtEmail.Text,
+                Address = txtAddress.Text,
+                CountryId = Convert.ToInt32(cbCountries.SelectedValue),
+                City = txtCity.Text,
+                PostalCode = txtPostalCode.Text,
+            };
+
+            if (DoctorController.Update(editedDoctor))
+            {
+                lblMessageProfile.Foreground = Brushes.Green;
+                lblMessageProfile.Content = "Profile successfully updated.";
+                BindDoctorData();
+
+            }
+            else
+            {
+                lblMessageProfile.Foreground = Brushes.Red;
+                lblMessageProfile.Content = "Error on update.";
+            }
+        }
+
+        private void btnUpdateProfile_Click(object sender, RoutedEventArgs e)
+        {
+            btnSaveProfil.Visibility = Visibility.Visible;
+            txtFirstname.IsEnabled = true;
+            txtLastname.IsEnabled = true;
+            txtEmail.IsEnabled = true;
+            txtCity.IsEnabled = true;
+            txtPostalCode.IsEnabled = true;
+            txtAddress.IsEnabled = true;
+            cbCountries.IsEnabled = true;
+        }
+
         private void btnSaveConf_Click(object sender, RoutedEventArgs e)
         {
             
@@ -156,11 +205,11 @@ namespace AbsMedical.Forms
         {
             mailconfiguration mailConfig = new mailconfiguration()
             {
+                Guid = Guid.NewGuid().ToString(),
                 Email = txtEmailConf.Text,
                 Password = txtPasswordConf.Text,
                 Smtp = txtSmtpConf.Text,
                 Port = Convert.ToInt32(txtPortConf.Text),
-                Provider = "",
                 DoctorGuid = CurrentDoctor.Guid
             };
             return mailConfig;
@@ -186,47 +235,5 @@ namespace AbsMedical.Forms
             }
         }
 
-        private void btnSaveProfil_Click(object sender, RoutedEventArgs e)
-        {
-            doctor editedDoctor = new doctor()
-            {
-                Guid = CurrentDoctor.Guid,
-                Password = CurrentDoctor.Password,
-                Firstname = txtFirstname.Text,
-                Lastname = txtLastname.Text,
-                Email = txtEmail.Text,
-                Address = txtAddress.Text,
-                CountryId = Convert.ToInt32(cbCountries.SelectedValue),
-                City = txtCity.Text,
-                PostalCode = txtPostalCode.Text,
-            };
-
-            if(DoctorController.Update(editedDoctor))
-            {
-                lblMessageProfile.Foreground = Brushes.Green;
-                lblMessageProfile.Content = "Profile successfully updated.";
-                CurrentDoctor = editedDoctor;
-                BindDoctorData();
-                
-            }
-            else
-            {
-                lblMessageProfile.Foreground = Brushes.Red;
-                lblMessageProfile.Content = "Error on update.";
-            }
-        }
-
-        private void btnUpdateProfile_Click(object sender, RoutedEventArgs e)
-        {
-            btnSaveProfil.Visibility = Visibility.Visible;
-
-            txtFirstname.IsEnabled = true;
-            txtLastname.IsEnabled = true;
-            txtEmail.IsEnabled = true;
-            txtCity.IsEnabled = true;
-            txtPostalCode.IsEnabled = true;
-            txtAddress.IsEnabled = true;
-            cbCountries.IsEnabled = true;
-        }
     }
 }
