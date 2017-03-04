@@ -22,6 +22,7 @@ namespace AbsMedical.Forms
     /// </summary>
     public partial class HomeWindow : Window
     {
+        #region Properties
         private doctor CurrentDoctor
         {
             get
@@ -34,6 +35,7 @@ namespace AbsMedical.Forms
         {
             get;
         }
+        #endregion
 
         public HomeWindow(string doctorGuid)
         {

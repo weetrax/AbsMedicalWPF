@@ -78,11 +78,16 @@ namespace AbsMedical.Forms
 
         private void btnSend_Click(object sender, RoutedEventArgs e)
         {
-            mailconfiguration mailConfig = DoctorController.GetMailConfiguration(CurrentDoctor.Guid);  //TODO
+            mailconfiguration mailConfig = DoctorController.GetMailConfiguration(CurrentDoctorGuid);  //TODO
             List<string> sendTo = new List<string> { CurrentStudent.school.Email, CurrentStudent.Email };
             StringBuilder body = new StringBuilder();
             body.Append(rtbMotive);
             Utils.Mail.Send(mailConfig, sendTo, "Justificatif Absence Médicale du " + lblDate, body, null);
+        }
+
+        private void btnClose_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }
