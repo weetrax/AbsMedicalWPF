@@ -47,34 +47,41 @@ namespace AbsMedical.Forms
             SetTitle();
         }
 
-        protected void MenuItemClose_Click(object sender, RoutedEventArgs e)
-        {
-            this.Close();
-        }
-
-        private void MenuItemUpdateProfile_Click(object sender, RoutedEventArgs e)
-        {
-            ProfileWindow window = new ProfileWindow(CurrentDoctorGuid);
-            window.Show();
-        }
-
         private void SetTitle()
         {
             this.Title += " - Logged as " + CurrentDoctor.Firstname;
         }
 
-        private void btnRegister_Click(object sender, RoutedEventArgs e)
+        #region Tile Click
+        private void tileRegisterStudent_Click(object sender, RoutedEventArgs e)
         {
-            if(NFCReader.connectCard())
+            //todo
+        }
+
+        private void tileExit_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void tileProfile_Click(object sender, RoutedEventArgs e)
+        {
+            ProfileWindow window = new ProfileWindow(CurrentDoctorGuid);
+            window.Show();
+        }
+
+        private void tileRegisterNewCertificate_Click(object sender, RoutedEventArgs e)
+        {
+            if (NFCReader.connectCard())
             {
                 string studentGuid = NFCReader.getcardUID();
                 student student = StudentController.Find(studentGuid);
-                if(student != null)
+                if (student != null)
                 {
                     AbsMedWindow window = new AbsMedWindow(student, CurrentDoctorGuid);
                     window.Show();
                 }
             }
         }
+        #endregion Event
     }
 }

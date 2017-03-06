@@ -5,31 +5,50 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls"
         xmlns:local="clr-namespace:AbsMedical.Forms"
+        xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
         mc:Ignorable="d"
         BorderBrush="{DynamicResource AccentColorBrush}"
         BorderThickness="1"
         Title="AbsMedical - Home" Height="426.287" Width="945.515" ResizeMode="NoResize">
     <Grid>
         <DockPanel>
-            <Menu DockPanel.Dock="Top" FontSize="20">
-                <MenuItem Header="File">
-                    <MenuItem Header="Close" Click="MenuItemClose_Click"/>
-                </MenuItem>
-                <MenuItem Header="Account">
-                    <MenuItem Header="Update profile" Click="MenuItemUpdateProfile_Click"/>
-                </MenuItem>
-                <MenuItem Header="Students">
-                    <MenuItem Header="New"/>
-                    <MenuItem Header="View"/>
-                </MenuItem>
-            </Menu>
-            <Canvas>
-                <Label x:Name="lblRegister" Content="Register a student justification now" Canvas.Left="235" Canvas.Top="149" FontSize="36"/>
-                <Button x:Name="button" Content="" Click="btnRegister_Click" Canvas.Left="156" Canvas.Top="142" Width="79" Height="79" BorderThickness="0">
-                    <Button.Background>
-                        <ImageBrush ImageSource="/AbsMedical;component/Images/plus.png"/>
-                    </Button.Background>
-                </Button>
+            <Canvas Margin="5,5,5,5">
+                
+                <!-- Tile Register Certificate -->
+                <Controls:Tile x:Name="tileRegisterNewCertificate" Click="tileRegisterNewCertificate_Click" Title="Register certificate" Background="#FF6ED833" Canvas.Top="90" Height="100" Width="356" Canvas.Left="150" Margin="0">
+                    <Rectangle Width="50" Height="50">
+                        <Rectangle.Fill>
+                            <VisualBrush Visual="{iconPacks:PackIconMaterial PlusCircle, Width=32, Height=32}" />
+                        </Rectangle.Fill>
+                    </Rectangle>
+                </Controls:Tile>
+
+                <!-- Tile Register Student -->
+                <Controls:Tile x:Name="tileRegisterStudent" Click="tileRegisterStudent_Click" Title="Register student" Background="#FFC933D8" Canvas.Right="150" Canvas.Top="90" Height="100" Width="264" Margin="0">
+                    <Rectangle Width="50" Height="50">
+                        <Rectangle.Fill>
+                            <VisualBrush Visual="{iconPacks:PackIconFontAwesome UserPlus, Width=32, Height=32}" />
+                        </Rectangle.Fill>
+                    </Rectangle>
+                </Controls:Tile>
+
+                <!-- Tile Exit -->
+                <Controls:Tile x:Name="tileExit" Click="tileExit_Click" Title="Exit" Background="#FFFF2D2D" Canvas.Right="150" Canvas.Bottom="90" Margin="0" Height="100" Width="150">
+                    <Rectangle Width="50" Height="50">
+                        <Rectangle.Fill>
+                            <VisualBrush Visual="{iconPacks:PackIconMaterial ExitToApp, Width=32, Height=32}" />
+                        </Rectangle.Fill>
+                    </Rectangle>
+                </Controls:Tile>
+
+                <!-- Tile Profile -->
+                <Controls:Tile x:Name="tileProfile" Click="tileProfile_Click" Title="Profile" Canvas.Left="150" Canvas.Bottom="90" Margin="0" Height="100" Width="470">
+                    <Rectangle Width="50" Height="50">
+                        <Rectangle.Fill>
+                            <VisualBrush Visual="{iconPacks:PackIconMaterial Settings, Width=32, Height=32}" />
+                        </Rectangle.Fill>
+                    </Rectangle>
+                </Controls:Tile>
             </Canvas>
         </DockPanel>
     </Grid>
