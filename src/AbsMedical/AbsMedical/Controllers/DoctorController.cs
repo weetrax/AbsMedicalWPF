@@ -18,8 +18,10 @@ namespace AbsMedical.Controllers
         /// <returns>A doctor object</returns>
         public static doctor Get(string doctorGuid)
         {
-            rfidEntities db = new rfidEntities();
-            return db.doctor.FirstOrDefault(d => d.Guid == doctorGuid);
+            using (rfidEntities db = new rfidEntities())
+            {
+                return db.doctor.FirstOrDefault(d => d.Guid == doctorGuid);
+            }
         }
 
         /// <summary>
@@ -31,11 +33,11 @@ namespace AbsMedical.Controllers
         public static doctor Find(string email, string password)
         {
             string md5Password = Encryption.GetMD5Hash(password);
-            rfidEntities db = new rfidEntities();
-            
-            var query = db.doctor.FirstOrDefault(d => d.Email == email && d.Password == md5Password);
-            return query;
-            
+            using (rfidEntities db = new rfidEntities())
+            {
+                var query = db.doctor.FirstOrDefault(d => d.Email == email && d.Password == md5Password);
+                return query;
+            }
         }
 
         /// <summary>
@@ -131,7 +133,7 @@ namespace AbsMedical.Controllers
                     string md5Password = Encryption.GetMD5Hash(mailConfig.Password);
                     var query = db.mailconfiguration.First(m => m.DoctorGuid == mailConfig.DoctorGuid);
                     query.Email = mailConfig.Email;
-                    query.Password = mailConfig.Password;
+                    query.Password = md5Password;
                     query.Port = mailConfig.Port;
                     query.Smtp = mailConfig.Smtp;
                 }

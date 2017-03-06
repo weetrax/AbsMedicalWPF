@@ -56,7 +56,7 @@
                 <Label x:Name="lblDateVisit" Content="Date:" Canvas.Left="10" Canvas.Top="10"/>
                 <Label x:Name="lblDate" Canvas.Left="80" Canvas.Top="10"/>
                 <Label x:Name="lblMotive" Content="Motive:" Canvas.Left="10" Canvas.Top="41" RenderTransformOrigin="-0.132,-0.462"/>
-                <RichTextBox x:Name="rtbMotive" Height="168" Width="470" Canvas.Left="10" Canvas.Top="72" />
+                <RichTextBox x:Name="rtbMotive" Height="168" Width="470" Canvas.Left="10" Canvas.Top="72" Focusable="True" />
                 <Label x:Name="lblStart" Content="Start date:" Canvas.Left="10" Canvas.Top="254"/>
                 <DatePicker Name="dtStart" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="75" Canvas.Top="255"/>
                 <Label x:Name="lblEnd" Content="End date:" Canvas.Left="268" Canvas.Top="254"/>

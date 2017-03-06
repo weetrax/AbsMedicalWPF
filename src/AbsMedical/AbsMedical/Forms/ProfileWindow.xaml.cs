@@ -215,7 +215,7 @@ namespace AbsMedical.Forms
             {
                 Guid = Guid.NewGuid().ToString(),
                 Email = txtEmailConf.Text,
-                Password = txtPasswordConf.Text,
+                Password = txtPasswordConf.Password.ToString(),
                 Smtp = txtSmtpConf.Text,
                 Port = Convert.ToInt32(txtPortConf.Text),
                 DoctorGuid = CurrentDoctor.Guid

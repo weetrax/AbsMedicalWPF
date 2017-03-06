@@ -32,7 +32,7 @@ namespace AbsMedical
 
         private void btnOK_Click(object sender, RoutedEventArgs e)
         {
-            string password = txtPassword.Text;
+            string password = txtPassword.Password.ToString();
             string email = txtEmail.Text;
 
             doctor currentDoctor = DoctorController.Find(email, password);

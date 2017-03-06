@@ -47,9 +47,10 @@
                 <Label x:Name="lblPhone" Content="Phone number:" Canvas.Top="295" Canvas.Left="5" Width="129"></Label>
                 <TextBox x:Name="txtPhone" IsEnabled="False" Canvas.Top="295" Width="185" Canvas.Left="134"></TextBox>
                 <!-- Button Save -->
-                <Button x:Name="btnSaveProfil" Click="btnSaveProfil_Click" Visibility="Hidden" Content="Save" Canvas.Left="198" Canvas.Top="397" Width="54" Style="{StaticResource AccentedSquareButtonStyle}"></Button>
+                <Button x:Name="btnSaveProfil" Click="btnSaveProfil_Click" Visibility="Hidden" Content="Save" Canvas.Left="198" Canvas.Top="397" Width="54" Style="{StaticResource AccentedSquareButtonStyle}" Controls:ControlsHelper.ContentCharacterCasing="Normal"></Button>
                 <Button x:Name="btnUpdateProfile" Click="btnUpdateProfile_Click" Content="Update" Canvas.Left="267" Canvas.Top="397" Width="54" Style="{DynamicResource SquareButtonStyle}" Controls:ControlsHelper.ContentCharacterCasing="Normal"/>
 
+                <!-- Message Profile -->
                 <Label x:Name="lblMessageProfile" Content="" Canvas.Top="397" Canvas.Left="10" Width="161"></Label>
             </Canvas>
         </GroupBox>
@@ -62,7 +63,7 @@
 
                 <!-- Email password -->
                 <Label x:Name="lblPasswordConf"  Content="Password: " Canvas.Top="45" Canvas.Left="5" Width="75"></Label>
-                <TextBox x:Name="txtPasswordConf" Canvas.Top="45" Width="269" Canvas.Left="170"></TextBox>
+                <PasswordBox x:Name="txtPasswordConf" Canvas.Top="45" Width="269" Canvas.Left="170"></PasswordBox>
 
                 <!-- Email smtp -->
                 <Label x:Name="lblSmtpConf"  Content="Smtp: " Canvas.Top="85" Canvas.Left="5" Width="75"></Label>
@@ -76,7 +77,8 @@
                 <Button x:Name="btnSaveConf" Content="Save" Canvas.Top="135" Canvas.Left="381" Width="58" Click="btnSaveConf_Click" Style="{StaticResource AccentedSquareButtonStyle}" Controls:ControlsHelper.ContentCharacterCasing="Normal"></Button>
                 <Button x:Name="btnCheckConf" Content="Check" Canvas.Top="135" Canvas.Left="300" Width="58" Click="btnCheckConf_Click" Style="{DynamicResource SquareButtonStyle}" Controls:ControlsHelper.ContentCharacterCasing="Normal"></Button>
 
-                <Label x:Name="lblMessageConf"  Content="" Canvas.Top="125" Canvas.Left="5" Width="247"></Label>
+                <!-- Message Email Configuration -->
+                <Label x:Name="lblMessageConf"  Content="" Canvas.Top="135" Canvas.Left="5" Width="247"></Label>
             </Canvas>
         </GroupBox>
 
@@ -99,6 +101,8 @@
 
                 <!-- Button save change -->
                 <Button x:Name="btnSavePassword" Click="btnSavePassword_Click" Content="Update password" Canvas.Left="331" Canvas.Top="165" Width="108" Style="{StaticResource AccentedSquareButtonStyle}" Controls:ControlsHelper.ContentCharacterCasing="Normal"></Button>
+                
+                <!-- Message Edit Password -->
                 <Label x:Name="lblMessagePassword"  Content="" Canvas.Top="159" Canvas.Left="10" Width="247"></Label>
             </Canvas>
         </GroupBox>
