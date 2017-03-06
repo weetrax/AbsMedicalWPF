@@ -1,6 +1,7 @@
 ﻿using AbsMedical.Controllers;
 using AbsMedical.Data;
 using AbsMedical.Utils;
+using MahApps.Metro.Controls;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,7 +22,7 @@ namespace AbsMedical.Forms
     /// <summary>
     /// Logique d'interaction pour ProfileWindow.xaml
     /// </summary>
-    public partial class ProfileWindow : Window
+    public partial class ProfileWindow : MetroWindow
     {
         private doctor CurrentDoctor
         {
@@ -81,6 +82,7 @@ namespace AbsMedical.Forms
             txtCity.Text = CurrentDoctor.City;
             txtPostalCode.Text = CurrentDoctor.PostalCode;
             cbCountries.SelectedValue = CurrentDoctor.CountryId;
+            txtPhone.Text = CurrentDoctor.Phone;
         }
         #endregion
 
@@ -99,6 +101,7 @@ namespace AbsMedical.Forms
                 CountryId = Convert.ToInt32(cbCountries.SelectedValue),
                 City = txtCity.Text,
                 PostalCode = txtPostalCode.Text,
+                Phone = txtPhone.Text
             };
 
             if (DoctorController.Update(editedDoctor))
@@ -125,6 +128,7 @@ namespace AbsMedical.Forms
             txtPostalCode.IsEnabled = true;
             txtAddress.IsEnabled = true;
             cbCountries.IsEnabled = true;
+            txtPhone.IsEnabled = true;
         }
 
         private void btnSaveConf_Click(object sender, RoutedEventArgs e)

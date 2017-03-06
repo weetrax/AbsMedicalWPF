@@ -1,6 +1,7 @@
 ﻿using AbsMedical.Controllers;
 using AbsMedical.Data;
 using AbsMedical.Utils;
+using MahApps.Metro.Controls;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,7 +21,7 @@ namespace AbsMedical.Forms
     /// <summary>
     /// Logique d'interaction pour AbsMedWindow.xaml
     /// </summary>
-    public partial class AbsMedWindow : Window
+    public partial class AbsMedWindow : MetroWindow
     {
         #region Properties
         private student CurrentStudent

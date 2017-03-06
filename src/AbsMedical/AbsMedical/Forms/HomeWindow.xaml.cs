@@ -14,13 +14,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using AbsMedical.NFC;
 using AbsMedical.Controllers;
+using MahApps.Metro.Controls;
 
 namespace AbsMedical.Forms
 {
     /// <summary>
     /// Logique d'interaction pour HomeWindow.xaml
     /// </summary>
-    public partial class HomeWindow : Window
+    public partial class HomeWindow : MetroWindow
     {
         #region Properties
         private doctor CurrentDoctor

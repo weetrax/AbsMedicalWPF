@@ -70,6 +70,7 @@ namespace AbsMedical.Controllers
                 query.City = doctor.City;
                 query.CountryId = doctor.CountryId;
                 query.Address = doctor.Address;
+                query.Phone = doctor.Phone;
 
                 int result = db.SaveChanges();
                 return result > 0;

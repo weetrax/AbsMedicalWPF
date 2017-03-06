@@ -16,13 +16,14 @@ using AbsMedical.Data;
 using AbsMedical.Controllers;
 using AbsMedical.Forms;
 using AbsMedical.Utils;
+using MahApps.Metro.Controls;
 
 namespace AbsMedical
 {
     /// <summary>
     /// Logique d'interaction pour MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow : MetroWindow
     {
         public MainWindow()
         {
@@ -36,7 +37,7 @@ namespace AbsMedical
 
             doctor currentDoctor = DoctorController.Find(email, password);
 
-            if(currentDoctor != null)
+            if (currentDoctor != null)
             {
                 HomeWindow window = new HomeWindow(currentDoctor.Guid);
                 window.Show();
