@@ -40,15 +40,15 @@
                 <TextBox x:Name="txtCity" IsEnabled="False" Canvas.Top="215" Width="185" Canvas.Left="134"></TextBox>
 
                 <!-- Postal Code -->
-                <Label x:Name="lblPostalCode" Content="Postal code" Canvas.Top="255" Canvas.Left="5" Width="129" RenderTransformOrigin="0.5,0.5"></Label>
+                <Label x:Name="lblPostalCode" Content="Postal code:" Canvas.Top="255" Canvas.Left="5" Width="129" RenderTransformOrigin="0.5,0.5"></Label>
                 <TextBox x:Name="txtPostalCode" IsEnabled="False" Canvas.Top="255" Width="185" Canvas.Left="134"></TextBox>
 
                 <!-- Phone -->
-                <Label x:Name="lblPhone" Content="Phone number" Canvas.Top="295" Canvas.Left="5" Width="129"></Label>
+                <Label x:Name="lblPhone" Content="Phone number:" Canvas.Top="295" Canvas.Left="5" Width="129"></Label>
                 <TextBox x:Name="txtPhone" IsEnabled="False" Canvas.Top="295" Width="185" Canvas.Left="134"></TextBox>
                 <!-- Button Save -->
                 <Button x:Name="btnSaveProfil" Click="btnSaveProfil_Click" Visibility="Hidden" Content="Save" Canvas.Left="198" Canvas.Top="397" Width="54" Style="{StaticResource AccentedSquareButtonStyle}"></Button>
-                <Button x:Name="btnUpdateProfile" Click="btnUpdateProfile_Click" Content="Update" Canvas.Left="267" Canvas.Top="397" Width="54" Style="{DynamicResource SquareButtonStyle}"/>
+                <Button x:Name="btnUpdateProfile" Click="btnUpdateProfile_Click" Content="Update" Canvas.Left="267" Canvas.Top="397" Width="54" Style="{DynamicResource SquareButtonStyle}" Controls:ControlsHelper.ContentCharacterCasing="Normal"/>
 
                 <Label x:Name="lblMessageProfile" Content="" Canvas.Top="397" Canvas.Left="10" Width="161"></Label>
             </Canvas>
@@ -98,7 +98,7 @@
                 <TextBox x:Name="txtConfirmPassword" Canvas.Top="125" Width="269" Canvas.Left="170" SelectionChanged="txtEmailConf_SelectionChanged"></TextBox>
 
                 <!-- Button save change -->
-                <Button x:Name="btnSavePassword" Click="btnSavePassword_Click" Content="Update password" Canvas.Left="331" Canvas.Top="165" Width="108" Style="{StaticResource AccentedSquareButtonStyle}"></Button>
+                <Button x:Name="btnSavePassword" Click="btnSavePassword_Click" Content="Update password" Canvas.Left="331" Canvas.Top="165" Width="108" Style="{StaticResource AccentedSquareButtonStyle}" Controls:ControlsHelper.ContentCharacterCasing="Normal"></Button>
                 <Label x:Name="lblMessagePassword"  Content="" Canvas.Top="159" Canvas.Left="10" Width="247"></Label>
             </Canvas>
         </GroupBox>
