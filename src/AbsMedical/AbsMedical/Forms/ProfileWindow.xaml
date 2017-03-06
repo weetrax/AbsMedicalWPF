@@ -60,11 +60,11 @@
 
                 <!-- Email smtp -->
                 <Label x:Name="lblSmtpConf"  Content="Smtp: " Canvas.Top="85" Canvas.Left="5" Width="75"></Label>
-                <TextBox x:Name="txtSmtpConf" IsEnabled="False" Canvas.Top="90" Width="143" Canvas.Left="134"></TextBox>
+                <TextBox x:Name="txtSmtpConf" Canvas.Top="90" Width="143" Canvas.Left="134"></TextBox>
 
                 <!-- Email port -->
                 <Label x:Name="lblPortConf" Content="Port: " Canvas.Top="85" Canvas.Left="292"></Label>
-                <TextBox x:Name="txtPortConf" IsEnabled="False" Canvas.Top="90" Width="58" Canvas.Left="345"></TextBox>
+                <TextBox x:Name="txtPortConf" Canvas.Top="90" Width="58" Canvas.Left="345"></TextBox>
 
                 <!-- Button Save and -->
                 <Button x:Name="btnSaveConf" Content="Save" Canvas.Top="125" Canvas.Left="345" Width="58" Click="btnSaveConf_Click"></Button>

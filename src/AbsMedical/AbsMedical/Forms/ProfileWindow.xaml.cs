@@ -57,11 +57,10 @@ namespace AbsMedical.Forms
             if(mailConf != null)
             {
                 txtEmailConf.Text = mailConf.Email;
-                txtPasswordConf.Text = mailConf.Password;
                 txtSmtpConf.Text = mailConf.Smtp;
                 txtPortConf.Text = mailConf.Port.ToString();
                 lblMessageConf.Foreground = Brushes.Green;
-                lblMessageConf.Content = "Mail configuration valid.";
+                lblMessageConf.Content = "Mail configuration actually valid.";
             }
             else
             {

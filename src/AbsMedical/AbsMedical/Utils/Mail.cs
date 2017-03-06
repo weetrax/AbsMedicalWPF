@@ -16,39 +16,8 @@ namespace AbsMedical.Utils
         //https://www.google.com/settings/security/lesssecureapps a activé ! pour l'expediteur
 
 
-        private static string fromEmail = "martines.magnin@gmail.com";
-        private static string fromPassword = "stefanoadrien06";
-
-        public static bool Send(string to, string subject, StringBuilder body, Attachment attachment)
-        {
-            try
-            {
-                MailMessage mail = new MailMessage();
-                SmtpClient SmtpServer = new SmtpClient("smtp.gmail.com");
-
-                mail.From = new MailAddress(fromEmail);
-                mail.To.Add(to);
-                mail.Subject = subject;
-                mail.Body = body.ToString();
-
-                if (attachment != null)
-                {
-                    mail.Attachments.Add(attachment);
-                }
-
-                SmtpServer.UseDefaultCredentials = false;
-                SmtpServer.Credentials = new NetworkCredential(fromEmail, fromPassword);
-                SmtpServer.Port = 587;
-                SmtpServer.EnableSsl = true;
-                SmtpServer.Send(mail);
-                mail.DeliveryNotificationOptions = DeliveryNotificationOptions.OnSuccess;
-                return true;
-            }
-            catch (SmtpException)
-            {
-                return false;
-            }
-        }
+        //private static string fromEmail = "martines.magnin@gmail.com";
+        //private static string fromPassword = "stefanoadrien06";
 
         public static bool IsValidClient(mailconfiguration config)
         {
@@ -92,5 +61,36 @@ namespace AbsMedical.Utils
                 return false;
             }
         }
+
+        //public static bool Send(string to, string subject, StringBuilder body, Attachment attachment)
+        //{
+        //    try
+        //    {
+        //        MailMessage mail = new MailMessage();
+        //        SmtpClient SmtpServer = new SmtpClient("smtp.gmail.com");
+
+        //        mail.From = new MailAddress(fromEmail);
+        //        mail.To.Add(to);
+        //        mail.Subject = subject;
+        //        mail.Body = body.ToString();
+
+        //        if (attachment != null)
+        //        {
+        //            mail.Attachments.Add(attachment);
+        //        }
+
+        //        SmtpServer.UseDefaultCredentials = false;
+        //        SmtpServer.Credentials = new NetworkCredential(fromEmail, fromPassword);
+        //        SmtpServer.Port = 587;
+        //        SmtpServer.EnableSsl = true;
+        //        SmtpServer.Send(mail);
+        //        mail.DeliveryNotificationOptions = DeliveryNotificationOptions.OnSuccess;
+        //        return true;
+        //    }
+        //    catch (SmtpException)
+        //    {
+        //        return false;
+        //    }
+        //}
     }
 }
