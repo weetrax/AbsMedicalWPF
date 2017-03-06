@@ -36,7 +36,7 @@ namespace AbsMedical
             string email = txtEmail.Text;
 
             doctor currentDoctor = DoctorController.Find(email, password);
-
+            
             if (currentDoctor != null)
             {
                 HomeWindow window = new HomeWindow(currentDoctor.Guid);
