@@ -86,7 +86,7 @@ namespace AbsMedical.Forms
         }
         #endregion
 
-        #region Button Save and Check
+        #region Button Click Event
 
         private void btnSaveProfil_Click(object sender, RoutedEventArgs e)
         {
@@ -201,6 +201,11 @@ namespace AbsMedical.Forms
                 lblMessagePassword.Foreground = Brushes.Red;
                 lblMessagePassword.Content = "Current password is invalid";
             }
+        }
+
+        private void btnClose_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
         #endregion
 

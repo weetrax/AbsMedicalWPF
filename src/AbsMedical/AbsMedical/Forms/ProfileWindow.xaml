@@ -8,7 +8,7 @@
         mc:Ignorable="d"
         BorderBrush="{DynamicResource AccentColorBrush}"
         BorderThickness="1"
-        Title="AbsMedical - Your profile" Height="550" Width="850" ResizeMode="NoResize">
+        Title="AbsMedical - Your profile" Height="582" Width="850" ResizeMode="NoResize">
     <Grid RenderTransformOrigin="0.449,0.526">
         <GroupBox x:Name="groupBox" Margin="10,20,0,0" Header="My profile" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="29" Canvas.Top="40" Width="343" Height="474">
             <Canvas>
@@ -47,8 +47,8 @@
                 <Label x:Name="lblPhone" Content="Phone number" Canvas.Top="295" Canvas.Left="5" Width="129"></Label>
                 <TextBox x:Name="txtPhone" IsEnabled="False" Canvas.Top="295" Width="185" Canvas.Left="134"></TextBox>
                 <!-- Button Save -->
-                <Button x:Name="btnSaveProfil" Click="btnSaveProfil_Click"  Content="Save" Canvas.Left="198" Canvas.Top="397" Width="54" Style="{DynamicResource SquareButtonStyle}"></Button>
-                <Button x:Name="btnUpdateProfile" Click="btnUpdateProfile_Click" Content="Update" Canvas.Left="267" Canvas.Top="397" Width="54" Style="{StaticResource AccentedSquareButtonStyle}"/>
+                <Button x:Name="btnSaveProfil" Click="btnSaveProfil_Click" Visibility="Hidden" Content="Save" Canvas.Left="198" Canvas.Top="397" Width="54" Style="{StaticResource AccentedSquareButtonStyle}"></Button>
+                <Button x:Name="btnUpdateProfile" Click="btnUpdateProfile_Click" Content="Update" Canvas.Left="267" Canvas.Top="397" Width="54" Style="{DynamicResource SquareButtonStyle}"/>
 
                 <Label x:Name="lblMessageProfile" Content="" Canvas.Top="397" Canvas.Left="10" Width="161"></Label>
             </Canvas>
@@ -73,14 +73,14 @@
                 <TextBox x:Name="txtPortConf" Canvas.Top="89" Width="58" Canvas.Left="381"></TextBox>
 
                 <!-- Button Save and -->
-                <Button x:Name="btnSaveConf" Content="Save" Canvas.Top="135" Canvas.Left="381" Width="58" Click="btnSaveConf_Click" Style="{StaticResource AccentedSquareButtonStyle}"></Button>
-                <Button x:Name="btnCheckConf" Content="Check" Canvas.Top="135" Canvas.Left="300" Width="58" Click="btnCheckConf_Click" Style="{DynamicResource SquareButtonStyle}"></Button>
+                <Button x:Name="btnSaveConf" Content="Save" Canvas.Top="135" Canvas.Left="381" Width="58" Click="btnSaveConf_Click" Style="{StaticResource AccentedSquareButtonStyle}" Controls:ControlsHelper.ContentCharacterCasing="Normal"></Button>
+                <Button x:Name="btnCheckConf" Content="Check" Canvas.Top="135" Canvas.Left="300" Width="58" Click="btnCheckConf_Click" Style="{DynamicResource SquareButtonStyle}" Controls:ControlsHelper.ContentCharacterCasing="Normal"></Button>
 
                 <Label x:Name="lblMessageConf"  Content="" Canvas.Top="125" Canvas.Left="5" Width="247"></Label>
             </Canvas>
         </GroupBox>
 
-        <GroupBox x:Name="gbPassword" Margin="371,252,10,25" Header="Edit Password">
+        <GroupBox x:Name="gbPassword" Margin="371,252,10,57" Header="Edit Password">
             <Canvas>
                 <!-- Label intro-->
                 <Label x:Name="lblIntroPassword" Canvas.Top="5" Canvas.Left="5" Content="Set your current password of your account and the new one to change it."></Label>
@@ -99,9 +99,9 @@
 
                 <!-- Button save change -->
                 <Button x:Name="btnSavePassword" Click="btnSavePassword_Click" Content="Update password" Canvas.Left="331" Canvas.Top="165" Width="108" Style="{StaticResource AccentedSquareButtonStyle}"></Button>
-
                 <Label x:Name="lblMessagePassword"  Content="" Canvas.Top="159" Canvas.Left="10" Width="247"></Label>
             </Canvas>
         </GroupBox>
+        <Button x:Name="btnClose" Click="btnClose_Click" Content="Close" Canvas.Left="421" Canvas.Top="421" Margin="0,0,10,10" Height="34" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="101" Style="{DynamicResource SquareButtonStyle}" Controls:ControlsHelper.ContentCharacterCasing="Normal"/>
     </Grid>
 </Controls:MetroWindow>

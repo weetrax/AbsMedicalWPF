@@ -63,9 +63,9 @@
                 <DatePicker Name="dtEnd" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="329" Canvas.Top="255"/>
             </Canvas>
         </GroupBox>
-        <Button x:Name="btnClose" Style="{DynamicResource SquareButtonStyle}" Click="btnClose_Click" Content="Close" Canvas.Left="421" Canvas.Top="421" Margin="0,0,415,10" Height="34" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="101" Cursor="" Controls:ControlsHelper.ContentCharacterCasing="Upper"/>
-        <Button x:Name="btnSend" Content="Send by mail" Canvas.Left="421" Canvas.Top="421" Margin="0,0,10,10" Height="34" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="101" Click="btnSend_Click" Style="{StaticResource AccentedSquareButtonStyle}"/>
-        <Button x:Name="btnPrint" Style="{DynamicResource SquareButtonStyle}" Content="Print" Margin="0,0,121,10" HorizontalAlignment="Right" Width="105" Height="34" VerticalAlignment="Bottom"/>
-        <Button x:Name="btnExport" Style="{DynamicResource SquareButtonStyle}" Content="Export to PDF" Canvas.Left="421" Canvas.Top="421" Margin="0,0,236,10" Height="34" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="101"/>
+        <Button x:Name="btnClose" Click="btnClose_Click" Content="Close" Canvas.Left="421" Canvas.Top="421" Margin="0,0,415,10" Height="34" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="101" Style="{DynamicResource SquareButtonStyle}" Controls:ControlsHelper.ContentCharacterCasing="Normal"/>
+        <Button x:Name="btnSend" Content="Send by mail" Canvas.Left="421" Canvas.Top="421" Margin="0,0,10,10" Height="34" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="101" Click="btnSend_Click" Style="{StaticResource AccentedSquareButtonStyle}" Controls:ControlsHelper.ContentCharacterCasing="Normal"/>
+        <Button x:Name="btnPrint" Style="{DynamicResource SquareButtonStyle}" Content="Print" Margin="0,0,121,10" HorizontalAlignment="Right" Width="105" Height="34" VerticalAlignment="Bottom" Controls:ControlsHelper.ContentCharacterCasing="Normal"/>
+        <Button x:Name="btnExport" Style="{DynamicResource SquareButtonStyle}" Content="Export to PDF" Canvas.Left="421" Canvas.Top="421" Margin="0,0,236,10" Height="34" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="101" Controls:ControlsHelper.ContentCharacterCasing="Normal"/>
     </Grid>
 </Controls:MetroWindow>
