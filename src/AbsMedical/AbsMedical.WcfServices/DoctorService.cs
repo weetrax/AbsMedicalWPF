@@ -47,7 +47,7 @@ namespace AbsMedical.WcfServices
             }
         }
 
-        public bool UpdateDoctor(doctor doctor)
+        public bool UpdateDoctor(DoctorS doctor)
         {       
             using (rfidEntities db = new rfidEntities())
             {

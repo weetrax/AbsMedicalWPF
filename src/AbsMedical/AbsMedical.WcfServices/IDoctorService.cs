@@ -22,7 +22,7 @@ namespace AbsMedical.WcfServices
         DoctorS Find(string email, string password);
 
         [OperationContract]
-        bool UpdateDoctor(doctor doctor);
+        bool UpdateDoctor(DoctorS doctor);
 
         [OperationContract]
         bool UpdatePassword(string doctorGuid, string newPassword);

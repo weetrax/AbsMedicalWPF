@@ -55,7 +55,7 @@ namespace AbsMedical.Controllers
         /// </summary>
         /// <param name="doctor">doctor object to update</param>
         /// <returns>Boolean indicating if the insertion was made</returns>
-        public static bool Update(doctor doctor)
+        public static bool Update(DoctorS doctor)
         {
             DoctorService service = new DoctorService();
             return service.UpdateDoctor(doctor);

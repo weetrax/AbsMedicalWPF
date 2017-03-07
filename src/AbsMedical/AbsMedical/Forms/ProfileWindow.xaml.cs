@@ -110,7 +110,7 @@ namespace AbsMedical.Forms
 
         private void btnSaveProfil_Click(object sender, RoutedEventArgs e)
         {
-            doctor editedDoctor = new doctor()
+            DoctorS editedDoctor = new DoctorS()
             {
                 Guid = CurrentDoctor.Guid,
                 Password = CurrentDoctor.Password,
