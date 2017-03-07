@@ -39,24 +39,24 @@
         <GroupBox x:Name="grpBxStudent" Header="Student" Margin="10,10,0,289" HorizontalAlignment="Left" Width="431">
             <Canvas Margin="5,5,5,5">
                 <Label Content="Student ID:" Canvas.Top="10" Height="27" VerticalAlignment="Top" Canvas.Left="10"/>
-                <Label x:Name="lblStudentId" Canvas.Left="117" Canvas.Top="10" Height="27" VerticalAlignment="Top"/>
+                <Label x:Name="lblStudentId" Canvas.Left="117" Canvas.Top="10" Height="27" VerticalAlignment="Top" FontWeight="Bold"/>
                 <Label Content="Firstname:" Canvas.Left="10" Canvas.Top="42" Height="27" VerticalAlignment="Top"/>
-                <Label x:Name="lblFirstname" Canvas.Left="117" Canvas.Top="42" Height="27" VerticalAlignment="Top"/>
+                <Label x:Name="lblFirstname" Canvas.Left="117" Canvas.Top="42" Height="27" VerticalAlignment="Top" FontWeight="Bold"/>
                 <Label Content="Lastname:" Canvas.Left="10" Canvas.Top="74" Height="27" VerticalAlignment="Top"/>
-                <Label x:Name="lblLastname" Canvas.Left="117" Canvas.Top="74" Height="27" VerticalAlignment="Top"/>
+                <Label x:Name="lblLastname" Canvas.Left="117" Canvas.Top="74" Height="27" VerticalAlignment="Top" FontWeight="Bold"/>
                 <Label Content="Security number:" Canvas.Left="10" Canvas.Top="106" Height="27" VerticalAlignment="Top"/>
-                <Label x:Name="lblSecurityNumber" Canvas.Left="117" Canvas.Top="106" Height="27" VerticalAlignment="Top"/>
+                <Label x:Name="lblSecurityNumber" Canvas.Left="117" Canvas.Top="106" Height="27" VerticalAlignment="Top" FontWeight="Bold"/>
                 <Label Content="Date of birth:" Canvas.Left="10" Canvas.Top="138" Height="27" VerticalAlignment="Top"/>
-                <Label x:Name="lblBirthDate" Canvas.Left="117" Canvas.Top="138" Height="27" VerticalAlignment="Top"/>
+                <Label x:Name="lblBirthDate" Canvas.Left="117" Canvas.Top="138" Height="27" VerticalAlignment="Top" FontWeight="Bold"/>
                 <Label Content="Place of birth:" Canvas.Left="10" Canvas.Top="170" Height="27" VerticalAlignment="Top"/>
-                <Label x:Name="lblBirthPlace" Canvas.Left="117" Canvas.Top="170" Height="27" VerticalAlignment="Top"/>
+                <Label x:Name="lblBirthPlace" Canvas.Left="117" Canvas.Top="170" Height="27" VerticalAlignment="Top" FontWeight="Bold"/>
                 <Label Content="Address:" Canvas.Left="10" Canvas.Top="202" Height="27" VerticalAlignment="Top"/>
-                <Label x:Name="lblAddress" Canvas.Left="117" Canvas.Top="202" Height="27" VerticalAlignment="Top"/>
-                <Label x:Name="lblAddress2" Canvas.Left="117" Canvas.Top="234" Height="27" VerticalAlignment="Top"/>
+                <Label x:Name="lblAddress" Canvas.Left="117" Canvas.Top="202" Height="27" VerticalAlignment="Top" FontWeight="Bold"/>
+                <Label x:Name="lblAddress2" Canvas.Left="117" Canvas.Top="234" Height="27" VerticalAlignment="Top" FontWeight="Bold"/>
                 <Label Content="Phone number:" Canvas.Left="10" Canvas.Top="266" Height="27" VerticalAlignment="Top"/>
-                <Label x:Name="lblPhone" Canvas.Left="117" Canvas.Top="266" Height="27" VerticalAlignment="Top"/>
+                <Label x:Name="lblPhone" Canvas.Left="117" Canvas.Top="266" Height="27" VerticalAlignment="Top" FontWeight="Bold"/>
                 <Label Content="Mail address:" Canvas.Left="10" Canvas.Top="298" Height="27" VerticalAlignment="Top"/>
-                <Label x:Name="lblMail" Canvas.Left="117" Canvas.Top="298" Height="27" VerticalAlignment="Top"/>
+                <Label x:Name="lblMail" Canvas.Left="117" Canvas.Top="298" Height="27" VerticalAlignment="Top" FontWeight="Bold"/>
             </Canvas>
         </GroupBox>
 
@@ -64,28 +64,37 @@
         <GroupBox x:Name="grpBxSchool" Header="School" Margin="10,385,0,59" HorizontalAlignment="Left" Width="431">
             <Canvas>
                 <Label Content="School:" Canvas.Left="10" Canvas.Top="10" Height="27" VerticalAlignment="Top"/>
-                <Label x:Name="lblSchool" Canvas.Left="117" Canvas.Top="10" Height="27" VerticalAlignment="Top"/>
+                <Label x:Name="lblSchool" Canvas.Left="117" Canvas.Top="10" Height="27" VerticalAlignment="Top" FontWeight="Bold"/>
                 <Label Content="Address:" Canvas.Left="10" Canvas.Top="42" Height="27" VerticalAlignment="Top"/>
-                <Label x:Name="lblSchoolAdrs" Canvas.Left="117" Canvas.Top="42" Height="27" VerticalAlignment="Top"/>
-                <Label x:Name="lblSchoolAdrs2" Canvas.Left="117" Canvas.Top="74" Height="27" VerticalAlignment="Top"/>
+                <Label x:Name="lblSchoolAdrs" Canvas.Left="117" Canvas.Top="42" Height="27" VerticalAlignment="Top" FontWeight="Bold"/>
+                <Label x:Name="lblSchoolAdrs2" Canvas.Left="117" Canvas.Top="74" Height="27" VerticalAlignment="Top" FontWeight="Bold"/>
                 <Label Content="Phone number:" Canvas.Left="10" Canvas.Top="106" Height="27" VerticalAlignment="Top"/>
-                <Label x:Name="lblSchoolPhone" Canvas.Left="117" Canvas.Top="106" Height="27" VerticalAlignment="Top"/>
+                <Label x:Name="lblSchoolPhone" Canvas.Left="117" Canvas.Top="106" Height="27" VerticalAlignment="Top" FontWeight="Bold"/>
                 <Label Content="Mail address:" Canvas.Left="10" Canvas.Top="138" Height="27" VerticalAlignment="Top"/>
-                <Label x:Name="lblSchoolMail" Canvas.Left="117" Canvas.Top="138" Height="27" VerticalAlignment="Top"/>
+                <Label x:Name="lblSchoolMail" Canvas.Left="117" Canvas.Top="138" Height="27" VerticalAlignment="Top" FontWeight="Bold"/>
             </Canvas>
         </GroupBox>
 
         <!-- AbsMedical -->
-        <GroupBox x:Name="grpBxProof" Header="Proof" Canvas.Left="276" Margin="446,10,10,59">
+        <GroupBox x:Name="grpBxProof" Header="Proof" Canvas.Left="276" Margin="0,10,10,396" HorizontalAlignment="Right" Width="510">
             <Canvas Margin="5,5,5,5">
-                <Label x:Name="lblDateVisit" Content="Date:" Canvas.Left="10" Canvas.Top="10"/>
+                <Label Content="Date:" Canvas.Left="10" Canvas.Top="10"/>
                 <Label x:Name="lblDate" Canvas.Left="80" Canvas.Top="10"/>
-                <Label x:Name="lblMotive" Content="Motive:" Canvas.Left="10" Canvas.Top="41" RenderTransformOrigin="-0.132,-0.462"/>
-                <TextBox x:Name="txtMotive" TextWrapping="Wrap" AcceptsReturn="True" Height="168" Width="470" Canvas.Left="10" Canvas.Top="72" Focusable="True" />
-                <Label x:Name="lblStart" Content="Start date:" Canvas.Left="10" Canvas.Top="254"/>
-                <DatePicker Name="dtStart" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="75" Canvas.Top="255"/>
-                <Label x:Name="lblEnd" Content="End date:" Canvas.Left="268" Canvas.Top="254"/>
-                <DatePicker Name="dtEnd" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="329" Canvas.Top="255"/>
+                <Label Content="Motive:" Canvas.Left="10" Canvas.Top="41" RenderTransformOrigin="-0.132,-0.462"/>
+                <TextBox x:Name="txtMotive" TextWrapping="Wrap" AcceptsReturn="True" Height="107" Width="468" Canvas.Left="10" Canvas.Top="72" Focusable="True" />
+                <Label Content="Start date:" Canvas.Left="12" Canvas.Top="183"/>
+                <DatePicker Name="dtStart" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="77" Canvas.Top="184"/>
+                <Label Content="End date:" Canvas.Left="270" Canvas.Top="183"/>
+                <DatePicker Name="dtEnd" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="331" Canvas.Top="184"/>
+            </Canvas>
+        </GroupBox>
+        <GroupBox x:Name="grpBxMail" Header="Mail" Margin="0,278,10,59" HorizontalAlignment="Right" Width="510">
+            <Canvas Margin="5,5,5,5">
+                <CheckBox x:Name="chkBxSendStudent" Content="Send to student" Canvas.Left="10" Canvas.Top="255"/>
+                <Label Content="Subject:" Canvas.Left="10" Canvas.Top="10"/>
+                <TextBox x:Name="txtSubject" Height="23" Canvas.Left="67" TextWrapping="Wrap" Canvas.Top="10" Width="411"/>
+                <Label Content="Body:" Canvas.Left="10" Canvas.Top="41"/>
+                <TextBox x:Name="txtBody" TextWrapping="Wrap" AcceptsReturn="True" Height="168" Canvas.Left="10" Canvas.Top="72" Width="468"/>
             </Canvas>
         </GroupBox>
         <Button x:Name="btnClose" Click="btnClose_Click" Content="Close" Canvas.Left="421" Canvas.Top="421" Margin="0,0,419,10" Height="34" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="101" Style="{DynamicResource SquareButtonStyle}" Controls:ControlsHelper.ContentCharacterCasing="Normal"/>
