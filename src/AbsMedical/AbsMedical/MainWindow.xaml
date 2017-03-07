@@ -6,6 +6,7 @@
         xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls"
         BorderBrush="{DynamicResource AccentColorBrush}"
         BorderThickness="1"
+        WindowStartupLocation="CenterScreen"
         xmlns:local="clr-namespace:AbsMedical"
         mc:Ignorable="d"
         Title="AbsMedical - Login" Height="234.056" Width="525" ResizeMode="NoResize">

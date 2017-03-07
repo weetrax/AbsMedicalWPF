@@ -218,7 +218,7 @@ namespace AbsMedical.Forms
                 Password = txtPasswordConf.Password.ToString(),
                 Smtp = txtSmtpConf.Text,
                 Port = Convert.ToInt32(txtPortConf.Text),
-                DoctorGuid = CurrentDoctor.Guid
+                DoctorGuid = CurrentDoctorGuid
             };
             return mailConfig;
         }
@@ -242,6 +242,5 @@ namespace AbsMedical.Forms
                 txtPortConf.Text = "587";
             }
         }
-
     }
 }

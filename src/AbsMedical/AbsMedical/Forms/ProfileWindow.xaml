@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:AbsMedical.Forms"
         xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls"             
         mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
         BorderBrush="{DynamicResource AccentColorBrush}"
         BorderThickness="1"
         Title="AbsMedical - Your profile" Height="582" Width="850" ResizeMode="NoResize">
