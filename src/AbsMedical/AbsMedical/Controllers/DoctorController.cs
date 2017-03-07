@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using AbsMedical.Data;
 using AbsMedical.Utils;
 using System.Data.Entity.Core;
+using AbsMedical.WcfServices;
 
 namespace AbsMedical.Controllers
 {
@@ -18,10 +19,8 @@ namespace AbsMedical.Controllers
         /// <returns>A doctor object</returns>
         public static doctor Get(string doctorGuid)
         {
-            using (rfidEntities db = new rfidEntities())
-            {
-                return db.doctor.FirstOrDefault(d => d.Guid == doctorGuid);
-            }
+            DoctorService service = new DoctorService();
+            return service.GetDoctor(doctorGuid);
         }
 
         /// <summary>
@@ -32,12 +31,8 @@ namespace AbsMedical.Controllers
         /// <returns>A doctor object</returns>
         public static doctor Find(string email, string password)
         {
-            string md5Password = Encryption.GetMD5Hash(password);
-            using (rfidEntities db = new rfidEntities())
-            {
-                var query = db.doctor.FirstOrDefault(d => d.Email == email && d.Password == md5Password);
-                return query;
-            }
+            DoctorService service = new DoctorService();
+            return service.GetDoctor(email, Encryption.GetMD5Hash(password));
         }
 
         /// <summary>
@@ -62,27 +57,8 @@ namespace AbsMedical.Controllers
         /// <returns>Boolean indicating if the insertion was made</returns>
         public static bool Update(doctor doctor)
         {
-            using (rfidEntities db = new rfidEntities())
-            {
-                try
-                {
-                    var query = (from d in db.doctor where d.Guid == doctor.Guid select d).First();
-                    query.Firstname = doctor.Firstname;
-                    query.Lastname = doctor.Lastname;
-                    query.Email = doctor.Email;
-                    query.PostalCode = doctor.PostalCode;
-                    query.City = doctor.City;
-                    query.CountryId = doctor.CountryId;
-                    query.Address = doctor.Address;
-                    query.Phone = doctor.Phone;
-                    db.SaveChanges();
-                    return true;
-                }
-                catch (Exception)
-                {
-                    return false;
-                }
-            }
+            DoctorService service = new DoctorService();
+            return service.UpdateDoctor(doctor);
         }
 
         /// <summary>
@@ -110,7 +86,6 @@ namespace AbsMedical.Controllers
                 }
 
             }
-
         }
 
         /// <summary>
