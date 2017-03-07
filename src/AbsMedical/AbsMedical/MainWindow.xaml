@@ -9,7 +9,9 @@
         WindowStartupLocation="CenterScreen"
         xmlns:local="clr-namespace:AbsMedical"
         mc:Ignorable="d"
+        Icon="/Images/absmedical.ico"
         Title="AbsMedical - Login" Height="234.056" Width="525" ResizeMode="NoResize">
+    
     <Grid>
         <Canvas Margin="10,10,10,10">
             <Label Name="lblLogin" Content="Login you to your account with your email and password to access the content." FontWeight="Bold" Canvas.Left="25" Canvas.Top="10"/>
@@ -22,7 +24,6 @@
 
             <Button x:Name="btnOK" Content="Sign in" Canvas.Left="335" Canvas.Top="136" Width="81" Click="btnOK_Click" Style="{StaticResource AccentedSquareButtonStyle}" Controls:ControlsHelper.ContentCharacterCasing="Normal"/>
             <Button x:Name="btnExit" Content="Exit" Canvas.Left="262" Canvas.Top="136" Width="61" Click="btnExit_Click" Style="{DynamicResource SquareButtonStyle}" Controls:ControlsHelper.ContentCharacterCasing="Normal"/>
-
         </Canvas>
     </Grid>
 </Controls:MetroWindow>

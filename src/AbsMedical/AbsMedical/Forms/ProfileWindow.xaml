@@ -4,12 +4,37 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AbsMedical.Forms"
-        xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls"             
+        xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls"
+        xmlns:Dialog="clr-namespace:MahApps.Metro.Controls.Dialogs;assembly=MahApps.Metro"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
         BorderBrush="{DynamicResource AccentColorBrush}"
         BorderThickness="1"
+        Icon="/Images/absmedical.ico"
         Title="AbsMedical - Your profile" Height="582" Width="850" ResizeMode="NoResize">
+
+    <!-- Window Top right label -->
+    <Controls:MetroWindow.RightWindowCommands>
+        <Controls:WindowCommands ShowLastSeparator="False">
+            <Label x:Name="lblLogedAs" Foreground="White" Content=""/>
+        </Controls:WindowCommands>
+    </Controls:MetroWindow.RightWindowCommands>
+
+    <Window.Resources>
+        <ResourceDictionary>
+            <Dialog:CustomDialog x:Key="CustomCloseDialog" x:Name="CustomCloseDialog">
+                <StackPanel>
+                    <TextBlock x:Name="MessageTextBlock" Height="30"
+                                   Foreground="{DynamicResource AccentColorBrush}"
+                                   TextWrapping="Wrap" />
+                        <Button Click="btnCloseCustomDialog_Click" Content="Close"/>
+                    </StackPanel>
+                </Dialog:CustomDialog>
+        </ResourceDictionary>
+    </Window.Resources>
+
+
+    <!-- Main content -->
     <Grid RenderTransformOrigin="0.449,0.526">
         <GroupBox x:Name="groupBox" Margin="10,20,0,0" Header="My profile" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="29" Canvas.Top="40" Width="343" Height="474">
             <Canvas>
@@ -79,7 +104,7 @@
                 <Button x:Name="btnCheckConf" Content="Check" Canvas.Top="135" Canvas.Left="300" Width="58" Click="btnCheckConf_Click" Style="{DynamicResource SquareButtonStyle}" Controls:ControlsHelper.ContentCharacterCasing="Normal"></Button>
 
                 <!-- Message Email Configuration -->
-                <Label x:Name="lblMessageConf"  Content="" Canvas.Top="135" Canvas.Left="5" Width="247"></Label>
+                <Label x:Name="lblMessageConf"  Content="" Canvas.Top="135" Canvas.Left="5" Width="290"></Label>
             </Canvas>
         </GroupBox>
 
@@ -90,15 +115,15 @@
 
                 <!-- Current Password -->
                 <Label x:Name="lblCurrentPassword"  Content="Current Password: " Canvas.Top="45" Canvas.Left="5" Width="115"></Label>
-                <TextBox x:Name="txtCurrentPassword" Canvas.Top="45" Width="269" Canvas.Left="170" SelectionChanged="txtEmailConf_SelectionChanged"></TextBox>
+                <PasswordBox x:Name="txtCurrentPassword" Canvas.Top="45" Width="269" Canvas.Left="170"/>
 
                 <!-- New password -->
                 <Label x:Name="lblNewPassword"  Content="New Password: " Canvas.Top="85" Canvas.Left="5" Width="115"></Label>
-                <TextBox x:Name="txtNewPassword" Canvas.Top="85" Width="269" Canvas.Left="170" SelectionChanged="txtEmailConf_SelectionChanged"></TextBox>
+                <PasswordBox x:Name="txtNewPassword" Canvas.Top="85" Width="269" Canvas.Left="170"/>
 
                 <!-- Confirm password -->
                 <Label x:Name="lblConfirmPassword"  Content="Confirm Password: " Canvas.Top="125" Canvas.Left="5" Width="115"></Label>
-                <TextBox x:Name="txtConfirmPassword" Canvas.Top="125" Width="269" Canvas.Left="170" SelectionChanged="txtEmailConf_SelectionChanged"></TextBox>
+                <PasswordBox x:Name="txtConfirmPassword" Canvas.Top="125" Width="269" Canvas.Left="170"></PasswordBox>
 
                 <!-- Button save change -->
                 <Button x:Name="btnSavePassword" Click="btnSavePassword_Click" Content="Update password" Canvas.Left="331" Canvas.Top="165" Width="108" Style="{StaticResource AccentedSquareButtonStyle}" Controls:ControlsHelper.ContentCharacterCasing="Normal"></Button>

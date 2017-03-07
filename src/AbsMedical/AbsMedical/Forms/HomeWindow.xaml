@@ -10,7 +10,18 @@
         WindowStartupLocation="CenterScreen"
         BorderBrush="{DynamicResource AccentColorBrush}"
         BorderThickness="1"
+        Icon="/Images/absmedical.ico"
         Title="AbsMedical - Home" Height="426.287" Width="945.515" ResizeMode="NoResize">
+
+    <!-- Window Top right label -->
+    <Controls:MetroWindow.RightWindowCommands>
+        <Controls:WindowCommands ShowLastSeparator="False">
+            <Label x:Name="lblLogedAs" Foreground="White" Content=""/>
+            <Button x:Name="btnOurGitHub" Click="btnOurGitHub_Click" Foreground="White" Content="Our GitHub"/>
+        </Controls:WindowCommands>
+    </Controls:MetroWindow.RightWindowCommands>
+
+    <!-- Main content -->
     <Grid>
         <DockPanel>
             <Canvas Margin="5,5,5,5">

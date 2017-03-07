@@ -4,12 +4,36 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls"
+        xmlns:Dialog="clr-namespace:MahApps.Metro.Controls.Dialogs;assembly=MahApps.Metro"
         xmlns:local="clr-namespace:AbsMedical.Forms"
         mc:Ignorable="d"
+        Icon="/Images/absmedical.ico"
         BorderBrush="{DynamicResource AccentColorBrush}"
         WindowStartupLocation="CenterScreen"
         BorderThickness="1"
         Title= "AbsMedical - Medical Certificate" Height="700" Width="973.97" ResizeMode="NoResize">
+
+    <!-- Window Top right label -->
+    <Controls:MetroWindow.RightWindowCommands>
+        <Controls:WindowCommands ShowLastSeparator="False">
+            <Label x:Name="lblLogedAs" Foreground="White" Content=""/>
+        </Controls:WindowCommands>
+    </Controls:MetroWindow.RightWindowCommands>
+
+    <Window.Resources>
+        <ResourceDictionary>
+            <Dialog:CustomDialog x:Key="CustomCloseDialog" x:Name="CustomCloseDialog">
+                <StackPanel>
+                    <TextBlock x:Name="MessageTextBlock" Height="30"
+                                   Foreground="{DynamicResource AccentColorBrush}"
+                                   TextWrapping="Wrap" />
+                    <Button Click="btnCloseCustomDialog_Click" Content="Close"/>
+                </StackPanel>
+            </Dialog:CustomDialog>
+        </ResourceDictionary>
+    </Window.Resources>
+
+    <!-- Main content -->
     <Grid>
         <!-- Student -->
         <GroupBox x:Name="grpBxStudent" Header="Student" Margin="10,10,0,289" HorizontalAlignment="Left" Width="431">

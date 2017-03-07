@@ -45,7 +45,7 @@ namespace AbsMedical.Controllers
         /// </summary>
         /// <param name="doctor">doctor object to add</param>
         /// <returns>Boolean indicating if the insertion was made</returns>
-        public static bool Create (doctor doctor)
+        public static bool Create(doctor doctor)
         {
             using (rfidEntities db = new rfidEntities())
             {
@@ -60,22 +60,28 @@ namespace AbsMedical.Controllers
         /// </summary>
         /// <param name="doctor">doctor object to update</param>
         /// <returns>Boolean indicating if the insertion was made</returns>
-        public static bool Update (doctor doctor)
+        public static bool Update(doctor doctor)
         {
             using (rfidEntities db = new rfidEntities())
             {
-                var query = (from d in db.doctor where d.Guid == doctor.Guid select d).First();
-                query.Firstname = doctor.Firstname;
-                query.Lastname = doctor.Lastname;
-                query.Email = doctor.Email;
-                query.PostalCode = doctor.PostalCode;
-                query.City = doctor.City;
-                query.CountryId = doctor.CountryId;
-                query.Address = doctor.Address;
-                query.Phone = doctor.Phone;
-
-                int result = db.SaveChanges();
-                return result > 0;
+                try
+                {
+                    var query = (from d in db.doctor where d.Guid == doctor.Guid select d).First();
+                    query.Firstname = doctor.Firstname;
+                    query.Lastname = doctor.Lastname;
+                    query.Email = doctor.Email;
+                    query.PostalCode = doctor.PostalCode;
+                    query.City = doctor.City;
+                    query.CountryId = doctor.CountryId;
+                    query.Address = doctor.Address;
+                    query.Phone = doctor.Phone;
+                    db.SaveChanges();
+                    return true;
+                }
+                catch (Exception)
+                {
+                    return false;
+                }
             }
         }
 
@@ -91,10 +97,18 @@ namespace AbsMedical.Controllers
 
             using (rfidEntities db = new rfidEntities())
             {
-                doctor doctor = db.doctor.First(d => d.Guid == doctorGuid);
-                doctor.Password = md5password;
-                int result = db.SaveChanges();
-                return result > 0;
+                try
+                {
+                    doctor doctor = db.doctor.First(d => d.Guid == doctorGuid);
+                    doctor.Password = md5password;
+                    db.SaveChanges();
+                    return true;
+                }
+                catch (Exception)
+                {
+                    return false;
+                }
+
             }
 
         }
@@ -119,26 +133,41 @@ namespace AbsMedical.Controllers
         /// <returns>Boolean indicating if the insertion was made</returns>
         public static bool RegisterMailConfiguration(mailconfiguration mailConfig)
         {
-            int result = 0;
             using (rfidEntities db = new rfidEntities())
             {
                 if(!MailConfigurationAlreadyExist(mailConfig.DoctorGuid))
                 {
-                    string md5Password = Encryption.GetMD5Hash(mailConfig.Password);
-                    mailConfig.Password = md5Password;
-                    db.mailconfiguration.Add(mailConfig);
+                    try
+                    {
+                        string md5Password = Encryption.GetMD5Hash(mailConfig.Password);
+                        mailConfig.Password = md5Password;
+                        db.mailconfiguration.Add(mailConfig);
+                        db.SaveChanges();
+                        return true;
+                    }
+                    catch (Exception)
+                    {
+                        return false;
+                    }
                 }
                 else
                 {
-                    string md5Password = Encryption.GetMD5Hash(mailConfig.Password);
-                    var query = db.mailconfiguration.First(m => m.DoctorGuid == mailConfig.DoctorGuid);
-                    query.Email = mailConfig.Email;
-                    query.Password = md5Password;
-                    query.Port = mailConfig.Port;
-                    query.Smtp = mailConfig.Smtp;
+                    try
+                    {
+                        string md5Password = Encryption.GetMD5Hash(mailConfig.Password);
+                        var query = db.mailconfiguration.First(m => m.DoctorGuid == mailConfig.DoctorGuid);
+                        query.Email = mailConfig.Email;
+                        query.Password = md5Password;
+                        query.Port = mailConfig.Port;
+                        query.Smtp = mailConfig.Smtp;
+                        db.SaveChanges();
+                        return true;
+                    }
+                    catch (Exception)
+                    {
+                        return false;
+                    }
                 }
-                result = db.SaveChanges();
-                return result > 0;
             }
         }
 

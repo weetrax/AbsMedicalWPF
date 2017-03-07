@@ -2,6 +2,7 @@
 using AbsMedical.Data;
 using AbsMedical.Utils;
 using MahApps.Metro.Controls;
+using MahApps.Metro.Controls.Dialogs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,6 +25,7 @@ namespace AbsMedical.Forms
     /// </summary>
     public partial class ProfileWindow : MetroWindow
     {
+        #region Properties
         private doctor CurrentDoctor
         {
             get
@@ -44,7 +46,23 @@ namespace AbsMedical.Forms
             BindDoctorData();
         }
 
+        private mailconfiguration GetMailConfigurationValues()
+        {
+            mailconfiguration mailConfig = new mailconfiguration()
+            {
+                Guid = Guid.NewGuid().ToString(),
+                Email = txtEmailConf.Text,
+                Password = txtPasswordConf.Password.ToString(),
+                Smtp = txtSmtpConf.Text,
+                Port = Convert.ToInt32(txtPortConf.Text),
+                DoctorGuid = CurrentDoctorGuid
+            };
+            return mailConfig;
+        }
+        #endregion
+
         #region Data Bindings
+
         private void BindCountries()
         {
             cbCountries.ItemsSource = CountryController.GetCountries();
@@ -73,6 +91,7 @@ namespace AbsMedical.Forms
 
         private void BindDoctorData()
         {
+            this.lblLogedAs.Content = "Logged as " + CurrentDoctor.Firstname + " " + CurrentDoctor.Lastname;
             BindCountries();
             BindEmailConfiguration();
             txtFirstname.Text = CurrentDoctor.Firstname;
@@ -106,6 +125,7 @@ namespace AbsMedical.Forms
 
             if (DoctorController.Update(editedDoctor))
             {
+                ShowAlert("Profile successfully updated.");
                 lblMessageProfile.Foreground = Brushes.Green;
                 lblMessageProfile.Content = "Profile successfully updated.";
                 BindDoctorData();
@@ -133,12 +153,11 @@ namespace AbsMedical.Forms
 
         private void btnSaveConf_Click(object sender, RoutedEventArgs e)
         {
-            
-            if(Mail.IsValidClient(GetMailConfigurationValues()))
+            if (Mail.IsValidClient(GetMailConfigurationValues()))
             {
                 if(DoctorController.RegisterMailConfiguration(GetMailConfigurationValues()))
                 {
-                    MessageBox.Show("Mail configuration successfully registered.");
+                    ShowAlert("Mail configuration successfully registered.");
                     lblMessageConf.Foreground = Brushes.Green;
                     lblMessageConf.Content = "Mail configuration successfully registered.";
                 }
@@ -160,13 +179,13 @@ namespace AbsMedical.Forms
             bool result = Mail.IsValidClient(GetMailConfigurationValues());
             if(result)
             {
-                MessageBox.Show("Mail configuration valid !");
+                ShowAlert("Mail configuration valid !");
                 lblMessageConf.Foreground = Brushes.Green;
                 lblMessageConf.Content = "Mail configuration valid.";
             }
             else
             {
-                MessageBox.Show("Mail configuration invalid");
+                ShowAlert("Mail configuration invalid");
                 lblMessageConf.Foreground = Brushes.Red;
                 lblMessageConf.Content = "Mail configuration invalid.";
             }
@@ -175,9 +194,9 @@ namespace AbsMedical.Forms
         private void btnSavePassword_Click(object sender, RoutedEventArgs e)
         {
             string currentMD5Password = CurrentDoctor.Password;
-            string currentPassword = txtCurrentPassword.Text;
-            string newPassword = txtNewPassword.Text;
-            string confirmNewPassword = txtConfirmPassword.Text;
+            string currentPassword = txtCurrentPassword.Password.ToString();
+            string newPassword = txtNewPassword.Password.ToString();
+            string confirmNewPassword = txtConfirmPassword.Password.ToString();
 
             if (currentMD5Password == Encryption.GetMD5Hash(currentPassword))
             {
@@ -185,7 +204,7 @@ namespace AbsMedical.Forms
                 {
                     if (DoctorController.UpdatePassword(CurrentDoctor.Guid, newPassword))
                     {
-                        MessageBox.Show("Your password has been updated.");
+                        ShowAlert("Your password has been updated.");
                         lblMessagePassword.Foreground = Brushes.Green;
                         lblMessagePassword.Content = "Password has been updated.";
                     }
@@ -209,19 +228,23 @@ namespace AbsMedical.Forms
         }
         #endregion
 
-        private mailconfiguration GetMailConfigurationValues()
+        #region Dialog
+        private async void ShowAlert(string title)
         {
-            mailconfiguration mailConfig = new mailconfiguration()
-            {
-                Guid = Guid.NewGuid().ToString(),
-                Email = txtEmailConf.Text,
-                Password = txtPasswordConf.Password.ToString(),
-                Smtp = txtSmtpConf.Text,
-                Port = Convert.ToInt32(txtPortConf.Text),
-                DoctorGuid = CurrentDoctorGuid
-            };
-            return mailConfig;
+            var dialog = (BaseMetroDialog)this.Resources["CustomCloseDialog"];
+            dialog.Title = title;
+
+            await this.ShowMetroDialogAsync(dialog);
+            await dialog.WaitUntilUnloadedAsync();
         }
+
+        private async void btnCloseCustomDialog_Click(object sender, RoutedEventArgs e)
+        {
+            var dialog = (BaseMetroDialog)this.Resources["CustomCloseDialog"];
+
+            await this.HideMetroDialogAsync(dialog);
+        }
+        #endregion
 
         private void txtEmailConf_SelectionChanged(object sender, RoutedEventArgs e)
         {

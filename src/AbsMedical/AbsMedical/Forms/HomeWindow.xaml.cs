@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 using AbsMedical.NFC;
 using AbsMedical.Controllers;
 using MahApps.Metro.Controls;
+using System.Diagnostics;
 
 namespace AbsMedical.Forms
 {
@@ -49,10 +50,10 @@ namespace AbsMedical.Forms
 
         private void SetTitle()
         {
-            this.Title += " - Logged as " + CurrentDoctor.Firstname;
+            this.lblLogedAs.Content = "Logged as " + CurrentDoctor.Firstname + " " + CurrentDoctor.Lastname;
         }
 
-        #region Tile Click
+        #region Click Event
         private void tileRegisterStudent_Click(object sender, RoutedEventArgs e)
         {
             //todo
@@ -81,6 +82,11 @@ namespace AbsMedical.Forms
                     window.Show();
                 }
             }
+        }
+
+        private void btnOurGitHub_Click(object sender, RoutedEventArgs e)
+        {
+            Process.Start("https://github.com/weetrax/AbsMedicalWPF");
         }
         #endregion Event
     }

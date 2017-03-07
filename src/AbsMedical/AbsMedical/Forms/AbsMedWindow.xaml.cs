@@ -2,6 +2,7 @@
 using AbsMedical.Data;
 using AbsMedical.Utils;
 using MahApps.Metro.Controls;
+using MahApps.Metro.Controls.Dialogs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -53,6 +54,8 @@ namespace AbsMedical.Forms
 
         private void BindData()
         {
+            this.lblLogedAs.Content = "Logged as " + CurrentDoctor.Firstname + " " + CurrentDoctor.Lastname;
+
             //Student binding
             lblStudentId.Content = CurrentStudent.StudentId;
             lblFirstname.Content = CurrentStudent.Firstname;
@@ -90,5 +93,23 @@ namespace AbsMedical.Forms
         {
             this.Close();
         }
+
+        #region Dialog
+        private async void ShowAlert(string title)
+        {
+            var dialog = (BaseMetroDialog)this.Resources["CustomCloseDialog"];
+            dialog.Title = title;
+
+            await this.ShowMetroDialogAsync(dialog);
+            await dialog.WaitUntilUnloadedAsync();
+        }
+
+        private async void btnCloseCustomDialog_Click(object sender, RoutedEventArgs e)
+        {
+            var dialog = (BaseMetroDialog)this.Resources["CustomCloseDialog"];
+
+            await this.HideMetroDialogAsync(dialog);
+        }
+        #endregion
     }
 }
