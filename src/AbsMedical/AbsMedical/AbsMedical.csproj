@@ -219,9 +219,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\plus.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Images\absmedical.ico" />
   </ItemGroup>
   <ItemGroup>

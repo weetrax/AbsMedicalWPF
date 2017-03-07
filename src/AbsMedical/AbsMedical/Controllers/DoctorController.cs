@@ -17,7 +17,7 @@ namespace AbsMedical.Controllers
         /// </summary>
         /// <param name="doctorGuid">Identifier of the doctor</param>
         /// <returns>A doctor object</returns>
-        public static doctor Get(string doctorGuid)
+        public static DoctorS Get(string doctorGuid)
         {
             DoctorService service = new DoctorService();
             return service.GetDoctor(doctorGuid);
@@ -29,10 +29,10 @@ namespace AbsMedical.Controllers
         /// <param name="email">Email of the doctor</param>
         /// <param name="password">Password of the doctor</param>
         /// <returns>A doctor object</returns>
-        public static doctor Find(string email, string password)
+        public static DoctorS Find(string email, string password)
         {
             DoctorService service = new DoctorService();
-            return service.GetDoctor(email, Encryption.GetMD5Hash(password));
+            return service.Find(email, Utils.Encryption.GetMD5Hash(password));
         }
 
         /// <summary>
@@ -69,23 +69,8 @@ namespace AbsMedical.Controllers
         /// <returns></returns>
         public static bool UpdatePassword(string doctorGuid, string newPassword)
         {
-            string md5password = Encryption.GetMD5Hash(newPassword);
-
-            using (rfidEntities db = new rfidEntities())
-            {
-                try
-                {
-                    doctor doctor = db.doctor.First(d => d.Guid == doctorGuid);
-                    doctor.Password = md5password;
-                    db.SaveChanges();
-                    return true;
-                }
-                catch (Exception)
-                {
-                    return false;
-                }
-
-            }
+            DoctorService service = new DoctorService();
+            return service.UpdatePassword(doctorGuid, newPassword);
         }
 
         /// <summary>
@@ -114,7 +99,7 @@ namespace AbsMedical.Controllers
                 {
                     try
                     {
-                        string md5Password = Encryption.GetMD5Hash(mailConfig.Password);
+                        string md5Password = Utils.Encryption.GetMD5Hash(mailConfig.Password);
                         mailConfig.Password = md5Password;
                         db.mailconfiguration.Add(mailConfig);
                         db.SaveChanges();
@@ -129,7 +114,7 @@ namespace AbsMedical.Controllers
                 {
                     try
                     {
-                        string md5Password = Encryption.GetMD5Hash(mailConfig.Password);
+                        string md5Password = Utils.Encryption.GetMD5Hash(mailConfig.Password);
                         var query = db.mailconfiguration.First(m => m.DoctorGuid == mailConfig.DoctorGuid);
                         query.Email = mailConfig.Email;
                         query.Password = md5Password;

@@ -1,6 +1,7 @@
 ﻿using AbsMedical.Controllers;
 using AbsMedical.Data;
 using AbsMedical.Utils;
+using AbsMedical.WcfServices;
 using MahApps.Metro.Controls;
 using MahApps.Metro.Controls.Dialogs;
 using System;
@@ -26,7 +27,7 @@ namespace AbsMedical.Forms
     public partial class ProfileWindow : MetroWindow
     {
         #region Properties
-        private doctor CurrentDoctor
+        private DoctorS CurrentDoctor
         {
             get
             {
@@ -198,7 +199,8 @@ namespace AbsMedical.Forms
             string newPassword = txtNewPassword.Password.ToString();
             string confirmNewPassword = txtConfirmPassword.Password.ToString();
 
-            if (currentMD5Password == Encryption.encryptePswd(currentPassword)) // do not use GetMD5Hash : password cannot be dercypted
+            
+            if (currentMD5Password == Utils.Encryption.encryptePswd(currentPassword)) // do not use GetMD5Hash : password cannot be dercypted
             {
                 if (newPassword == confirmNewPassword)
                 {

@@ -16,9 +16,42 @@ namespace AbsMedical.WcfServices
         //string GetData(int value);
 
         [OperationContract]
-        doctor GetDoctor(string doctorGuid);
+        DoctorS GetDoctor(string doctorGuid);
 
-        // TODO: ajoutez vos opérations de service ici
+        [OperationContract]
+        DoctorS Find(string email, string password);
+
+        [OperationContract]
+        bool UpdateDoctor(doctor doctor);
+
+        [OperationContract]
+        bool UpdatePassword(string doctorGuid, string newPassword);
+
+    }
+
+    [DataContract]
+    public class DoctorS
+    {
+        [DataMember]
+        public string Guid { get; set; }
+        [DataMember]
+        public string Email { get; set; }
+        [DataMember]
+        public string Firstname { get; set; }
+        [DataMember]
+        public string Lastname { get; set; }
+        [DataMember]
+        public string Password{get;set;}
+        [DataMember]
+        public string Address { get; set; }
+        [DataMember]
+        public string PostalCode { get; set; }
+        [DataMember]
+        public string City { get; set; }
+        [DataMember]
+        public int CountryId { get; set; }
+        [DataMember]
+        public string Phone { get; set; }
     }
 
     // Utilisez un contrat de données comme indiqué dans l'exemple ci-après pour ajouter les types composites aux opérations de service.

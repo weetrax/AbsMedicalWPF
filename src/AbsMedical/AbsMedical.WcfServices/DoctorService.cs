@@ -9,17 +9,18 @@ using AbsMedical.Data;
 
 namespace AbsMedical.WcfServices
 {
-    // REMARQUE : vous pouvez utiliser la commande Renommer du menu Refactoriser pour changer le nom de classe "Service1" à la fois dans le code et le fichier de configuration.
     public class DoctorService : IDoctorService
     {
-        public doctor GetDoctor(string guid)
+
+
+        public DoctorS GetDoctor(string guid)
         {
             using (rfidEntities db = new rfidEntities())
             {
                 var doctorEntity = db.doctor.FirstOrDefault(w => w.Guid == guid);
-                if(doctorEntity != null)
+                if (doctorEntity != null)
                 {
-                    return doctorEntity;
+                    return TranslateDoctorEntityToDoctorS(doctorEntity);
                 }
                 else
                 {
@@ -29,14 +30,14 @@ namespace AbsMedical.WcfServices
             }
         }
 
-        public doctor GetDoctor(string email, string password)
+        public DoctorS Find(string email, string password)
         {
             using (rfidEntities db = new rfidEntities())
             {
                 var doctorEntity = db.doctor.FirstOrDefault(w => w.Email == email && w.Password == password);
                 if (doctorEntity != null)
                 {
-                    return doctorEntity;
+                    return TranslateDoctorEntityToDoctorS(doctorEntity);
                 }
                 else
                 {
@@ -66,25 +67,47 @@ namespace AbsMedical.WcfServices
                 }
                 catch (Exception)
                 {
-                    return false;
+                    throw new Exception("Cannot update profile");
                 }
             }
         }
 
-        //private DoctorS TranslateDoctorEntityToDoctorS(doctor doctor)
-        //{
-        //    DoctorS doc = new DoctorS();
-        //    doc.DoctorGuid = doctor.Guid;
-        //    doc.DoctorFirstname = doctor.Firstname;
-        //    doc.DoctorLastname = doctor.Lastname;
-        //    doc.DoctorEmail = doctor.Email;
-        //    doc.DoctorPhone = doctor.Phone;
-        //    doc.DoctorPassword = doctor.Password;
-        //    doc.DoctorAddress = doctor.Address;
-        //    doc.DoctorPoscalCode = doctor.PostalCode;
-        //    doc.DoctorCity = doctor.City;
-        //    doc.DoctorCountryId = doctor.CountryId;
-        //    return doc;
-        //}
+        public bool UpdatePassword(string doctorGuid, string newPassword)
+        {
+            string md5password = Encryption.GetMD5Hash(newPassword);
+
+            using (rfidEntities db = new rfidEntities())
+            {
+                try
+                {
+                    doctor doctor = db.doctor.First(d => d.Guid == doctorGuid);
+                    doctor.Password = md5password;
+                    db.SaveChanges();
+                    return true;
+                }
+                catch (Exception)
+                {
+                    return false;
+                    throw new Exception("Unable to update the password");
+                }
+
+            }
+        }
+
+        private DoctorS TranslateDoctorEntityToDoctorS(doctor doctor)
+        {
+            DoctorS doc = new DoctorS();
+            doc.Guid = doctor.Guid;
+            doc.Firstname = doctor.Firstname;
+            doc.Lastname = doctor.Lastname;
+            doc.Email = doctor.Email;
+            doc.Phone = doctor.Phone;
+            doc.Password = doctor.Password;
+            doc.Address = doctor.Address;
+            doc.PostalCode = doctor.PostalCode;
+            doc.City = doctor.City;
+            doc.CountryId = doctor.CountryId;
+            return doc;
+        }
     }
 }
