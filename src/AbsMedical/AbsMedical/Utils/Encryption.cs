@@ -23,5 +23,17 @@ namespace AbsMedical.Utils
 
             return strBuilder.ToString();
         }
+
+        public static string encryptePswd(string input)
+        {
+            //TODO
+            return input;
+        }
+
+        public static string decryptPswd(string input)
+        {
+            //TODO
+            return input;
+        }
     }
 }

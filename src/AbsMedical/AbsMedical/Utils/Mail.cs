@@ -21,10 +21,10 @@ namespace AbsMedical.Utils
 
         public static bool IsValidClient(mailconfiguration config)
         {
-            return (Send(config, new List<string> { "martines.magnin@gmail.com" }, "Mail configuration - Validation test", new StringBuilder("This is a test"), null));
+            return (Send(config, new List<string> { "martines.magnin@gmail.com" }, new List<string> { }, "Mail configuration - Validation test", new StringBuilder("This is a test"), null));
         }
 
-        public static bool Send(mailconfiguration config, List<string> to, string subject, StringBuilder body, Attachment attachment)
+        public static bool Send(mailconfiguration config, List<string> to, List<string> toCC, string subject, StringBuilder body, Attachment attachment)
         {
             try
             {
@@ -36,6 +36,11 @@ namespace AbsMedical.Utils
                 foreach(string mailAddress in to)
                 {
                     mailMessage.To.Add(mailAddress);
+                }
+                //Sender CC
+                foreach (string mailAddress in toCC)
+                {
+                    mailMessage.CC.Add(mailAddress);
                 }
                 //Subject
                 mailMessage.Subject = subject;
@@ -50,14 +55,15 @@ namespace AbsMedical.Utils
                 /***** Configuration of the Smtp Client *****/
                 SmtpClient client = new SmtpClient(config.Smtp);
                 client.UseDefaultCredentials = false;
-                client.Credentials = new NetworkCredential(config.Email, config.Password);
+                client.Credentials = new NetworkCredential(config.Email, Encryption.decryptPswd(config.Password));
                 client.Port = config.Port;
                 client.EnableSsl = true;
                 client.Send(mailMessage);
                 return true;
             }
-            catch (SmtpException)
+            catch (SmtpException e)
             {
+                Console.Write(e);
                 return false;
             }
         }

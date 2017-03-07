@@ -92,15 +92,32 @@ namespace AbsMedical.Forms
             //Proof
             lblDate.Content = DateTime.Now.ToString("dd/MM/yyyy");
             dtStart.SelectedDate = DateTime.Now;
+
+            //Mail
+            txtSubject.Text = "Justificatif Absence Médicale du " + DateTime.Now.ToString("dd/MM/yyyy");
+            txtBody.Text = "";
+            chkBxSendStudent.IsChecked = true;
         }
 
         private void btnSend_Click(object sender, RoutedEventArgs e)
         {
-            mailconfiguration mailConfig = DoctorController.GetMailConfiguration(CurrentDoctorGuid);  //TODO
-            List<string> sendTo = new List<string> { CurrentStudent.school.Email, CurrentStudent.Email };
+            mailconfiguration mailConfig = DoctorController.GetMailConfiguration(CurrentDoctorGuid);
+            List<string> sendTo = new List<string> { CurrentStudent.school.Email };
+            List<string> sendToCC = new List<string> { };
+            if (chkBxSendStudent.IsChecked == true)
+            {
+                sendToCC.Add(CurrentStudent.Email);
+            }
+            string subject = txtSubject.Text;
             StringBuilder body = new StringBuilder();
-            body.Append(GetAbsMedicalValue().Note);
-            Utils.Mail.Send(mailConfig, sendTo, "Justificatif Absence Médicale du " + lblDate, body, null);
+            body.Append(txtBody.Text);
+            if (Utils.Mail.Send(mailConfig, sendTo, sendToCC, subject, body, null))
+            {
+                ShowAlert("Votre mail bien été envoyé.");
+            } else
+            {
+                ShowAlert("Erreur: votre mail n'a pas pu être envoyé.");
+            }
         }
 
         private void btnClose_Click(object sender, RoutedEventArgs e)
