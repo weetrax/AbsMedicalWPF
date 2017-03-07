@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace AbsMedical.Utils
 {
-    public class Encryption
+    public static class Encryption
     {
         public static string GetMD5Hash(string input)
         {

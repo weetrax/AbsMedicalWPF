@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace AbsMedical.Controllers
 {
-    public class StudentController
+    public static class StudentController
     {
         /// <summary>
         /// Get a student object in the Database by its Id

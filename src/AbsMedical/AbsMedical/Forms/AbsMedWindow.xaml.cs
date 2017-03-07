@@ -42,6 +42,20 @@ namespace AbsMedical.Forms
         {
             get;
         }
+
+        private absmedical GetAbsMedicalValue()
+        {
+            absmedical absMedical = new absmedical()
+            {
+                VisitDate = DateTime.Now,
+                Note = txtMotive.Text,
+                DoctorGuid = CurrentDoctorGuid,
+                StudentGuid = CurrentStudent.Guid,
+                StartDate = dtStart.SelectedDate,
+                EndDate = dtEnd.SelectedDate
+            };
+            return absMedical;
+        }
         #endregion
 
         public AbsMedWindow(student student, string doctorGuid)
@@ -55,7 +69,7 @@ namespace AbsMedical.Forms
         private void BindData()
         {
             this.lblLogedAs.Content = "Logged as " + CurrentDoctor.Firstname + " " + CurrentDoctor.Lastname;
-
+            
             //Student binding
             lblStudentId.Content = CurrentStudent.StudentId;
             lblFirstname.Content = CurrentStudent.Firstname;
@@ -85,7 +99,7 @@ namespace AbsMedical.Forms
             mailconfiguration mailConfig = DoctorController.GetMailConfiguration(CurrentDoctorGuid);  //TODO
             List<string> sendTo = new List<string> { CurrentStudent.school.Email, CurrentStudent.Email };
             StringBuilder body = new StringBuilder();
-            body.Append(rtbMotive);
+            body.Append(GetAbsMedicalValue().Note);
             Utils.Mail.Send(mailConfig, sendTo, "Justificatif Absence Médicale du " + lblDate, body, null);
         }
 
@@ -111,5 +125,13 @@ namespace AbsMedical.Forms
             await this.HideMetroDialogAsync(dialog);
         }
         #endregion
+
+        private void btnExportPDF_Click(object sender, RoutedEventArgs e)
+        {
+            if(PDF.CreatePDF(CurrentStudent, CurrentDoctor, GetAbsMedicalValue()))
+            {
+                ShowAlert("PDF has been created");
+            }
+        }
     }
 }

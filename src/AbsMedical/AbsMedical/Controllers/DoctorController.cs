@@ -9,7 +9,7 @@ using System.Data.Entity.Core;
 
 namespace AbsMedical.Controllers
 {
-    public class DoctorController
+    public static class DoctorController
     {
         /// <summary>
         /// Get a doctor object in the Database by its identifier

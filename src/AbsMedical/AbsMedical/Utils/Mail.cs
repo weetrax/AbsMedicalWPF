@@ -9,7 +9,7 @@ using AbsMedical.Data;
 
 namespace AbsMedical.Utils
 {
-    public class Mail
+    public static class Mail
     {
 
         /*******GMAIL*********/

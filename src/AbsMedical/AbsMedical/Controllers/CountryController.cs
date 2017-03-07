@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace AbsMedical.Controllers
 {
-    public class CountryController
+    public static class CountryController
     {
         public static List<country> GetCountries()
         {
