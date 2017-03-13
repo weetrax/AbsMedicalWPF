@@ -62,7 +62,7 @@ namespace AbsMedical.Utils
                 }
                 else
                 {
-                    client.Credentials = new NetworkCredential(config.Email, Encryption.decryptPswd(config.Password));
+                    client.Credentials = new NetworkCredential(config.Email, Encryption.Decrypt(config.Password));
                 }
                 client.Port = config.Port;
                 client.EnableSsl = true;

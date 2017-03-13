@@ -10,6 +10,8 @@ namespace AbsMedical.Shared
 {
     public static class Encryption
     {
+        private const string EncryptionKey = "22e46dd1bd16cea8e78f77486ea313ac3f8af0f54c7c3f56bc737b20013c92d4";
+
         public static string GetMD5Hash(string input)
         {
             MD5 md5 = new MD5CryptoServiceProvider();
@@ -25,9 +27,8 @@ namespace AbsMedical.Shared
             return strBuilder.ToString();
         }
 
-        public static string encryptePswd(string input)
+        public static string Encrypt(string input)
         {
-            string EncryptionKey = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
             byte[] clearBytes = Encoding.Unicode.GetBytes(input);
             using (Aes encryptor = Aes.Create())
             {
@@ -49,9 +50,8 @@ namespace AbsMedical.Shared
             return input;
         }
 
-        public static string decryptPswd(string cipherText)
+        public static string Decrypt(string cipherText)
         {
-            string EncryptionKey = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
             cipherText = cipherText.Replace(" ", "+");
             byte[] cipherBytes = Convert.FromBase64String(cipherText);
             using (Aes encryptor = Aes.Create())

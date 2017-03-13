@@ -79,6 +79,7 @@ namespace AbsMedical.Forms
             {
                 txtEmailConf.Text = mailConf.Email;
                 txtSmtpConf.Text = mailConf.Smtp;
+                txtPasswordConf.Password = Encryption.Decrypt(mailConf.Password);
                 txtPortConf.Text = mailConf.Port.ToString();
                 lblMessageConf.Foreground = Brushes.Green;
                 lblMessageConf.Content = "Mail configuration actually valid.";

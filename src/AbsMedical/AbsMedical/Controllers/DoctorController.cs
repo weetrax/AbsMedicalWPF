@@ -100,7 +100,7 @@ namespace AbsMedical.Controllers
                 {
                     try
                     {
-                        string md5Password = Encryption.encryptePswd(mailConfig.Password);
+                        string md5Password = Encryption.Encrypt(mailConfig.Password);
                         mailConfig.Password = md5Password;
                         db.mailconfiguration.Add(mailConfig);
                         db.SaveChanges();
@@ -115,7 +115,7 @@ namespace AbsMedical.Controllers
                 {
                     try
                     {
-                        string md5Password = Encryption.encryptePswd(mailConfig.Password);
+                        string md5Password = Encryption.Encrypt(mailConfig.Password);
                         var query = db.mailconfiguration.First(m => m.DoctorGuid == mailConfig.DoctorGuid);
                         query.Email = mailConfig.Email;
                         query.Password = md5Password;

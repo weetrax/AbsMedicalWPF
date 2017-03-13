@@ -54,7 +54,7 @@
                 </Controls:Tile>
 
                 <!-- Tile Profile -->
-                <Controls:Tile x:Name="tileProfile" Click="tileProfile_Click" Title="Profile" Canvas.Bottom="90" Margin="0" Height="206" Width="653" Canvas.Top="189">
+                <Controls:Tile x:Name="tileProfile" Click="tileProfile_Click" Title="Profile" Canvas.Bottom="90" Margin="0" Height="206" Width="653" Canvas.Top="189" Background="#CCFFD101">
                     <Rectangle Width="50" Height="50">
                         <Rectangle.Fill>
                             <VisualBrush Visual="{iconPacks:PackIconMaterial Settings, Width=32, Height=32}" />
