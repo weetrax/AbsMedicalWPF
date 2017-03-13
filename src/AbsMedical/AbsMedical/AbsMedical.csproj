@@ -131,7 +131,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
-    <Compile Include="Utils\Encryption.cs" />
     <Compile Include="Utils\Mail.cs" />
     <Compile Include="Utils\PDF.cs" />
     <Page Include="Forms\AbsMedWindow.xaml">
@@ -212,6 +211,10 @@
     <ProjectReference Include="..\AbsMedical.NFC\AbsMedical.NFC.csproj">
       <Project>{5de044d9-ea0d-46b8-8598-dfb5e0eedf3e}</Project>
       <Name>AbsMedical.NFC</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AbsMedical.Shared\AbsMedical.Shared.csproj">
+      <Project>{bbf29d80-6455-40a6-b439-47433f25fb43}</Project>
+      <Name>AbsMedical.Shared</Name>
     </ProjectReference>
     <ProjectReference Include="..\AbsMedical.WcfServices\AbsMedical.WcfServices.csproj">
       <Project>{7A4529D0-ABA8-4D25-A70D-A5E3D5E78329}</Project>

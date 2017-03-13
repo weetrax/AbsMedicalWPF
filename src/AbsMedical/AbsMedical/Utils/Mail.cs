@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Net;
 using AbsMedical.Data;
+using AbsMedical.Shared;
 
 namespace AbsMedical.Utils
 {
@@ -21,10 +22,10 @@ namespace AbsMedical.Utils
 
         public static bool IsValidClient(mailconfiguration config)
         {
-            return (Send(config, new List<string> { "martines.magnin@gmail.com" }, new List<string> { }, "Mail configuration - Validation test", new StringBuilder("This is a test"), null));
+            return (Send(config, new List<string> { "martines.magnin@gmail.com" }, new List<string> { }, "Mail configuration - Validation test", new StringBuilder("This is a test"), null, true));
         }
 
-        public static bool Send(mailconfiguration config, List<string> to, List<string> toCC, string subject, StringBuilder body, Attachment attachment)
+        public static bool Send(mailconfiguration config, List<string> to, List<string> toCC, string subject, StringBuilder body, Attachment attachment, bool onProfile)
         {
             try
             {
@@ -55,7 +56,14 @@ namespace AbsMedical.Utils
                 /***** Configuration of the Smtp Client *****/
                 SmtpClient client = new SmtpClient(config.Smtp);
                 client.UseDefaultCredentials = false;
-                client.Credentials = new NetworkCredential(config.Email, Encryption.decryptPswd(config.Password));
+                if(onProfile)
+                {
+                    client.Credentials = new NetworkCredential(config.Email, config.Password);
+                }
+                else
+                {
+                    client.Credentials = new NetworkCredential(config.Email, Encryption.decryptPswd(config.Password));
+                }
                 client.Port = config.Port;
                 client.EnableSsl = true;
                 client.Send(mailMessage);

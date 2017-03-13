@@ -63,7 +63,6 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Encryption.cs" />
     <Compile Include="IDoctorService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="DoctorService.cs" />
@@ -78,6 +77,10 @@
     <ProjectReference Include="..\AbsMedical.Data\AbsMedical.Data.csproj">
       <Project>{44257ec8-e4f1-4695-8a0c-bbbeb900d8fc}</Project>
       <Name>AbsMedical.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AbsMedical.Shared\AbsMedical.Shared.csproj">
+      <Project>{bbf29d80-6455-40a6-b439-47433f25fb43}</Project>
+      <Name>AbsMedical.Shared</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

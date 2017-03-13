@@ -6,6 +6,7 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
 using AbsMedical.Data;
+using AbsMedical.Shared;
 
 namespace AbsMedical.WcfServices
 {

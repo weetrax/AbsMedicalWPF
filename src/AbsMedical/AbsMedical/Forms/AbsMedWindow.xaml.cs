@@ -112,7 +112,7 @@ namespace AbsMedical.Forms
             string subject = txtSubject.Text;
             StringBuilder body = new StringBuilder();
             body.Append(txtBody.Text);
-            if (Utils.Mail.Send(mailConfig, sendTo, sendToCC, subject, body, null))
+            if (Utils.Mail.Send(mailConfig, sendTo, sendToCC, subject, body, null, false))
             {
                 ShowAlert("Votre mail bien été envoyé.");
             } else

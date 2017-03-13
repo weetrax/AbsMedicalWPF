@@ -1,5 +1,6 @@
 ﻿using AbsMedical.Controllers;
 using AbsMedical.Data;
+using AbsMedical.Shared;
 using AbsMedical.Utils;
 using AbsMedical.WcfServices;
 using MahApps.Metro.Controls;
@@ -200,7 +201,7 @@ namespace AbsMedical.Forms
             string confirmNewPassword = txtConfirmPassword.Password.ToString();
 
             
-            if (currentMD5Password == Utils.Encryption.GetMD5Hash(currentPassword))
+            if (currentMD5Password == Encryption.GetMD5Hash(currentPassword))
             {
                 if (newPassword == confirmNewPassword)
                 {

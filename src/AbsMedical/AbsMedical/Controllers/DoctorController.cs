@@ -7,6 +7,7 @@ using AbsMedical.Data;
 using AbsMedical.Utils;
 using System.Data.Entity.Core;
 using AbsMedical.WcfServices;
+using AbsMedical.Shared;
 
 namespace AbsMedical.Controllers
 {
@@ -32,7 +33,7 @@ namespace AbsMedical.Controllers
         public static DoctorS Find(string email, string password)
         {
             DoctorService service = new DoctorService();
-            return service.Find(email, Utils.Encryption.GetMD5Hash(password));
+            return service.Find(email, Encryption.GetMD5Hash(password));
         }
 
         /// <summary>
@@ -99,8 +100,8 @@ namespace AbsMedical.Controllers
                 {
                     try
                     {
-                        //string md5Password = Utils.Encryption.GetMD5Hash(mailConfig.Password);
-                        //mailConfig.Password = md5Password;
+                        string md5Password = Encryption.encryptePswd(mailConfig.Password);
+                        mailConfig.Password = md5Password;
                         db.mailconfiguration.Add(mailConfig);
                         db.SaveChanges();
                         return true;
@@ -114,10 +115,10 @@ namespace AbsMedical.Controllers
                 {
                     try
                     {
-                        //string md5Password = Utils.Encryption.GetMD5Hash(mailConfig.Password);
+                        string md5Password = Encryption.encryptePswd(mailConfig.Password);
                         var query = db.mailconfiguration.First(m => m.DoctorGuid == mailConfig.DoctorGuid);
                         query.Email = mailConfig.Email;
-                        query.Password = mailConfig.Password;
+                        query.Password = md5Password;
                         query.Port = mailConfig.Port;
                         query.Smtp = mailConfig.Smtp;
                         db.SaveChanges();
