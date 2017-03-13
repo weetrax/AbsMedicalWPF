@@ -27,6 +27,7 @@ namespace AbsMedical.Shared
             return strBuilder.ToString();
         }
 
+        /***source: http://www.c-sharpcorner.com/blogs/encrypt-and-decrypt-a-string-in-asp-net1 ***/
         public static string Encrypt(string input)
         {
             byte[] clearBytes = Encoding.Unicode.GetBytes(input);
@@ -50,6 +51,7 @@ namespace AbsMedical.Shared
             return input;
         }
 
+        /***source: http://www.c-sharpcorner.com/blogs/encrypt-and-decrypt-a-string-in-asp-net1 ***/
         public static string Decrypt(string cipherText)
         {
             cipherText = cipherText.Replace(" ", "+");
