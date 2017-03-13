@@ -99,8 +99,8 @@ namespace AbsMedical.Controllers
                 {
                     try
                     {
-                        string md5Password = Utils.Encryption.GetMD5Hash(mailConfig.Password);
-                        mailConfig.Password = md5Password;
+                        //string md5Password = Utils.Encryption.GetMD5Hash(mailConfig.Password);
+                        //mailConfig.Password = md5Password;
                         db.mailconfiguration.Add(mailConfig);
                         db.SaveChanges();
                         return true;
@@ -114,10 +114,10 @@ namespace AbsMedical.Controllers
                 {
                     try
                     {
-                        string md5Password = Utils.Encryption.GetMD5Hash(mailConfig.Password);
+                        //string md5Password = Utils.Encryption.GetMD5Hash(mailConfig.Password);
                         var query = db.mailconfiguration.First(m => m.DoctorGuid == mailConfig.DoctorGuid);
                         query.Email = mailConfig.Email;
-                        query.Password = md5Password;
+                        query.Password = mailConfig.Password;
                         query.Port = mailConfig.Port;
                         query.Smtp = mailConfig.Smtp;
                         db.SaveChanges();

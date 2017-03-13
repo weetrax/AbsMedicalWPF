@@ -200,7 +200,7 @@ namespace AbsMedical.Forms
             string confirmNewPassword = txtConfirmPassword.Password.ToString();
 
             
-            if (currentMD5Password == Utils.Encryption.encryptePswd(currentPassword)) // do not use GetMD5Hash : password cannot be dercypted
+            if (currentMD5Password == Utils.Encryption.GetMD5Hash(currentPassword))
             {
                 if (newPassword == confirmNewPassword)
                 {
