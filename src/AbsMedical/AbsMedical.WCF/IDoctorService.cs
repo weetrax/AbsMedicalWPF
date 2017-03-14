@@ -24,13 +24,13 @@ namespace AbsMedical.WCF
         bool UpdatePassword(string doctorGuid, string newPassword);
 
         [OperationContract]
-        bool CreateDoctor(AbsMedical.Data.doctor doctor);
+        bool CreateDoctor(Doctor doctor);
 
         [OperationContract]
-        bool RegisterMailConfiguration(AbsMedical.Data.mailconfiguration conf);
+        bool RegisterMailConfiguration(MailConfiguration conf, Doctor doctor);
 
         [OperationContract]
-        MailConfiguration GetMailConfiguration(string doctorGuid);
+       MailConfiguration GetMailConfiguration(string confGuid);
     }
 
     [Serializable]
@@ -57,6 +57,8 @@ namespace AbsMedical.WCF
         public int CountryId { get; set; }
         [DataMember]
         public string Phone { get; set; }
+        [DataMember]
+        public string MailConfigurationGuid { get; set; }
     }
 
     [Serializable]
@@ -73,7 +75,5 @@ namespace AbsMedical.WCF
         public string Smtp { get; set; }
         [DataMember]
         public int Port { get; set; }
-        [DataMember]
-        public string DoctorGuid { get; set; }
     }
 }

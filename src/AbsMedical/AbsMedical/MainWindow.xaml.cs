@@ -53,7 +53,7 @@ namespace AbsMedical
             string password = txtPassword.Password.ToString();
             string email = txtEmail.Text;
 
-            DoctorServiceReference.Doctor currentDoctor = DoctorController.Find(email, password);
+            doctor currentDoctor = DoctorController.Find(email, password);
 
             if (currentDoctor != null)
             {

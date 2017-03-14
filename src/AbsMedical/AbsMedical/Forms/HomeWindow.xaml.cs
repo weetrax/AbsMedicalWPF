@@ -25,7 +25,7 @@ namespace AbsMedical.Forms
     public partial class HomeWindow : MetroWindow
     {
         #region Properties
-        private DoctorServiceReference.Doctor CurrentDoctor
+        private doctor CurrentDoctor
         {
             get
             {

@@ -17,11 +17,11 @@ namespace AbsMedical.Controllers
         /// </summary>
         /// <param name="doctorGuid">Identifier of the doctor</param>
         /// <returns>A doctor object</returns>
-        public static DoctorServiceReference.Doctor Get(string doctorGuid)
+        public static doctor Get(string doctorGuid)
         {
             using (DoctorServiceReference.DoctorServiceClient serv = new DoctorServiceReference.DoctorServiceClient())
             {
-                return serv.GetDoctor(doctorGuid);
+                return EntityParser.ObjectToEntity(serv.GetDoctor(doctorGuid));
             }
         }
 
@@ -31,11 +31,11 @@ namespace AbsMedical.Controllers
         /// <param name="email">Email of the doctor</param>
         /// <param name="password">Password of the doctor</param>
         /// <returns>A doctor object</returns>
-        public static DoctorServiceReference.Doctor Find(string email, string password)
+        public static doctor Find(string email, string password)
         {
             using (DoctorServiceReference.DoctorServiceClient serv = new DoctorServiceReference.DoctorServiceClient())
             {
-                return serv.Find(email, password);
+                return EntityParser.ObjectToEntity(serv.Find(email, password));
             }
         }
 
@@ -48,7 +48,7 @@ namespace AbsMedical.Controllers
         {
             using (DoctorServiceReference.DoctorServiceClient serv = new DoctorServiceReference.DoctorServiceClient())
             {
-                return serv.CreateDoctor(doctor);
+                return serv.CreateDoctor(EntityParser.EntityToObject(doctor));
             }
         }
 
@@ -57,11 +57,11 @@ namespace AbsMedical.Controllers
         /// </summary>
         /// <param name="doctor">doctor object to update</param>
         /// <returns>Boolean indicating if the insertion was made</returns>
-        public static bool Update(DoctorServiceReference.Doctor doctor)
+        public static bool Update(doctor doctor)
         {
             using (DoctorServiceReference.DoctorServiceClient serv = new DoctorServiceReference.DoctorServiceClient())
             {
-                return serv.UpdateDoctor(doctor);
+                return serv.UpdateDoctor(EntityParser.EntityToObject(doctor));
             }
         }
 
@@ -84,11 +84,11 @@ namespace AbsMedical.Controllers
         /// </summary>
         /// <param name="doctorGuid">Identifier of the doctor</param>
         /// <returns>A mailconfiguration object</returns>
-        public static DoctorServiceReference.MailConfiguration GetMailConfiguration(string doctorGuid)
+        public static mailconfiguration GetMailConfiguration(string confGuid)
         {
             using (DoctorServiceReference.DoctorServiceClient serv = new DoctorServiceReference.DoctorServiceClient())
             {
-                return serv.GetMailConfiguration(doctorGuid);
+                return EntityParser.ObjectToEntity(serv.GetMailConfiguration(confGuid));
             }
         }
 
@@ -97,11 +97,11 @@ namespace AbsMedical.Controllers
         /// </summary>
         /// <param name="mailConfig">mailconfiguration object to add</param>
         /// <returns>Boolean indicating if the insertion was made</returns>
-        public static bool RegisterMailConfiguration(mailconfiguration mailConfig)
+        public static bool RegisterMailConfiguration(mailconfiguration mailConfig, doctor doctor)
         {
             using (DoctorServiceReference.DoctorServiceClient serv = new DoctorServiceReference.DoctorServiceClient())
             {
-                return serv.RegisterMailConfiguration(mailConfig);
+                return serv.RegisterMailConfiguration(EntityParser.EntityToObject(mailConfig), EntityParser.EntityToObject(doctor));
             }
         }
 
@@ -113,23 +113,6 @@ namespace AbsMedical.Controllers
         private static bool MailConfigurationAlreadyExist(string doctorGuid)
         {
             return GetMailConfiguration(doctorGuid) != null;
-        }
-
-        /// <summary>
-        /// Translate a AbsMedical.Data.mailconfiguration object into a MailConfiguration object to not give a database entity
-        /// </summary>
-        /// <param name="conf"></param>
-        /// <returns></returns>
-        public static DoctorServiceReference.MailConfiguration TranslateMailConfigurationEntityToMailConfiguration(mailconfiguration conf)
-        {
-            DoctorServiceReference.MailConfiguration mailConf = new DoctorServiceReference.MailConfiguration();
-            mailConf.Guid = conf.Guid;
-            mailConf.Email = conf.Email;
-            mailConf.Password = conf.Password;
-            mailConf.Smtp = conf.Smtp;
-            mailConf.Port = conf.Port;
-            mailConf.DoctorGuid = conf.DoctorGuid;
-            return mailConf;
         }
     }
 }

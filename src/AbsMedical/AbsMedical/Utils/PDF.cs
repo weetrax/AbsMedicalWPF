@@ -13,7 +13,7 @@ namespace AbsMedical.Utils
 {
     public static class PDF
     {
-        public static bool CreatePDF(student student, DoctorServiceReference.Doctor doctor, absmedical absmedical)
+        public static bool CreatePDF(student student, doctor doctor, absmedical absmedical)
         {
             try
             {

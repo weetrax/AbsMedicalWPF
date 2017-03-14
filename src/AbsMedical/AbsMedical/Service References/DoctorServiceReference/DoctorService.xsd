@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:import schemaLocation="http://localhost:2797/DoctorService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/AbsMedical.WCF" />
-  <xs:import schemaLocation="http://localhost:2797/DoctorService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/AbsMedical.Data" />
   <xs:element name="GetDoctor">
     <xs:complexType>
       <xs:sequence>
@@ -63,7 +62,7 @@
   <xs:element name="CreateDoctor">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/AbsMedical.Data" minOccurs="0" name="doctor" nillable="true" type="q4:doctor" />
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/AbsMedical.WCF" minOccurs="0" name="doctor" nillable="true" type="q4:Doctor" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -77,7 +76,8 @@
   <xs:element name="RegisterMailConfiguration">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/AbsMedical.Data" minOccurs="0" name="conf" nillable="true" type="q5:mailconfiguration" />
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/AbsMedical.WCF" minOccurs="0" name="conf" nillable="true" type="q5:MailConfiguration" />
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/AbsMedical.WCF" minOccurs="0" name="doctor" nillable="true" type="q6:Doctor" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -91,14 +91,14 @@
   <xs:element name="GetMailConfiguration">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="doctorGuid" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="confGuid" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="GetMailConfigurationResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/AbsMedical.WCF" minOccurs="0" name="GetMailConfigurationResult" nillable="true" type="q6:MailConfiguration" />
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/AbsMedical.WCF" minOccurs="0" name="GetMailConfigurationResult" nillable="true" type="q7:MailConfiguration" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

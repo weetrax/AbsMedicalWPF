@@ -27,7 +27,7 @@ namespace AbsMedical.Forms
     public partial class ProfileWindow : MetroWindow
     {
         #region Properties
-        private DoctorServiceReference.Doctor CurrentDoctor
+        private doctor CurrentDoctor
         {
             get
             {
@@ -56,7 +56,6 @@ namespace AbsMedical.Forms
                 Password = txtPasswordConf.Password.ToString(),
                 Smtp = txtSmtpConf.Text,
                 Port = Convert.ToInt32(txtPortConf.Text),
-                DoctorGuid = CurrentDoctorGuid
             };
             return mailConfig;
         }
@@ -73,7 +72,7 @@ namespace AbsMedical.Forms
 
         private void BindEmailConfiguration()
         {
-            DoctorServiceReference.MailConfiguration mailConf = DoctorController.GetMailConfiguration(CurrentDoctor.Guid);
+            mailconfiguration mailConf = DoctorController.GetMailConfiguration(CurrentDoctor.Guid);
             if(mailConf != null)
             {
                 txtEmailConf.Text = mailConf.Email;
@@ -111,7 +110,7 @@ namespace AbsMedical.Forms
 
         private void btnSaveProfil_Click(object sender, RoutedEventArgs e)
         {
-            DoctorServiceReference.Doctor editedDoctor = new DoctorServiceReference.Doctor()
+            doctor editedDoctor = new doctor()
             {
                 Guid = CurrentDoctor.Guid,
                 Password = CurrentDoctor.Password,
@@ -155,9 +154,9 @@ namespace AbsMedical.Forms
 
         private void btnSaveConf_Click(object sender, RoutedEventArgs e)
         {
-            if (Mail.IsValidClient(DoctorController.TranslateMailConfigurationEntityToMailConfiguration(GetMailConfigurationValues())))
+            if (Mail.IsValidClient(GetMailConfigurationValues()))
             {
-                if(DoctorController.RegisterMailConfiguration(GetMailConfigurationValues()))
+                if(DoctorController.RegisterMailConfiguration(GetMailConfigurationValues(), CurrentDoctor))
                 {
                     ShowAlert("Mail configuration successfully registered.");
                     lblMessageConf.Foreground = Brushes.Green;
@@ -178,7 +177,7 @@ namespace AbsMedical.Forms
 
         private void btnCheckConf_Click(object sender, RoutedEventArgs e)
         {
-            bool result = Mail.IsValidClient(DoctorController.TranslateMailConfigurationEntityToMailConfiguration(GetMailConfigurationValues()));
+            bool result = Mail.IsValidClient(GetMailConfigurationValues());
             if(result)
             {
                 ShowAlert("Mail configuration valid !");

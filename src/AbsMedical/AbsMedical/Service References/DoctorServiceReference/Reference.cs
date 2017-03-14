@@ -44,6 +44,9 @@ namespace AbsMedical.DoctorServiceReference {
         private string LastnameField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string MailConfigurationGuidField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string PasswordField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -154,6 +157,19 @@ namespace AbsMedical.DoctorServiceReference {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
+        public string MailConfigurationGuid {
+            get {
+                return this.MailConfigurationGuidField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.MailConfigurationGuidField, value) != true)) {
+                    this.MailConfigurationGuidField = value;
+                    this.RaisePropertyChanged("MailConfigurationGuid");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public string Password {
             get {
                 return this.PasswordField;
@@ -212,9 +228,6 @@ namespace AbsMedical.DoctorServiceReference {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string DoctorGuidField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string EmailField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -236,19 +249,6 @@ namespace AbsMedical.DoctorServiceReference {
             }
             set {
                 this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string DoctorGuid {
-            get {
-                return this.DoctorGuidField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.DoctorGuidField, value) != true)) {
-                    this.DoctorGuidField = value;
-                    this.RaisePropertyChanged("DoctorGuid");
-                }
             }
         }
         
@@ -356,22 +356,22 @@ namespace AbsMedical.DoctorServiceReference {
         System.Threading.Tasks.Task<bool> UpdatePasswordAsync(string doctorGuid, string newPassword);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDoctorService/CreateDoctor", ReplyAction="http://tempuri.org/IDoctorService/CreateDoctorResponse")]
-        bool CreateDoctor(AbsMedical.Data.doctor doctor);
+        bool CreateDoctor(AbsMedical.DoctorServiceReference.Doctor doctor);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDoctorService/CreateDoctor", ReplyAction="http://tempuri.org/IDoctorService/CreateDoctorResponse")]
-        System.Threading.Tasks.Task<bool> CreateDoctorAsync(AbsMedical.Data.doctor doctor);
+        System.Threading.Tasks.Task<bool> CreateDoctorAsync(AbsMedical.DoctorServiceReference.Doctor doctor);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDoctorService/RegisterMailConfiguration", ReplyAction="http://tempuri.org/IDoctorService/RegisterMailConfigurationResponse")]
-        bool RegisterMailConfiguration(AbsMedical.Data.mailconfiguration conf);
+        bool RegisterMailConfiguration(AbsMedical.DoctorServiceReference.MailConfiguration conf, AbsMedical.DoctorServiceReference.Doctor doctor);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDoctorService/RegisterMailConfiguration", ReplyAction="http://tempuri.org/IDoctorService/RegisterMailConfigurationResponse")]
-        System.Threading.Tasks.Task<bool> RegisterMailConfigurationAsync(AbsMedical.Data.mailconfiguration conf);
+        System.Threading.Tasks.Task<bool> RegisterMailConfigurationAsync(AbsMedical.DoctorServiceReference.MailConfiguration conf, AbsMedical.DoctorServiceReference.Doctor doctor);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDoctorService/GetMailConfiguration", ReplyAction="http://tempuri.org/IDoctorService/GetMailConfigurationResponse")]
-        AbsMedical.DoctorServiceReference.MailConfiguration GetMailConfiguration(string doctorGuid);
+        AbsMedical.DoctorServiceReference.MailConfiguration GetMailConfiguration(string confGuid);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDoctorService/GetMailConfiguration", ReplyAction="http://tempuri.org/IDoctorService/GetMailConfigurationResponse")]
-        System.Threading.Tasks.Task<AbsMedical.DoctorServiceReference.MailConfiguration> GetMailConfigurationAsync(string doctorGuid);
+        System.Threading.Tasks.Task<AbsMedical.DoctorServiceReference.MailConfiguration> GetMailConfigurationAsync(string confGuid);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -433,28 +433,28 @@ namespace AbsMedical.DoctorServiceReference {
             return base.Channel.UpdatePasswordAsync(doctorGuid, newPassword);
         }
         
-        public bool CreateDoctor(AbsMedical.Data.doctor doctor) {
+        public bool CreateDoctor(AbsMedical.DoctorServiceReference.Doctor doctor) {
             return base.Channel.CreateDoctor(doctor);
         }
         
-        public System.Threading.Tasks.Task<bool> CreateDoctorAsync(AbsMedical.Data.doctor doctor) {
+        public System.Threading.Tasks.Task<bool> CreateDoctorAsync(AbsMedical.DoctorServiceReference.Doctor doctor) {
             return base.Channel.CreateDoctorAsync(doctor);
         }
         
-        public bool RegisterMailConfiguration(AbsMedical.Data.mailconfiguration conf) {
-            return base.Channel.RegisterMailConfiguration(conf);
+        public bool RegisterMailConfiguration(AbsMedical.DoctorServiceReference.MailConfiguration conf, AbsMedical.DoctorServiceReference.Doctor doctor) {
+            return base.Channel.RegisterMailConfiguration(conf, doctor);
         }
         
-        public System.Threading.Tasks.Task<bool> RegisterMailConfigurationAsync(AbsMedical.Data.mailconfiguration conf) {
-            return base.Channel.RegisterMailConfigurationAsync(conf);
+        public System.Threading.Tasks.Task<bool> RegisterMailConfigurationAsync(AbsMedical.DoctorServiceReference.MailConfiguration conf, AbsMedical.DoctorServiceReference.Doctor doctor) {
+            return base.Channel.RegisterMailConfigurationAsync(conf, doctor);
         }
         
-        public AbsMedical.DoctorServiceReference.MailConfiguration GetMailConfiguration(string doctorGuid) {
-            return base.Channel.GetMailConfiguration(doctorGuid);
+        public AbsMedical.DoctorServiceReference.MailConfiguration GetMailConfiguration(string confGuid) {
+            return base.Channel.GetMailConfiguration(confGuid);
         }
         
-        public System.Threading.Tasks.Task<AbsMedical.DoctorServiceReference.MailConfiguration> GetMailConfigurationAsync(string doctorGuid) {
-            return base.Channel.GetMailConfigurationAsync(doctorGuid);
+        public System.Threading.Tasks.Task<AbsMedical.DoctorServiceReference.MailConfiguration> GetMailConfigurationAsync(string confGuid) {
+            return base.Channel.GetMailConfigurationAsync(confGuid);
         }
     }
 }

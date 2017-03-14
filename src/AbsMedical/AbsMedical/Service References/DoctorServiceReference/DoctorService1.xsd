@@ -9,6 +9,7 @@
       <xs:element minOccurs="0" name="Firstname" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Guid" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Lastname" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MailConfigurationGuid" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Phone" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="PostalCode" nillable="true" type="xs:string" />
@@ -17,7 +18,6 @@
   <xs:element name="Doctor" nillable="true" type="tns:Doctor" />
   <xs:complexType name="MailConfiguration">
     <xs:sequence>
-      <xs:element minOccurs="0" name="DoctorGuid" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Guid" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />

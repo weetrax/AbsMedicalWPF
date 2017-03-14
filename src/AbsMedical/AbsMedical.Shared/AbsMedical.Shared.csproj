@@ -43,6 +43,12 @@
     <Compile Include="Encryption.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AbsMedical.Data\AbsMedical.Data.csproj">
+      <Project>{44257EC8-E4F1-4695-8A0C-BBBEB900D8FC}</Project>
+      <Name>AbsMedical.Data</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

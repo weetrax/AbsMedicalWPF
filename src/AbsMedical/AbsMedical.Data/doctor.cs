@@ -17,7 +17,6 @@ namespace AbsMedical.Data
         public doctor()
         {
             this.absmedical = new HashSet<absmedical>();
-            this.mailconfiguration = new HashSet<mailconfiguration>();
         }
     
         public string Guid { get; set; }
@@ -30,9 +29,10 @@ namespace AbsMedical.Data
         public string Password { get; set; }
         public string Phone { get; set; }
         public int CountryId { get; set; }
+        public string MailConfigurationGuid { get; set; }
     
         public virtual ICollection<absmedical> absmedical { get; set; }
         public virtual country country { get; set; }
-        public virtual ICollection<mailconfiguration> mailconfiguration { get; set; }
+        public virtual mailconfiguration mailconfiguration { get; set; }
     }
 }

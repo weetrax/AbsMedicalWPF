@@ -14,13 +14,17 @@ namespace AbsMedical.Data
     
     public partial class mailconfiguration
     {
+        public mailconfiguration()
+        {
+            this.doctor = new HashSet<doctor>();
+        }
+    
         public string Guid { get; set; }
         public string Email { get; set; }
         public string Password { get; set; }
         public string Smtp { get; set; }
         public int Port { get; set; }
-        public string DoctorGuid { get; set; }
     
-        public virtual doctor doctor { get; set; }
+        public virtual ICollection<doctor> doctor { get; set; }
     }
 }

@@ -25,6 +25,7 @@ namespace AbsMedical.Shared
             }
 
             return strBuilder.ToString();
+            
         }
 
         /// <summary>

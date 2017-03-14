@@ -39,6 +39,7 @@
           <Property Name="Password" Type="varchar" MaxLength="255" Nullable="false" />
           <Property Name="Phone" Type="varchar" MaxLength="10" Nullable="false" />
           <Property Name="CountryId" Type="int" Nullable="false" />
+          <Property Name="MailConfigurationGuid" Type="varchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="mailconfiguration">
           <Key>
@@ -49,7 +50,6 @@
           <Property Name="Password" Type="varchar" MaxLength="255" Nullable="false" />
           <Property Name="Smtp" Type="varchar" MaxLength="150" Nullable="false" />
           <Property Name="Port" Type="int" Nullable="false" />
-          <Property Name="DoctorGuid" Type="varchar" MaxLength="100" Nullable="false" />
         </EntityType>
         <EntityType Name="school">
           <Key>
@@ -125,6 +125,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Doctor_Guid_MailConfiguration">
+          <End Role="mailconfiguration" Type="Self.mailconfiguration" Multiplicity="0..1" />
+          <End Role="doctor" Type="Self.doctor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mailconfiguration">
+              <PropertyRef Name="Guid" />
+            </Principal>
+            <Dependent Role="doctor">
+              <PropertyRef Name="MailConfigurationGuid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Doctor_Id">
           <End Role="country" Type="Self.country" Multiplicity="1" />
           <End Role="doctor" Type="Self.doctor" Multiplicity="*" />
@@ -134,18 +146,6 @@
             </Principal>
             <Dependent Role="doctor">
               <PropertyRef Name="CountryId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_MailConfiguration_Guid_Doctor">
-          <End Role="doctor" Type="Self.doctor" Multiplicity="1" />
-          <End Role="mailconfiguration" Type="Self.mailconfiguration" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="doctor">
-              <PropertyRef Name="Guid" />
-            </Principal>
-            <Dependent Role="mailconfiguration">
-              <PropertyRef Name="DoctorGuid" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -205,13 +205,13 @@
             <End Role="visit" EntitySet="visit" />
             <End Role="absmedical" EntitySet="absmedical" />
           </AssociationSet>
+          <AssociationSet Name="FK_Doctor_Guid_MailConfiguration" Association="Self.FK_Doctor_Guid_MailConfiguration">
+            <End Role="mailconfiguration" EntitySet="mailconfiguration" />
+            <End Role="doctor" EntitySet="doctor" />
+          </AssociationSet>
           <AssociationSet Name="FK_Doctor_Id" Association="Self.FK_Doctor_Id">
             <End Role="country" EntitySet="country" />
             <End Role="doctor" EntitySet="doctor" />
-          </AssociationSet>
-          <AssociationSet Name="FK_MailConfiguration_Guid_Doctor" Association="Self.FK_MailConfiguration_Guid_Doctor">
-            <End Role="doctor" EntitySet="doctor" />
-            <End Role="mailconfiguration" EntitySet="mailconfiguration" />
           </AssociationSet>
           <AssociationSet Name="FK_School_Id" Association="Self.FK_School_Id">
             <End Role="country" EntitySet="country" />
@@ -262,9 +262,9 @@
             <End Role="country" EntitySet="country" />
             <End Role="student" EntitySet="student" />
           </AssociationSet>
-          <AssociationSet Name="FK_MailConfiguration_Guid_Doctor" Association="rfidModel.FK_MailConfiguration_Guid_Doctor">
-            <End Role="doctor" EntitySet="doctor" />
+          <AssociationSet Name="FK_Doctor_Guid_MailConfiguration" Association="rfidModel.FK_Doctor_Guid_MailConfiguration">
             <End Role="mailconfiguration" EntitySet="mailconfiguration" />
+            <End Role="doctor" EntitySet="doctor" />
           </AssociationSet>
           <AssociationSet Name="FK_Student_Guid_School" Association="rfidModel.FK_Student_Guid_School">
             <End Role="school" EntitySet="school" />
@@ -311,9 +311,10 @@
           <Property Name="Password" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="Phone" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Name="CountryId" Type="Int32" Nullable="false" />
+          <Property Name="MailConfigurationGuid" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="absmedical" Relationship="rfidModel.FK_AbsMedical_Guid" FromRole="doctor" ToRole="absmedical" />
           <NavigationProperty Name="country" Relationship="rfidModel.FK_Doctor_Id" FromRole="doctor" ToRole="country" />
-          <NavigationProperty Name="mailconfiguration" Relationship="rfidModel.FK_MailConfiguration_Guid_Doctor" FromRole="doctor" ToRole="mailconfiguration" />
+          <NavigationProperty Name="mailconfiguration" Relationship="rfidModel.FK_Doctor_Guid_MailConfiguration" FromRole="doctor" ToRole="mailconfiguration" />
         </EntityType>
         <EntityType Name="mailconfiguration">
           <Key>
@@ -324,8 +325,7 @@
           <Property Name="Password" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="Smtp" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
           <Property Name="Port" Type="Int32" Nullable="false" />
-          <Property Name="DoctorGuid" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="doctor" Relationship="rfidModel.FK_MailConfiguration_Guid_Doctor" FromRole="mailconfiguration" ToRole="doctor" />
+          <NavigationProperty Name="doctor" Relationship="rfidModel.FK_Doctor_Guid_MailConfiguration" FromRole="mailconfiguration" ToRole="doctor" />
         </EntityType>
         <EntityType Name="school">
           <Key>
@@ -443,15 +443,15 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_MailConfiguration_Guid_Doctor">
-          <End Type="rfidModel.doctor" Role="doctor" Multiplicity="1" />
-          <End Type="rfidModel.mailconfiguration" Role="mailconfiguration" Multiplicity="*" />
+        <Association Name="FK_Doctor_Guid_MailConfiguration">
+          <End Type="rfidModel.mailconfiguration" Role="mailconfiguration" Multiplicity="0..1" />
+          <End Type="rfidModel.doctor" Role="doctor" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="doctor">
+            <Principal Role="mailconfiguration">
               <PropertyRef Name="Guid" />
             </Principal>
-            <Dependent Role="mailconfiguration">
-              <PropertyRef Name="DoctorGuid" />
+            <Dependent Role="doctor">
+              <PropertyRef Name="MailConfigurationGuid" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -496,6 +496,7 @@
           <EntitySetMapping Name="doctor">
             <EntityTypeMapping TypeName="rfidModel.doctor">
               <MappingFragment StoreEntitySet="doctor">
+                <ScalarProperty Name="MailConfigurationGuid" ColumnName="MailConfigurationGuid" />
                 <ScalarProperty Name="CountryId" ColumnName="CountryId" />
                 <ScalarProperty Name="Phone" ColumnName="Phone" />
                 <ScalarProperty Name="Password" ColumnName="Password" />
@@ -512,7 +513,6 @@
           <EntitySetMapping Name="mailconfiguration">
             <EntityTypeMapping TypeName="rfidModel.mailconfiguration">
               <MappingFragment StoreEntitySet="mailconfiguration">
-                <ScalarProperty Name="DoctorGuid" ColumnName="DoctorGuid" />
                 <ScalarProperty Name="Port" ColumnName="Port" />
                 <ScalarProperty Name="Smtp" ColumnName="Smtp" />
                 <ScalarProperty Name="Password" ColumnName="Password" />

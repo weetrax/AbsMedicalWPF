@@ -113,6 +113,7 @@
     <Compile Include="DoctorService.svc.cs">
       <DependentUpon>DoctorService.svc</DependentUpon>
     </Compile>
+    <Compile Include="EntityParser.cs" />
     <Compile Include="IDoctorService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

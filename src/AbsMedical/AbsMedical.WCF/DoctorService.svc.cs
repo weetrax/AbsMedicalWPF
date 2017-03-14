@@ -19,18 +19,16 @@ namespace AbsMedical.WCF
         /// <returns>A doctor object</returns>
         public Doctor Find(string email, string password)
         {
-            using (rfidEntities db = new rfidEntities())
+            rfidEntities db = new rfidEntities();
+            string md5Password = Encryption.GetMD5Hash(password);
+            var doctorEntity = db.doctor.FirstOrDefault(w => w.Email == email && w.Password == md5Password);
+            if (doctorEntity != null)
             {
-                string md5Password = Encryption.GetMD5Hash(password);
-                var doctorEntity = db.doctor.FirstOrDefault(w => w.Email == email && w.Password == md5Password);
-                if (doctorEntity != null)
-                {
-                    return TranslateDoctorEntityToDoctor(doctorEntity);
-                }
-                else
-                {
-                    throw new Exception("Invalid Doctor Email/Password");
-                }
+                return EntityParser.EntityToObject(doctorEntity);
+            }
+            else
+            {
+                throw new Exception("Invalid Doctor Email/Password");
             }
         }
 
@@ -41,18 +39,17 @@ namespace AbsMedical.WCF
         /// <returns>A doctor object</returns>
         public Doctor GetDoctor(string doctorGuid)
         {
-            using (rfidEntities db = new rfidEntities())
+            rfidEntities db = new rfidEntities();
+            var doctorEntity = db.doctor.FirstOrDefault(w => w.Guid == doctorGuid);
+            if (doctorEntity != null)
             {
-                var doctorEntity = db.doctor.FirstOrDefault(w => w.Guid == doctorGuid);
-                if (doctorEntity != null)
-                {
-                    return TranslateDoctorEntityToDoctor(doctorEntity);
-                }
-                else
-                {
-                    throw new Exception("Invalid Doctor Id");
-                }
+                return EntityParser.EntityToObject(doctorEntity);
             }
+            else
+            {
+                throw new Exception("Invalid Doctor Id");
+            }
+            
         }
 
         /// <summary>
@@ -75,11 +72,13 @@ namespace AbsMedical.WCF
                     query.CountryId = doctor.CountryId;
                     query.Address = doctor.Address;
                     query.Phone = doctor.Phone;
+                    query.MailConfigurationGuid = doctor.MailConfigurationGuid;
                     db.SaveChanges();
                     return true;
                 }
                 catch (Exception)
                 {
+                    return false;
                     throw new Exception("Cannot update profile");
                 }
             }
@@ -116,13 +115,13 @@ namespace AbsMedical.WCF
         /// Add a doctor object in the Database
         /// </summary>
         /// <param name="doctor">doctor object to add</param>
-        public bool CreateDoctor(doctor doctor)
+        public bool CreateDoctor(Doctor doctor)
         {
             using (rfidEntities db = new rfidEntities())
             {
                 try
                 {
-                    db.doctor.Add(doctor);
+                    db.doctor.Add(EntityParser.ObjectToEntity(doctor));
                     int result = db.SaveChanges();
                     return result > 0;
                 }
@@ -139,19 +138,18 @@ namespace AbsMedical.WCF
         /// </summary>
         /// <param name="doctorGuid">Identifier of the doctor</param>
         /// <returns>A mailconfiguration object</returns>
-        public MailConfiguration GetMailConfiguration(string doctorGuid)
+        public MailConfiguration GetMailConfiguration(string confGuid)
         {
-            using (rfidEntities db = new rfidEntities())
+            rfidEntities db = new rfidEntities();
+            var mailConfEntity = (from d in db.mailconfiguration where d.Guid == confGuid select d).FirstOrDefault();
+            if(mailConfEntity != null)
             {
-                var mailConfEntity = db.mailconfiguration.FirstOrDefault(m => m.DoctorGuid == doctorGuid);
-                if(mailConfEntity != null)
-                {
-                    return TranslateMailConfigurationEntityToMailConfiguration(mailConfEntity);
-                }
-                else
-                {
-                    throw new Exception("Unable to get doctor's mail configuration");
-                }
+                return EntityParser.EntityToObject(mailConfEntity);
+            }
+            else
+            {
+                return null;
+                throw new Exception("Unable to get doctor's mail configuration");
             }
         }
 
@@ -160,17 +158,21 @@ namespace AbsMedical.WCF
         /// </summary>
         /// <param name="mailConfig">mailconfiguration object to add</param>
         /// <returns>Boolean indicating if the insertion was made</returns>
-        public bool RegisterMailConfiguration (mailconfiguration mailConfig)
+        public bool RegisterMailConfiguration (MailConfiguration mailConfig, Doctor doctor)
         {
             using (rfidEntities db = new rfidEntities())
             {
-                if (!MailConfigurationAlreadyExist(mailConfig.DoctorGuid))
+                if (string.IsNullOrEmpty(doctor.MailConfigurationGuid))
                 {
                     try
                     {
                         string md5Password = Encryption.Encrypt(mailConfig.Password);
                         mailConfig.Password = md5Password;
-                        db.mailconfiguration.Add(mailConfig);
+                        db.mailconfiguration.Add(EntityParser.ObjectToEntity(mailConfig));
+
+                        var currentDoctor = db.doctor.First(w => w.Guid == doctor.Guid);
+                        currentDoctor.MailConfigurationGuid = mailConfig.Guid;
+
                         db.SaveChanges();
                         return true;
                     }
@@ -185,7 +187,7 @@ namespace AbsMedical.WCF
                     try
                     {
                         string md5Password = Encryption.Encrypt(mailConfig.Password);
-                        var query = db.mailconfiguration.First(m => m.DoctorGuid == mailConfig.DoctorGuid);
+                        var query = db.mailconfiguration.First(m => m.Guid == doctor.MailConfigurationGuid);
                         query.Email = mailConfig.Email;
                         query.Password = md5Password;
                         query.Port = mailConfig.Port;
@@ -210,44 +212,6 @@ namespace AbsMedical.WCF
         private bool MailConfigurationAlreadyExist(string doctorGuid)
         {
             return GetMailConfiguration(doctorGuid) != null;
-        }
-
-        /// <summary>
-        /// Translate a AbsMedical.Data.doctor object into a Doctor object to not give a database entity
-        /// </summary>
-        /// <param name="doctor"></param>
-        /// <returns></returns>
-        private Doctor TranslateDoctorEntityToDoctor(doctor doctor)
-        {
-            Doctor doc = new Doctor();
-            doc.Guid = doctor.Guid;
-            doc.Firstname = doctor.Firstname;
-            doc.Lastname = doctor.Lastname;
-            doc.Email = doctor.Email;
-            doc.Phone = doctor.Phone;
-            doc.Password = doctor.Password;
-            doc.Address = doctor.Address;
-            doc.PostalCode = doctor.PostalCode;
-            doc.City = doctor.City;
-            doc.CountryId = doctor.CountryId;
-            return doc;
-        }
-
-        /// <summary>
-        /// Translate a AbsMedical.Data.mailconfiguration object into a MailConfiguration object to not give a database entity
-        /// </summary>
-        /// <param name="conf"></param>
-        /// <returns></returns>
-        private MailConfiguration TranslateMailConfigurationEntityToMailConfiguration(mailconfiguration conf)
-        {
-            MailConfiguration mailConf = new MailConfiguration();
-            mailConf.Guid = conf.Guid;
-            mailConf.Email = conf.Email;
-            mailConf.Password = conf.Password;
-            mailConf.Smtp = conf.Smtp;
-            mailConf.Port = conf.Port;
-            mailConf.DoctorGuid = conf.DoctorGuid;
-            return mailConf;
         }
     }
 }
