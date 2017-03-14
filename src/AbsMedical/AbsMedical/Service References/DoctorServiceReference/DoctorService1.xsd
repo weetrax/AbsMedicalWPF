@@ -15,4 +15,15 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Doctor" nillable="true" type="tns:Doctor" />
+  <xs:complexType name="MailConfiguration">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="DoctorGuid" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Guid" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Port" type="xs:int" />
+      <xs:element minOccurs="0" name="Smtp" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="MailConfiguration" nillable="true" type="tns:MailConfiguration" />
 </xs:schema>

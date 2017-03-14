@@ -9,10 +9,14 @@ using System.Text;
 
 namespace AbsMedical.WCF
 {
-    // REMARQUE : vous pouvez utiliser la commande Renommer du menu Refactoriser pour changer le nom de classe "DoctorService" à la fois dans le code, le fichier svc et le fichier de configuration.
-    // REMARQUE : pour lancer le client test WCF afin de tester ce service, sélectionnez DoctorService.svc ou DoctorService.svc.cs dans l'Explorateur de solutions et démarrez le débogage.
     public class DoctorService : IDoctorService
     {
+        /// <summary>
+        /// Get a doctor object in the Database by its email and password
+        /// </summary>
+        /// <param name="email">Email of the doctor</param>
+        /// <param name="password">Password of the doctor</param>
+        /// <returns>A doctor object</returns>
         public Doctor Find(string email, string password)
         {
             using (rfidEntities db = new rfidEntities())
@@ -30,6 +34,11 @@ namespace AbsMedical.WCF
             }
         }
 
+        /// <summary>
+        /// Get a doctor object in the Database by its identifier
+        /// </summary>
+        /// <param name="doctorGuid">Identifier of the doctor</param>
+        /// <returns>A doctor object</returns>
         public Doctor GetDoctor(string doctorGuid)
         {
             using (rfidEntities db = new rfidEntities())
@@ -46,6 +55,11 @@ namespace AbsMedical.WCF
             }
         }
 
+        /// <summary>
+        /// Update doctor informations
+        /// </summary>
+        /// <param name="doctor">doctor object to update</param>
+        /// <returns>Boolean indicating if the insertion was made</returns>
         public bool UpdateDoctor(Doctor doctor)
         {
             using (rfidEntities db = new rfidEntities())
@@ -71,6 +85,12 @@ namespace AbsMedical.WCF
             }
         }
 
+        /// <summary>
+        /// Update the password of the doctor
+        /// </summary>
+        /// <param name="doctorGuid">Identifier of the doctor</param>
+        /// <param name="newPassword">New password</param>
+        /// <returns></returns>
         public bool UpdatePassword(string doctorGuid, string newPassword)
         {
             string md5password = Encryption.GetMD5Hash(newPassword);
@@ -92,6 +112,111 @@ namespace AbsMedical.WCF
             }
         }
 
+        /// <summary>
+        /// Add a doctor object in the Database
+        /// </summary>
+        /// <param name="doctor">doctor object to add</param>
+        public bool CreateDoctor(doctor doctor)
+        {
+            using (rfidEntities db = new rfidEntities())
+            {
+                try
+                {
+                    db.doctor.Add(doctor);
+                    int result = db.SaveChanges();
+                    return result > 0;
+                }
+                catch (Exception)
+                {
+                    throw new Exception("Unable to create a doctor");
+                }
+
+            }
+        }
+
+        /// <summary>
+        /// Get the mailconfiguration of the doctor
+        /// </summary>
+        /// <param name="doctorGuid">Identifier of the doctor</param>
+        /// <returns>A mailconfiguration object</returns>
+        public MailConfiguration GetMailConfiguration(string doctorGuid)
+        {
+            using (rfidEntities db = new rfidEntities())
+            {
+                var mailConfEntity = db.mailconfiguration.FirstOrDefault(m => m.DoctorGuid == doctorGuid);
+                if(mailConfEntity != null)
+                {
+                    return TranslateMailConfigurationEntityToMailConfiguration(mailConfEntity);
+                }
+                else
+                {
+                    throw new Exception("Unable to get doctor's mail configuration");
+                }
+            }
+        }
+
+        /// <summary>
+        /// Register a mailconfiguration to the Database
+        /// </summary>
+        /// <param name="mailConfig">mailconfiguration object to add</param>
+        /// <returns>Boolean indicating if the insertion was made</returns>
+        public bool RegisterMailConfiguration (mailconfiguration mailConfig)
+        {
+            using (rfidEntities db = new rfidEntities())
+            {
+                if (!MailConfigurationAlreadyExist(mailConfig.DoctorGuid))
+                {
+                    try
+                    {
+                        string md5Password = Encryption.Encrypt(mailConfig.Password);
+                        mailConfig.Password = md5Password;
+                        db.mailconfiguration.Add(mailConfig);
+                        db.SaveChanges();
+                        return true;
+                    }
+                    catch (Exception)
+                    {
+                        return false;
+                        throw new Exception("Unable to register a mail configuration");
+                    }
+                }
+                else
+                {
+                    try
+                    {
+                        string md5Password = Encryption.Encrypt(mailConfig.Password);
+                        var query = db.mailconfiguration.First(m => m.DoctorGuid == mailConfig.DoctorGuid);
+                        query.Email = mailConfig.Email;
+                        query.Password = md5Password;
+                        query.Port = mailConfig.Port;
+                        query.Smtp = mailConfig.Smtp;
+                        db.SaveChanges();
+                        return true;
+                    }
+                    catch (Exception)
+                    {
+                        return false;
+                        throw new Exception("Unable to update a mail configuration");
+                    }
+                }
+            }
+        }
+
+        /// <summary>
+        /// Verify if a doctor has already configure a mail configuration
+        /// </summary>
+        /// <param name="doctorGuid">Identifier of the doctor</param>
+        /// <returns>Boolean</returns>
+        private bool MailConfigurationAlreadyExist(string doctorGuid)
+        {
+            return GetMailConfiguration(doctorGuid) != null;
+        }
+
+        /// <summary>
+        /// Translate a AbsMedical.Data.doctor object into a Doctor object to not give a database entity
+        /// </summary>
+        /// <param name="doctor"></param>
+        /// <returns></returns>
         private Doctor TranslateDoctorEntityToDoctor(doctor doctor)
         {
             Doctor doc = new Doctor();
@@ -106,6 +231,23 @@ namespace AbsMedical.WCF
             doc.City = doctor.City;
             doc.CountryId = doctor.CountryId;
             return doc;
+        }
+
+        /// <summary>
+        /// Translate a AbsMedical.Data.mailconfiguration object into a MailConfiguration object to not give a database entity
+        /// </summary>
+        /// <param name="conf"></param>
+        /// <returns></returns>
+        private MailConfiguration TranslateMailConfigurationEntityToMailConfiguration(mailconfiguration conf)
+        {
+            MailConfiguration mailConf = new MailConfiguration();
+            mailConf.Guid = conf.Guid;
+            mailConf.Email = conf.Email;
+            mailConf.Password = conf.Password;
+            mailConf.Smtp = conf.Smtp;
+            mailConf.Port = conf.Port;
+            mailConf.DoctorGuid = conf.DoctorGuid;
+            return mailConf;
         }
     }
 }

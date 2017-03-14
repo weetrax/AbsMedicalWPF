@@ -186,6 +186,9 @@
     <None Include="Service References\DoctorServiceReference\AbsMedical.DoctorServiceReference.Doctor.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Service References\DoctorServiceReference\AbsMedical.DoctorServiceReference.MailConfiguration.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\DoctorServiceReference\DoctorService.wsdl" />
     <None Include="Service References\DoctorServiceReference\DoctorService.xsd">
       <SubType>Designer</SubType>
@@ -194,6 +197,9 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\DoctorServiceReference\DoctorService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\DoctorServiceReference\DoctorService3.xsd">
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>

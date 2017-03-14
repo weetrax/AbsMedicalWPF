@@ -20,12 +20,12 @@ namespace AbsMedical.Utils
         //private static string fromEmail = "martines.magnin@gmail.com";
         //private static string fromPassword = "stefanoadrien06";
 
-        public static bool IsValidClient(mailconfiguration config)
+        public static bool IsValidClient(DoctorServiceReference.MailConfiguration config)
         {
             return (Send(config, new List<string> { "martines.magnin@gmail.com" }, new List<string> { }, "Mail configuration - Validation test", new StringBuilder("This is a test"), null, true));
         }
 
-        public static bool Send(mailconfiguration config, List<string> to, List<string> toCC, string subject, StringBuilder body, Attachment attachment, bool onProfile)
+        public static bool Send(DoctorServiceReference.MailConfiguration config, List<string> to, List<string> toCC, string subject, StringBuilder body, Attachment attachment, bool onProfile)
         {
             try
             {

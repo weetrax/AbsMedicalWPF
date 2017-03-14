@@ -101,7 +101,7 @@ namespace AbsMedical.Forms
 
         private void btnSend_Click(object sender, RoutedEventArgs e)
         {
-            mailconfiguration mailConfig = DoctorController.GetMailConfiguration(CurrentDoctorGuid);
+            DoctorServiceReference.MailConfiguration mailConfig = DoctorController.GetMailConfiguration(CurrentDoctorGuid);
             List<string> sendTo = new List<string> { CurrentStudent.school.Email };
             List<string> sendToCC = new List<string> { };
             if (chkBxSendStudent.IsChecked == true)

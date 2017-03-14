@@ -11,9 +11,6 @@ namespace AbsMedical.WCF
     [ServiceContract]
     public interface IDoctorService
     {
-        //[OperationContract]
-        //string GetData(int value);
-
         [OperationContract]
         Doctor GetDoctor(string doctorGuid);
 
@@ -25,6 +22,15 @@ namespace AbsMedical.WCF
 
         [OperationContract]
         bool UpdatePassword(string doctorGuid, string newPassword);
+
+        [OperationContract]
+        bool CreateDoctor(AbsMedical.Data.doctor doctor);
+
+        [OperationContract]
+        bool RegisterMailConfiguration(AbsMedical.Data.mailconfiguration conf);
+
+        [OperationContract]
+        MailConfiguration GetMailConfiguration(string doctorGuid);
     }
 
     [Serializable]
@@ -51,5 +57,23 @@ namespace AbsMedical.WCF
         public int CountryId { get; set; }
         [DataMember]
         public string Phone { get; set; }
+    }
+
+    [Serializable]
+    [DataContract]
+    public class MailConfiguration
+    {
+        [DataMember]
+        public string Guid { get; set; }
+        [DataMember]
+        public string Email { get; set; }
+        [DataMember]
+        public string Password { get; set; }
+        [DataMember]
+        public string Smtp { get; set; }
+        [DataMember]
+        public int Port { get; set; }
+        [DataMember]
+        public string DoctorGuid { get; set; }
     }
 }

@@ -46,11 +46,9 @@ namespace AbsMedical.Controllers
         /// <returns>Boolean indicating if the insertion was made</returns>
         public static bool Create(doctor doctor)
         {
-            using (rfidEntities db = new rfidEntities())
+            using (DoctorServiceReference.DoctorServiceClient serv = new DoctorServiceReference.DoctorServiceClient())
             {
-                db.doctor.Add(doctor);
-                int result = db.SaveChanges();
-                return result > 0;
+                return serv.CreateDoctor(doctor);
             }
         }
 
@@ -86,11 +84,11 @@ namespace AbsMedical.Controllers
         /// </summary>
         /// <param name="doctorGuid">Identifier of the doctor</param>
         /// <returns>A mailconfiguration object</returns>
-        public static mailconfiguration GetMailConfiguration(string doctorGuid)
+        public static DoctorServiceReference.MailConfiguration GetMailConfiguration(string doctorGuid)
         {
-            using (rfidEntities db = new rfidEntities())
+            using (DoctorServiceReference.DoctorServiceClient serv = new DoctorServiceReference.DoctorServiceClient())
             {
-                return db.mailconfiguration.FirstOrDefault(m => m.DoctorGuid == doctorGuid);
+                return serv.GetMailConfiguration(doctorGuid);
             }
         }
 
@@ -101,41 +99,9 @@ namespace AbsMedical.Controllers
         /// <returns>Boolean indicating if the insertion was made</returns>
         public static bool RegisterMailConfiguration(mailconfiguration mailConfig)
         {
-            using (rfidEntities db = new rfidEntities())
+            using (DoctorServiceReference.DoctorServiceClient serv = new DoctorServiceReference.DoctorServiceClient())
             {
-                if(!MailConfigurationAlreadyExist(mailConfig.DoctorGuid))
-                {
-                    try
-                    {
-                        string md5Password = Encryption.Encrypt(mailConfig.Password);
-                        mailConfig.Password = md5Password;
-                        db.mailconfiguration.Add(mailConfig);
-                        db.SaveChanges();
-                        return true;
-                    }
-                    catch (Exception)
-                    {
-                        return false;
-                    }
-                }
-                else
-                {
-                    try
-                    {
-                        string md5Password = Encryption.Encrypt(mailConfig.Password);
-                        var query = db.mailconfiguration.First(m => m.DoctorGuid == mailConfig.DoctorGuid);
-                        query.Email = mailConfig.Email;
-                        query.Password = md5Password;
-                        query.Port = mailConfig.Port;
-                        query.Smtp = mailConfig.Smtp;
-                        db.SaveChanges();
-                        return true;
-                    }
-                    catch (Exception)
-                    {
-                        return false;
-                    }
-                }
+                return serv.RegisterMailConfiguration(mailConfig);
             }
         }
 
@@ -147,6 +113,23 @@ namespace AbsMedical.Controllers
         private static bool MailConfigurationAlreadyExist(string doctorGuid)
         {
             return GetMailConfiguration(doctorGuid) != null;
+        }
+
+        /// <summary>
+        /// Translate a AbsMedical.Data.mailconfiguration object into a MailConfiguration object to not give a database entity
+        /// </summary>
+        /// <param name="conf"></param>
+        /// <returns></returns>
+        public static DoctorServiceReference.MailConfiguration TranslateMailConfigurationEntityToMailConfiguration(mailconfiguration conf)
+        {
+            DoctorServiceReference.MailConfiguration mailConf = new DoctorServiceReference.MailConfiguration();
+            mailConf.Guid = conf.Guid;
+            mailConf.Email = conf.Email;
+            mailConf.Password = conf.Password;
+            mailConf.Smtp = conf.Smtp;
+            mailConf.Port = conf.Port;
+            mailConf.DoctorGuid = conf.DoctorGuid;
+            return mailConf;
         }
     }
 }

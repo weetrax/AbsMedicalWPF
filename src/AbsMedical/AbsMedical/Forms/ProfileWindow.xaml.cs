@@ -73,7 +73,7 @@ namespace AbsMedical.Forms
 
         private void BindEmailConfiguration()
         {
-            mailconfiguration mailConf = DoctorController.GetMailConfiguration(CurrentDoctor.Guid);
+            DoctorServiceReference.MailConfiguration mailConf = DoctorController.GetMailConfiguration(CurrentDoctor.Guid);
             if(mailConf != null)
             {
                 txtEmailConf.Text = mailConf.Email;
@@ -155,7 +155,7 @@ namespace AbsMedical.Forms
 
         private void btnSaveConf_Click(object sender, RoutedEventArgs e)
         {
-            if (Mail.IsValidClient(GetMailConfigurationValues()))
+            if (Mail.IsValidClient(DoctorController.TranslateMailConfigurationEntityToMailConfiguration(GetMailConfigurationValues())))
             {
                 if(DoctorController.RegisterMailConfiguration(GetMailConfigurationValues()))
                 {
@@ -178,7 +178,7 @@ namespace AbsMedical.Forms
 
         private void btnCheckConf_Click(object sender, RoutedEventArgs e)
         {
-            bool result = Mail.IsValidClient(GetMailConfigurationValues());
+            bool result = Mail.IsValidClient(DoctorController.TranslateMailConfigurationEntityToMailConfiguration(GetMailConfigurationValues()));
             if(result)
             {
                 ShowAlert("Mail configuration valid !");

@@ -23,10 +23,11 @@
   </MetadataSources>
   <Metadata>
     <MetadataFile FileName="DoctorService.xsd" MetadataType="Schema" ID="a8599dfb-9f50-475e-866f-786f64890585" SourceId="1" SourceUrl="http://localhost:2797/DoctorService.svc?xsd=xsd0" />
-    <MetadataFile FileName="DoctorService.wsdl" MetadataType="Wsdl" ID="10d20971-4f16-42b4-b06b-528a8cfc1856" SourceId="1" SourceUrl="http://localhost:2797/DoctorService.svc?wsdl" />
     <MetadataFile FileName="DoctorService1.xsd" MetadataType="Schema" ID="30e5cf81-8198-404c-bab5-70e45cf13af6" SourceId="1" SourceUrl="http://localhost:2797/DoctorService.svc?xsd=xsd2" />
-    <MetadataFile FileName="DoctorService.disco" MetadataType="Disco" ID="35601b71-cd7c-4617-bd08-a5ab84cb7650" SourceId="1" SourceUrl="http://localhost:2797/DoctorService.svc?disco" />
     <MetadataFile FileName="DoctorService2.xsd" MetadataType="Schema" ID="9b70f4d2-5905-4f2a-ae74-0d6cc958575c" SourceId="1" SourceUrl="http://localhost:2797/DoctorService.svc?xsd=xsd1" />
+    <MetadataFile FileName="DoctorService.wsdl" MetadataType="Wsdl" ID="10d20971-4f16-42b4-b06b-528a8cfc1856" SourceId="1" SourceUrl="http://localhost:2797/DoctorService.svc?wsdl" />
+    <MetadataFile FileName="DoctorService3.xsd" MetadataType="Schema" ID="299c6b05-5d83-492a-973f-178596d4ed27" SourceId="1" SourceUrl="http://localhost:2797/DoctorService.svc?xsd=xsd3" />
+    <MetadataFile FileName="DoctorService.disco" MetadataType="Disco" ID="35601b71-cd7c-4617-bd08-a5ab84cb7650" SourceId="1" SourceUrl="http://localhost:2797/DoctorService.svc?disco" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
