@@ -8,13 +8,12 @@ using AbsMedical.Data;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
 using System.IO;
-using AbsMedical.WcfServices;
 
 namespace AbsMedical.Utils
 {
     public static class PDF
     {
-        public static bool CreatePDF(student student, DoctorS doctor, absmedical absmedical)
+        public static bool CreatePDF(student student, DoctorServiceReference.Doctor doctor, absmedical absmedical)
         {
             try
             {

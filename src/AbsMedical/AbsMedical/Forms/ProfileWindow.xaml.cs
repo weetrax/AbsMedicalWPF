@@ -2,7 +2,6 @@
 using AbsMedical.Data;
 using AbsMedical.Shared;
 using AbsMedical.Utils;
-using AbsMedical.WcfServices;
 using MahApps.Metro.Controls;
 using MahApps.Metro.Controls.Dialogs;
 using System;
@@ -28,7 +27,7 @@ namespace AbsMedical.Forms
     public partial class ProfileWindow : MetroWindow
     {
         #region Properties
-        private DoctorS CurrentDoctor
+        private DoctorServiceReference.Doctor CurrentDoctor
         {
             get
             {
@@ -112,7 +111,7 @@ namespace AbsMedical.Forms
 
         private void btnSaveProfil_Click(object sender, RoutedEventArgs e)
         {
-            DoctorS editedDoctor = new DoctorS()
+            DoctorServiceReference.Doctor editedDoctor = new DoctorServiceReference.Doctor()
             {
                 Guid = CurrentDoctor.Guid,
                 Password = CurrentDoctor.Password,

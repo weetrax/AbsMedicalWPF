@@ -16,7 +16,6 @@ using AbsMedical.NFC;
 using AbsMedical.Controllers;
 using MahApps.Metro.Controls;
 using System.Diagnostics;
-using AbsMedical.WcfServices;
 
 namespace AbsMedical.Forms
 {
@@ -26,7 +25,7 @@ namespace AbsMedical.Forms
     public partial class HomeWindow : MetroWindow
     {
         #region Properties
-        private DoctorS CurrentDoctor
+        private DoctorServiceReference.Doctor CurrentDoctor
         {
             get
             {

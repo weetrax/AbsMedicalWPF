@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using AbsMedical.Data;
 using AbsMedical.Utils;
 using System.Data.Entity.Core;
-using AbsMedical.WcfServices;
 using AbsMedical.Shared;
 
 namespace AbsMedical.Controllers
@@ -18,10 +17,12 @@ namespace AbsMedical.Controllers
         /// </summary>
         /// <param name="doctorGuid">Identifier of the doctor</param>
         /// <returns>A doctor object</returns>
-        public static DoctorS Get(string doctorGuid)
+        public static DoctorServiceReference.Doctor Get(string doctorGuid)
         {
-            DoctorService service = new DoctorService();
-            return service.GetDoctor(doctorGuid);
+            using (DoctorServiceReference.DoctorServiceClient serv = new DoctorServiceReference.DoctorServiceClient())
+            {
+                return serv.GetDoctor(doctorGuid);
+            }
         }
 
         /// <summary>
@@ -30,10 +31,12 @@ namespace AbsMedical.Controllers
         /// <param name="email">Email of the doctor</param>
         /// <param name="password">Password of the doctor</param>
         /// <returns>A doctor object</returns>
-        public static DoctorS Find(string email, string password)
+        public static DoctorServiceReference.Doctor Find(string email, string password)
         {
-            DoctorService service = new DoctorService();
-            return service.Find(email, Encryption.GetMD5Hash(password));
+            using (DoctorServiceReference.DoctorServiceClient serv = new DoctorServiceReference.DoctorServiceClient())
+            {
+                return serv.Find(email, password);
+            }
         }
 
         /// <summary>
@@ -56,10 +59,12 @@ namespace AbsMedical.Controllers
         /// </summary>
         /// <param name="doctor">doctor object to update</param>
         /// <returns>Boolean indicating if the insertion was made</returns>
-        public static bool Update(DoctorS doctor)
+        public static bool Update(DoctorServiceReference.Doctor doctor)
         {
-            DoctorService service = new DoctorService();
-            return service.UpdateDoctor(doctor);
+            using (DoctorServiceReference.DoctorServiceClient serv = new DoctorServiceReference.DoctorServiceClient())
+            {
+                return serv.UpdateDoctor(doctor);
+            }
         }
 
         /// <summary>
@@ -70,8 +75,10 @@ namespace AbsMedical.Controllers
         /// <returns></returns>
         public static bool UpdatePassword(string doctorGuid, string newPassword)
         {
-            DoctorService service = new DoctorService();
-            return service.UpdatePassword(doctorGuid, newPassword);
+            using (DoctorServiceReference.DoctorServiceClient serv = new DoctorServiceReference.DoctorServiceClient())
+            {
+                return serv.UpdatePassword(doctorGuid, newPassword);
+            }
         }
 
         /// <summary>

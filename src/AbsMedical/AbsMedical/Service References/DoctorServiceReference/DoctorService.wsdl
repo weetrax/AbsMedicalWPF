@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="DoctorService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost:2797/DoctorService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:2797/DoctorService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:2797/DoctorService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/AbsMedical.WCF" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IDoctorService_GetDoctor_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDoctor" />
+  </wsdl:message>
+  <wsdl:message name="IDoctorService_GetDoctor_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDoctorResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDoctorService_Find_InputMessage">
+    <wsdl:part name="parameters" element="tns:Find" />
+  </wsdl:message>
+  <wsdl:message name="IDoctorService_Find_OutputMessage">
+    <wsdl:part name="parameters" element="tns:FindResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDoctorService_UpdateDoctor_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateDoctor" />
+  </wsdl:message>
+  <wsdl:message name="IDoctorService_UpdateDoctor_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateDoctorResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDoctorService_UpdatePassword_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdatePassword" />
+  </wsdl:message>
+  <wsdl:message name="IDoctorService_UpdatePassword_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdatePasswordResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IDoctorService">
+    <wsdl:operation name="GetDoctor">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDoctorService/GetDoctor" message="tns:IDoctorService_GetDoctor_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDoctorService/GetDoctorResponse" message="tns:IDoctorService_GetDoctor_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Find">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDoctorService/Find" message="tns:IDoctorService_Find_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDoctorService/FindResponse" message="tns:IDoctorService_Find_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateDoctor">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDoctorService/UpdateDoctor" message="tns:IDoctorService_UpdateDoctor_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDoctorService/UpdateDoctorResponse" message="tns:IDoctorService_UpdateDoctor_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdatePassword">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDoctorService/UpdatePassword" message="tns:IDoctorService_UpdatePassword_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDoctorService/UpdatePasswordResponse" message="tns:IDoctorService_UpdatePassword_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IDoctorService" type="tns:IDoctorService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetDoctor">
+      <soap:operation soapAction="http://tempuri.org/IDoctorService/GetDoctor" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Find">
+      <soap:operation soapAction="http://tempuri.org/IDoctorService/Find" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateDoctor">
+      <soap:operation soapAction="http://tempuri.org/IDoctorService/UpdateDoctor" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdatePassword">
+      <soap:operation soapAction="http://tempuri.org/IDoctorService/UpdatePassword" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="DoctorService">
+    <wsdl:port name="BasicHttpBinding_IDoctorService" binding="tns:BasicHttpBinding_IDoctorService">
+      <soap:address location="http://localhost:2797/DoctorService.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

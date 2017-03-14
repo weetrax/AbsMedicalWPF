@@ -1,43 +1,27 @@
 ﻿using AbsMedical.Data;
+using AbsMedical.Shared;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
-using AbsMedical.Data;
-using AbsMedical.Shared;
 
-namespace AbsMedical.WcfServices
+namespace AbsMedical.WCF
 {
+    // REMARQUE : vous pouvez utiliser la commande Renommer du menu Refactoriser pour changer le nom de classe "DoctorService" à la fois dans le code, le fichier svc et le fichier de configuration.
+    // REMARQUE : pour lancer le client test WCF afin de tester ce service, sélectionnez DoctorService.svc ou DoctorService.svc.cs dans l'Explorateur de solutions et démarrez le débogage.
     public class DoctorService : IDoctorService
     {
-
-
-        public DoctorS GetDoctor(string guid)
+        public Doctor Find(string email, string password)
         {
             using (rfidEntities db = new rfidEntities())
             {
-                var doctorEntity = db.doctor.FirstOrDefault(w => w.Guid == guid);
+                string md5Password = Encryption.GetMD5Hash(password);
+                var doctorEntity = db.doctor.FirstOrDefault(w => w.Email == email && w.Password == md5Password);
                 if (doctorEntity != null)
                 {
-                    return TranslateDoctorEntityToDoctorS(doctorEntity);
-                }
-                else
-                {
-                    throw new Exception("Invalid Doctor Id");
-                }
-            }
-        }
-
-        public DoctorS Find(string email, string password)
-        {
-            using (rfidEntities db = new rfidEntities())
-            {
-                var doctorEntity = db.doctor.FirstOrDefault(w => w.Email == email && w.Password == password);
-                if (doctorEntity != null)
-                {
-                    return TranslateDoctorEntityToDoctorS(doctorEntity);
+                    return TranslateDoctorEntityToDoctor(doctorEntity);
                 }
                 else
                 {
@@ -46,8 +30,24 @@ namespace AbsMedical.WcfServices
             }
         }
 
-        public bool UpdateDoctor(DoctorS doctor)
-        {       
+        public Doctor GetDoctor(string doctorGuid)
+        {
+            using (rfidEntities db = new rfidEntities())
+            {
+                var doctorEntity = db.doctor.FirstOrDefault(w => w.Guid == doctorGuid);
+                if (doctorEntity != null)
+                {
+                    return TranslateDoctorEntityToDoctor(doctorEntity);
+                }
+                else
+                {
+                    throw new Exception("Invalid Doctor Id");
+                }
+            }
+        }
+
+        public bool UpdateDoctor(Doctor doctor)
+        {
             using (rfidEntities db = new rfidEntities())
             {
                 try
@@ -74,7 +74,6 @@ namespace AbsMedical.WcfServices
         public bool UpdatePassword(string doctorGuid, string newPassword)
         {
             string md5password = Encryption.GetMD5Hash(newPassword);
-
             using (rfidEntities db = new rfidEntities())
             {
                 try
@@ -93,9 +92,9 @@ namespace AbsMedical.WcfServices
             }
         }
 
-        private DoctorS TranslateDoctorEntityToDoctorS(doctor doctor)
+        private Doctor TranslateDoctorEntityToDoctor(doctor doctor)
         {
-            DoctorS doc = new DoctorS();
+            Doctor doc = new Doctor();
             doc.Guid = doctor.Guid;
             doc.Firstname = doctor.Firstname;
             doc.Lastname = doctor.Lastname;

@@ -126,7 +126,7 @@
     <Compile Include="Forms\ProfileWindow.xaml.cs">
       <DependentUpon>ProfileWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Service References\AbsMedicalService\Reference.cs">
+    <Compile Include="Service References\DoctorServiceReference\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -183,17 +183,17 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
-    <None Include="Service References\AbsMedicalService\AbsMedical.AbsMedicalService.CompositeType.datasource">
+    <None Include="Service References\DoctorServiceReference\AbsMedical.DoctorServiceReference.Doctor.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\AbsMedicalService\AbsMedical.WcfServices.xsd">
+    <None Include="Service References\DoctorServiceReference\DoctorService.wsdl" />
+    <None Include="Service References\DoctorServiceReference\DoctorService.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\AbsMedicalService\service.wsdl" />
-    <None Include="Service References\AbsMedicalService\service.xsd">
+    <None Include="Service References\DoctorServiceReference\DoctorService1.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\AbsMedicalService\service1.xsd">
+    <None Include="Service References\DoctorServiceReference\DoctorService2.xsd">
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
@@ -216,25 +216,24 @@
       <Project>{bbf29d80-6455-40a6-b439-47433f25fb43}</Project>
       <Name>AbsMedical.Shared</Name>
     </ProjectReference>
-    <ProjectReference Include="..\AbsMedical.WcfServices\AbsMedical.WcfServices.csproj">
-      <Project>{7A4529D0-ABA8-4D25-A70D-A5E3D5E78329}</Project>
-      <Name>AbsMedical.WcfServices</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\absmedical.ico" />
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadataStorage Include="Service References\AbsMedicalService\" />
+    <WCFMetadataStorage Include="Service References\DoctorServiceReference\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\AbsMedicalService\configuration91.svcinfo" />
+    <None Include="Service References\DoctorServiceReference\DoctorService.disco" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\AbsMedicalService\configuration.svcinfo" />
+    <None Include="Service References\DoctorServiceReference\configuration91.svcinfo" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\AbsMedicalService\Reference.svcmap">
+    <None Include="Service References\DoctorServiceReference\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\DoctorServiceReference\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

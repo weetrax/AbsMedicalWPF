@@ -5,16 +5,16 @@ VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AbsMedical", "AbsMedical\AbsMedical.csproj", "{2AE6F6C4-4488-4611-BE68-0789244C0C58}"
 	ProjectSection(ProjectDependencies) = postProject
-		{7A4529D0-ABA8-4D25-A70D-A5E3D5E78329} = {7A4529D0-ABA8-4D25-A70D-A5E3D5E78329}
+		{87BB58EE-A62A-438C-A167-C54003698A08} = {87BB58EE-A62A-438C-A167-C54003698A08}
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AbsMedical.Data", "AbsMedical.Data\AbsMedical.Data.csproj", "{44257EC8-E4F1-4695-8A0C-BBBEB900D8FC}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AbsMedical.NFC", "AbsMedical.NFC\AbsMedical.NFC.csproj", "{5DE044D9-EA0D-46B8-8598-DFB5E0EEDF3E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AbsMedical.WcfServices", "AbsMedical.WcfServices\AbsMedical.WcfServices.csproj", "{7A4529D0-ABA8-4D25-A70D-A5E3D5E78329}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AbsMedical.Shared", "AbsMedical.Shared\AbsMedical.Shared.csproj", "{BBF29D80-6455-40A6-B439-47433F25FB43}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AbsMedical.WCF", "AbsMedical.WCF\AbsMedical.WCF.csproj", "{87BB58EE-A62A-438C-A167-C54003698A08}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -34,14 +34,14 @@ Global
 		{5DE044D9-EA0D-46B8-8598-DFB5E0EEDF3E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5DE044D9-EA0D-46B8-8598-DFB5E0EEDF3E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5DE044D9-EA0D-46B8-8598-DFB5E0EEDF3E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7A4529D0-ABA8-4D25-A70D-A5E3D5E78329}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7A4529D0-ABA8-4D25-A70D-A5E3D5E78329}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7A4529D0-ABA8-4D25-A70D-A5E3D5E78329}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7A4529D0-ABA8-4D25-A70D-A5E3D5E78329}.Release|Any CPU.Build.0 = Release|Any CPU
 		{BBF29D80-6455-40A6-B439-47433F25FB43}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{BBF29D80-6455-40A6-B439-47433F25FB43}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BBF29D80-6455-40A6-B439-47433F25FB43}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BBF29D80-6455-40A6-B439-47433F25FB43}.Release|Any CPU.Build.0 = Release|Any CPU
+		{87BB58EE-A62A-438C-A167-C54003698A08}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{87BB58EE-A62A-438C-A167-C54003698A08}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{87BB58EE-A62A-438C-A167-C54003698A08}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{87BB58EE-A62A-438C-A167-C54003698A08}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,7 +1,6 @@
 ﻿using AbsMedical.Controllers;
 using AbsMedical.Data;
 using AbsMedical.Utils;
-using AbsMedical.WcfServices;
 using MahApps.Metro.Controls;
 using MahApps.Metro.Controls.Dialogs;
 using System;
@@ -31,7 +30,7 @@ namespace AbsMedical.Forms
             get;
         }
 
-        private DoctorS CurrentDoctor
+        private DoctorServiceReference.Doctor CurrentDoctor
         {
             get
             {

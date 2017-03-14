@@ -27,6 +27,11 @@ namespace AbsMedical.Shared
             return strBuilder.ToString();
         }
 
+        /// <summary>
+        /// Encrypt a string with the EncryptionKey above
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns>The encrypted string</returns>
         /***source: http://www.c-sharpcorner.com/blogs/encrypt-and-decrypt-a-string-in-asp-net1 ***/
         public static string Encrypt(string input)
         {
@@ -51,6 +56,11 @@ namespace AbsMedical.Shared
             return input;
         }
 
+        /// <summary>
+        /// Decrypt a string that was encrypted with the EncryptionKey above
+        /// </summary>
+        /// <param name="cipherText"></param>
+        /// <returns>The decrypted string</returns>
         /***source: http://www.c-sharpcorner.com/blogs/encrypt-and-decrypt-a-string-in-asp-net1 ***/
         public static string Decrypt(string cipherText)
         {

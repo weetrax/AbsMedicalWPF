@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="49018cda-ff89-4541-a763-e044462a45e1" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:2797/DoctorService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="DoctorService.xsd" MetadataType="Schema" ID="a8599dfb-9f50-475e-866f-786f64890585" SourceId="1" SourceUrl="http://localhost:2797/DoctorService.svc?xsd=xsd0" />
+    <MetadataFile FileName="DoctorService.wsdl" MetadataType="Wsdl" ID="10d20971-4f16-42b4-b06b-528a8cfc1856" SourceId="1" SourceUrl="http://localhost:2797/DoctorService.svc?wsdl" />
+    <MetadataFile FileName="DoctorService1.xsd" MetadataType="Schema" ID="30e5cf81-8198-404c-bab5-70e45cf13af6" SourceId="1" SourceUrl="http://localhost:2797/DoctorService.svc?xsd=xsd2" />
+    <MetadataFile FileName="DoctorService.disco" MetadataType="Disco" ID="35601b71-cd7c-4617-bd08-a5ab84cb7650" SourceId="1" SourceUrl="http://localhost:2797/DoctorService.svc?disco" />
+    <MetadataFile FileName="DoctorService2.xsd" MetadataType="Schema" ID="9b70f4d2-5905-4f2a-ae74-0d6cc958575c" SourceId="1" SourceUrl="http://localhost:2797/DoctorService.svc?xsd=xsd1" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>
