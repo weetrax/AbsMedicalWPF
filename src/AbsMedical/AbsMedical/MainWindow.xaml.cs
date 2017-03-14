@@ -54,5 +54,13 @@ namespace AbsMedical
         {
             this.Close();
         }
+
+        private void txtPassword_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                btnOK_Click(sender, e);
+            }
+        }
     }
 }

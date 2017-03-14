@@ -20,7 +20,7 @@
             <Label x:Name="lblError" Content="Mail address or password invalid." Visibility="Hidden" Canvas.Left="64" Canvas.Top="133" Width="185" Foreground="Red" />
 
             <TextBox Name="txtEmail" Width="241" Canvas.Left="175" Canvas.Top="56" Focusable="True"/>
-            <PasswordBox Name="txtPassword" ToolTip="Password" Width="241" Canvas.Left="175" Canvas.Top="97" />
+            <PasswordBox Name="txtPassword" KeyDown="txtPassword_KeyDown" ToolTip="Password" Width="241" Canvas.Left="175" Canvas.Top="97" />
 
             <Button x:Name="btnOK" Content="Sign in" Canvas.Left="335" Canvas.Top="136" Width="81" Click="btnOK_Click" Style="{StaticResource AccentedSquareButtonStyle}" Controls:ControlsHelper.ContentCharacterCasing="Normal"/>
             <Button x:Name="btnExit" Content="Exit" Canvas.Left="262" Canvas.Top="136" Width="61" Click="btnExit_Click" Style="{DynamicResource SquareButtonStyle}" Controls:ControlsHelper.ContentCharacterCasing="Normal"/>
