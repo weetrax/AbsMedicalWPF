@@ -32,22 +32,7 @@ namespace AbsMedical
 
         private void btnOK_Click(object sender, RoutedEventArgs e)
         {
-            string password = txtPassword.Password.ToString();
-            string email = txtEmail.Text;
-
-            DoctorServiceReference.Doctor currentDoctor = DoctorController.Find(email, password);
-            
-            if (currentDoctor != null)
-            {
-                HomeWindow window = new HomeWindow(currentDoctor.Guid);
-                window.Show();
-                this.Close();
-            }
-            else
-            {
-                lblError.Visibility = Visibility.Visible;
-                lblError.Content = "Mail address or password invalid.";
-            }
+            Login();
         }
 
         private void btnExit_Click(object sender, RoutedEventArgs e)
@@ -59,7 +44,27 @@ namespace AbsMedical
         {
             if (e.Key == Key.Enter)
             {
-                btnOK_Click(sender, e);
+                Login();
+            }
+        }
+
+        private void Login()
+        {
+            string password = txtPassword.Password.ToString();
+            string email = txtEmail.Text;
+
+            DoctorServiceReference.Doctor currentDoctor = DoctorController.Find(email, password);
+
+            if (currentDoctor != null)
+            {
+                HomeWindow window = new HomeWindow(currentDoctor.Guid);
+                window.Show();
+                this.Close();
+            }
+            else
+            {
+                lblError.Visibility = Visibility.Visible;
+                lblError.Content = "Mail address or password invalid.";
             }
         }
     }
