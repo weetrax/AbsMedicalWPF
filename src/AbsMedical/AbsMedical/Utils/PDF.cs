@@ -13,7 +13,7 @@ namespace AbsMedical.Utils
 {
     public static class PDF
     {
-        public static bool CreatePDF(student student, doctor doctor, absmedical absmedical)
+        public static Document CreatePDF(student student, doctor doctor, absmedical absmedical)
         {
             try
             {
@@ -68,11 +68,11 @@ namespace AbsMedical.Utils
                 doc.Add(pMotiveText);
 
                 doc.Close();
-                return true;
+                return doc;
             }
             catch (Exception)
             {
-                return false;
+                return null;
             }
         }
 

@@ -16,6 +16,7 @@ using AbsMedical.NFC;
 using AbsMedical.Controllers;
 using MahApps.Metro.Controls;
 using System.Diagnostics;
+using AbsMedical.DoctorServiceReference;
 
 namespace AbsMedical.Forms
 {
@@ -25,7 +26,7 @@ namespace AbsMedical.Forms
     public partial class HomeWindow : MetroWindow
     {
         #region Properties
-        private doctor CurrentDoctor
+        private Doctor CurrentDoctor
         {
             get
             {
@@ -41,8 +42,7 @@ namespace AbsMedical.Forms
 
         public HomeWindow(string doctorGuid)
         {
-            NFCReader.establishContext();
-            NFCReader.SelectDevice();
+
             this.CurrentDoctorGuid = doctorGuid;
             InitializeComponent();
             SetTitle();
@@ -72,6 +72,8 @@ namespace AbsMedical.Forms
 
         private void tileRegisterNewCertificate_Click(object sender, RoutedEventArgs e)
         {
+            NFCReader.establishContext();
+            NFCReader.SelectDevice();
             if (NFCReader.connectCard())
             {
                 string studentGuid = NFCReader.getcardUID();
