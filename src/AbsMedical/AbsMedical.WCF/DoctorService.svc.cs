@@ -29,7 +29,6 @@ namespace AbsMedical.WCF
             else
             {
                 return null;
-                throw new Exception("Invalid Doctor Email/Password");
             }
         }
 
@@ -49,7 +48,6 @@ namespace AbsMedical.WCF
             else
             {
                 return null;
-                throw new Exception("Invalid Doctor Id");
             }
             
         }
@@ -81,7 +79,6 @@ namespace AbsMedical.WCF
                 catch (Exception)
                 {
                     return false;
-                    throw new Exception("Cannot update profile");
                 }
             }
         }
@@ -107,7 +104,6 @@ namespace AbsMedical.WCF
                 catch (Exception)
                 {
                     return false;
-                    throw new Exception("Unable to update the password");
                 }
 
             }
@@ -151,7 +147,6 @@ namespace AbsMedical.WCF
             else
             {
                 return null;
-                throw new Exception("Unable to get doctor's mail configuration");
             }
         }
 
@@ -181,7 +176,6 @@ namespace AbsMedical.WCF
                     catch (Exception)
                     {
                         return false;
-                        throw new Exception("Unable to register a mail configuration");
                     }
                 }
                 else
@@ -200,7 +194,6 @@ namespace AbsMedical.WCF
                     catch (Exception)
                     {
                         return false;
-                        throw new Exception("Unable to update a mail configuration");
                     }
                 }
             }

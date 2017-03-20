@@ -30,7 +30,7 @@ namespace AbsMedical.WCF
         bool RegisterMailConfiguration(MailConfiguration conf, Doctor doctor);
 
         [OperationContract]
-       MailConfiguration GetMailConfiguration(string confGuid);
+        MailConfiguration GetMailConfiguration(string confGuid);
     }
 
     [Serializable]
