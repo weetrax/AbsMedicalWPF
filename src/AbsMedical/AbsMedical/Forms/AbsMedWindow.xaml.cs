@@ -1,8 +1,10 @@
 ﻿using AbsMedical.Controllers;
 using AbsMedical.Data;
 using AbsMedical.Utils;
+using iTextSharp.text;
 using MahApps.Metro.Controls;
 using MahApps.Metro.Controls.Dialogs;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -145,10 +147,17 @@ namespace AbsMedical.Forms
 
         private void btnExportPDF_Click(object sender, RoutedEventArgs e)
         {
-            if(PDF.CreatePDF(CurrentStudent, CurrentDoctor, GetAbsMedicalValue()))
+            SaveFileDialog dlg = new SaveFileDialog();
+            Nullable<bool> result = dlg.ShowDialog();
+            if(result == true)
             {
-                ShowAlert("PDF has been created");
+                ShowAlert("coucou");
             }
+            //Document doc = new Document();
+            //if(PDF.CreatePDF(CurrentStudent, CurrentDoctor, GetAbsMedicalValue()))
+            //{
+            //    ShowAlert("PDF has been created");
+            //}
         }
     }
 }

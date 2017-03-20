@@ -41,8 +41,7 @@ namespace AbsMedical.Forms
 
         public HomeWindow(string doctorGuid)
         {
-            NFCReader.establishContext();
-            NFCReader.SelectDevice();
+
             this.CurrentDoctorGuid = doctorGuid;
             InitializeComponent();
             SetTitle();
@@ -72,6 +71,8 @@ namespace AbsMedical.Forms
 
         private void tileRegisterNewCertificate_Click(object sender, RoutedEventArgs e)
         {
+            NFCReader.establishContext();
+            NFCReader.SelectDevice();
             if (NFCReader.connectCard())
             {
                 string studentGuid = NFCReader.getcardUID();
