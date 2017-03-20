@@ -1,8 +1,11 @@
 ﻿using AbsMedical.Controllers;
 using AbsMedical.Data;
+using AbsMedical.DoctorServiceReference;
 using AbsMedical.Utils;
+using iTextSharp.text;
 using MahApps.Metro.Controls;
 using MahApps.Metro.Controls.Dialogs;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,7 +33,7 @@ namespace AbsMedical.Forms
             get;
         }
 
-        private doctor CurrentDoctor
+        private Doctor CurrentDoctor
         {
             get
             {
@@ -102,29 +105,21 @@ namespace AbsMedical.Forms
         private void btnSend_Click(object sender, RoutedEventArgs e)
         {
             mailconfiguration mailConfig = DoctorController.GetMailConfiguration(CurrentDoctorGuid);
-            if (!Mail.IsValidClient(mailConfig))
+            List<string> sendTo = new List<string> { CurrentStudent.school.Email };
+            List<string> sendToCC = new List<string> { };
+            if (chkBxSendStudent.IsChecked == true)
             {
-                ShowAlert("Erreur: mauvaise configuration de mail. Veuillez enregistrer votre configuration dans les paramètres profil.");
+                sendToCC.Add(CurrentStudent.Email);
             }
-            else
+            string subject = txtSubject.Text;
+            StringBuilder body = new StringBuilder();
+            body.Append(txtBody.Text);
+            if (Utils.Mail.Send(mailConfig, sendTo, sendToCC, subject, body, null, false))
             {
-                List<string> sendTo = new List<string> { CurrentStudent.school.Email };
-                List<string> sendToCC = new List<string> { };
-                if (chkBxSendStudent.IsChecked == true)
-                {
-                    sendToCC.Add(CurrentStudent.Email);
-                }
-                string subject = txtSubject.Text;
-                StringBuilder body = new StringBuilder();
-                body.Append(txtBody.Text);
-                if (Utils.Mail.Send(mailConfig, sendTo, sendToCC, subject, body, null, false))
-                {
-                    ShowAlert("Votre mail bien été envoyé.");
-                }
-                else
-                {
-                    ShowAlert("Erreur: votre mail n'a pas pu être envoyé.");
-                }
+                ShowAlert("Votre mail bien été envoyé.");
+            } else
+            {
+                ShowAlert("Erreur: votre mail n'a pas pu être envoyé.");
             }
         }
 
@@ -153,10 +148,17 @@ namespace AbsMedical.Forms
 
         private void btnExportPDF_Click(object sender, RoutedEventArgs e)
         {
-            if(PDF.CreatePDF(CurrentStudent, CurrentDoctor, GetAbsMedicalValue()))
+            SaveFileDialog dlg = new SaveFileDialog();
+            Nullable<bool> result = dlg.ShowDialog();
+            if(result == true)
             {
-                ShowAlert("PDF has been created");
+                ShowAlert("coucou");
             }
+            //Document doc = new Document();
+            //if(PDF.CreatePDF(CurrentStudent, CurrentDoctor, GetAbsMedicalValue()))
+            //{
+            //    ShowAlert("PDF has been created");
+            //}
         }
     }
 }
