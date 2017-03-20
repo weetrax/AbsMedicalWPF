@@ -102,21 +102,29 @@ namespace AbsMedical.Forms
         private void btnSend_Click(object sender, RoutedEventArgs e)
         {
             mailconfiguration mailConfig = DoctorController.GetMailConfiguration(CurrentDoctorGuid);
-            List<string> sendTo = new List<string> { CurrentStudent.school.Email };
-            List<string> sendToCC = new List<string> { };
-            if (chkBxSendStudent.IsChecked == true)
+            if (!Mail.IsValidClient(mailConfig))
             {
-                sendToCC.Add(CurrentStudent.Email);
+                ShowAlert("Erreur: mauvaise configuration de mail. Veuillez enregistrer votre configuration dans les paramètres profil.");
             }
-            string subject = txtSubject.Text;
-            StringBuilder body = new StringBuilder();
-            body.Append(txtBody.Text);
-            if (Utils.Mail.Send(mailConfig, sendTo, sendToCC, subject, body, null, false))
+            else
             {
-                ShowAlert("Votre mail bien été envoyé.");
-            } else
-            {
-                ShowAlert("Erreur: votre mail n'a pas pu être envoyé.");
+                List<string> sendTo = new List<string> { CurrentStudent.school.Email };
+                List<string> sendToCC = new List<string> { };
+                if (chkBxSendStudent.IsChecked == true)
+                {
+                    sendToCC.Add(CurrentStudent.Email);
+                }
+                string subject = txtSubject.Text;
+                StringBuilder body = new StringBuilder();
+                body.Append(txtBody.Text);
+                if (Utils.Mail.Send(mailConfig, sendTo, sendToCC, subject, body, null, false))
+                {
+                    ShowAlert("Votre mail bien été envoyé.");
+                }
+                else
+                {
+                    ShowAlert("Erreur: votre mail n'a pas pu être envoyé.");
+                }
             }
         }
 
