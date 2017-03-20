@@ -73,7 +73,7 @@ namespace AbsMedical.Forms
 
         private void BindEmailConfiguration()
         {
-            MailConfiguration mailConf = DoctorController.GetMailConfiguration(CurrentDoctor.Guid);
+            MailConfiguration mailConf = DoctorController.GetMailConfiguration(CurrentDoctor.MailConfigurationGuid);
             if(mailConf != null)
             {
                 txtEmailConf.Text = mailConf.Email;

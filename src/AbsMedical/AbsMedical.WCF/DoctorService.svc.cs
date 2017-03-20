@@ -28,6 +28,7 @@ namespace AbsMedical.WCF
             }
             else
             {
+                return null;
                 throw new Exception("Invalid Doctor Email/Password");
             }
         }
@@ -47,6 +48,7 @@ namespace AbsMedical.WCF
             }
             else
             {
+                return null;
                 throw new Exception("Invalid Doctor Id");
             }
             

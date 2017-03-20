@@ -104,8 +104,8 @@ namespace AbsMedical.Forms
 
         private void btnSend_Click(object sender, RoutedEventArgs e)
         {
-            MailConfiguration mailConfig = DoctorController.GetMailConfiguration(CurrentDoctorGuid);
-            if (!Mail.IsValidClient(mailConfig))
+            MailConfiguration mailConfig = DoctorController.GetMailConfiguration(CurrentDoctor.MailConfigurationGuid);
+            if (mailConfig == null)
             {
                 ShowAlert("Error: Wrong mail configuration. Change your configuration in your profile settings.");
             }
