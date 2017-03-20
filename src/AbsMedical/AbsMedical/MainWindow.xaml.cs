@@ -17,6 +17,7 @@ using AbsMedical.Controllers;
 using AbsMedical.Forms;
 using AbsMedical.Utils;
 using MahApps.Metro.Controls;
+using AbsMedical.DoctorServiceReference;
 
 namespace AbsMedical
 {
@@ -53,7 +54,7 @@ namespace AbsMedical
             string password = txtPassword.Password.ToString();
             string email = txtEmail.Text;
 
-            doctor currentDoctor = DoctorController.Find(email, password);
+            Doctor currentDoctor = DoctorController.Find(email, password);
 
             if (currentDoctor != null)
             {

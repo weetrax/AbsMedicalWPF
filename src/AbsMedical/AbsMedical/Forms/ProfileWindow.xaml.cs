@@ -1,5 +1,6 @@
 ﻿using AbsMedical.Controllers;
 using AbsMedical.Data;
+using AbsMedical.DoctorServiceReference;
 using AbsMedical.Shared;
 using AbsMedical.Utils;
 using MahApps.Metro.Controls;
@@ -27,7 +28,7 @@ namespace AbsMedical.Forms
     public partial class ProfileWindow : MetroWindow
     {
         #region Properties
-        private doctor CurrentDoctor
+        private Doctor CurrentDoctor
         {
             get
             {
@@ -47,9 +48,9 @@ namespace AbsMedical.Forms
             BindDoctorData();
         }
 
-        private mailconfiguration GetMailConfigurationValues()
+        private MailConfiguration GetMailConfigurationValues()
         {
-            mailconfiguration mailConfig = new mailconfiguration()
+            MailConfiguration mailConfig = new MailConfiguration()
             {
                 Guid = Guid.NewGuid().ToString(),
                 Email = txtEmailConf.Text,
@@ -72,7 +73,7 @@ namespace AbsMedical.Forms
 
         private void BindEmailConfiguration()
         {
-            mailconfiguration mailConf = DoctorController.GetMailConfiguration(CurrentDoctor.Guid);
+            MailConfiguration mailConf = DoctorController.GetMailConfiguration(CurrentDoctor.Guid);
             if(mailConf != null)
             {
                 txtEmailConf.Text = mailConf.Email;
@@ -110,7 +111,7 @@ namespace AbsMedical.Forms
 
         private void btnSaveProfil_Click(object sender, RoutedEventArgs e)
         {
-            doctor editedDoctor = new doctor()
+            Doctor editedDoctor = new Doctor()
             {
                 Guid = CurrentDoctor.Guid,
                 Password = CurrentDoctor.Password,

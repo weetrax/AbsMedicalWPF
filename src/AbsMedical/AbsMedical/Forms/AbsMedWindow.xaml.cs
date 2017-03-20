@@ -1,5 +1,6 @@
 ﻿using AbsMedical.Controllers;
 using AbsMedical.Data;
+using AbsMedical.DoctorServiceReference;
 using AbsMedical.Utils;
 using iTextSharp.text;
 using MahApps.Metro.Controls;
@@ -32,7 +33,7 @@ namespace AbsMedical.Forms
             get;
         }
 
-        private doctor CurrentDoctor
+        private Doctor CurrentDoctor
         {
             get
             {
@@ -103,7 +104,7 @@ namespace AbsMedical.Forms
 
         private void btnSend_Click(object sender, RoutedEventArgs e)
         {
-            mailconfiguration mailConfig = DoctorController.GetMailConfiguration(CurrentDoctorGuid);
+            MailConfiguration mailConfig = DoctorController.GetMailConfiguration(CurrentDoctorGuid);
             List<string> sendTo = new List<string> { CurrentStudent.school.Email };
             List<string> sendToCC = new List<string> { };
             if (chkBxSendStudent.IsChecked == true)

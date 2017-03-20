@@ -7,6 +7,7 @@ using AbsMedical.Data;
 using AbsMedical.Utils;
 using System.Data.Entity.Core;
 using AbsMedical.Shared;
+using AbsMedical.DoctorServiceReference;
 
 namespace AbsMedical.Controllers
 {
@@ -17,11 +18,11 @@ namespace AbsMedical.Controllers
         /// </summary>
         /// <param name="doctorGuid">Identifier of the doctor</param>
         /// <returns>A doctor object</returns>
-        public static doctor Get(string doctorGuid)
+        public static Doctor Get(string doctorGuid)
         {
             using (DoctorServiceReference.DoctorServiceClient serv = new DoctorServiceReference.DoctorServiceClient())
             {
-                return EntityParser.ObjectToEntity(serv.GetDoctor(doctorGuid));
+                return serv.GetDoctor(doctorGuid);
             }
         }
 
@@ -31,11 +32,11 @@ namespace AbsMedical.Controllers
         /// <param name="email">Email of the doctor</param>
         /// <param name="password">Password of the doctor</param>
         /// <returns>A doctor object</returns>
-        public static doctor Find(string email, string password)
+        public static Doctor Find(string email, string password)
         {
             using (DoctorServiceReference.DoctorServiceClient serv = new DoctorServiceReference.DoctorServiceClient())
             {
-                return EntityParser.ObjectToEntity(serv.Find(email, password));
+                return serv.Find(email, password);
             }
         }
 
@@ -44,11 +45,11 @@ namespace AbsMedical.Controllers
         /// </summary>
         /// <param name="doctor">doctor object to add</param>
         /// <returns>Boolean indicating if the insertion was made</returns>
-        public static bool Create(doctor doctor)
+        public static bool Create(Doctor doctor)
         {
             using (DoctorServiceReference.DoctorServiceClient serv = new DoctorServiceReference.DoctorServiceClient())
             {
-                return serv.CreateDoctor(EntityParser.EntityToObject(doctor));
+                return serv.CreateDoctor(doctor);
             }
         }
 
@@ -57,11 +58,11 @@ namespace AbsMedical.Controllers
         /// </summary>
         /// <param name="doctor">doctor object to update</param>
         /// <returns>Boolean indicating if the insertion was made</returns>
-        public static bool Update(doctor doctor)
+        public static bool Update(Doctor doctor)
         {
             using (DoctorServiceReference.DoctorServiceClient serv = new DoctorServiceReference.DoctorServiceClient())
             {
-                return serv.UpdateDoctor(EntityParser.EntityToObject(doctor));
+                return serv.UpdateDoctor(doctor);
             }
         }
 
@@ -84,11 +85,11 @@ namespace AbsMedical.Controllers
         /// </summary>
         /// <param name="doctorGuid">Identifier of the doctor</param>
         /// <returns>A mailconfiguration object</returns>
-        public static mailconfiguration GetMailConfiguration(string confGuid)
+        public static MailConfiguration GetMailConfiguration(string confGuid)
         {
             using (DoctorServiceReference.DoctorServiceClient serv = new DoctorServiceReference.DoctorServiceClient())
             {
-                return EntityParser.ObjectToEntity(serv.GetMailConfiguration(confGuid));
+                return serv.GetMailConfiguration(confGuid);
             }
         }
 
@@ -97,11 +98,11 @@ namespace AbsMedical.Controllers
         /// </summary>
         /// <param name="mailConfig">mailconfiguration object to add</param>
         /// <returns>Boolean indicating if the insertion was made</returns>
-        public static bool RegisterMailConfiguration(mailconfiguration mailConfig, doctor doctor)
+        public static bool RegisterMailConfiguration(MailConfiguration mailConfig, Doctor doctor)
         {
             using (DoctorServiceReference.DoctorServiceClient serv = new DoctorServiceReference.DoctorServiceClient())
             {
-                return serv.RegisterMailConfiguration(EntityParser.EntityToObject(mailConfig), EntityParser.EntityToObject(doctor));
+                return serv.RegisterMailConfiguration(mailConfig, doctor);
             }
         }
 
