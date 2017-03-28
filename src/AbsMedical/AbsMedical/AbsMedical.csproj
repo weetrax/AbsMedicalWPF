@@ -131,7 +131,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
-    <Compile Include="Utils\EntityParser.cs" />
     <Compile Include="Utils\Mail.cs" />
     <Compile Include="Utils\PDF.cs" />
     <Page Include="Forms\AbsMedWindow.xaml">
