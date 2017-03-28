@@ -21,7 +21,7 @@ namespace AbsMedical.Data
             this.student = new HashSet<student>();
         }
     
-        public int Id { get; set; }
+        public string Id { get; set; }
         public string Name { get; set; }
     
         public virtual ICollection<doctor> doctor { get; set; }

@@ -20,19 +20,19 @@ namespace AbsMedical.Data
         }
     
         public string Guid { get; set; }
-        public string Lastname { get; set; }
+        public string StudentId { get; set; }
         public string Firstname { get; set; }
+        public string Lastname { get; set; }
         public string Email { get; set; }
         public string Phone { get; set; }
         public System.DateTime Birthdate { get; set; }
         public string Birthplace { get; set; }
-        public string StudentId { get; set; }
-        public string SocialSecurityNumber { get; set; }
         public string Address { get; set; }
         public string PostalCode { get; set; }
         public string City { get; set; }
-        public int CountryId { get; set; }
+        public string CountryId { get; set; }
         public string SchoolGuid { get; set; }
+        public string SocialSecurityNumber { get; set; }
     
         public virtual ICollection<absmedical> absmedical { get; set; }
         public virtual country country { get; set; }

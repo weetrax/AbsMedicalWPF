@@ -20,15 +20,15 @@ namespace AbsMedical.Data
         }
     
         public string Guid { get; set; }
-        public string Lastname { get; set; }
         public string Firstname { get; set; }
+        public string Lastname { get; set; }
+        public string Password { get; set; }
+        public string Email { get; set; }
+        public string Phone { get; set; }
         public string Address { get; set; }
         public string PostalCode { get; set; }
         public string City { get; set; }
-        public string Email { get; set; }
-        public string Password { get; set; }
-        public string Phone { get; set; }
-        public int CountryId { get; set; }
+        public string CountryId { get; set; }
         public string MailConfigurationGuid { get; set; }
     
         public virtual ICollection<absmedical> absmedical { get; set; }

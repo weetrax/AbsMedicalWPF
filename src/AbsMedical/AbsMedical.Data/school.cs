@@ -24,9 +24,9 @@ namespace AbsMedical.Data
         public string Address { get; set; }
         public string PostalCode { get; set; }
         public string City { get; set; }
+        public string CountryId { get; set; }
         public string Email { get; set; }
         public string Phone { get; set; }
-        public int CountryId { get; set; }
     
         public virtual country country { get; set; }
         public virtual ICollection<student> student { get; set; }

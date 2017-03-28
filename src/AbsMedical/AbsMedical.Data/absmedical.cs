@@ -14,15 +14,14 @@ namespace AbsMedical.Data
     
     public partial class absmedical
     {
+        public System.DateTime VisitDate { get; set; }
+        public string StudentGuid { get; set; }
+        public string DoctorGuid { get; set; }
         public Nullable<System.DateTime> StartDate { get; set; }
         public Nullable<System.DateTime> EndDate { get; set; }
         public string Note { get; set; }
-        public string DoctorGuid { get; set; }
-        public System.DateTime VisitDate { get; set; }
-        public string StudentGuid { get; set; }
     
         public virtual doctor doctor { get; set; }
         public virtual student student { get; set; }
-        public virtual visit visit { get; set; }
     }
 }
