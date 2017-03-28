@@ -85,5 +85,49 @@ namespace AbsMedical.WCF
                 return null;
             }
         }
+
+        public static student ObjectToEntity(Student student)
+        {
+            AbsMedical.Data.student stu = new AbsMedical.Data.student()
+            {
+                Guid = student.Guid,
+                Lastname = student.Lastname,
+                Firstname = student.Firstname,
+                Email = student.Email,
+                Phone = student.Phone,
+                Birthdate = student.Birthdate,
+                Birthplace = student.Birthplace,
+                StudentId = student.StudentId,
+                SocialSecurityNumber = student.SocialSecurityNumber,
+                Address = student.Address,
+                PostalCode = student.PostalCode,
+                City = student.City,
+                CountryId = student.CountryId,
+                SchoolGuid = student.SchoolGuid
+            };
+            return stu;
+        }
+
+        public static Student EntityToObject(student student)
+        {
+            Student stu = new Student()
+            {
+                Guid = student.Guid,
+                Lastname = student.Lastname,
+                Firstname = student.Firstname,
+                Email = student.Email,
+                Phone = student.Phone,
+                Birthdate = student.Birthdate,
+                Birthplace = student.Birthplace,
+                StudentId = student.StudentId,
+                SocialSecurityNumber = student.SocialSecurityNumber,
+                Address = student.Address,
+                PostalCode = student.PostalCode,
+                City = student.City,
+                CountryId = student.CountryId,
+                SchoolGuid = student.SchoolGuid
+            };
+            return stu;
+        }
     }
 }

@@ -107,6 +107,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="DoctorService.svc" />
+    <Content Include="StudentService.svc" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -115,7 +116,11 @@
     </Compile>
     <Compile Include="EntityParser.cs" />
     <Compile Include="IDoctorService.cs" />
+    <Compile Include="IStudentService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StudentService.svc.cs">
+      <DependentUpon>StudentService.svc</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
