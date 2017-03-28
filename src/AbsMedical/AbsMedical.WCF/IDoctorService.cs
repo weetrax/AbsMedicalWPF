@@ -54,7 +54,7 @@ namespace AbsMedical.WCF
         [DataMember]
         public string City { get; set; }
         [DataMember]
-        public string CountryId { get; set; }
+        public int CountryId { get; set; }
         [DataMember]
         public string Phone { get; set; }
         [DataMember]
