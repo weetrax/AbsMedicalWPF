@@ -122,7 +122,8 @@ namespace AbsMedical.Forms
                 CountryId = Convert.ToInt32(cbCountries.SelectedValue),
                 City = txtCity.Text,
                 PostalCode = txtPostalCode.Text,
-                Phone = txtPhone.Text
+                Phone = txtPhone.Text,
+                MailConfigurationGuid = CurrentDoctor.MailConfigurationGuid
             };
 
             if (DoctorController.Update(editedDoctor))
