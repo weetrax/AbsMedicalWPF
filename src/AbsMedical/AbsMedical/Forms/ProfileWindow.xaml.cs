@@ -119,7 +119,7 @@ namespace AbsMedical.Forms
                 Lastname = txtLastname.Text,
                 Email = txtEmail.Text,
                 Address = txtAddress.Text,
-                CountryId = Convert.ToInt32(cbCountries.SelectedValue),
+                CountryId = cbCountries.SelectedValue.ToString(),
                 City = txtCity.Text,
                 PostalCode = txtPostalCode.Text,
                 Phone = txtPhone.Text,

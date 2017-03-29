@@ -29,7 +29,7 @@ namespace AbsMedical.DoctorServiceReference {
         private string CityField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int CountryIdField;
+        private string CountryIdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string EmailField;
@@ -92,12 +92,12 @@ namespace AbsMedical.DoctorServiceReference {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public int CountryId {
+        public string CountryId {
             get {
                 return this.CountryIdField;
             }
             set {
-                if ((this.CountryIdField.Equals(value) != true)) {
+                if ((object.ReferenceEquals(this.CountryIdField, value) != true)) {
                     this.CountryIdField = value;
                     this.RaisePropertyChanged("CountryId");
                 }
