@@ -8,6 +8,7 @@ using AbsMedical.Utils;
 using System.Data.Entity.Core;
 using AbsMedical.Shared;
 using AbsMedical.DoctorServiceReference;
+using System.ServiceModel;
 
 namespace AbsMedical.Controllers
 {
@@ -32,12 +33,20 @@ namespace AbsMedical.Controllers
         /// <param name="email">Email of the doctor</param>
         /// <param name="password">Password of the doctor</param>
         /// <returns>A doctor object</returns>
-        public static Doctor Find(string email, string password)
+        public static Doctor Find(string email, string password) 
         {
-            using (DoctorServiceReference.DoctorServiceClient serv = new DoctorServiceReference.DoctorServiceClient())
+            try
             {
-                return serv.Find(email, password);
+                using (DoctorServiceReference.DoctorServiceClient serv = new DoctorServiceReference.DoctorServiceClient())
+                {
+                    return serv.Find(email, password);
+                }
             }
+            catch (ServiceActivationException)
+            {
+                return null;
+            }
+           
         }
 
         /// <summary>
