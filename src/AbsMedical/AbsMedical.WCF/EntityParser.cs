@@ -129,5 +129,33 @@ namespace AbsMedical.WCF
             };
             return stu;
         }
+
+        public static absmedical ObjectToEntity(MedicalAbs abs)
+        {
+            absmedical absMedical = new absmedical()
+            {
+                VisitDate = abs.VisitDate,
+                StudentGuid = abs.StudentGuid,
+                EndDate = abs.EndDate,
+                StartDate = abs.StartDate,
+                Note = abs.Note,
+                DoctorGuid = abs.DoctorGuid
+            };
+            return absMedical;
+        }
+
+        public static MedicalAbs EntityToObject(absmedical abs)
+        {
+            MedicalAbs absMedical = new MedicalAbs()
+            {
+                VisitDate = abs.VisitDate,
+                StudentGuid = abs.StudentGuid,
+                EndDate = abs.EndDate,
+                StartDate = abs.StartDate,
+                Note = abs.Note,
+                DoctorGuid = abs.DoctorGuid
+            };
+            return absMedical;
+        }
     }
 }

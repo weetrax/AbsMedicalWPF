@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="49b2018e-3946-4298-be14-cb1f1a7f2be4" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:2797/AbsMedicalService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="AbsMedicalService.wsdl" MetadataType="Wsdl" ID="7a6d2d73-904b-4f4f-8ed7-3eb6d297486f" SourceId="1" SourceUrl="http://localhost:2797/AbsMedicalService.svc?wsdl" />
+    <MetadataFile FileName="AbsMedicalService.xsd" MetadataType="Schema" ID="b54970e7-1f09-44d5-abc3-a7c3dff32985" SourceId="1" SourceUrl="http://localhost:2797/AbsMedicalService.svc?xsd=xsd1" />
+    <MetadataFile FileName="AbsMedicalService.disco" MetadataType="Disco" ID="6b2c09a5-d426-482f-ba7d-3cc99d5e89f6" SourceId="1" SourceUrl="http://localhost:2797/AbsMedicalService.svc?disco" />
+    <MetadataFile FileName="AbsMedicalService1.xsd" MetadataType="Schema" ID="ecb6386f-b57a-4803-a831-f0cbbdbc09a0" SourceId="1" SourceUrl="http://localhost:2797/AbsMedicalService.svc?xsd=xsd2" />
+    <MetadataFile FileName="AbsMedicalService2.xsd" MetadataType="Schema" ID="81fbe3e9-5abe-4cf2-b34c-dc1633e0a8ab" SourceId="1" SourceUrl="http://localhost:2797/AbsMedicalService.svc?xsd=xsd0" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>
