@@ -449,7 +449,7 @@ namespace AbsMedical.NFC
                 case SCARD_W_UNSUPPORTED_CARD:
                     return ("The reader cannot communicate with the card, due to ATR string configuration conflicts.");
                 default:
-                    return ("?");
+                    return ("None reader found.");
             }
         }
     }
