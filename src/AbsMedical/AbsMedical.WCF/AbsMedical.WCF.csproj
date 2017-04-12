@@ -107,6 +107,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="AbsMedicalService.svc" />
+    <Content Include="CountryService.svc" />
     <Content Include="DoctorService.svc" />
     <Content Include="SchoolService.svc" />
     <Content Include="StudentService.svc" />
@@ -116,11 +117,15 @@
     <Compile Include="AbsMedicalService.svc.cs">
       <DependentUpon>AbsMedicalService.svc</DependentUpon>
     </Compile>
+    <Compile Include="CountryService.svc.cs">
+      <DependentUpon>CountryService.svc</DependentUpon>
+    </Compile>
     <Compile Include="DoctorService.svc.cs">
       <DependentUpon>DoctorService.svc</DependentUpon>
     </Compile>
     <Compile Include="EntityParser.cs" />
     <Compile Include="IAbsMedicalService.cs" />
+    <Compile Include="ICountryService.cs" />
     <Compile Include="IDoctorService.cs" />
     <Compile Include="ISchoolService.cs" />
     <Compile Include="IStudentService.cs" />

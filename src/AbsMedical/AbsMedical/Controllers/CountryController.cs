@@ -1,4 +1,5 @@
 ﻿using AbsMedical.Data;
+using AbsMedical.WCF;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,20 +10,18 @@ namespace AbsMedical.Controllers
 {
     public static class CountryController
     {
-        public static List<country> GetCountries()
+        public static List<Country> GetCountries()
         {
-            using (rfidEntities db = new rfidEntities())
+            using (CountryServiceReference.CountryServiceClient serv = new CountryServiceReference.CountryServiceClient())
             {
-                return db.country.ToList();
+                return serv.GetCountries();
             }
         }
 
-        public static country GetCountry(string name)
+        public static Country GetCountry(string id)
         {
-            using (rfidEntities db = new rfidEntities())
-            {
-                return db.country.FirstOrDefault(c => c.Name == name);
-            }
+            var query = (from c in GetCountries() where c.Id == id select c).FirstOrDefault();
+            return query;
         }
     }
 }

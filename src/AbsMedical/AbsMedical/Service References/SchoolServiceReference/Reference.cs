@@ -20,6 +20,18 @@ namespace AbsMedical.SchoolServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISchoolService/GetSchool", ReplyAction="http://tempuri.org/ISchoolService/GetSchoolResponse")]
         System.Threading.Tasks.Task<AbsMedical.WCF.School> GetSchoolAsync(string schoolGuid);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISchoolService/GetSchoolsByCountry", ReplyAction="http://tempuri.org/ISchoolService/GetSchoolsByCountryResponse")]
+        System.Collections.Generic.List<AbsMedical.WCF.School> GetSchoolsByCountry(string countryId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISchoolService/GetSchoolsByCountry", ReplyAction="http://tempuri.org/ISchoolService/GetSchoolsByCountryResponse")]
+        System.Threading.Tasks.Task<System.Collections.Generic.List<AbsMedical.WCF.School>> GetSchoolsByCountryAsync(string countryId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISchoolService/GetSchools", ReplyAction="http://tempuri.org/ISchoolService/GetSchoolsResponse")]
+        System.Collections.Generic.List<AbsMedical.WCF.School> GetSchools();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISchoolService/GetSchools", ReplyAction="http://tempuri.org/ISchoolService/GetSchoolsResponse")]
+        System.Threading.Tasks.Task<System.Collections.Generic.List<AbsMedical.WCF.School>> GetSchoolsAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -55,6 +67,22 @@ namespace AbsMedical.SchoolServiceReference {
         
         public System.Threading.Tasks.Task<AbsMedical.WCF.School> GetSchoolAsync(string schoolGuid) {
             return base.Channel.GetSchoolAsync(schoolGuid);
+        }
+        
+        public System.Collections.Generic.List<AbsMedical.WCF.School> GetSchoolsByCountry(string countryId) {
+            return base.Channel.GetSchoolsByCountry(countryId);
+        }
+        
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<AbsMedical.WCF.School>> GetSchoolsByCountryAsync(string countryId) {
+            return base.Channel.GetSchoolsByCountryAsync(countryId);
+        }
+        
+        public System.Collections.Generic.List<AbsMedical.WCF.School> GetSchools() {
+            return base.Channel.GetSchools();
+        }
+        
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<AbsMedical.WCF.School>> GetSchoolsAsync() {
+            return base.Channel.GetSchoolsAsync();
         }
     }
 }

@@ -15,4 +15,30 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="GetSchoolsByCountry">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="countryId" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetSchoolsByCountryResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/AbsMedical.WCF" minOccurs="0" name="GetSchoolsByCountryResult" nillable="true" type="q2:ArrayOfSchool" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetSchools">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetSchoolsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/AbsMedical.WCF" minOccurs="0" name="GetSchoolsResult" nillable="true" type="q3:ArrayOfSchool" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
 </xs:schema>

@@ -157,7 +157,8 @@ namespace AbsMedical.WCF
                 CountryId = school.CountryId,
                 Email = school.Email,
                 Phone = school.Phone,
-                City = school.City
+                City = school.City,
+                DisplayedName = school.Name + " - " + school.Address + " - " + school.PostalCode,
             };
             return s;
         }
@@ -188,6 +189,17 @@ namespace AbsMedical.WCF
                 DoctorGuid = abs.DoctorGuid
             };
             return absMedical;
+        }
+
+        public static Country EntityToObject(country country)
+        {
+            Country c = new Country()
+            {
+                Id = country.Id,
+                Name = country.Name
+            };
+            return c;
+
         }
     }
 }

@@ -36,7 +36,7 @@
 
     <!-- Main content -->
     <Grid RenderTransformOrigin="0.449,0.526">
-        <GroupBox x:Name="groupBox" Margin="10,20,0,0" Header="My profile" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="29" Canvas.Top="40" Width="343" Height="474">
+        <GroupBox x:Name="groupBox" Margin="10,20,0,0" Header="My profile" HorizontalAlignment="Left" VerticalAlignment="Top" Width="343" Height="474">
             <Canvas>
                 <!-- Firstname -->
                 <Label x:Name="lblFirstname"  Content="Firstname: " Canvas.Top="8" Canvas.Left="5" Width="129"></Label>
@@ -81,7 +81,7 @@
             </Canvas>
         </GroupBox>
 
-        <GroupBox x:Name="groupBoxEmailConf" Margin="371,20,0,0" Header="Email configuration" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="29" Canvas.Top="40" Width="461" Height="215">
+        <GroupBox x:Name="groupBoxEmailConf" Margin="371,20,0,0" Header="Email configuration" HorizontalAlignment="Left" VerticalAlignment="Top" Width="461" Height="215">
             <Canvas>
                 <!-- Email configuration -->
                 <Label x:Name="lblEmailConf"  Content="Email: " Canvas.Top="5" Canvas.Left="5" Width="75"></Label>

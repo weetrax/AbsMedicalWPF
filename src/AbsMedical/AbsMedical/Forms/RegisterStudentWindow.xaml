@@ -10,8 +10,94 @@
         BorderBrush="{DynamicResource AccentColorBrush}"
         BorderThickness="1"
         Icon="/Images/absmedical.ico"
-        Title="AbsMedical - Register a new student" Height="582" Width="850" ResizeMode="NoResize">
+        Title="AbsMedical - New student" Height="582" Width="782.636" ResizeMode="NoResize">
+
+    <!-- Window Top right label -->
+    <Controls:MetroWindow.RightWindowCommands>
+        <Controls:WindowCommands ShowLastSeparator="False">
+            <Label x:Name="lblLogedAs" Foreground="White" Content=""/>
+        </Controls:WindowCommands>
+    </Controls:MetroWindow.RightWindowCommands>
+    
+    <Window.Resources>
+        <ResourceDictionary>
+            <Dialog:CustomDialog x:Key="CustomCloseDialog" x:Name="CustomCloseDialog">
+                <StackPanel>
+                    <TextBlock x:Name="MessageTextBlock" Height="30"
+                                   Foreground="{DynamicResource AccentColorBrush}"
+                                   TextWrapping="Wrap" />
+                    <Button Click="btnCloseCustomDialog_Click" Content="Close"/>
+                </StackPanel>
+            </Dialog:CustomDialog>
+        </ResourceDictionary>
+    </Window.Resources>
     <Grid>
-        
+        <!-- Basic information-->
+        <GroupBox x:Name="gbBasicInformation" Margin="10,20,0,0" Header="Basic Information" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="29" Canvas.Top="40" Width="343" Height="485">
+            <Canvas>
+                <!-- Firstname -->
+                <Label x:Name="lblFirstname"  Content="Firstname: " Canvas.Top="8" Canvas.Left="5" Width="129"></Label>
+                <TextBox x:Name="txtFirstname" Canvas.Top="10" Width="185" Canvas.Left="134"></TextBox>
+
+                <!-- Lastname -->
+                <Label x:Name="lblLastname"  Content="Lastname: " Canvas.Top="50" Canvas.Left="5" Width="129"></Label>
+                <TextBox x:Name="txtLastname" Canvas.Top="50" Width="185" Canvas.Left="134"></TextBox>
+
+                <!-- Birthdate -->
+                <Label x:Name="lblBirthDate" Content="Birthdate: " Canvas.Top="92" Canvas.Left="5" Width="129"></Label>
+                <DatePicker x:Name="txtBirthdate"  Canvas.Top="92" Width="185" Canvas.Left="134"></DatePicker>
+
+                <!-- Birthdate -->
+                <Label x:Name="lblBirthPlace" Content="Birthplace: " Canvas.Top="134" Canvas.Left="5" Width="129"></Label>
+                <TextBox x:Name="txtBirthplace" Canvas.Top="134" Width="185" Canvas.Left="134"></TextBox>
+
+                <!-- Email -->
+                <Label x:Name="lblEmail"  Content="Email: " Canvas.Top="176" Canvas.Left="5" Width="129"></Label>
+                <TextBox x:Name="txtEmail" Canvas.Top="176" Width="185" Canvas.Left="134"></TextBox>
+
+                <!-- Adress -->
+                <Label x:Name="lblAddress"  Content="Address: " Canvas.Top="216" Canvas.Left="5" Width="129"></Label>
+                <TextBox x:Name="txtAddress" Canvas.Top="216" Width="185" Canvas.Left="134"></TextBox>
+
+                <!-- Country -->
+                <Label x:Name="lblCountry"  Content="Country: " Canvas.Top="261" Canvas.Left="5" Width="129"></Label>
+                <ComboBox x:Name="cbCountries" Canvas.Top="261" Canvas.Left="134" Width="185"></ComboBox>
+
+                <!-- City-->
+                <Label x:Name="lblCity" Content="City: " Canvas.Top="301" Canvas.Left="5" Width="129"></Label>
+                <TextBox x:Name="txtCity" Canvas.Top="301" Width="185" Canvas.Left="134"></TextBox>
+
+                <!-- Postal Code -->
+                <Label x:Name="lblPostalCode" Content="Postal code:" Canvas.Top="341" Canvas.Left="5" Width="129" RenderTransformOrigin="0.5,0.5"></Label>
+                <TextBox x:Name="txtPostalCode" Canvas.Top="341" Width="185" Canvas.Left="134"></TextBox>
+
+                <!-- Phone -->
+                <Label x:Name="lblPhone" Content="Phone number:" Canvas.Top="381" Canvas.Left="5" Width="129"></Label>
+                <TextBox x:Name="txtPhone" Canvas.Top="381" Width="185" Canvas.Left="134"></TextBox>
+
+                <!-- Message Profile -->
+                <Label x:Name="lblMessageProfile" Content="" Canvas.Top="397" Canvas.Left="10" Width="161"></Label>
+            </Canvas>
+        </GroupBox>
+        <!--groupbox medial information-->
+        <GroupBox x:Name="gbMedicalInformation" Margin="372,20,0,0" Header="Medical Information" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="9" Canvas.Top="40" Width="393" Height="83">
+            <Canvas>
+                <Label x:Name="lblSocialSecurityNumber" Content="Social Security Number:" Canvas.Top="5" Canvas.Left="5"></Label>
+                <TextBox x:Name="txtSocialSecurityNumber" Canvas.Top="6" Canvas.Left="153" Width="218"></TextBox>
+            </Canvas>
+        </GroupBox>
+        <!--groupbox school-->
+        <GroupBox x:Name="gbSchool" Margin="372,130,0,0" Header="School" HorizontalAlignment="Left" VerticalAlignment="Top" Width="393" Height="221">
+            <Canvas>
+                <Label x:Name="lblSchoolCountry" Content="Country:" Canvas.Top="5" Canvas.Left="5"></Label>
+                <ComboBox x:Name="cbSchoolCountry" Canvas.Top="5" Canvas.Left="153" Width="218" SelectionChanged="cbSchoolCountry_SelectionChanged"></ComboBox>
+
+                <Label x:Name="lblSchoolName" Content="Name:" Canvas.Top="47" Canvas.Left="5"></Label>
+                <TextBox x:Name="txtSchoolName" Canvas.Top="47" Canvas.Left="153" Width="218" SelectionChanged="txtSchoolName_SelectionChanged"></TextBox>
+
+                <Label x:Name="lblSchool" Content="School:" Canvas.Top="89" Canvas.Left="5"></Label>
+                <ComboBox x:Name="cbSchool" Canvas.Top="89" Canvas.Left="153" Width="218"></ComboBox>
+            </Canvas>
+        </GroupBox>
     </Grid>
 </Controls:MetroWindow>

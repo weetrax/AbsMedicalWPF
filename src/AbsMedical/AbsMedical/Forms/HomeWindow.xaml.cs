@@ -57,7 +57,7 @@ namespace AbsMedical.Forms
         #region Click Event
         private void tileRegisterStudent_Click(object sender, RoutedEventArgs e)
         {
-            RegisterStudentWindow window = new RegisterStudentWindow();
+            RegisterStudentWindow window = new RegisterStudentWindow(lblLogedAs.Content.ToString());
             window.Show();
         }
 

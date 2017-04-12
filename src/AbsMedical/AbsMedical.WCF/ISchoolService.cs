@@ -12,6 +12,12 @@ namespace AbsMedical.WCF
     {
         [OperationContract]
         School GetSchool(string schoolGuid);
+
+        [OperationContract]
+        List<School> GetSchoolsByCountry(string countryId);
+
+        [OperationContract]
+        List<School> GetSchools();
     }
 
     [Serializable]
@@ -34,5 +40,7 @@ namespace AbsMedical.WCF
         public string Email { get; set; }
         [DataMember]
         public string Phone { get; set; }
+        [DataMember]
+        public string DisplayedName { get;  set;}
     }
 }

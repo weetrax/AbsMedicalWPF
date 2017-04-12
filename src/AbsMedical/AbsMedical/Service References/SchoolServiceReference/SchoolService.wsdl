@@ -13,16 +13,54 @@
   <wsdl:message name="ISchoolService_GetSchool_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetSchoolResponse" />
   </wsdl:message>
+  <wsdl:message name="ISchoolService_GetSchoolsByCountry_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetSchoolsByCountry" />
+  </wsdl:message>
+  <wsdl:message name="ISchoolService_GetSchoolsByCountry_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSchoolsByCountryResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISchoolService_GetSchools_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetSchools" />
+  </wsdl:message>
+  <wsdl:message name="ISchoolService_GetSchools_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSchoolsResponse" />
+  </wsdl:message>
   <wsdl:portType name="ISchoolService">
     <wsdl:operation name="GetSchool">
       <wsdl:input wsaw:Action="http://tempuri.org/ISchoolService/GetSchool" message="tns:ISchoolService_GetSchool_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ISchoolService/GetSchoolResponse" message="tns:ISchoolService_GetSchool_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSchoolsByCountry">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISchoolService/GetSchoolsByCountry" message="tns:ISchoolService_GetSchoolsByCountry_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISchoolService/GetSchoolsByCountryResponse" message="tns:ISchoolService_GetSchoolsByCountry_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSchools">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISchoolService/GetSchools" message="tns:ISchoolService_GetSchools_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISchoolService/GetSchoolsResponse" message="tns:ISchoolService_GetSchools_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_ISchoolService" type="tns:ISchoolService">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="GetSchool">
       <soap:operation soapAction="http://tempuri.org/ISchoolService/GetSchool" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSchoolsByCountry">
+      <soap:operation soapAction="http://tempuri.org/ISchoolService/GetSchoolsByCountry" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSchools">
+      <soap:operation soapAction="http://tempuri.org/ISchoolService/GetSchools" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

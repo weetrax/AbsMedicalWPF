@@ -5,6 +5,7 @@
       <xs:element minOccurs="0" name="Address" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="City" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="CountryId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DisplayedName" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Guid" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
@@ -13,4 +14,10 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="School" nillable="true" type="tns:School" />
+  <xs:complexType name="ArrayOfSchool">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="School" nillable="true" type="tns:School" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSchool" nillable="true" type="tns:ArrayOfSchool" />
 </xs:schema>

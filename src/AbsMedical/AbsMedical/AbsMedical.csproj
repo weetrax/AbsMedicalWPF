@@ -136,6 +136,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Service References\CountryServiceReference\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Service References\DoctorServiceReference\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -189,6 +194,7 @@
     </Compile>
     <None Include="packages.config" />
     <AppDesigner Include="Properties\" />
+    <None Include="Properties\DataSources\AbsMedical.WCF.Country.datasource" />
     <None Include="Properties\DataSources\AbsMedical.WCF.Doctor.datasource" />
     <None Include="Properties\DataSources\AbsMedical.WCF.MailConfiguration.datasource" />
     <None Include="Properties\DataSources\AbsMedical.WCF.School.datasource" />
@@ -201,6 +207,16 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\AbsMedicalServiceReference\AbsMedicalService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\CountryServiceReference\CountryService.wsdl" />
+    <None Include="Service References\CountryServiceReference\CountryService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\CountryServiceReference\CountryService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\CountryServiceReference\CountryService2.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\DoctorServiceReference\DoctorService.wsdl" />
@@ -263,6 +279,7 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\AbsMedicalServiceReference\" />
+    <WCFMetadataStorage Include="Service References\CountryServiceReference\" />
     <WCFMetadataStorage Include="Service References\DoctorServiceReference\" />
     <WCFMetadataStorage Include="Service References\SchoolServiceReference\" />
     <WCFMetadataStorage Include="Service References\StudentServiceReference\" />
@@ -323,6 +340,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\SchoolServiceReference\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\CountryServiceReference\CountryService.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\CountryServiceReference\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\CountryServiceReference\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\CountryServiceReference\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
