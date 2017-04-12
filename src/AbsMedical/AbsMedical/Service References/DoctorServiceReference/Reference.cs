@@ -9,345 +9,29 @@
 //------------------------------------------------------------------------------
 
 namespace AbsMedical.DoctorServiceReference {
-    using System.Runtime.Serialization;
-    using System;
     
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Doctor", Namespace="http://schemas.datacontract.org/2004/07/AbsMedical.WCF")]
-    [System.SerializableAttribute()]
-    public partial class Doctor : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string AddressField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string CityField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string CountryIdField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string EmailField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string FirstnameField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string GuidField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string LastnameField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string MailConfigurationGuidField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string PasswordField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string PhoneField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string PostalCodeField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Address {
-            get {
-                return this.AddressField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.AddressField, value) != true)) {
-                    this.AddressField = value;
-                    this.RaisePropertyChanged("Address");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string City {
-            get {
-                return this.CityField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.CityField, value) != true)) {
-                    this.CityField = value;
-                    this.RaisePropertyChanged("City");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string CountryId {
-            get {
-                return this.CountryIdField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.CountryIdField, value) != true)) {
-                    this.CountryIdField = value;
-                    this.RaisePropertyChanged("CountryId");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Email {
-            get {
-                return this.EmailField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.EmailField, value) != true)) {
-                    this.EmailField = value;
-                    this.RaisePropertyChanged("Email");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Firstname {
-            get {
-                return this.FirstnameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.FirstnameField, value) != true)) {
-                    this.FirstnameField = value;
-                    this.RaisePropertyChanged("Firstname");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Guid {
-            get {
-                return this.GuidField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.GuidField, value) != true)) {
-                    this.GuidField = value;
-                    this.RaisePropertyChanged("Guid");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Lastname {
-            get {
-                return this.LastnameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.LastnameField, value) != true)) {
-                    this.LastnameField = value;
-                    this.RaisePropertyChanged("Lastname");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string MailConfigurationGuid {
-            get {
-                return this.MailConfigurationGuidField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.MailConfigurationGuidField, value) != true)) {
-                    this.MailConfigurationGuidField = value;
-                    this.RaisePropertyChanged("MailConfigurationGuid");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Password {
-            get {
-                return this.PasswordField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.PasswordField, value) != true)) {
-                    this.PasswordField = value;
-                    this.RaisePropertyChanged("Password");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Phone {
-            get {
-                return this.PhoneField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.PhoneField, value) != true)) {
-                    this.PhoneField = value;
-                    this.RaisePropertyChanged("Phone");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string PostalCode {
-            get {
-                return this.PostalCodeField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.PostalCodeField, value) != true)) {
-                    this.PostalCodeField = value;
-                    this.RaisePropertyChanged("PostalCode");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="MailConfiguration", Namespace="http://schemas.datacontract.org/2004/07/AbsMedical.WCF")]
-    [System.SerializableAttribute()]
-    public partial class MailConfiguration : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string EmailField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string GuidField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string PasswordField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int PortField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string SmtpField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Email {
-            get {
-                return this.EmailField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.EmailField, value) != true)) {
-                    this.EmailField = value;
-                    this.RaisePropertyChanged("Email");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Guid {
-            get {
-                return this.GuidField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.GuidField, value) != true)) {
-                    this.GuidField = value;
-                    this.RaisePropertyChanged("Guid");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Password {
-            get {
-                return this.PasswordField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.PasswordField, value) != true)) {
-                    this.PasswordField = value;
-                    this.RaisePropertyChanged("Password");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int Port {
-            get {
-                return this.PortField;
-            }
-            set {
-                if ((this.PortField.Equals(value) != true)) {
-                    this.PortField = value;
-                    this.RaisePropertyChanged("Port");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Smtp {
-            get {
-                return this.SmtpField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.SmtpField, value) != true)) {
-                    this.SmtpField = value;
-                    this.RaisePropertyChanged("Smtp");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="DoctorServiceReference.IDoctorService")]
     public interface IDoctorService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDoctorService/GetDoctor", ReplyAction="http://tempuri.org/IDoctorService/GetDoctorResponse")]
-        AbsMedical.DoctorServiceReference.Doctor GetDoctor(string doctorGuid);
+        AbsMedical.WCF.Doctor GetDoctor(string doctorGuid);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDoctorService/GetDoctor", ReplyAction="http://tempuri.org/IDoctorService/GetDoctorResponse")]
-        System.Threading.Tasks.Task<AbsMedical.DoctorServiceReference.Doctor> GetDoctorAsync(string doctorGuid);
+        System.Threading.Tasks.Task<AbsMedical.WCF.Doctor> GetDoctorAsync(string doctorGuid);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDoctorService/Find", ReplyAction="http://tempuri.org/IDoctorService/FindResponse")]
-        AbsMedical.DoctorServiceReference.Doctor Find(string email, string password);
+        AbsMedical.WCF.Doctor Find(string email, string password);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDoctorService/Find", ReplyAction="http://tempuri.org/IDoctorService/FindResponse")]
-        System.Threading.Tasks.Task<AbsMedical.DoctorServiceReference.Doctor> FindAsync(string email, string password);
+        System.Threading.Tasks.Task<AbsMedical.WCF.Doctor> FindAsync(string email, string password);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDoctorService/UpdateDoctor", ReplyAction="http://tempuri.org/IDoctorService/UpdateDoctorResponse")]
-        bool UpdateDoctor(AbsMedical.DoctorServiceReference.Doctor doctor);
+        bool UpdateDoctor(AbsMedical.WCF.Doctor doctor);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDoctorService/UpdateDoctor", ReplyAction="http://tempuri.org/IDoctorService/UpdateDoctorResponse")]
-        System.Threading.Tasks.Task<bool> UpdateDoctorAsync(AbsMedical.DoctorServiceReference.Doctor doctor);
+        System.Threading.Tasks.Task<bool> UpdateDoctorAsync(AbsMedical.WCF.Doctor doctor);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDoctorService/UpdatePassword", ReplyAction="http://tempuri.org/IDoctorService/UpdatePasswordResponse")]
         bool UpdatePassword(string doctorGuid, string newPassword);
@@ -356,22 +40,22 @@ namespace AbsMedical.DoctorServiceReference {
         System.Threading.Tasks.Task<bool> UpdatePasswordAsync(string doctorGuid, string newPassword);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDoctorService/CreateDoctor", ReplyAction="http://tempuri.org/IDoctorService/CreateDoctorResponse")]
-        bool CreateDoctor(AbsMedical.DoctorServiceReference.Doctor doctor);
+        bool CreateDoctor(AbsMedical.WCF.Doctor doctor);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDoctorService/CreateDoctor", ReplyAction="http://tempuri.org/IDoctorService/CreateDoctorResponse")]
-        System.Threading.Tasks.Task<bool> CreateDoctorAsync(AbsMedical.DoctorServiceReference.Doctor doctor);
+        System.Threading.Tasks.Task<bool> CreateDoctorAsync(AbsMedical.WCF.Doctor doctor);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDoctorService/RegisterMailConfiguration", ReplyAction="http://tempuri.org/IDoctorService/RegisterMailConfigurationResponse")]
-        bool RegisterMailConfiguration(AbsMedical.DoctorServiceReference.MailConfiguration conf, AbsMedical.DoctorServiceReference.Doctor doctor);
+        bool RegisterMailConfiguration(AbsMedical.WCF.MailConfiguration conf, AbsMedical.WCF.Doctor doctor);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDoctorService/RegisterMailConfiguration", ReplyAction="http://tempuri.org/IDoctorService/RegisterMailConfigurationResponse")]
-        System.Threading.Tasks.Task<bool> RegisterMailConfigurationAsync(AbsMedical.DoctorServiceReference.MailConfiguration conf, AbsMedical.DoctorServiceReference.Doctor doctor);
+        System.Threading.Tasks.Task<bool> RegisterMailConfigurationAsync(AbsMedical.WCF.MailConfiguration conf, AbsMedical.WCF.Doctor doctor);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDoctorService/GetMailConfiguration", ReplyAction="http://tempuri.org/IDoctorService/GetMailConfigurationResponse")]
-        AbsMedical.DoctorServiceReference.MailConfiguration GetMailConfiguration(string confGuid);
+        AbsMedical.WCF.MailConfiguration GetMailConfiguration(string confGuid);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDoctorService/GetMailConfiguration", ReplyAction="http://tempuri.org/IDoctorService/GetMailConfigurationResponse")]
-        System.Threading.Tasks.Task<AbsMedical.DoctorServiceReference.MailConfiguration> GetMailConfigurationAsync(string confGuid);
+        System.Threading.Tasks.Task<AbsMedical.WCF.MailConfiguration> GetMailConfigurationAsync(string confGuid);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -401,27 +85,27 @@ namespace AbsMedical.DoctorServiceReference {
                 base(binding, remoteAddress) {
         }
         
-        public AbsMedical.DoctorServiceReference.Doctor GetDoctor(string doctorGuid) {
+        public AbsMedical.WCF.Doctor GetDoctor(string doctorGuid) {
             return base.Channel.GetDoctor(doctorGuid);
         }
         
-        public System.Threading.Tasks.Task<AbsMedical.DoctorServiceReference.Doctor> GetDoctorAsync(string doctorGuid) {
+        public System.Threading.Tasks.Task<AbsMedical.WCF.Doctor> GetDoctorAsync(string doctorGuid) {
             return base.Channel.GetDoctorAsync(doctorGuid);
         }
         
-        public AbsMedical.DoctorServiceReference.Doctor Find(string email, string password) {
+        public AbsMedical.WCF.Doctor Find(string email, string password) {
             return base.Channel.Find(email, password);
         }
         
-        public System.Threading.Tasks.Task<AbsMedical.DoctorServiceReference.Doctor> FindAsync(string email, string password) {
+        public System.Threading.Tasks.Task<AbsMedical.WCF.Doctor> FindAsync(string email, string password) {
             return base.Channel.FindAsync(email, password);
         }
         
-        public bool UpdateDoctor(AbsMedical.DoctorServiceReference.Doctor doctor) {
+        public bool UpdateDoctor(AbsMedical.WCF.Doctor doctor) {
             return base.Channel.UpdateDoctor(doctor);
         }
         
-        public System.Threading.Tasks.Task<bool> UpdateDoctorAsync(AbsMedical.DoctorServiceReference.Doctor doctor) {
+        public System.Threading.Tasks.Task<bool> UpdateDoctorAsync(AbsMedical.WCF.Doctor doctor) {
             return base.Channel.UpdateDoctorAsync(doctor);
         }
         
@@ -433,27 +117,27 @@ namespace AbsMedical.DoctorServiceReference {
             return base.Channel.UpdatePasswordAsync(doctorGuid, newPassword);
         }
         
-        public bool CreateDoctor(AbsMedical.DoctorServiceReference.Doctor doctor) {
+        public bool CreateDoctor(AbsMedical.WCF.Doctor doctor) {
             return base.Channel.CreateDoctor(doctor);
         }
         
-        public System.Threading.Tasks.Task<bool> CreateDoctorAsync(AbsMedical.DoctorServiceReference.Doctor doctor) {
+        public System.Threading.Tasks.Task<bool> CreateDoctorAsync(AbsMedical.WCF.Doctor doctor) {
             return base.Channel.CreateDoctorAsync(doctor);
         }
         
-        public bool RegisterMailConfiguration(AbsMedical.DoctorServiceReference.MailConfiguration conf, AbsMedical.DoctorServiceReference.Doctor doctor) {
+        public bool RegisterMailConfiguration(AbsMedical.WCF.MailConfiguration conf, AbsMedical.WCF.Doctor doctor) {
             return base.Channel.RegisterMailConfiguration(conf, doctor);
         }
         
-        public System.Threading.Tasks.Task<bool> RegisterMailConfigurationAsync(AbsMedical.DoctorServiceReference.MailConfiguration conf, AbsMedical.DoctorServiceReference.Doctor doctor) {
+        public System.Threading.Tasks.Task<bool> RegisterMailConfigurationAsync(AbsMedical.WCF.MailConfiguration conf, AbsMedical.WCF.Doctor doctor) {
             return base.Channel.RegisterMailConfigurationAsync(conf, doctor);
         }
         
-        public AbsMedical.DoctorServiceReference.MailConfiguration GetMailConfiguration(string confGuid) {
+        public AbsMedical.WCF.MailConfiguration GetMailConfiguration(string confGuid) {
             return base.Channel.GetMailConfiguration(confGuid);
         }
         
-        public System.Threading.Tasks.Task<AbsMedical.DoctorServiceReference.MailConfiguration> GetMailConfigurationAsync(string confGuid) {
+        public System.Threading.Tasks.Task<AbsMedical.WCF.MailConfiguration> GetMailConfigurationAsync(string confGuid) {
             return base.Channel.GetMailConfigurationAsync(confGuid);
         }
     }

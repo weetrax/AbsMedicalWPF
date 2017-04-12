@@ -130,6 +130,38 @@ namespace AbsMedical.WCF
             return stu;
         }
 
+        public static school ObjectToEntity(School school)
+        {
+            school s = new school
+            {
+                Guid = school.Guid,
+                Name = school.Name,
+                Address = school.Address,
+                PostalCode = school.PostalCode,
+                CountryId = school.CountryId,
+                Email = school.Email,
+                Phone = school.Phone,
+                City = school.City
+            };
+            return s;
+        }
+
+        public static School EntityToObject(school school)
+        {
+            School s = new School()
+            {
+                Guid = school.Guid,
+                Name = school.Name,
+                Address = school.Address,
+                PostalCode = school.PostalCode,
+                CountryId = school.CountryId,
+                Email = school.Email,
+                Phone = school.Phone,
+                City = school.City
+            };
+            return s;
+        }
+
         public static absmedical ObjectToEntity(MedicalAbs abs)
         {
             absmedical absMedical = new absmedical()

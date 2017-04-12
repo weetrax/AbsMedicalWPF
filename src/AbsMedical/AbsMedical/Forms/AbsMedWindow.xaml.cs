@@ -2,6 +2,7 @@
 using AbsMedical.Data;
 using AbsMedical.DoctorServiceReference;
 using AbsMedical.Utils;
+using AbsMedical.WCF;
 using iTextSharp.text;
 using MahApps.Metro.Controls;
 using MahApps.Metro.Controls.Dialogs;
@@ -28,7 +29,7 @@ namespace AbsMedical.Forms
     public partial class AbsMedWindow : MetroWindow
     {
         #region Properties
-        private student CurrentStudent
+        private WCF.Student CurrentStudent
         {
             get;
         }
@@ -38,6 +39,14 @@ namespace AbsMedical.Forms
             get
             {
                 return DoctorController.Get(CurrentDoctorGuid);
+            }
+        }
+
+        private WCF.School StudentSchool
+        {
+            get
+            {
+                return SchoolController.Get(CurrentStudent.SchoolGuid);
             }
         }
 
@@ -61,7 +70,7 @@ namespace AbsMedical.Forms
         }
         #endregion
 
-        public AbsMedWindow(student student, string doctorGuid)
+        public AbsMedWindow(WCF.Student student, string doctorGuid)
         {
             this.CurrentStudent = student;
             this.CurrentDoctorGuid = doctorGuid;
@@ -81,16 +90,16 @@ namespace AbsMedical.Forms
             lblBirthDate.Content = CurrentStudent.Birthdate;
             lblBirthPlace.Content = CurrentStudent.Birthplace;
             lblAddress.Content = CurrentStudent.Address;
-            lblAddress2.Content = CurrentStudent.PostalCode + " " + CurrentStudent.City + ", " + CurrentStudent.country.Name;
+            lblAddress2.Content = CurrentStudent.PostalCode + " " + CurrentStudent.City + ", " + CurrentStudent.CountryId;
             lblPhone.Content = CurrentStudent.Phone;
             lblMail.Content = CurrentStudent.Email;
 
             //School binding
-            lblSchool.Content = CurrentStudent.school.Name;
-            lblSchoolAdrs.Content = CurrentStudent.school.Address;
-            lblSchoolAdrs2.Content = CurrentStudent.school.PostalCode + " " + CurrentStudent.school.City + ", " + CurrentStudent.school.country.Name;
-            lblSchoolPhone.Content = CurrentStudent.school.Phone;
-            lblSchoolMail.Content = CurrentStudent.school.Email;
+            lblSchool.Content = StudentSchool.Name;
+            lblSchoolAdrs.Content = StudentSchool.Address;
+            lblSchoolAdrs2.Content = StudentSchool.PostalCode + " " + StudentSchool.City + ", " + StudentSchool.CountryId;
+            lblSchoolPhone.Content = StudentSchool.Phone;
+            lblSchoolMail.Content = StudentSchool.Email;
 
             //Proof
             lblDate.Content = DateTime.Now.ToString("dd/MM/yyyy");
@@ -111,7 +120,7 @@ namespace AbsMedical.Forms
             }
             else
             {
-                List<string> sendTo = new List<string> { CurrentStudent.school.Email };
+                List<string> sendTo = new List<string> { StudentSchool.Email };
                 List<string> sendToCC = new List<string> { };
                 if (chkBxSendStudent.IsChecked == true)
                 {
@@ -156,17 +165,11 @@ namespace AbsMedical.Forms
 
         private void btnExportPDF_Click(object sender, RoutedEventArgs e)
         {
-            SaveFileDialog dlg = new SaveFileDialog();
-            Nullable<bool> result = dlg.ShowDialog();
-            if(result == true)
+            Document doc = new Document();
+            if (PDF.CreatePDF(CurrentStudent, CurrentDoctor, GetAbsMedicalValue()))
             {
-                ShowAlert("coucou");
+                ShowAlert("PDF has been created");
             }
-            //Document doc = new Document();
-            //if(PDF.CreatePDF(CurrentStudent, CurrentDoctor, GetAbsMedicalValue()))
-            //{
-            //    ShowAlert("PDF has been created");
-            //}
         }
     }
 }

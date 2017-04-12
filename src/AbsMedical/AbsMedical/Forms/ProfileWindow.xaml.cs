@@ -3,6 +3,7 @@ using AbsMedical.Data;
 using AbsMedical.DoctorServiceReference;
 using AbsMedical.Shared;
 using AbsMedical.Utils;
+using AbsMedical.WCF;
 using MahApps.Metro.Controls;
 using MahApps.Metro.Controls.Dialogs;
 using System;

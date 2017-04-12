@@ -9,6 +9,7 @@ using System.Data.Entity.Core;
 using AbsMedical.Shared;
 using AbsMedical.DoctorServiceReference;
 using System.ServiceModel;
+using AbsMedical.WCF;
 
 namespace AbsMedical.Controllers
 {

@@ -1,4 +1,5 @@
 ﻿using AbsMedical.Data;
+using AbsMedical.WCF;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,6 +19,14 @@ namespace AbsMedical.Controllers
         {
             rfidEntities db = new rfidEntities();
             return db.student.FirstOrDefault(w => w.Guid == studentGuid);
+        }
+
+        public static Student Get(string studentGuid)
+        {
+            using (StudentServiceReference.StudentServiceClient serv = new StudentServiceReference.StudentServiceClient())
+            {
+                return serv.GetStudent(studentGuid);
+            }
         }
     }
 }

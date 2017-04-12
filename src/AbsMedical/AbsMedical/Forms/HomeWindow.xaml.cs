@@ -17,6 +17,7 @@ using AbsMedical.Controllers;
 using MahApps.Metro.Controls;
 using System.Diagnostics;
 using AbsMedical.DoctorServiceReference;
+using AbsMedical.WCF;
 
 namespace AbsMedical.Forms
 {
@@ -77,7 +78,7 @@ namespace AbsMedical.Forms
             if (NFCReader.connectCard())
             {
                 string studentGuid = NFCReader.getcardUID();
-                student student = StudentController.Find(studentGuid);
+                WCF.Student student = StudentController.Get(studentGuid);
                 if (student != null)
                 {
                     AbsMedWindow window = new AbsMedWindow(student, CurrentDoctorGuid);

@@ -8,6 +8,7 @@ using System.Net;
 using AbsMedical.Data;
 using AbsMedical.Shared;
 using AbsMedical.DoctorServiceReference;
+using AbsMedical.WCF;
 
 namespace AbsMedical.Utils
 {

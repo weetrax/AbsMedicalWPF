@@ -54,7 +54,7 @@ namespace AbsMedical
             string password = txtPassword.Password.ToString();
             string email = txtEmail.Text;
 
-            Doctor currentDoctor = DoctorController.Find(email, password);
+            WCF.Doctor currentDoctor = DoctorController.Find(email, password);
 
             if (currentDoctor != null)
             {

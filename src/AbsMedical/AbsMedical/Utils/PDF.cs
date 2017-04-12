@@ -13,10 +13,11 @@ namespace AbsMedical.Utils
 {
     public static class PDF
     {
-        public static Document CreatePDF(student student, doctor doctor, absmedical absmedical)
+        public static bool CreatePDF( WCF.Student student, WCF.Doctor doctor, absmedical absmedical)
         {
             try
             {
+                
                 string studentFullName = student.Firstname + student.Lastname;
                 string fileName = "certificate-" + studentFullName + "-" + absmedical.VisitDate.ToString("dd-MM-yy") + ".pdf";
                 string header = "Medical Certificate";
@@ -68,11 +69,11 @@ namespace AbsMedical.Utils
                 doc.Add(pMotiveText);
 
                 doc.Close();
-                return doc;
+                return true;
             }
             catch (Exception)
             {
-                return null;
+                return false;
             }
         }
 

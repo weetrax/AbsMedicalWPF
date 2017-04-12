@@ -117,6 +117,7 @@
     </ApplicationDefinition>
     <Compile Include="Controllers\AbsMedicalController.cs" />
     <Compile Include="Controllers\CountryController.cs" />
+    <Compile Include="Controllers\SchoolController.cs" />
     <Compile Include="Controllers\StudentController.cs" />
     <Compile Include="Forms\AbsMedWindow.xaml.cs">
       <DependentUpon>AbsMedWindow.xaml</DependentUpon>
@@ -133,6 +134,16 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
     <Compile Include="Service References\DoctorServiceReference\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\SchoolServiceReference\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\StudentServiceReference\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -171,6 +182,10 @@
     </Compile>
     <None Include="packages.config" />
     <AppDesigner Include="Properties\" />
+    <None Include="Properties\DataSources\AbsMedical.WCF.Doctor.datasource" />
+    <None Include="Properties\DataSources\AbsMedical.WCF.MailConfiguration.datasource" />
+    <None Include="Properties\DataSources\AbsMedical.WCF.School.datasource" />
+    <None Include="Properties\DataSources\AbsMedical.WCF.Student.datasource" />
     <None Include="Service References\AbsMedicalServiceReference\AbsMedicalService.wsdl" />
     <None Include="Service References\AbsMedicalServiceReference\AbsMedicalService.xsd">
       <SubType>Designer</SubType>
@@ -181,12 +196,6 @@
     <None Include="Service References\AbsMedicalServiceReference\AbsMedicalService2.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\DoctorServiceReference\AbsMedical.DoctorServiceReference.Doctor.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\DoctorServiceReference\AbsMedical.DoctorServiceReference.MailConfiguration.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
     <None Include="Service References\DoctorServiceReference\DoctorService.wsdl" />
     <None Include="Service References\DoctorServiceReference\DoctorService.xsd">
       <SubType>Designer</SubType>
@@ -195,6 +204,26 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\DoctorServiceReference\DoctorService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\SchoolServiceReference\SchoolService.wsdl" />
+    <None Include="Service References\SchoolServiceReference\SchoolService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\SchoolServiceReference\SchoolService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\SchoolServiceReference\SchoolService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\StudentServiceReference\StudentService.wsdl" />
+    <None Include="Service References\StudentServiceReference\StudentService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\StudentServiceReference\StudentService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\StudentServiceReference\StudentService2.xsd">
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
@@ -228,6 +257,8 @@
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\AbsMedicalServiceReference\" />
     <WCFMetadataStorage Include="Service References\DoctorServiceReference\" />
+    <WCFMetadataStorage Include="Service References\SchoolServiceReference\" />
+    <WCFMetadataStorage Include="Service References\StudentServiceReference\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\DoctorServiceReference\DoctorService.disco" />
@@ -255,6 +286,36 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\AbsMedicalServiceReference\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\StudentServiceReference\StudentService.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\StudentServiceReference\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\StudentServiceReference\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\StudentServiceReference\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\SchoolServiceReference\SchoolService.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\SchoolServiceReference\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\SchoolServiceReference\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\SchoolServiceReference\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
