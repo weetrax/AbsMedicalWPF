@@ -17,11 +17,5 @@ namespace AbsMedical.Controllers
                 return serv.GetCountries();
             }
         }
-
-        public static Country GetCountry(string id)
-        {
-            var query = (from c in GetCountries() where c.Id == id select c).FirstOrDefault();
-            return query;
-        }
     }
 }
