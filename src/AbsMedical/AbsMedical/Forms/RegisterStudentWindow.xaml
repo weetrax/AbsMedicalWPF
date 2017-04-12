@@ -1,0 +1,17 @@
+﻿<Controls:MetroWindow x:Class="AbsMedical.Forms.RegisterStudentWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AbsMedical.Forms"
+        xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls"
+        xmlns:Dialog="clr-namespace:MahApps.Metro.Controls.Dialogs;assembly=MahApps.Metro"
+        mc:Ignorable="d"
+        BorderBrush="{DynamicResource AccentColorBrush}"
+        BorderThickness="1"
+        Icon="/Images/absmedical.ico"
+        Title="AbsMedical - Register a new student" Height="582" Width="850" ResizeMode="NoResize">
+    <Grid>
+        
+    </Grid>
+</Controls:MetroWindow>

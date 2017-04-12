@@ -128,6 +128,9 @@
     <Compile Include="Forms\ProfileWindow.xaml.cs">
       <DependentUpon>ProfileWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Forms\RegisterStudentWindow.xaml.cs">
+      <DependentUpon>RegisterStudentWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Service References\AbsMedicalServiceReference\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -159,6 +162,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Forms\ProfileWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Forms\RegisterStudentWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
