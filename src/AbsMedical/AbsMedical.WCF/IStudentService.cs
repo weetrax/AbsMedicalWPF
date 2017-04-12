@@ -13,6 +13,9 @@ namespace AbsMedical.WCF
     {
         [OperationContract]
         Student GetStudent(string StudentGuid);
+
+        [OperationContract]
+        bool RegisterStudent(Student student);
     }
 
     [Serializable]

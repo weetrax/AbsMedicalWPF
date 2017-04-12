@@ -13,16 +13,35 @@
   <wsdl:message name="IStudentService_GetStudent_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetStudentResponse" />
   </wsdl:message>
+  <wsdl:message name="IStudentService_RegisterStudent_InputMessage">
+    <wsdl:part name="parameters" element="tns:RegisterStudent" />
+  </wsdl:message>
+  <wsdl:message name="IStudentService_RegisterStudent_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RegisterStudentResponse" />
+  </wsdl:message>
   <wsdl:portType name="IStudentService">
     <wsdl:operation name="GetStudent">
       <wsdl:input wsaw:Action="http://tempuri.org/IStudentService/GetStudent" message="tns:IStudentService_GetStudent_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IStudentService/GetStudentResponse" message="tns:IStudentService_GetStudent_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RegisterStudent">
+      <wsdl:input wsaw:Action="http://tempuri.org/IStudentService/RegisterStudent" message="tns:IStudentService_RegisterStudent_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IStudentService/RegisterStudentResponse" message="tns:IStudentService_RegisterStudent_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IStudentService" type="tns:IStudentService">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="GetStudent">
       <soap:operation soapAction="http://tempuri.org/IStudentService/GetStudent" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegisterStudent">
+      <soap:operation soapAction="http://tempuri.org/IStudentService/RegisterStudent" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

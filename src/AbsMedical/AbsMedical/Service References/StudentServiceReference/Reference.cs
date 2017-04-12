@@ -20,6 +20,12 @@ namespace AbsMedical.StudentServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IStudentService/GetStudent", ReplyAction="http://tempuri.org/IStudentService/GetStudentResponse")]
         System.Threading.Tasks.Task<AbsMedical.WCF.Student> GetStudentAsync(string StudentGuid);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IStudentService/RegisterStudent", ReplyAction="http://tempuri.org/IStudentService/RegisterStudentResponse")]
+        bool RegisterStudent(AbsMedical.WCF.Student student);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IStudentService/RegisterStudent", ReplyAction="http://tempuri.org/IStudentService/RegisterStudentResponse")]
+        System.Threading.Tasks.Task<bool> RegisterStudentAsync(AbsMedical.WCF.Student student);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -55,6 +61,14 @@ namespace AbsMedical.StudentServiceReference {
         
         public System.Threading.Tasks.Task<AbsMedical.WCF.Student> GetStudentAsync(string StudentGuid) {
             return base.Channel.GetStudentAsync(StudentGuid);
+        }
+        
+        public bool RegisterStudent(AbsMedical.WCF.Student student) {
+            return base.Channel.RegisterStudent(student);
+        }
+        
+        public System.Threading.Tasks.Task<bool> RegisterStudentAsync(AbsMedical.WCF.Student student) {
+            return base.Channel.RegisterStudentAsync(student);
         }
     }
 }

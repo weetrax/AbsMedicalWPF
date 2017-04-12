@@ -20,5 +20,13 @@ namespace AbsMedical.WCF
             if (studentEntity != null) return EntityParser.EntityToObject(studentEntity);
             else return null;
         }
+
+        public bool RegisterStudent(Student student)
+        {
+            rfidEntities db = new rfidEntities();
+            db.student.Add(EntityParser.ObjectToEntity(student));
+            int result = db.SaveChanges();
+            return result > 0;
+        }
     }
 }
