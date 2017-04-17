@@ -8,6 +8,7 @@ using AbsMedical.Data;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
 using System.IO;
+using System.Windows.Forms;
 
 namespace AbsMedical.Utils
 {
@@ -31,45 +32,59 @@ namespace AbsMedical.Utils
                 string txtStudentIdentifier = student.Firstname + " " + student.Lastname + "\n";
                 string txtStudentAddress = student.Address + " - " + student.PostalCode + ", " + student.City + "\n";
                 string txtStudentContact = student.Email + " | " + student.Phone + "\n \n";
+                SaveFileDialog svg = new SaveFileDialog();
+                svg.FileName = fileName;
+                svg.Filter = "Pdf Files|*.pdf";
+                if (svg.ShowDialog() == DialogResult.OK)
+                {
 
-                Document doc = new Document(iTextSharp.text.PageSize.LETTER, 10, 10, 42, 35); //properties of the document, see iTextSharp documentation
-                PdfWriter wri = PdfWriter.GetInstance(doc, new FileStream((fileName), FileMode.Create));
-                doc.Open();
+                    using (FileStream stream = new FileStream(svg.FileName, FileMode.Create))
+                    {
+                        Document doc = new Document(iTextSharp.text.PageSize.LETTER, 10, 10, 42, 35); //properties of the document, see iTextSharp documentation
+                        PdfWriter wri = PdfWriter.GetInstance(doc, stream);
+                        doc.Open();
 
-                //Intro paragraph
-                Paragraph pdfHeader = new Paragraph(header, HeaderFont());
-                pdfHeader.Alignment = Element.ALIGN_CENTER;
-                doc.Add(pdfHeader);
+                        //Intro paragraph
+                        Paragraph pdfHeader = new Paragraph(header, HeaderFont());
+                        pdfHeader.Alignment = Element.ALIGN_CENTER;
+                        doc.Add(pdfHeader);
 
-                //Doctor paragraph
-                Paragraph pDoctorTitle = new Paragraph("Doctor \n", TextBold());
-                doc.Add(pDoctorTitle);
-                Paragraph pDoctorIdentifier = new Paragraph(txtDoctorIdentifier, TextFont());
-                doc.Add(pDoctorIdentifier);
-                Paragraph pDoctorAddress = new Paragraph(txtDoctorAddress, TextFont());
-                doc.Add(pDoctorAddress);
-                Paragraph pDoctorContact = new Paragraph(txtDoctorContact, TextFont());
-                doc.Add(pDoctorContact);
+                        //Doctor paragraph
+                        Paragraph pDoctorTitle = new Paragraph("Doctor \n", TextBold());
+                        doc.Add(pDoctorTitle);
+                        Paragraph pDoctorIdentifier = new Paragraph(txtDoctorIdentifier, TextFont());
+                        doc.Add(pDoctorIdentifier);
+                        Paragraph pDoctorAddress = new Paragraph(txtDoctorAddress, TextFont());
+                        doc.Add(pDoctorAddress);
+                        Paragraph pDoctorContact = new Paragraph(txtDoctorContact, TextFont());
+                        doc.Add(pDoctorContact);
 
-                //Student paragraph
-                Paragraph pStudentTitle = new Paragraph("Student \n", TextBold());
-                doc.Add(pStudentTitle);
-                Paragraph pStudentIdentifier = new Paragraph(txtStudentIdentifier, TextFont());
-                doc.Add(pStudentIdentifier);
-                Paragraph pStudentAddress = new Paragraph(txtStudentAddress, TextFont());
-                doc.Add(pStudentAddress);
-                Paragraph pStudentContact = new Paragraph(txtStudentContact, TextFont());
-                doc.Add(pStudentContact);
+                        //Student paragraph
+                        Paragraph pStudentTitle = new Paragraph("Student \n", TextBold());
+                        doc.Add(pStudentTitle);
+                        Paragraph pStudentIdentifier = new Paragraph(txtStudentIdentifier, TextFont());
+                        doc.Add(pStudentIdentifier);
+                        Paragraph pStudentAddress = new Paragraph(txtStudentAddress, TextFont());
+                        doc.Add(pStudentAddress);
+                        Paragraph pStudentContact = new Paragraph(txtStudentContact, TextFont());
+                        doc.Add(pStudentContact);
 
-                //Motive
-                Paragraph pMotiveTitle = new Paragraph("Motive: \n", TextUnderline());
-                doc.Add(pMotiveTitle);
-                Paragraph pMotiveText = new Paragraph(absmedical.Note, TextFont());
-                pMotiveText.Alignment = Element.ALIGN_JUSTIFIED;
-                doc.Add(pMotiveText);
+                        //Motive
+                        Paragraph pMotiveTitle = new Paragraph("Motive: \n", TextUnderline());
+                        doc.Add(pMotiveTitle);
+                        Paragraph pMotiveText = new Paragraph(absmedical.Note, TextFont());
+                        pMotiveText.Alignment = Element.ALIGN_JUSTIFIED;
+                        doc.Add(pMotiveText);
 
-                doc.Close();
-                return true;
+                        doc.Close();
+                        stream.Close();
+                        return true;
+                    }
+                }
+                else
+                {
+                    return false;
+                }
             }
             catch (Exception)
             {
