@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls"
+        xmlns:Dialog="clr-namespace:MahApps.Metro.Controls.Dialogs;assembly=MahApps.Metro"
         xmlns:local="clr-namespace:AbsMedical.Forms"
         xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
         mc:Ignorable="d"
@@ -20,7 +21,18 @@
             <Button x:Name="btnOurGitHub" Click="btnOurGitHub_Click" Foreground="White" Content="Our GitHub"/>
         </Controls:WindowCommands>
     </Controls:MetroWindow.RightWindowCommands>
-
+    <Window.Resources>
+        <ResourceDictionary>
+            <Dialog:CustomDialog x:Key="CustomCloseDialog" x:Name="CustomCloseDialog">
+                <StackPanel>
+                    <TextBlock x:Name="MessageTextBlock" Height="30"
+                                   Foreground="{DynamicResource AccentColorBrush}"
+                                   TextWrapping="Wrap" />
+                    <Button Click="btnCloseCustomDialog_Click" Content="Register student"/>
+                </StackPanel>
+            </Dialog:CustomDialog>
+        </ResourceDictionary>
+    </Window.Resources>
     <!-- Main content -->
     <Grid>
         <DockPanel>

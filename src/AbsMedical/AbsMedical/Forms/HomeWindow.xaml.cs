@@ -18,6 +18,7 @@ using MahApps.Metro.Controls;
 using System.Diagnostics;
 using AbsMedical.DoctorServiceReference;
 using AbsMedical.WCF;
+using MahApps.Metro.Controls.Dialogs;
 
 namespace AbsMedical.Forms
 {
@@ -85,6 +86,10 @@ namespace AbsMedical.Forms
                     AbsMedWindow window = new AbsMedWindow(student, CurrentDoctorGuid);
                     window.Show();
                 }
+                else
+                {
+                    ShowAlert("The student does not exist.");
+                }
             }
         }
 
@@ -93,5 +98,25 @@ namespace AbsMedical.Forms
             Process.Start("https://github.com/weetrax/AbsMedicalWPF");
         }
         #endregion Event
+        #region Dialog
+        private async void ShowAlert(string title)
+        {
+            var dialog = (BaseMetroDialog)this.Resources["CustomCloseDialog"];
+            dialog.Title = title;
+
+            await this.ShowMetroDialogAsync(dialog);
+            await dialog.WaitUntilUnloadedAsync();
+        }
+
+        private async void btnCloseCustomDialog_Click(object sender, RoutedEventArgs e)
+        {
+            var dialog = (BaseMetroDialog)this.Resources["CustomCloseDialog"];
+
+            await this.HideMetroDialogAsync(dialog);
+
+            RegisterStudentWindow window = new RegisterStudentWindow(lblLogedAs.Content.ToString());
+            window.Show();
+        }
+        #endregion
     }
 }

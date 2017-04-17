@@ -10,7 +10,7 @@
         BorderBrush="{DynamicResource AccentColorBrush}"
         BorderThickness="1"
         Icon="/Images/absmedical.ico"
-        Title="AbsMedical - New student" Height="582" Width="782.636" ResizeMode="NoResize">
+        Title="AbsMedical - New student" Height="537" Width="782.636" ResizeMode="NoResize">
 
     <!-- Window Top right label -->
     <Controls:MetroWindow.RightWindowCommands>
@@ -18,7 +18,7 @@
             <Label x:Name="lblLogedAs" Foreground="White" Content=""/>
         </Controls:WindowCommands>
     </Controls:MetroWindow.RightWindowCommands>
-    
+
     <Window.Resources>
         <ResourceDictionary>
             <Dialog:CustomDialog x:Key="CustomCloseDialog" x:Name="CustomCloseDialog">
@@ -31,9 +31,9 @@
             </Dialog:CustomDialog>
         </ResourceDictionary>
     </Window.Resources>
-    <Grid>
+    <Grid Margin="0,0,0,3">
         <!-- Basic information-->
-        <GroupBox x:Name="gbBasicInformation" Margin="10,20,0,0" Header="Basic Information" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="29" Canvas.Top="40" Width="343" Height="485">
+        <GroupBox x:Name="gbBasicInformation" Margin="10,20,0,0" Header="Ge,eral Information" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="29" Canvas.Top="40" Width="343" Height="471">
             <Canvas>
                 <!-- Firstname -->
                 <Label x:Name="lblFirstname"  Content="Firstname: " Canvas.Top="8" Canvas.Left="5" Width="129"></Label>
@@ -77,6 +77,7 @@
 
                 <!-- Message Profile -->
                 <Label x:Name="lblMessageProfile" Content="" Canvas.Top="397" Canvas.Left="10" Width="161"></Label>
+
             </Canvas>
         </GroupBox>
         <!--groupbox medial information-->
@@ -87,17 +88,23 @@
             </Canvas>
         </GroupBox>
         <!--groupbox school-->
-        <GroupBox x:Name="gbSchool" Margin="372,130,0,0" Header="School" HorizontalAlignment="Left" VerticalAlignment="Top" Width="393" Height="221">
+        <GroupBox x:Name="gbSchool" Margin="372,130,0,0" Header="School" HorizontalAlignment="Left" VerticalAlignment="Top" Width="393" Height="180">
             <Canvas>
                 <Label x:Name="lblSchoolCountry" Content="Country:" Canvas.Top="5" Canvas.Left="5"></Label>
                 <ComboBox x:Name="cbSchoolCountry" Canvas.Top="5" Canvas.Left="153" Width="218" SelectionChanged="cbSchoolCountry_SelectionChanged"></ComboBox>
 
-                <Label x:Name="lblSchoolName" Content="Name:" Canvas.Top="47" Canvas.Left="5"></Label>
-                <TextBox x:Name="txtSchoolName" Canvas.Top="47" Canvas.Left="153" Width="218" SelectionChanged="txtSchoolName_SelectionChanged"></TextBox>
+                <Label x:Name="lblSchool" Content="School:" Canvas.Top="46" Canvas.Left="5"></Label>
+                <ComboBox x:Name="cbSchool" Canvas.Top="46" Canvas.Left="153" Width="218"></ComboBox>
 
-                <Label x:Name="lblSchool" Content="School:" Canvas.Top="89" Canvas.Left="5"></Label>
-                <ComboBox x:Name="cbSchool" Canvas.Top="89" Canvas.Left="153" Width="218"></ComboBox>
+                <Label x:Name="lblStudentId"  Content="Student Id: " Canvas.Top="90" Canvas.Left="5" Width="129"/>
+                <TextBox x:Name="txtStudentId" Canvas.Top="90" Width="218" Canvas.Left="153"/>
             </Canvas>
         </GroupBox>
+        <Canvas>
+            <TextBlock x:Name="lblInfo" TextWrapping="Wrap" Canvas.Top="329" Text="To finish the registration, put the student card on the NFC Reader, then press Register" Canvas.Left="373" Width="393" Height="47" UseLayoutRounding="False"/>
+            <Button x:Name="btnRegisterStudent" Click="btnRegisterStudent_Click" Content="Register" Canvas.Left="657" Canvas.Top="465" Width="108" Style="{StaticResource AccentedSquareButtonStyle}" Controls:ControlsHelper.ContentCharacterCasing="Normal"></Button>
+            <Button x:Name="btnClose" Click="btnClose_Click" Content="Close" Canvas.Left="588" Canvas.Top="465" Width="54" Style="{DynamicResource SquareButtonStyle}" Controls:ControlsHelper.ContentCharacterCasing="Normal"/>
+            <TextBlock x:Name="lblMessage" Visibility="Hidden" TextWrapping="Wrap" Canvas.Top="373" Text="" Canvas.Left="373" Width="393" Height="47" UseLayoutRounding="False" Foreground="#FF009E00"/>
+        </Canvas>
     </Grid>
 </Controls:MetroWindow>
