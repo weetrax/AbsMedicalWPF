@@ -10,7 +10,7 @@
         BorderBrush="{DynamicResource AccentColorBrush}"
         BorderThickness="1"
         Icon="/Images/absmedical.ico"
-        Title="AbsMedical - New student" Height="537" Width="782.636" ResizeMode="NoResize">
+        Title="AbsMedical - New student" Height="537" Width="782.636" ResizeMode="NoResize" Background="White">
 
     <!-- Window Top right label -->
     <Controls:MetroWindow.RightWindowCommands>
@@ -32,8 +32,12 @@
         </ResourceDictionary>
     </Window.Resources>
     <Grid Margin="0,0,0,3">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="0*"/>
+        </Grid.ColumnDefinitions>
         <!-- Basic information-->
-        <GroupBox x:Name="gbBasicInformation" Margin="10,20,0,0" Header="Ge,eral Information" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="29" Canvas.Top="40" Width="343" Height="471">
+        <GroupBox x:Name="gbBasicInformation" Margin="10,20,0,0" Header="Ge,eral Information" HorizontalAlignment="Left" VerticalAlignment="Top" Width="343" Height="471">
             <Canvas>
                 <!-- Firstname -->
                 <Label x:Name="lblFirstname"  Content="Firstname: " Canvas.Top="8" Canvas.Left="5" Width="129"></Label>
@@ -81,7 +85,7 @@
             </Canvas>
         </GroupBox>
         <!--groupbox medial information-->
-        <GroupBox x:Name="gbMedicalInformation" Margin="372,20,0,0" Header="Medical Information" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="9" Canvas.Top="40" Width="393" Height="83">
+        <GroupBox x:Name="gbMedicalInformation" Margin="372,20,0,0" Header="Medical Information" HorizontalAlignment="Left" VerticalAlignment="Top" Width="393" Height="83">
             <Canvas>
                 <Label x:Name="lblSocialSecurityNumber" Content="Social Security Number:" Canvas.Top="5" Canvas.Left="5"></Label>
                 <TextBox x:Name="txtSocialSecurityNumber" Canvas.Top="6" Canvas.Left="153" Width="218"></TextBox>
