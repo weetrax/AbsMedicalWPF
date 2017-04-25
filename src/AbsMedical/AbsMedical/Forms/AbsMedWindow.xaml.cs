@@ -30,6 +30,7 @@ namespace AbsMedical.Forms
     /// </summary>
     public partial class AbsMedWindow : MetroWindow
     {
+        private bool Added = false;
         #region Properties
         private WCF.Student CurrentStudent
         {
@@ -61,7 +62,7 @@ namespace AbsMedical.Forms
         {
             absmedical absMedical = new absmedical()
             {
-                VisitDate = DateTime.Now,
+                VisitDate = visitDate.SelectedDate.Value,
                 Note = txtMotive.Text,
                 DoctorGuid = CurrentDoctorGuid,
                 StudentGuid = CurrentStudent.Guid,
@@ -104,7 +105,7 @@ namespace AbsMedical.Forms
             lblSchoolMail.Content = StudentSchool.Email;
 
             //Proof
-            lblDate.Content = DateTime.Now.ToString("dd/MM/yyyy");
+            visitDate.SelectedDate = DateTime.Now;
             dtStart.SelectedDate = DateTime.Now;
 
             //Mail
@@ -171,6 +172,28 @@ namespace AbsMedical.Forms
             {
                 ShowAlert("PDF has been created");
                 
+            }
+        }
+
+        private void btnSave_Click(object sender, RoutedEventArgs e)
+        {
+            MedicalAbs absMed = new MedicalAbs()
+            {
+                DoctorGuid = CurrentDoctorGuid,
+                EndDate = dtEnd.SelectedDate.Value,
+                StartDate = dtStart.SelectedDate.Value,
+                Note = txtMotive.Text,
+                StudentGuid = CurrentStudent.Guid,
+                VisitDate = visitDate.SelectedDate.Value
+            };
+            if (AbsMedicalController.RegisterAbsMedical(absMed) && !Added)
+            {
+                ShowAlert("Proof registered.");
+                Added = true;
+            }
+            else
+            {
+                ShowAlert("An error occured when register student. Please try again.");
             }
         }
     }
