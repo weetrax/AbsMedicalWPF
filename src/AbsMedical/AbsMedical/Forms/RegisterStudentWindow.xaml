@@ -37,7 +37,7 @@
             <ColumnDefinition Width="0*"/>
         </Grid.ColumnDefinitions>
         <!-- Basic information-->
-        <GroupBox x:Name="gbBasicInformation" Margin="10,20,0,0" Header="Ge,eral Information" HorizontalAlignment="Left" VerticalAlignment="Top" Width="343" Height="471">
+        <GroupBox x:Name="gbBasicInformation" Margin="10,20,0,0" Header="General Information" HorizontalAlignment="Left" VerticalAlignment="Top" Width="343" Height="471">
             <Canvas>
                 <!-- Firstname -->
                 <Label x:Name="lblFirstname"  Content="Firstname: " Canvas.Top="8" Canvas.Left="5" Width="129"></Label>

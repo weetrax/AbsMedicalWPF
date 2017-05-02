@@ -12,7 +12,7 @@
         BorderBrush="{DynamicResource AccentColorBrush}"
         BorderThickness="1"
         Icon="/Images/absmedical.ico"
-        Title="AbsMedical - Home" Height="426.287" Width="945.515" ResizeMode="NoResize">
+        Title="AbsMedical - Manage Students" Height="214.287" Width="900" ResizeMode="NoResize">
 
     <!-- Window Top right label -->
     <Controls:MetroWindow.RightWindowCommands>
@@ -23,14 +23,7 @@
     </Controls:MetroWindow.RightWindowCommands>
     <Window.Resources>
         <ResourceDictionary>
-            <Dialog:CustomDialog x:Key="CustomCloseDialog" x:Name="CustomCloseDialog">
-                <StackPanel>
-                    <TextBlock x:Name="MessageTextBlock" Height="30"
-                                   Foreground="{DynamicResource AccentColorBrush}"
-                                   TextWrapping="Wrap" />
-                    <Button Click="btnCloseCustomDialog_Click" Content="Register student"/>
-                </StackPanel>
-            </Dialog:CustomDialog>
+            
         </ResourceDictionary>
     </Window.Resources>
     <!-- Main content -->
@@ -39,16 +32,7 @@
             <Canvas>
 
                 <!-- Tile Register Certificate -->
-                <Controls:Tile x:Name="tileRegisterNewCertificate" Title="Register certificate" Background="#FF6ED833" Height="189" Width="532" Margin="0">
-                    <Rectangle Width="50" Height="50">
-                        <Rectangle.Fill>
-                            <VisualBrush Visual="{iconPacks:PackIconMaterial PlusCircle, Width=32, Height=32}" />
-                        </Rectangle.Fill>
-                    </Rectangle>
-                </Controls:Tile>
-
-                <!-- Tile Register Student -->
-                <Controls:Tile x:Name="tileRegisterStudent" Title="Register student" Background="#FFC933D8" Canvas.Right="152" Height="189" Width="418" Margin="0" Canvas.Left="532">
+                <Controls:Tile x:Name="tileRegisterStudent" Click="tileRegisterStudent_Click" Title="Register student" Background="#FF6ED833" Height="189" Width="300" Margin="0" Canvas.Left="-5">
                     <Rectangle Width="50" Height="50">
                         <Rectangle.Fill>
                             <VisualBrush Visual="{iconPacks:PackIconFontAwesome UserPlus, Width=32, Height=32}" />
@@ -56,9 +40,26 @@
                     </Rectangle>
                 </Controls:Tile>
 
-                <!-- Tile Exit -->
-                <Controls:Tile x:Name="tileExit" Title="Exit" Background="#FFFF2D2D" Canvas.Right="152" Canvas.Bottom="90" Margin="0" Height="206" Width="297" Canvas.Left="653" Canvas.Top="189">
+                <!-- Tile Register Student -->
+                <Controls:Tile x:Name="tileEditStudent" Click="tileEditStudent_Click"  Title="Edit student" Background="#FF33ABD8" Canvas.Right="152" Height="189" Width="310" Margin="0" Canvas.Left="291">
                     <Rectangle Width="50" Height="50">
+                        <Rectangle.Fill>
+                            <VisualBrush Visual="{iconPacks:PackIconFontAwesome addresscard, Width=32, Height=32}" />
+                        </Rectangle.Fill>
+                    </Rectangle>
+                </Controls:Tile>
+
+                <!-- Tile Exit -->
+                <Controls:Tile x:Name="tileBack" Click="tileBack_Click"  Title="Back" Background="#FFFF2D2D" Canvas.Right="152" Canvas.Bottom="90" Margin="0" Height="189" Width="300" Canvas.Left="598" Canvas.Top="0">
+                    <Rectangle Width="49" Height="50" RenderTransformOrigin="0.5,0.5">
+                        <Rectangle.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform ScaleX="-1"/>
+                                <SkewTransform/>
+                                <RotateTransform/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </Rectangle.RenderTransform>
                         <Rectangle.Fill>
                             <VisualBrush Visual="{iconPacks:PackIconMaterial ExitToApp, Width=32, Height=32}" />
                         </Rectangle.Fill>
@@ -66,13 +67,6 @@
                 </Controls:Tile>
 
                 <!-- Tile Profile -->
-                <Controls:Tile x:Name="tileProfile" Title="Profile" Canvas.Bottom="90" Margin="0" Height="206" Width="653" Canvas.Top="189" Background="#CCFFA301">
-                    <Rectangle Width="50" Height="50">
-                        <Rectangle.Fill>
-                            <VisualBrush Visual="{iconPacks:PackIconMaterial Settings, Width=32, Height=32}" />
-                        </Rectangle.Fill>
-                    </Rectangle>
-                </Controls:Tile>
             </Canvas>
         </DockPanel>
     </Grid>
