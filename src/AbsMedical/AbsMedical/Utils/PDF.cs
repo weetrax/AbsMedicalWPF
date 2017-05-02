@@ -14,7 +14,7 @@ namespace AbsMedical.Utils
 {
     public static class PDF
     {
-        public static bool CreatePDF( WCF.Student student, WCF.Doctor doctor, absmedical absmedical)
+        public static bool CreatePDF( WCF.Student student, WCF.Doctor doctor, WCF.MedicalAbs absmedical)
         {
             try
             {

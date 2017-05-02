@@ -58,9 +58,9 @@ namespace AbsMedical.Forms
             get;
         }
 
-        private absmedical GetAbsMedicalValue()
+        private MedicalAbs GetAbsMedicalValue()
         {
-            absmedical absMedical = new absmedical()
+            MedicalAbs absMedical = new MedicalAbs()
             {
                 VisitDate = visitDate.SelectedDate.Value,
                 Note = txtMotive.Text,
@@ -123,6 +123,7 @@ namespace AbsMedical.Forms
             }
             else
             {
+                RegisterAbs();
                 List<string> sendTo = new List<string> { StudentSchool.Email };
                 List<string> sendToCC = new List<string> { };
                 if (chkBxSendStudent.IsChecked == true)
@@ -168,6 +169,7 @@ namespace AbsMedical.Forms
 
         private void btnExportPDF_Click(object sender, RoutedEventArgs e)
         {
+            RegisterAbs();
             if (PDF.CreatePDF(CurrentStudent, CurrentDoctor, GetAbsMedicalValue()))
             {
                 ShowAlert("PDF has been created");
@@ -175,26 +177,34 @@ namespace AbsMedical.Forms
             }
         }
 
+        private void RegisterAbs()
+        {
+            if(!Added)
+            {
+                MedicalAbs absMed = new MedicalAbs()
+                {
+                    DoctorGuid = CurrentDoctorGuid,
+                    EndDate = dtEnd.SelectedDate.Value,
+                    StartDate = dtStart.SelectedDate.Value,
+                    Note = txtMotive.Text,
+                    StudentGuid = CurrentStudent.Guid,
+                    VisitDate = visitDate.SelectedDate.Value
+                };
+                if (AbsMedicalController.RegisterAbsMedical(absMed))
+                {
+                    ShowAlert("Student certificate successfully registered.");
+                    Added = true;
+                }
+                else
+                {
+                    ShowAlert("An error occured when register student. Please try again.");
+                }
+            }
+        }
+
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
-            MedicalAbs absMed = new MedicalAbs()
-            {
-                DoctorGuid = CurrentDoctorGuid,
-                EndDate = dtEnd.SelectedDate.Value,
-                StartDate = dtStart.SelectedDate.Value,
-                Note = txtMotive.Text,
-                StudentGuid = CurrentStudent.Guid,
-                VisitDate = visitDate.SelectedDate.Value
-            };
-            if (AbsMedicalController.RegisterAbsMedical(absMed) && !Added)
-            {
-                ShowAlert("Proof registered.");
-                Added = true;
-            }
-            else
-            {
-                ShowAlert("An error occured when register student. Please try again.");
-            }
+            RegisterAbs();
         }
     }
 }
