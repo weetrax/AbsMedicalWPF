@@ -33,6 +33,8 @@ namespace AbsMedical.Forms
             bindCountries();
         }
 
+        
+
         private void cbSchoolCountry_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             ComboBox cb = (ComboBox)sender;

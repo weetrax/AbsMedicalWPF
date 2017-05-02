@@ -58,13 +58,14 @@ namespace AbsMedical.Forms
         #region Click Event
         private void tileRegisterStudent_Click(object sender, RoutedEventArgs e)
         {
-            RegisterStudentWindow window = new RegisterStudentWindow(lblLogedAs.Content.ToString());
+            ManageStudentsWindow window = new ManageStudentsWindow(lblLogedAs.Content.ToString(), CurrentDoctorGuid);
             window.Show();
+            this.Hide();
         }
 
         private void tileExit_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            Environment.Exit(0);
         }
 
         private void tileProfile_Click(object sender, RoutedEventArgs e)

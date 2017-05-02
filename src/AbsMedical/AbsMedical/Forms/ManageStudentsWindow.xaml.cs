@@ -22,34 +22,41 @@ namespace AbsMedical.Forms
     /// </summary>
     public partial class ManageStudentsWindow : MetroWindow
     {
-        public ManageStudentsWindow()
+        private string CurrentDoctorGuid
         {
+            get;
+        }
+
+        public ManageStudentsWindow(string loggedAsContent, string doctorGuid)
+        {
+            this.CurrentDoctorGuid = doctorGuid;
             InitializeComponent();
+            lblLogedAs.Content = loggedAsContent;
         }
 
         private void btnOurGitHub_Click(object sender, RoutedEventArgs e)
         {
             Process.Start("https://github.com/weetrax/AbsMedicalWPF");
         }
-        #region Dialog
-        private async void ShowAlert(string title)
-        {
-            var dialog = (BaseMetroDialog)this.Resources["CustomCloseDialog"];
-            dialog.Title = title;
 
-            await this.ShowMetroDialogAsync(dialog);
-            await dialog.WaitUntilUnloadedAsync();
+        private void tileBack_Click(object sender, RoutedEventArgs e)
+        {
+            this.Hide();
+            HomeWindow window = new HomeWindow(CurrentDoctorGuid);
+            window.Show();
         }
 
-        private async void btnCloseCustomDialog_Click(object sender, RoutedEventArgs e)
+        private void tileRegisterStudent_Click(object sender, RoutedEventArgs e)
         {
-            var dialog = (BaseMetroDialog)this.Resources["CustomCloseDialog"];
-
-            await this.HideMetroDialogAsync(dialog);
-
             RegisterStudentWindow window = new RegisterStudentWindow(lblLogedAs.Content.ToString());
             window.Show();
         }
-        #endregion
+
+        private void tileEditStudent_Click(object sender, RoutedEventArgs e)
+        {
+
+            EditStudentWindow window = new EditStudentWindow(lblLogedAs.Content.ToString());
+            window.Show();
+        }
     }
 }
