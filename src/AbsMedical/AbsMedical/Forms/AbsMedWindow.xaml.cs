@@ -107,6 +107,7 @@ namespace AbsMedical.Forms
             //Proof
             visitDate.SelectedDate = DateTime.Now;
             dtStart.SelectedDate = DateTime.Now;
+            dtEnd.SelectedDate = DateTime.Now;
 
             //Mail
             txtSubject.Text = "Justificatif Absence Médicale du " + DateTime.Now.ToString("dd/MM/yyyy");
@@ -123,7 +124,7 @@ namespace AbsMedical.Forms
             }
             else
             {
-                RegisterAbs();
+                RegisterAbs(false);
                 List<string> sendTo = new List<string> { StudentSchool.Email };
                 List<string> sendToCC = new List<string> { };
                 if (chkBxSendStudent.IsChecked == true)
@@ -169,7 +170,7 @@ namespace AbsMedical.Forms
 
         private void btnExportPDF_Click(object sender, RoutedEventArgs e)
         {
-            RegisterAbs();
+            RegisterAbs(false);
             if (PDF.CreatePDF(CurrentStudent, CurrentDoctor, GetAbsMedicalValue()))
             {
                 ShowAlert("PDF has been created");
@@ -177,7 +178,7 @@ namespace AbsMedical.Forms
             }
         }
 
-        private void RegisterAbs()
+        private void RegisterAbs(bool showAlert)
         {
             if(!Added)
             {
@@ -192,19 +193,25 @@ namespace AbsMedical.Forms
                 };
                 if (AbsMedicalController.RegisterAbsMedical(absMed))
                 {
-                    ShowAlert("Student certificate successfully registered.");
+                    if (showAlert)
+                    {
+                        ShowAlert("Student certificate successfully registered.");
+                    }
                     Added = true;
                 }
                 else
                 {
-                    ShowAlert("An error occured when register student. Please try again.");
+                    if (showAlert)
+                    {
+                        ShowAlert("An error occured when register student. Please try again.");
+                    }
                 }
             }
         }
 
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
-            RegisterAbs();
+            RegisterAbs(true);
         }
     }
 }

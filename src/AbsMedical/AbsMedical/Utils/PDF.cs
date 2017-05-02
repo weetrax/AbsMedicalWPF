@@ -72,7 +72,7 @@ namespace AbsMedical.Utils
                         //Motive
                         Paragraph pMotiveTitle = new Paragraph("Motive: \n", TextUnderline());
                         doc.Add(pMotiveTitle);
-                        Paragraph pMotiveText = new Paragraph(absmedical.Note, TextFont());
+                        Paragraph pMotiveText = new Paragraph(GenerateMotive(student, doctor, absmedical), TextFont());
                         pMotiveText.Alignment = Element.ALIGN_JUSTIFIED;
                         doc.Add(pMotiveText);
 
@@ -92,7 +92,22 @@ namespace AbsMedical.Utils
             }
         }
 
+        private static string GenerateMotive(WCF.Student student, WCF.Doctor doctor, WCF.MedicalAbs abs)
+        {
+            string motive = "";
+            motive += "Je soussigné Docteur " + doctor.Lastname + " " + doctor.Firstname;
+            motive += " atteste que l'état de santé de l'étudiant " + student.Lastname + " " + student.Firstname;
+            motive += " justifie d'une absence scolaire du " + abs.StartDate.Value.ToString("dd/MM/yyyy") + " au " + abs.EndDate.Value.ToString("dd/MM/yyyy");
+            motive += " pour le motif suivant: ";
+            motive += Environment.NewLine;
+            motive += abs.Note;
+            motive += Environment.NewLine;
+            motive += "Fait à " + doctor.City + " le " + abs.VisitDate.ToString("dd/MM/yyyy");
+            return motive;
+        }
 
+
+        #region Font Style
         private static Font HeaderFont()
         {
             return FontFactory.GetFont("Segoe UI", 18.0f, BaseColor.BLACK);
@@ -118,5 +133,6 @@ namespace AbsMedical.Utils
         {
             return FontFactory.GetFont("Segoe UI", 15.0f, Font.BOLD, BaseColor.BLACK);
         }
+        #endregion
     }
 }
