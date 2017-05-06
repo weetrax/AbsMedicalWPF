@@ -119,5 +119,11 @@ namespace AbsMedical.Forms
             window.Show();
         }
         #endregion
+
+        private void tileHistory_Click(object sender, RoutedEventArgs e)
+        {
+            HistoryWindow window = new HistoryWindow(CurrentDoctorGuid);
+            window.Show();
+        }
     }
 }

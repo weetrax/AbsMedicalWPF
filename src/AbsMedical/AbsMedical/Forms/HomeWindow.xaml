@@ -39,7 +39,7 @@
             <Canvas>
 
                 <!-- Tile Register Certificate -->
-                <Controls:Tile x:Name="tileRegisterNewCertificate" Click="tileRegisterNewCertificate_Click" Title="Register certificate" Background="#FF6ED833" Height="189" Width="532" Margin="0">
+                <Controls:Tile x:Name="tileRegisterNewCertificate" Click="tileRegisterNewCertificate_Click" Title="Register certificate" Background="#FF6ED833" Height="189" Width="534" Margin="0">
                     <Rectangle Width="50" Height="50">
                         <Rectangle.Fill>
                             <VisualBrush Visual="{iconPacks:PackIconMaterial PlusCircle, Width=32, Height=32}" />
@@ -48,7 +48,7 @@
                 </Controls:Tile>
 
                 <!-- Tile Register Student -->
-                <Controls:Tile x:Name="tileRegisterStudent" Click="tileRegisterStudent_Click" Title="Register student" Background="#FFC933D8" Canvas.Right="152" Height="189" Width="418" Margin="0" Canvas.Left="532">
+                <Controls:Tile x:Name="tileRegisterStudent" Click="tileRegisterStudent_Click" Title="Register student" Background="#FFBF49CB" Canvas.Right="152" Height="189" Width="416" Margin="0" Canvas.Left="534">
                     <Rectangle Width="50" Height="50">
                         <Rectangle.Fill>
                             <VisualBrush Visual="{iconPacks:PackIconFontAwesome UserPlus, Width=32, Height=32}" />
@@ -57,7 +57,7 @@
                 </Controls:Tile>
 
                 <!-- Tile Exit -->
-                <Controls:Tile x:Name="tileExit" Click="tileExit_Click" Title="Exit" Background="#FFFF2D2D" Canvas.Right="152" Canvas.Bottom="90" Margin="0" Height="206" Width="297" Canvas.Left="653" Canvas.Top="189">
+                <Controls:Tile x:Name="tileExit" Click="tileExit_Click" Title="Exit" Background="#FFFF2D2D" Canvas.Right="152" Canvas.Bottom="90" Margin="0" Height="206" Width="266" Canvas.Left="684" Canvas.Top="189">
                     <Rectangle Width="50" Height="50">
                         <Rectangle.Fill>
                             <VisualBrush Visual="{iconPacks:PackIconMaterial ExitToApp, Width=32, Height=32}" />
@@ -66,10 +66,19 @@
                 </Controls:Tile>
 
                 <!-- Tile Profile -->
-                <Controls:Tile x:Name="tileProfile" Click="tileProfile_Click" Title="Profile" Canvas.Bottom="90" Margin="0" Height="206" Width="653" Canvas.Top="189" Background="#CCFFA301">
+                <Controls:Tile x:Name="tileProfile" Click="tileProfile_Click" Title="Profile" Canvas.Bottom="90" Margin="0" Height="206" Width="319" Canvas.Top="189" Background="#CCFFA301">
                     <Rectangle Width="50" Height="50">
                         <Rectangle.Fill>
                             <VisualBrush Visual="{iconPacks:PackIconMaterial Settings, Width=32, Height=32}" />
+                        </Rectangle.Fill>
+                    </Rectangle>
+                </Controls:Tile>
+
+                <!-- Tile History -->
+                <Controls:Tile x:Name="tileHistory" Click="tileHistory_Click" Title="History" Canvas.Bottom="90" Margin="0" Height="206" Width="365" Canvas.Top="189" Background="#CC2ED3CB" Canvas.Left="319">
+                    <Rectangle Width="50" Height="50">
+                        <Rectangle.Fill>
+                            <VisualBrush Visual="{iconPacks:PackIconMaterial History, Width=32, Height=32}" />
                         </Rectangle.Fill>
                     </Rectangle>
                 </Controls:Tile>

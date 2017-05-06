@@ -123,9 +123,6 @@
     <Compile Include="Forms\AbsMedWindow.xaml.cs">
       <DependentUpon>AbsMedWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Forms\EditStudentWindow.xaml.cs">
-      <DependentUpon>EditStudentWindow.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Forms\HomeWindow.xaml.cs">
       <DependentUpon>HomeWindow.xaml</DependentUpon>
     </Compile>
@@ -166,10 +163,6 @@
     <Compile Include="Utils\Mail.cs" />
     <Compile Include="Utils\PDF.cs" />
     <Page Include="Forms\AbsMedWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Forms\EditStudentWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
