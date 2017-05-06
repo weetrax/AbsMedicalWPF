@@ -26,6 +26,18 @@ namespace AbsMedical.StudentServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IStudentService/RegisterStudent", ReplyAction="http://tempuri.org/IStudentService/RegisterStudentResponse")]
         System.Threading.Tasks.Task<bool> RegisterStudentAsync(AbsMedical.WCF.Student student);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IStudentService/GetStudentBySocialSecurityNumber", ReplyAction="http://tempuri.org/IStudentService/GetStudentBySocialSecurityNumberResponse")]
+        AbsMedical.WCF.Student GetStudentBySocialSecurityNumber(string value);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IStudentService/GetStudentBySocialSecurityNumber", ReplyAction="http://tempuri.org/IStudentService/GetStudentBySocialSecurityNumberResponse")]
+        System.Threading.Tasks.Task<AbsMedical.WCF.Student> GetStudentBySocialSecurityNumberAsync(string value);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IStudentService/GetStudentsByName", ReplyAction="http://tempuri.org/IStudentService/GetStudentsByNameResponse")]
+        System.Collections.Generic.List<AbsMedical.WCF.Student> GetStudentsByName(string firstname, string lastname);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IStudentService/GetStudentsByName", ReplyAction="http://tempuri.org/IStudentService/GetStudentsByNameResponse")]
+        System.Threading.Tasks.Task<System.Collections.Generic.List<AbsMedical.WCF.Student>> GetStudentsByNameAsync(string firstname, string lastname);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -69,6 +81,22 @@ namespace AbsMedical.StudentServiceReference {
         
         public System.Threading.Tasks.Task<bool> RegisterStudentAsync(AbsMedical.WCF.Student student) {
             return base.Channel.RegisterStudentAsync(student);
+        }
+        
+        public AbsMedical.WCF.Student GetStudentBySocialSecurityNumber(string value) {
+            return base.Channel.GetStudentBySocialSecurityNumber(value);
+        }
+        
+        public System.Threading.Tasks.Task<AbsMedical.WCF.Student> GetStudentBySocialSecurityNumberAsync(string value) {
+            return base.Channel.GetStudentBySocialSecurityNumberAsync(value);
+        }
+        
+        public System.Collections.Generic.List<AbsMedical.WCF.Student> GetStudentsByName(string firstname, string lastname) {
+            return base.Channel.GetStudentsByName(firstname, lastname);
+        }
+        
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<AbsMedical.WCF.Student>> GetStudentsByNameAsync(string firstname, string lastname) {
+            return base.Channel.GetStudentsByNameAsync(firstname, lastname);
         }
     }
 }

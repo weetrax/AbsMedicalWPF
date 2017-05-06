@@ -16,6 +16,13 @@ namespace AbsMedical.WCF
 
         [OperationContract]
         bool RegisterStudent(Student student);
+
+        [OperationContract]
+        Student GetStudentBySocialSecurityNumber(string value);
+
+        [OperationContract]
+        List<Student> GetStudentsByName(string firstname, string lastname);
+
     }
 
     [Serializable]

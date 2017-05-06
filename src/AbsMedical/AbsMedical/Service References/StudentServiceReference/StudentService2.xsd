@@ -29,4 +29,33 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="GetStudentBySocialSecurityNumber">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="value" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetStudentBySocialSecurityNumberResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/AbsMedical.WCF" minOccurs="0" name="GetStudentBySocialSecurityNumberResult" nillable="true" type="q3:Student" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetStudentsByName">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="firstname" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="lastname" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetStudentsByNameResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/AbsMedical.WCF" minOccurs="0" name="GetStudentsByNameResult" nillable="true" type="q4:ArrayOfStudent" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
 </xs:schema>

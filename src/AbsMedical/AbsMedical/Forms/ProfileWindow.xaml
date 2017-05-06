@@ -19,7 +19,7 @@
             <Label x:Name="lblLogedAs" Foreground="White" Content=""/>
         </Controls:WindowCommands>
     </Controls:MetroWindow.RightWindowCommands>
-
+    
     <Window.Resources>
         <ResourceDictionary>
             <Dialog:CustomDialog x:Key="CustomCloseDialog" x:Name="CustomCloseDialog">

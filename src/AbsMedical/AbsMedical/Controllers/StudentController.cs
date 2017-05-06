@@ -35,5 +35,26 @@ namespace AbsMedical.Controllers
                 return serv.RegisterStudent(student);
             }
         }
+
+        /// <summary>
+        /// Get a student object by its social security number
+        /// </summary>
+        /// <param name="value">social security number of the student</param>
+        /// <returns>Student object</returns>
+        public static Student GetStudentBySocialSecurityNumber(string value)
+        {
+            using (StudentServiceReference.StudentServiceClient serv = new StudentServiceReference.StudentServiceClient())
+            {
+                return serv.GetStudentBySocialSecurityNumber(value);
+            }
+        }
+
+        public static List<Student> GetStudentsByName(string firstname, string lastname)
+        {
+            using (StudentServiceReference.StudentServiceClient serv = new StudentServiceReference.StudentServiceClient())
+            {
+                return serv.GetStudentsByName(firstname, lastname);
+            }
+        }
     }
 }
