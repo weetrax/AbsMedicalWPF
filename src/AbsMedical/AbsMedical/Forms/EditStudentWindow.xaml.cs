@@ -28,6 +28,7 @@ namespace AbsMedical.Forms
         public EditStudentWindow(string logedAs)
         {
             InitializeComponent();
+            
         }
 
         private void BindStudent(Student student)
