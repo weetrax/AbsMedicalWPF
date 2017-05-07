@@ -55,7 +55,7 @@ namespace AbsMedical.Forms
         private void tileEditStudent_Click(object sender, RoutedEventArgs e)
         {
 
-            EditStudentWindow window = new EditStudentWindow(lblLogedAs.Content.ToString());
+            EditStudentsWindow window = new EditStudentsWindow(lblLogedAs.Content.ToString());
             window.Show();
         }
     }

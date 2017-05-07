@@ -7,7 +7,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -21,14 +20,33 @@ using System.Windows.Shapes;
 namespace AbsMedical.Forms
 {
     /// <summary>
-    /// Logique d'interaction pour EditStudentWindow.xaml
+    /// Logique d'interaction pour EditStudentsWindow.xaml
     /// </summary>
-    public partial class EditStudentWindow : MetroWindow
+    public partial class EditStudentsWindow : MetroWindow
     {
-        public EditStudentWindow(string logedAs)
+        public EditStudentsWindow(string logedAs)
         {
             InitializeComponent();
-            
+            lblLogedAs.Content = logedAs;
+        }
+
+        private void btnScan_Click(object sender, RoutedEventArgs e)
+        {
+            NFCReader.establishContext();
+            NFCReader.SelectDevice();
+            if (NFCReader.connectCard())
+            {
+                string studentGuid = NFCReader.getcardUID();
+                WCF.Student student = StudentController.Get(studentGuid);
+                if (student != null)
+                {
+                    BindStudent(student);
+                }
+                else
+                {
+                    ShowAlert("The student does not exist.");
+                }
+            }
         }
 
         private void BindStudent(Student student)
@@ -50,7 +68,6 @@ namespace AbsMedical.Forms
             txtLastname_filters.Text = txtLastname.Text;
         }
 
-
         #region Dialog
         private async void ShowAlert(string title)
         {
@@ -69,22 +86,40 @@ namespace AbsMedical.Forms
         }
         #endregion
 
-        private void btnScanCard_Click(object sender, RoutedEventArgs e)
+        private void btnClose_Click(object sender, RoutedEventArgs e)
         {
-            NFCReader.establishContext();
-            NFCReader.SelectDevice();
-            if (NFCReader.connectCard())
+            this.Hide();
+        }
+
+        private void BindCountries()
+        {
+            List<Country> countries = CountryController.GetCountries();
+            cbCountries.ItemsSource = countries;
+            cbCountries.SelectedValuePath = "Id";
+            cbCountries.DisplayMemberPath = "Name";
+
+            cbSchoolCountry.ItemsSource = countries;
+            cbSchoolCountry.SelectedValuePath = "Id";
+            cbSchoolCountry.DisplayMemberPath = "Name";
+        }
+
+
+
+        private void btnEditStudent_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnSearch_Click(object sender, RoutedEventArgs e)
+        {
+            Student student = StudentController.GetStudentBySocialSecurityNumber(txtSocialSecurityNumber.Text);
+            if(student != null)
             {
-                string studentGuid = NFCReader.getcardUID();
-                WCF.Student student = StudentController.Get(studentGuid);
-                if (student != null)
-                {
-                    BindStudent(student);
-                }
-                else
-                {
-                    ShowAlert("The student does not exist.");
-                }
+                BindStudent(student);
+            }
+            else
+            {
+                ShowAlert("Student does not exist.");
             }
         }
     }
