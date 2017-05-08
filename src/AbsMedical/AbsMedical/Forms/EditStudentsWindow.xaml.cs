@@ -69,8 +69,6 @@ namespace AbsMedical.Forms
                 if (student != null)
                 {
                     BindStudent(student);
-                    List<Student> students = new List<Student> { student };
-                    
                 }
                 else
                 {
@@ -344,7 +342,7 @@ namespace AbsMedical.Forms
                         if (StudentController.DeleteStudent(SelectedStudent.Guid))
                         {
                             ShowAlert("Student has been deleted");
-                            this.Close();
+                            ClearControls();
                         }
                         break;
                 }
