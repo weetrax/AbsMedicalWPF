@@ -69,6 +69,7 @@ namespace AbsMedical.Forms
                 if (student != null)
                 {
                     BindStudent(student);
+                    SelectedStudent = student;
                 }
                 else
                 {
