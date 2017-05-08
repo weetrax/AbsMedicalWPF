@@ -33,8 +33,29 @@ namespace AbsMedical.Forms
         {
             InitializeComponent();
             BindCountries();
-            BindSchoolsByCountry("FR");
             lblLogedAs.Content = logedAs;
+        }
+
+        private void ClearControls()
+        {
+            txtFirstname.Clear();
+            txtFirstname_filters.Clear();
+            txtLastname.Clear();
+            txtLastname_filters.Clear();
+            txtSocialSecurityNumber.Clear();
+            cbCountries.SelectedItem = null;
+            txtBirthplace.Clear();
+            txtBirthdate.SelectedDate = null;
+            txtCity.Clear();
+            txtAddress.Clear();
+            txtPostalCode.Clear();
+            txtEmail.Clear();
+            txtPhone.Clear();
+            cbSchoolCountry.SelectedItem = null;
+            cbSchool.SelectedItem = null;
+            txtStudentId.Clear();
+            dtBirthdate_filters.SelectedDate = null;
+            SelectedStudent = null;
         }
 
         private void btnScan_Click(object sender, RoutedEventArgs e)
@@ -48,16 +69,25 @@ namespace AbsMedical.Forms
                 if (student != null)
                 {
                     BindStudent(student);
+                    List<Student> students = new List<Student> { student };
+                    
                 }
                 else
                 {
                     ShowAlert("The student does not exist.");
+                    ClearControls();
                 }
             }
         }
 
         private void BindStudent(Student student)
         {
+            School studentSchool = SchoolController.Get(student.SchoolGuid);
+            if (studentSchool != null)
+            {
+                cbSchoolCountry.SelectedValue = studentSchool.CountryId;
+                BindSchoolsByCountry(studentSchool.CountryId);
+            }
             txtFirstname.Text = student.Firstname;
             txtLastname.Text = student.Lastname;
             txtBirthdate.SelectedDate = student.Birthdate;
@@ -73,6 +103,9 @@ namespace AbsMedical.Forms
             txtSocialSecurityNumber.Text = student.SocialSecurityNumber;
             txtFirstname_filters.Text = txtFirstname.Text;
             txtLastname_filters.Text = txtLastname.Text;
+
+            dtBirthdate_filters.SelectedDate = student.Birthdate;
+            
         }
 
 
@@ -121,86 +154,162 @@ namespace AbsMedical.Forms
 
         }
 
+        private void BindSchools()
+        {
+            List<School> schools = SchoolController.GetSchools();
+            cbSchool.ItemsSource = schools;
+            cbSchool.SelectedValuePath = "Guid";
+            cbSchool.DisplayMemberPath = "DisplayedName";
+        }
+
 
         private void btnEditStudent_Click(object sender, RoutedEventArgs e)
         {
-            if(!string.IsNullOrEmpty(txtFirstname.Text))
+            if (SelectedStudent != null)
             {
-                if(!string.IsNullOrEmpty(txtLastname.Text))
+                if (!string.IsNullOrEmpty(txtFirstname.Text))
                 {
-                    if(cbCountries.SelectedItem != null)
+                    if (!string.IsNullOrEmpty(txtLastname.Text))
                     {
-                        if(!string.IsNullOrEmpty(txtAddress.Text))
+                        if (cbCountries.SelectedItem != null)
                         {
-                            if(!string.IsNullOrEmpty(txtCity.Text))
+                            if (!string.IsNullOrEmpty(txtAddress.Text))
                             {
-                                if(!string.IsNullOrEmpty(txtPostalCode.Text))
+                                if (!string.IsNullOrEmpty(txtCity.Text))
                                 {
-                                    if(!string.IsNullOrEmpty(txtPhone.Text))
+                                    if (!string.IsNullOrEmpty(txtPostalCode.Text))
                                     {
-                                        if(cbSchool.SelectedItem != null)
+                                        if (!string.IsNullOrEmpty(txtPhone.Text))
                                         {
-                                            if(!string.IsNullOrEmpty(txtStudentId.Text))
+                                            if (cbSchool.SelectedItem != null)
                                             {
-                                                Student student = new Student()
+                                                if (!string.IsNullOrEmpty(txtStudentId.Text))
                                                 {
-                                                    Guid = SelectedStudent.Guid,
-                                                    Lastname = txtLastname.Text,
-                                                    Firstname = txtFirstname.Text,
-                                                    Email = txtEmail.Text,
-                                                    StudentId = txtStudentId.Text,
-                                                    Phone = txtPhone.Text,
-                                                    Birthdate = SelectedStudent.Birthdate,
-                                                    Birthplace = SelectedStudent.Birthplace,
-                                                    Address = txtAddress.Text,
-                                                    City = txtCity.Text,
-                                                    PostalCode = txtPostalCode.Text,
-                                                    CountryId = cbCountries.SelectedValue.ToString(),
-                                                    SchoolGuid = cbSchool.SelectedValue.ToString(),
-                                                    SocialSecurityNumber = SelectedStudent.SocialSecurityNumber
-                                                };
-                                                if (StudentController.UpdateStudent(student))
-                                                {
-                                                    ShowAlert("Student " + student.Firstname + " " + student.Lastname + " has beenupdated");
+                                                    Student student = new Student()
+                                                    {
+                                                        Guid = SelectedStudent.Guid,
+                                                        Lastname = txtLastname.Text,
+                                                        Firstname = txtFirstname.Text,
+                                                        Email = txtEmail.Text,
+                                                        StudentId = txtStudentId.Text,
+                                                        Phone = txtPhone.Text,
+                                                        Birthdate = SelectedStudent.Birthdate,
+                                                        Birthplace = SelectedStudent.Birthplace,
+                                                        Address = txtAddress.Text,
+                                                        City = txtCity.Text,
+                                                        PostalCode = txtPostalCode.Text,
+                                                        CountryId = cbCountries.SelectedValue.ToString(),
+                                                        SchoolGuid = cbSchool.SelectedValue.ToString(),
+                                                        SocialSecurityNumber = SelectedStudent.SocialSecurityNumber
+                                                    };
+                                                    if (StudentController.UpdateStudent(student))
+                                                    {
+                                                        ShowAlert("Student " + student.Firstname + " " + student.Lastname + " has been updated");
+                                                    }
+                                                    else
+                                                    {
+                                                        ShowAlert("An error occured while updating student. Please try again.");
+                                                    }
                                                 }
                                                 else
                                                 {
-                                                    ShowAlert("An error occured while updating student. Please try again.");
+                                                    ShowAlert("StudentId attribute missing !");
                                                 }
                                             }
                                             else
                                             {
-                                                ShowAlert("StudentId attribute missing !");
+                                                ShowAlert("School attribute missing !");
                                             }
                                         }
                                         else
                                         {
-                                            ShowAlert("School attribute missing !");
+                                            ShowAlert("Phone attribute missing !");
                                         }
                                     }
                                     else
                                     {
-                                        ShowAlert("Phone attribute missing !");
+                                        ShowAlert("Zip code attribute missing !");
                                     }
                                 }
                                 else
                                 {
-                                    ShowAlert("Zip code attribute missing !");
+                                    ShowAlert("City attribute missing !");
                                 }
                             }
                             else
                             {
-                                ShowAlert("City attribute missing !");
+                                ShowAlert("Address attribute missing !");
                             }
                         }
                         else
                         {
-                            ShowAlert("Address attribute missing !");
+                            ShowAlert("Country attribute missing !");
                         }
                     }
                     else
                     {
-                        ShowAlert("Country attribute missing !");
+                        ShowAlert("Lastname attribute missing !");
+                    }
+                }
+                else
+                {
+                    ShowAlert("Firstname attribute missing !");
+                }
+            }
+            else
+            {
+                ShowAlert("You must choose a student !");
+            }
+        }
+
+        private void btnSearch_Click(object sender, RoutedEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(txtSocialSecurityNumber.Text))
+            {
+                Student student = StudentController.GetStudentBySocialSecurityNumber(txtSocialSecurityNumber.Text);
+                if (student != null)
+                {
+                    SelectedStudent = student;
+                    BindStudent(SelectedStudent);
+                    
+                }
+                else
+                {
+                    ShowAlert("Student does not exist.");
+                    ClearControls();
+                }
+            }
+            else
+            {
+                ShowAlert("Social Security Number attribute missing !");
+            }
+        }
+
+        private void btnSearchbyName_Click(object sender, RoutedEventArgs e)
+        {
+            string firstname = txtFirstname_filters.Text;
+            string lastname = txtLastname_filters.Text;
+            if(!string.IsNullOrEmpty(firstname))
+            {
+                if(!string.IsNullOrEmpty(lastname))
+                {
+                    if(dtBirthdate_filters.SelectedDate != null)
+                    {
+                        DateTime birthdate = DateTime.Parse(dtBirthdate_filters.SelectedDate.Value.ToString("yyyy-MM-dd"));
+                        Student student = StudentController.GetStudentByFilters(firstname, lastname, birthdate);
+                        if(student != null)
+                        {
+                            BindStudent(student);
+                        }
+                        else
+                        {
+                            ShowAlert("Student does not exist.");
+                            ClearControls();
+                        }
+                    }
+                    else
+                    {
+                        ShowAlert("Birthdate attribute missing !");
                     }
                 }
                 else
@@ -214,60 +323,36 @@ namespace AbsMedical.Forms
             }
         }
 
-        private void btnSearch_Click(object sender, RoutedEventArgs e)
-        {
-            Student student = StudentController.GetStudentBySocialSecurityNumber(txtSocialSecurityNumber.Text);
-            if(student != null)
-            {
-                SelectedStudent = student;
-                BindStudent(SelectedStudent); 
-            }
-            else
-            {
-                ShowAlert("Student does not exist.");
-            }
-        }
-
-        private void btnSearchbyName_Click(object sender, RoutedEventArgs e)
-        {
-            string firstname = txtFirstname_filters.Text;
-            string lastname = txtLastname_filters.Text;
-            DateTime birthdate = DateTime.Parse(dtBirthdate_filters.SelectedDate.Value.ToString("yyyy-MM-dd"));
-            List<Student> students = StudentController.GetStudentsByFilters(firstname, lastname, birthdate);
-            BindStudents(students);
-            
-        }
-
-        private void BindStudents(List<Student> list)
-        {
-            cbResults.ItemsSource = list;
-            cbResults.DisplayMemberPath = "DisplayedName";
-            cbResults.SelectedValuePath = "Guid";
-            if (list.Count > 0)
-            {
-                cbResults.SelectedItem = list[0];
-                SelectedStudent = list[0];
-            }
-        }
-
-        private void cbResults_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            string selectedGuid;
-            ComboBox cb = (ComboBox)sender;
-            selectedGuid = cb.SelectedValue.ToString();
-            Student student = StudentController.Get(selectedGuid);
-            if(student != null)
-            {
-                SelectedStudent = student;
-                BindStudent(SelectedStudent);
-            }
-        }
-
         private void cbSchoolCountry_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             ComboBox cb = (ComboBox)sender;
-            string countryId = cb.SelectedValue.ToString();
-            BindSchoolsByCountry(countryId);
+            if (cb.SelectedValue != null)
+            {
+                string countryId = cb.SelectedValue.ToString();
+                BindSchoolsByCountry(countryId);
+            }
+        }
+
+        private void btnDeleteStudent_Click(object sender, RoutedEventArgs e)
+        {
+            if (SelectedStudent != null)
+            {
+                MessageBoxResult result = MessageBox.Show("Are you sure to delete this student ?", "Confirmation", MessageBoxButton.YesNo);
+                switch (result)
+                {
+                    case MessageBoxResult.Yes:
+                        if (StudentController.DeleteStudent(SelectedStudent.Guid))
+                        {
+                            ShowAlert("Student has been deleted");
+                            this.Close();
+                        }
+                        break;
+                }
+            }
+            else
+            {
+                ShowAlert("You must choose a student !");
+            }
         }
     }
 }

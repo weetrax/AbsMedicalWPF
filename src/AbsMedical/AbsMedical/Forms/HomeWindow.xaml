@@ -48,10 +48,10 @@
                 </Controls:Tile>
 
                 <!-- Tile Register Student -->
-                <Controls:Tile x:Name="tileRegisterStudent" Click="tileRegisterStudent_Click" Title="Register student" Background="#FFBF49CB" Canvas.Right="152" Height="189" Width="416" Margin="0" Canvas.Left="534">
+                <Controls:Tile x:Name="tileRegisterStudent" Click="tileRegisterStudent_Click" Title="Manage students" Background="#FFBF49CB" Canvas.Right="152" Height="189" Width="416" Margin="0" Canvas.Left="534">
                     <Rectangle Width="50" Height="50">
                         <Rectangle.Fill>
-                            <VisualBrush Visual="{iconPacks:PackIconFontAwesome UserPlus, Width=32, Height=32}" />
+                            <VisualBrush Visual="{iconPacks:PackIconFontAwesome Users, Width=32, Height=32}" />
                         </Rectangle.Fill>
                     </Rectangle>
                 </Controls:Tile>
@@ -75,7 +75,7 @@
                 </Controls:Tile>
 
                 <!-- Tile History -->
-                <Controls:Tile x:Name="tileHistory" Click="tileHistory_Click" Title="History" Canvas.Bottom="90" Margin="0" Height="206" Width="365" Canvas.Top="189" Background="#CC2ED3CB" Canvas.Left="319">
+                <Controls:Tile x:Name="tileHistory" IsEnabled="False" Click="tileHistory_Click" Title="History" Canvas.Bottom="90" Margin="0" Height="206" Width="365" Canvas.Top="189" Background="#CC2ED3CB" Canvas.Left="319">
                     <Rectangle Width="50" Height="50">
                         <Rectangle.Fill>
                             <VisualBrush Visual="{iconPacks:PackIconMaterial History, Width=32, Height=32}" />

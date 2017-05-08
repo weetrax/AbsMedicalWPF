@@ -55,10 +55,6 @@
                 <TextBox x:Name="txtSocialSecurityNumber" Canvas.Top="8" Canvas.Left="513" Width="218"></TextBox>
                 <Button x:Name="btnSearch" Click="btnSearch_Click" Content="Search" Canvas.Left="661" Canvas.Top="39" Width="70" Style="{StaticResource AccentedSquareButtonStyle}" Controls:ControlsHelper.ContentCharacterCasing="Normal"/>
 
-                <!-- Result -->
-                <Label Content="Results:" Canvas.Left="345" Canvas.Top="90"></Label>
-                <ComboBox x:Name="cbResults" Canvas.Left="400" SelectionChanged="cbResults_SelectionChanged" Canvas.Top="90" Width="331"></ComboBox>
-                
                 <!-- Button scan -->
                 <Button x:Name="btnScan" Click="btnScan_Click" Content="Scan student card" Canvas.Left="821" Canvas.Top="8" Width="108" Style="{StaticResource AccentedSquareButtonStyle}" Controls:ControlsHelper.ContentCharacterCasing="Normal"></Button>
             </Canvas>
@@ -121,7 +117,8 @@
         <!--groupbox school-->
         <Canvas>
             <Button x:Name="btnEditStudent" Click="btnEditStudent_Click" Content="Save" Canvas.Left="856" Canvas.Top="494" Width="108" Style="{StaticResource AccentedSquareButtonStyle}" Controls:ControlsHelper.ContentCharacterCasing="Normal"></Button>
-            <Button x:Name="btnClose" Click="btnClose_Click" Content="Close" Canvas.Left="784" Canvas.Top="494" Width="54" Style="{DynamicResource SquareButtonStyle}" Controls:ControlsHelper.ContentCharacterCasing="Normal"/>
+            <Button x:Name="btnClose" Click="btnClose_Click" Content="Close" Canvas.Left="693" Canvas.Top="494" Width="54" Style="{DynamicResource SquareButtonStyle}" Controls:ControlsHelper.ContentCharacterCasing="Normal"/>
+            <Button x:Name="btnDeleteStudent" Content="Delete" Click="btnDeleteStudent_Click" Style="{DynamicResource SquareButtonStyle}" Controls:ControlsHelper.ContentCharacterCasing="Normal" Width="92" Canvas.Left="759" Canvas.Top="494" Height="28" Background="#FFFF2121"/>
             <TextBlock x:Name="lblMessage" Visibility="Hidden" TextWrapping="Wrap" Canvas.Top="373" Text="" Canvas.Left="373" Width="393" Height="47" UseLayoutRounding="False" Foreground="#FF009E00"/>
         </Canvas>
 

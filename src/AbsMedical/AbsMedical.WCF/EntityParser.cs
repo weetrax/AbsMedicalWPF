@@ -126,7 +126,7 @@ namespace AbsMedical.WCF
                 City = student.City,
                 CountryId = student.CountryId,
                 SchoolGuid = student.SchoolGuid,
-                DisplayedName = student.Lastname + " " + student.Firstname
+                DisplayedName = student.Lastname + " " + student.Firstname + " " + student.Birthdate.ToString("yyyy-MM-dd")
             };
             return stu;
         }

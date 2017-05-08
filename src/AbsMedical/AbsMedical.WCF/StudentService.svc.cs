@@ -15,34 +15,48 @@ namespace AbsMedical.WCF
     {
         public Student GetStudent(string StudentGuid)
         {
-            rfidEntities db = new rfidEntities();
-            var studentEntity = db.student.FirstOrDefault(i => i.Guid == StudentGuid);
-            if (studentEntity != null) return EntityParser.EntityToObject(studentEntity);
-            else return null;
+            using (rfidEntities db = new rfidEntities())
+            {
+                var studentEntity = db.student.FirstOrDefault(i => i.Guid == StudentGuid);
+                if (studentEntity != null) return EntityParser.EntityToObject(studentEntity);
+                else return null;
+            }
         }
 
         public Student GetStudentBySocialSecurityNumber(string value)
         {
-            rfidEntities db = new rfidEntities();
-            var studentEntity = db.student.FirstOrDefault(s => s.SocialSecurityNumber == value);
-            if (studentEntity != null) return EntityParser.EntityToObject(studentEntity);
-            else return null;
+            using (rfidEntities db = new rfidEntities())
+            {
+                var studentEntity = db.student.FirstOrDefault(s => s.SocialSecurityNumber == value);
+                if (studentEntity != null) return EntityParser.EntityToObject(studentEntity);
+                else return null;
+            }
         }
 
-        public List<Student> GetStudentsByFilters(string firstname, string lastname, DateTime birthdate)
+        public bool DeleteStudent(string studentGuid)
+        {
+            using (rfidEntities db = new rfidEntities())
+            {
+                var studentEntity = db.student.FirstOrDefault(s => s.Guid == studentGuid);
+                db.student.Remove(studentEntity);
+                int result = db.SaveChanges();
+                return result > 0;
+            }
+        }
+
+        public Student GetStudentByFilters(string firstname, string lastname, DateTime birthdate)
         {
             List<Student> students = new List<Student>();
-            rfidEntities db = new rfidEntities();
-            var studentEntities = (from s in db.student where s.Firstname.Contains(firstname) && s.Lastname.Contains(lastname) && s.Birthdate == birthdate select s).ToList();
-
-            if(studentEntities.Count > 0)
+            using (rfidEntities db = new rfidEntities())
             {
-                foreach(student stu in studentEntities)
+                var studentEntity = (from s in db.student where s.Firstname.Contains(firstname) && s.Lastname.Contains(lastname) && s.Birthdate == birthdate select s).FirstOrDefault();
+
+                if (studentEntity != null)
                 {
-                    students.Add(EntityParser.EntityToObject(stu));
+                    return EntityParser.EntityToObject(studentEntity);
                 }
+                else return null;
             }
-            return students;
         }
 
         public bool UpdateStudent(Student student)
@@ -74,10 +88,12 @@ namespace AbsMedical.WCF
 
         public bool RegisterStudent(Student student)
         {
-            rfidEntities db = new rfidEntities();
-            db.student.Add(EntityParser.ObjectToEntity(student));
-            int result = db.SaveChanges();
-            return result > 0;
+            using (rfidEntities db = new rfidEntities())
+            {
+                db.student.Add(EntityParser.ObjectToEntity(student));
+                int result = db.SaveChanges();
+                return result > 0;
+            }
         }
     }
 }

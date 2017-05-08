@@ -56,11 +56,11 @@ namespace AbsMedical.Controllers
         /// <param name="lastname">Student's lastname</param>
         /// <param name="birthdate">Student's birthdate</param>
         /// <returns></returns>
-        public static List<Student> GetStudentsByFilters(string firstname, string lastname, DateTime birthdate)
+        public static Student GetStudentByFilters(string firstname, string lastname, DateTime birthdate)
         {
             using (StudentServiceReference.StudentServiceClient serv = new StudentServiceReference.StudentServiceClient())
             {
-                return serv.GetStudentsByFilters(firstname, lastname, birthdate);
+                return serv.GetStudentByFilters(firstname, lastname, birthdate);
             }
         }
 
@@ -74,6 +74,14 @@ namespace AbsMedical.Controllers
             using (StudentServiceReference.StudentServiceClient serv = new StudentServiceReference.StudentServiceClient())
             {
                 return serv.UpdateStudent(student);
+            }
+        }
+
+        public static bool DeleteStudent(string studentGuid)
+        {
+            using (StudentServiceReference.StudentServiceClient serv = new StudentServiceReference.StudentServiceClient())
+            {
+                return serv.DeleteStudent(studentGuid);
             }
         }
     }

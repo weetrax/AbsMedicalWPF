@@ -21,10 +21,13 @@ namespace AbsMedical.WCF
         Student GetStudentBySocialSecurityNumber(string value);
 
         [OperationContract]
-        List<Student> GetStudentsByFilters(string firstname, string lastname, DateTime birthdate);
+        Student GetStudentByFilters(string firstname, string lastname, DateTime birthdate);
 
         [OperationContract]
         bool UpdateStudent(Student student);
+
+        [OperationContract]
+        bool DeleteStudent(string studentGuid);
 
     }
 
