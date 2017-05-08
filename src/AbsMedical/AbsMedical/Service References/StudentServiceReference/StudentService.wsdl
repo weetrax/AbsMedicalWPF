@@ -25,11 +25,17 @@
   <wsdl:message name="IStudentService_GetStudentBySocialSecurityNumber_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetStudentBySocialSecurityNumberResponse" />
   </wsdl:message>
-  <wsdl:message name="IStudentService_GetStudentsByName_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetStudentsByName" />
+  <wsdl:message name="IStudentService_GetStudentsByFilters_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetStudentsByFilters" />
   </wsdl:message>
-  <wsdl:message name="IStudentService_GetStudentsByName_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetStudentsByNameResponse" />
+  <wsdl:message name="IStudentService_GetStudentsByFilters_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetStudentsByFiltersResponse" />
+  </wsdl:message>
+  <wsdl:message name="IStudentService_UpdateStudent_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateStudent" />
+  </wsdl:message>
+  <wsdl:message name="IStudentService_UpdateStudent_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateStudentResponse" />
   </wsdl:message>
   <wsdl:portType name="IStudentService">
     <wsdl:operation name="GetStudent">
@@ -44,9 +50,13 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IStudentService/GetStudentBySocialSecurityNumber" message="tns:IStudentService_GetStudentBySocialSecurityNumber_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IStudentService/GetStudentBySocialSecurityNumberResponse" message="tns:IStudentService_GetStudentBySocialSecurityNumber_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="GetStudentsByName">
-      <wsdl:input wsaw:Action="http://tempuri.org/IStudentService/GetStudentsByName" message="tns:IStudentService_GetStudentsByName_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IStudentService/GetStudentsByNameResponse" message="tns:IStudentService_GetStudentsByName_OutputMessage" />
+    <wsdl:operation name="GetStudentsByFilters">
+      <wsdl:input wsaw:Action="http://tempuri.org/IStudentService/GetStudentsByFilters" message="tns:IStudentService_GetStudentsByFilters_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IStudentService/GetStudentsByFiltersResponse" message="tns:IStudentService_GetStudentsByFilters_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateStudent">
+      <wsdl:input wsaw:Action="http://tempuri.org/IStudentService/UpdateStudent" message="tns:IStudentService_UpdateStudent_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IStudentService/UpdateStudentResponse" message="tns:IStudentService_UpdateStudent_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IStudentService" type="tns:IStudentService">
@@ -78,8 +88,17 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetStudentsByName">
-      <soap:operation soapAction="http://tempuri.org/IStudentService/GetStudentsByName" style="document" />
+    <wsdl:operation name="GetStudentsByFilters">
+      <soap:operation soapAction="http://tempuri.org/IStudentService/GetStudentsByFilters" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateStudent">
+      <soap:operation soapAction="http://tempuri.org/IStudentService/UpdateStudent" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

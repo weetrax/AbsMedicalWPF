@@ -33,11 +33,17 @@ namespace AbsMedical.StudentServiceReference {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IStudentService/GetStudentBySocialSecurityNumber", ReplyAction="http://tempuri.org/IStudentService/GetStudentBySocialSecurityNumberResponse")]
         System.Threading.Tasks.Task<AbsMedical.WCF.Student> GetStudentBySocialSecurityNumberAsync(string value);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IStudentService/GetStudentsByName", ReplyAction="http://tempuri.org/IStudentService/GetStudentsByNameResponse")]
-        System.Collections.Generic.List<AbsMedical.WCF.Student> GetStudentsByName(string firstname, string lastname);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IStudentService/GetStudentsByFilters", ReplyAction="http://tempuri.org/IStudentService/GetStudentsByFiltersResponse")]
+        System.Collections.Generic.List<AbsMedical.WCF.Student> GetStudentsByFilters(string firstname, string lastname, System.DateTime birthdate);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IStudentService/GetStudentsByName", ReplyAction="http://tempuri.org/IStudentService/GetStudentsByNameResponse")]
-        System.Threading.Tasks.Task<System.Collections.Generic.List<AbsMedical.WCF.Student>> GetStudentsByNameAsync(string firstname, string lastname);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IStudentService/GetStudentsByFilters", ReplyAction="http://tempuri.org/IStudentService/GetStudentsByFiltersResponse")]
+        System.Threading.Tasks.Task<System.Collections.Generic.List<AbsMedical.WCF.Student>> GetStudentsByFiltersAsync(string firstname, string lastname, System.DateTime birthdate);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IStudentService/UpdateStudent", ReplyAction="http://tempuri.org/IStudentService/UpdateStudentResponse")]
+        bool UpdateStudent(AbsMedical.WCF.Student student);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IStudentService/UpdateStudent", ReplyAction="http://tempuri.org/IStudentService/UpdateStudentResponse")]
+        System.Threading.Tasks.Task<bool> UpdateStudentAsync(AbsMedical.WCF.Student student);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -91,12 +97,20 @@ namespace AbsMedical.StudentServiceReference {
             return base.Channel.GetStudentBySocialSecurityNumberAsync(value);
         }
         
-        public System.Collections.Generic.List<AbsMedical.WCF.Student> GetStudentsByName(string firstname, string lastname) {
-            return base.Channel.GetStudentsByName(firstname, lastname);
+        public System.Collections.Generic.List<AbsMedical.WCF.Student> GetStudentsByFilters(string firstname, string lastname, System.DateTime birthdate) {
+            return base.Channel.GetStudentsByFilters(firstname, lastname, birthdate);
         }
         
-        public System.Threading.Tasks.Task<System.Collections.Generic.List<AbsMedical.WCF.Student>> GetStudentsByNameAsync(string firstname, string lastname) {
-            return base.Channel.GetStudentsByNameAsync(firstname, lastname);
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<AbsMedical.WCF.Student>> GetStudentsByFiltersAsync(string firstname, string lastname, System.DateTime birthdate) {
+            return base.Channel.GetStudentsByFiltersAsync(firstname, lastname, birthdate);
+        }
+        
+        public bool UpdateStudent(AbsMedical.WCF.Student student) {
+            return base.Channel.UpdateStudent(student);
+        }
+        
+        public System.Threading.Tasks.Task<bool> UpdateStudentAsync(AbsMedical.WCF.Student student) {
+            return base.Channel.UpdateStudentAsync(student);
         }
     }
 }

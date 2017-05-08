@@ -29,11 +29,12 @@ namespace AbsMedical.WCF
             else return null;
         }
 
-        public List<Student> GetStudentsByName(string firstname, string lastname)
+        public List<Student> GetStudentsByFilters(string firstname, string lastname, DateTime birthdate)
         {
             List<Student> students = new List<Student>();
             rfidEntities db = new rfidEntities();
-            var studentEntities = (from s in db.student where s.Firstname.Contains(firstname) && s.Lastname.Contains(lastname) select s).ToList();
+            var studentEntities = (from s in db.student where s.Firstname.Contains(firstname) && s.Lastname.Contains(lastname) && s.Birthdate == birthdate select s).ToList();
+
             if(studentEntities.Count > 0)
             {
                 foreach(student stu in studentEntities)
@@ -42,6 +43,33 @@ namespace AbsMedical.WCF
                 }
             }
             return students;
+        }
+
+        public bool UpdateStudent(Student student)
+        {
+            using (rfidEntities db = new rfidEntities())
+            {
+                try
+                {
+                    var query = (from d in db.student where d.Guid == student.Guid select d).First();
+                    query.Firstname = student.Firstname;
+                    query.Lastname = student.Lastname;
+                    query.Email = student.Email;
+                    query.PostalCode = student.PostalCode;
+                    query.City = student.City;
+                    query.CountryId = student.CountryId;
+                    query.Address = student.Address;
+                    query.Phone = student.Phone;
+                    query.SchoolGuid = student.SchoolGuid;
+                    query.StudentId = student.StudentId;
+                    db.SaveChanges();
+                    return true;
+                }
+                catch (Exception)
+                {
+                    return false;
+                }
+            }
         }
 
         public bool RegisterStudent(Student student)

@@ -43,18 +43,33 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="GetStudentsByName">
+  <xs:element name="GetStudentsByFilters">
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="firstname" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="lastname" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="birthdate" type="xs:dateTime" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="GetStudentsByNameResponse">
+  <xs:element name="GetStudentsByFiltersResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/AbsMedical.WCF" minOccurs="0" name="GetStudentsByNameResult" nillable="true" type="q4:ArrayOfStudent" />
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/AbsMedical.WCF" minOccurs="0" name="GetStudentsByFiltersResult" nillable="true" type="q4:ArrayOfStudent" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateStudent">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/AbsMedical.WCF" minOccurs="0" name="student" nillable="true" type="q5:Student" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateStudentResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="UpdateStudentResult" type="xs:boolean" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

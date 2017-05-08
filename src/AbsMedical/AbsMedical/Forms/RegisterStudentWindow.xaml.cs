@@ -39,10 +39,10 @@ namespace AbsMedical.Forms
         {
             ComboBox cb = (ComboBox)sender;
             string countryId = cb.SelectedValue.ToString();
-            bindSchoolsByCountry(countryId);
+            BindSchoolsByCountry(countryId);
         }
 
-        private void bindSchoolsByCountry(string countryId)
+        private void BindSchoolsByCountry(string countryId)
         {
             List<School> schools = SchoolController.GetSchoolsByCountry(countryId);
             bindSchools(schools);

@@ -21,7 +21,10 @@ namespace AbsMedical.WCF
         Student GetStudentBySocialSecurityNumber(string value);
 
         [OperationContract]
-        List<Student> GetStudentsByName(string firstname, string lastname);
+        List<Student> GetStudentsByFilters(string firstname, string lastname, DateTime birthdate);
+
+        [OperationContract]
+        bool UpdateStudent(Student student);
 
     }
 
@@ -57,5 +60,7 @@ namespace AbsMedical.WCF
         public string CountryId { get; set; }
         [DataMember]
         public string SchoolGuid { get; set; }
+        [DataMember]
+        public string DisplayedName { get; set; }
     }
 }

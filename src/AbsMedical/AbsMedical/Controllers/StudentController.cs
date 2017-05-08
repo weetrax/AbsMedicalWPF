@@ -49,11 +49,31 @@ namespace AbsMedical.Controllers
             }
         }
 
-        public static List<Student> GetStudentsByName(string firstname, string lastname)
+        /// <summary>
+        /// Get a list of students by filters
+        /// </summary>
+        /// <param name="firstname">Student's firstname</param>
+        /// <param name="lastname">Student's lastname</param>
+        /// <param name="birthdate">Student's birthdate</param>
+        /// <returns></returns>
+        public static List<Student> GetStudentsByFilters(string firstname, string lastname, DateTime birthdate)
         {
             using (StudentServiceReference.StudentServiceClient serv = new StudentServiceReference.StudentServiceClient())
             {
-                return serv.GetStudentsByName(firstname, lastname);
+                return serv.GetStudentsByFilters(firstname, lastname, birthdate);
+            }
+        }
+
+        /// <summary>
+        /// Update student's informations
+        /// </summary>
+        /// <param name="student">Student object to update</param>
+        /// <returns>True if the insertion was made</returns>
+        public static bool UpdateStudent(Student student)
+        {
+            using (StudentServiceReference.StudentServiceClient serv = new StudentServiceReference.StudentServiceClient())
+            {
+                return serv.UpdateStudent(student);
             }
         }
     }

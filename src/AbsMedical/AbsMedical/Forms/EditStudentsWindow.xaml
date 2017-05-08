@@ -10,7 +10,7 @@
         BorderBrush="{DynamicResource AccentColorBrush}"
         BorderThickness="1"
         Icon="/Images/absmedical.ico"
-        Title="AbsMedical - Edit student" Height="529.146" Width="981.906" ResizeMode="NoResize" Background="White">
+        Title="AbsMedical - Edit student" Height="566.146" Width="981.906" ResizeMode="NoResize" Background="White">
     <!-- Window Top right label -->
     <Controls:MetroWindow.RightWindowCommands>
         <Controls:WindowCommands ShowLastSeparator="False">
@@ -35,7 +35,7 @@
             <ColumnDefinition/>
             <ColumnDefinition Width="0*"/>
         </Grid.ColumnDefinitions>
-        <GroupBox x:Name="gbFilters" Margin="10,11,0,0" Header="Filters" HorizontalAlignment="Left" VerticalAlignment="Top" Width="951" Height="143">
+        <GroupBox x:Name="gbFilters" Margin="10,11,0,0" Header="Filters" HorizontalAlignment="Left" VerticalAlignment="Top" Width="951" Height="193">
             <Canvas>
                 <!-- Firstname -->
                 <Label Content="Firstname: " Canvas.Top="8" Canvas.Left="5" Width="129"></Label>
@@ -45,15 +45,26 @@
                 <Label Content="Lastname: " Canvas.Top="50" Canvas.Left="5" Width="129"></Label>
                 <TextBox x:Name="txtLastname_filters" Canvas.Top="50" Width="185" Canvas.Left="95"></TextBox>
 
+                <!-- Birthdate -->
+                <Label Content="Birthdate: " Canvas.Top="90" Canvas.Left="5" Width="129"></Label>
+                <DatePicker x:Name="dtBirthdate_filters" Canvas.Top="90" Canvas.Left="95" Width="185"></DatePicker>
+                <Button x:Name="btnSearchbyName" Click="btnSearchbyName_Click" Content="Search" Canvas.Left="210" Canvas.Top="121" Width="70" Style="{StaticResource AccentedSquareButtonStyle}" Controls:ControlsHelper.ContentCharacterCasing="Normal"/>
+
+                <!-- Social security number -->
                 <Label x:Name="lblSocialSecurityNumber" Content="Social Security Number:" Canvas.Top="8" Canvas.Left="345"></Label>
                 <TextBox x:Name="txtSocialSecurityNumber" Canvas.Top="8" Canvas.Left="513" Width="218"></TextBox>
-                <Button x:Name="btnScan" Click="btnScan_Click" Content="Scan student card" Canvas.Left="821" Canvas.Top="8" Width="108" Style="{StaticResource AccentedSquareButtonStyle}" Controls:ControlsHelper.ContentCharacterCasing="Normal"></Button>
-                <Button x:Name="btnSearch" Click="btnSearch_Click" Content="Search" Canvas.Left="729" Canvas.Top="7" Width="47" Style="{StaticResource AccentedSquareButtonStyle}" Controls:ControlsHelper.ContentCharacterCasing="Normal"/>
+                <Button x:Name="btnSearch" Click="btnSearch_Click" Content="Search" Canvas.Left="661" Canvas.Top="39" Width="70" Style="{StaticResource AccentedSquareButtonStyle}" Controls:ControlsHelper.ContentCharacterCasing="Normal"/>
 
+                <!-- Result -->
+                <Label Content="Results:" Canvas.Left="345" Canvas.Top="90"></Label>
+                <ComboBox x:Name="cbResults" Canvas.Left="400" SelectionChanged="cbResults_SelectionChanged" Canvas.Top="90" Width="331"></ComboBox>
+                
+                <!-- Button scan -->
+                <Button x:Name="btnScan" Click="btnScan_Click" Content="Scan student card" Canvas.Left="821" Canvas.Top="8" Width="108" Style="{StaticResource AccentedSquareButtonStyle}" Controls:ControlsHelper.ContentCharacterCasing="Normal"></Button>
             </Canvas>
         </GroupBox>
         <!-- Basic information-->
-        <GroupBox x:Name="gbBasicInformation" Margin="10,159,0,0" Header="General Information" HorizontalAlignment="Left" VerticalAlignment="Top" Width="951" Height="264">
+        <GroupBox x:Name="gbBasicInformation" Margin="13,219,0,0" Header="General Information" HorizontalAlignment="Left" VerticalAlignment="Top" Width="951" Height="264">
             <Canvas>
                 <!-- Firstname -->
                 <Label x:Name="lblFirstname"  Content="Firstname: " Canvas.Top="8" Canvas.Left="5" Width="129"></Label>
@@ -65,11 +76,11 @@
 
                 <!-- Birthdate -->
                 <Label x:Name="lblBirthDate" Content="Birthdate: " Canvas.Top="175" Canvas.Left="5" Width="129"></Label>
-                <DatePicker x:Name="txtBirthdate"  Canvas.Top="175" Width="185" Canvas.Left="100"></DatePicker>
+                <DatePicker x:Name="txtBirthdate" IsEnabled="False" Canvas.Top="175" Width="185" Canvas.Left="100"></DatePicker>
 
                 <!-- Birthdate -->
                 <Label x:Name="lblBirthPlace" Content="Birthplace: " Canvas.Top="134" Canvas.Left="5" Width="129"></Label>
-                <TextBox x:Name="txtBirthplace" Canvas.Top="134" Width="185" Canvas.Left="100"></TextBox>
+                <TextBox x:Name="txtBirthplace" Canvas.Top="134" Width="185" Canvas.Left="100" IsEnabled="False"></TextBox>
 
                 <!-- Email -->
                 <Label x:Name="lblEmail"  Content="Email: " Canvas.Top="134" Canvas.Left="348" Width="129"></Label>
@@ -96,7 +107,7 @@
                 <TextBox x:Name="txtPhone" Width="185" Canvas.Left="439" Canvas.Top="175"/>
 
                 <Label x:Name="lblSchoolCountry" Content="Country:" Canvas.Top="7" Canvas.Left="669"></Label>
-                <ComboBox x:Name="cbSchoolCountry" Canvas.Top="7" Canvas.Left="741" Width="184"></ComboBox>
+                <ComboBox x:Name="cbSchoolCountry" Canvas.Top="7" Canvas.Left="741" Width="184" SelectionChanged="cbSchoolCountry_SelectionChanged"></ComboBox>
 
                 <Label x:Name="lblSchool" Content="School:" Canvas.Top="48" Canvas.Left="670"></Label>
                 <ComboBox x:Name="cbSchool" Canvas.Top="47" Canvas.Left="741" Width="184"></ComboBox>
@@ -109,8 +120,8 @@
         <!--groupbox medial information-->
         <!--groupbox school-->
         <Canvas>
-            <Button x:Name="btnEditStudent" Click="btnEditStudent_Click" Content="Save" Canvas.Left="856" Canvas.Top="447" Width="108" Style="{StaticResource AccentedSquareButtonStyle}" Controls:ControlsHelper.ContentCharacterCasing="Normal"></Button>
-            <Button x:Name="btnClose" Click="btnClose_Click" Content="Close" Canvas.Left="784" Canvas.Top="447" Width="54" Style="{DynamicResource SquareButtonStyle}" Controls:ControlsHelper.ContentCharacterCasing="Normal"/>
+            <Button x:Name="btnEditStudent" Click="btnEditStudent_Click" Content="Save" Canvas.Left="856" Canvas.Top="494" Width="108" Style="{StaticResource AccentedSquareButtonStyle}" Controls:ControlsHelper.ContentCharacterCasing="Normal"></Button>
+            <Button x:Name="btnClose" Click="btnClose_Click" Content="Close" Canvas.Left="784" Canvas.Top="494" Width="54" Style="{DynamicResource SquareButtonStyle}" Controls:ControlsHelper.ContentCharacterCasing="Normal"/>
             <TextBlock x:Name="lblMessage" Visibility="Hidden" TextWrapping="Wrap" Canvas.Top="373" Text="" Canvas.Left="373" Width="393" Height="47" UseLayoutRounding="False" Foreground="#FF009E00"/>
         </Canvas>
 

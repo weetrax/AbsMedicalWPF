@@ -125,7 +125,8 @@ namespace AbsMedical.WCF
                 PostalCode = student.PostalCode,
                 City = student.City,
                 CountryId = student.CountryId,
-                SchoolGuid = student.SchoolGuid
+                SchoolGuid = student.SchoolGuid,
+                DisplayedName = student.Lastname + " " + student.Firstname
             };
             return stu;
         }
