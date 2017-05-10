@@ -47,12 +47,12 @@ namespace AbsMedical.Forms
 
             this.CurrentDoctorGuid = doctorGuid;
             InitializeComponent();
-            SetTitle();
+            SetTitle(CurrentDoctor);
         }
 
-        private void SetTitle()
+        private void SetTitle(Doctor doctor)
         {
-            this.lblLogedAs.Content = "Logged as " + CurrentDoctor.Firstname + " " + CurrentDoctor.Lastname;
+            this.lblLogedAs.Content = "Logged as " + doctor.Firstname + " " + doctor.Lastname;
         }
 
         #region Click Event

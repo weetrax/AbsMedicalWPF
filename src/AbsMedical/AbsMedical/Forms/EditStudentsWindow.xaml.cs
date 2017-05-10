@@ -298,6 +298,7 @@ namespace AbsMedical.Forms
                         Student student = StudentController.GetStudentByFilters(firstname, lastname, birthdate);
                         if(student != null)
                         {
+                            SelectedStudent = student;
                             BindStudent(student);
                         }
                         else
