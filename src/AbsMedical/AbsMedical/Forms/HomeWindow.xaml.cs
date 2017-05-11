@@ -47,12 +47,12 @@ namespace AbsMedical.Forms
 
             this.CurrentDoctorGuid = doctorGuid;
             InitializeComponent();
-            SetTitle(CurrentDoctor);
+            SetTitle();
         }
 
-        private void SetTitle(Doctor doctor)
+        private void SetTitle()
         {
-            this.lblLogedAs.Content = "Logged as " + doctor.Firstname + " " + doctor.Lastname;
+            this.lblLogedAs.Content = "Logged as " + CurrentDoctor.Firstname + " " + CurrentDoctor.Lastname;
         }
 
         #region Click Event
@@ -122,7 +122,8 @@ namespace AbsMedical.Forms
 
         private void tileHistory_Click(object sender, RoutedEventArgs e)
         {
-            HistoricWindow window = new HistoricWindow(CurrentDoctorGuid);
+            string logedAs = "Logged as " + CurrentDoctor.Firstname + " " + CurrentDoctor.Lastname;
+            HistoricWindow window = new HistoricWindow(CurrentDoctorGuid, logedAs);
             window.Show();
         }
     }

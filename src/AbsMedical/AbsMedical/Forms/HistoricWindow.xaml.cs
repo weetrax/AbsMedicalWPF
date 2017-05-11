@@ -30,10 +30,11 @@ namespace AbsMedical.Forms
             set;
         }
 
-        public HistoricWindow(string doctorGuid)
+        public HistoricWindow(string doctorGuid, string logedAs)
         {
             InitializeComponent();
             CurrentDoctorGuid = doctorGuid;
+            lblLogedAs.Content = logedAs;
         }
 
         #region Click Event
