@@ -5,7 +5,6 @@ using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
 using System.Net;
-using AbsMedical.Data;
 using AbsMedical.Shared;
 using AbsMedical.DoctorServiceReference;
 using AbsMedical.WCF;

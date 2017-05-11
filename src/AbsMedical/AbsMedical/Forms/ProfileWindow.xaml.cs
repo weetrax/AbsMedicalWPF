@@ -1,5 +1,4 @@
 ﻿using AbsMedical.Controllers;
-using AbsMedical.Data;
 using AbsMedical.DoctorServiceReference;
 using AbsMedical.Shared;
 using AbsMedical.Utils;
