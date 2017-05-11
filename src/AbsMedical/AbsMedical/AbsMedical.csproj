@@ -126,6 +126,9 @@
     <Compile Include="Forms\EditStudentsWindow.xaml.cs">
       <DependentUpon>EditStudentsWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Forms\HistoricWindow.xaml.cs">
+      <DependentUpon>HistoricWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Forms\HomeWindow.xaml.cs">
       <DependentUpon>HomeWindow.xaml</DependentUpon>
     </Compile>
@@ -173,6 +176,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Forms\HistoricWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Forms\HomeWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -212,6 +219,7 @@
     <None Include="Properties\DataSources\AbsMedical.WCF.Country.datasource" />
     <None Include="Properties\DataSources\AbsMedical.WCF.Doctor.datasource" />
     <None Include="Properties\DataSources\AbsMedical.WCF.MailConfiguration.datasource" />
+    <None Include="Properties\DataSources\AbsMedical.WCF.MedicalAbs.datasource" />
     <None Include="Properties\DataSources\AbsMedical.WCF.School.datasource" />
     <None Include="Properties\DataSources\AbsMedical.WCF.Student.datasource" />
     <None Include="Service References\AbsMedicalServiceReference\AbsMedicalService.wsdl" />

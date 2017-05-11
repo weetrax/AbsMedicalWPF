@@ -13,6 +13,9 @@ namespace AbsMedical.WCF
     {
         [OperationContract]
         bool RegisterAbsMedical(MedicalAbs medicalAbs);
+
+        [OperationContract]
+        List<MedicalAbs> GetAbsMedicalByStudent(string studentGuid);
     }
 
     [Serializable]

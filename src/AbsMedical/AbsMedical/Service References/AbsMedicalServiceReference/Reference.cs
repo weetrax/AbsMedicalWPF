@@ -20,6 +20,12 @@ namespace AbsMedical.AbsMedicalServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAbsMedicalService/RegisterAbsMedical", ReplyAction="http://tempuri.org/IAbsMedicalService/RegisterAbsMedicalResponse")]
         System.Threading.Tasks.Task<bool> RegisterAbsMedicalAsync(AbsMedical.WCF.MedicalAbs medicalAbs);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAbsMedicalService/GetAbsMedicalByStudent", ReplyAction="http://tempuri.org/IAbsMedicalService/GetAbsMedicalByStudentResponse")]
+        System.Collections.Generic.List<AbsMedical.WCF.MedicalAbs> GetAbsMedicalByStudent(string studentGuid);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAbsMedicalService/GetAbsMedicalByStudent", ReplyAction="http://tempuri.org/IAbsMedicalService/GetAbsMedicalByStudentResponse")]
+        System.Threading.Tasks.Task<System.Collections.Generic.List<AbsMedical.WCF.MedicalAbs>> GetAbsMedicalByStudentAsync(string studentGuid);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -55,6 +61,14 @@ namespace AbsMedical.AbsMedicalServiceReference {
         
         public System.Threading.Tasks.Task<bool> RegisterAbsMedicalAsync(AbsMedical.WCF.MedicalAbs medicalAbs) {
             return base.Channel.RegisterAbsMedicalAsync(medicalAbs);
+        }
+        
+        public System.Collections.Generic.List<AbsMedical.WCF.MedicalAbs> GetAbsMedicalByStudent(string studentGuid) {
+            return base.Channel.GetAbsMedicalByStudent(studentGuid);
+        }
+        
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<AbsMedical.WCF.MedicalAbs>> GetAbsMedicalByStudentAsync(string studentGuid) {
+            return base.Channel.GetAbsMedicalByStudentAsync(studentGuid);
         }
     }
 }

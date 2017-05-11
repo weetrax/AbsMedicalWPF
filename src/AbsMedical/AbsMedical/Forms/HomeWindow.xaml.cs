@@ -122,8 +122,8 @@ namespace AbsMedical.Forms
 
         private void tileHistory_Click(object sender, RoutedEventArgs e)
         {
-            //HistoryWindow window = new HistoryWindow(CurrentDoctorGuid);
-           // window.Show();
+            HistoricWindow window = new HistoricWindow();
+            window.Show();
         }
     }
 }

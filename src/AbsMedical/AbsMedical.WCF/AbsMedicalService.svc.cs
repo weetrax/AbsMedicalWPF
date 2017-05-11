@@ -10,6 +10,24 @@ namespace AbsMedical.WCF
 {
     public class AbsMedicalService : IAbsMedicalService
     {
+        public List<MedicalAbs> GetAbsMedicalByStudent(string studentGuid)
+        {
+            List<MedicalAbs> historic = null;
+            using (rfidEntities db = new rfidEntities())
+            {
+                var query = (from a in db.absmedical where a.StudentGuid == studentGuid select a).ToList();
+                if(query.Count > 0)
+                {
+                    historic = new List<MedicalAbs>();
+                    foreach(absmedical abs in query)
+                    {
+                        historic.Add(EntityParser.EntityToObject(abs));
+                    }
+                }
+            }
+            return historic;
+        }
+
         public bool RegisterAbsMedical(MedicalAbs medicalAbs)
         {
             using (rfidEntities db = new rfidEntities())
@@ -26,5 +44,7 @@ namespace AbsMedical.WCF
                 }
             }
         }
+
+        
     }
 }

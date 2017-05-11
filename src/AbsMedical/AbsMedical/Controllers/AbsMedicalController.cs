@@ -16,5 +16,13 @@ namespace AbsMedical.Controllers
                 return serv.RegisterAbsMedical(medicalAbs);
             }
         }
+
+        public static List<MedicalAbs> GetAbsMedicalByStudent(string studentGuid)
+        {
+            using (AbsMedicalServiceReference.AbsMedicalServiceClient serv = new AbsMedicalServiceReference.AbsMedicalServiceClient())
+            {
+                return serv.GetAbsMedicalByStudent(studentGuid);
+            }
+        }
     }
 }
