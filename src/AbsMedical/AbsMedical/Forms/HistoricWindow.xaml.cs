@@ -112,6 +112,7 @@ namespace AbsMedical.Forms
         private void BindHistoric(string studentGuid)
         {
             List<MedicalAbs> historic = AbsMedicalController.GetAbsMedicalByStudent(studentGuid);
+            //todo
         }
 
         #region Dialog
@@ -131,5 +132,10 @@ namespace AbsMedical.Forms
             await this.HideMetroDialogAsync(dialog);
         }
         #endregion
+
+        private void btnClose_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
     }
 }

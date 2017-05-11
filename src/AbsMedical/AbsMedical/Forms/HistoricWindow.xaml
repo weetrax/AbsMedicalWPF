@@ -65,7 +65,7 @@
             </ScrollViewer>
         </GroupBox>
         <Canvas>
-            <Button x:Name="btnClose" Content="Close" Canvas.Left="903" Canvas.Top="498" Width="57" Style="{DynamicResource SquareButtonStyle}" Controls:ControlsHelper.ContentCharacterCasing="Normal"/>
+            <Button x:Name="btnClose" Content="Close" Canvas.Left="903" Canvas.Top="498" Width="57" Click="btnClose_Click" Style="{DynamicResource SquareButtonStyle}" Controls:ControlsHelper.ContentCharacterCasing="Normal"/>
         </Canvas>
     </Grid>
 </Controls:MetroWindow>
