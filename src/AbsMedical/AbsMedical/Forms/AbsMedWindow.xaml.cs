@@ -207,10 +207,6 @@ namespace AbsMedical.Forms
                     }
                 }
             }
-            else
-            {
-                ShowAlert("Certificate already saved.");
-            }
         }
 
         private void btnSave_Click(object sender, RoutedEventArgs e)

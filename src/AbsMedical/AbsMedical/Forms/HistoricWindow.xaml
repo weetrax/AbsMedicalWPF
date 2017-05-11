@@ -59,23 +59,25 @@
                 <Button x:Name="btnScan" Click="btnScan_Click" Content="Scan student card" Canvas.Left="821" Canvas.Top="8" Width="108" Style="{StaticResource AccentedSquareButtonStyle}" Controls:ControlsHelper.ContentCharacterCasing="Normal"></Button>
             </Canvas>
         </GroupBox>
+        
+        <!-- GroupBox Historic -->
         <GroupBox x:Name="gbHistoric" Margin="10,216,0,0" Header="Historic" HorizontalAlignment="Left" VerticalAlignment="Top" Width="951" Height="279">
             <ScrollViewer HorizontalScrollBarVisibility="Auto">
                 <ItemsControl x:Name="icHistoric">
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
                             <WrapPanel>
-                                <Label Content="Visit date: "></Label>
-                                <Label Content="{Binding VisitDate}"></Label>
+                                <Label Content="Visit date: " Margin="10,0,0,0"></Label>
+                                <Label Content="{Binding VisitDate}" Margin="0,0,20,0"></Label>
 
-                                <Label Content="Start date: "></Label>
-                                <Label Content="{Binding StartDate}"></Label>
+                                <Label Content="Start date: " Margin="10,0,0,0"></Label>
+                                <Label Content="{Binding StartDate}" Margin="0,0,20,0"></Label>
 
-                                <Label Content="End date: "></Label>
-                                <Label Content="{Binding EndDate}"></Label>
+                                <Label Content="End date: " Margin="10,0,0,0"></Label>
+                                <Label Content="{Binding EndDate}" Margin="0,0,20,0"></Label>
 
-                                <Label Content="Note: "></Label>
-                                <Label Content="{Binding Note}"></Label>
+                                <Label Content="Note: " Margin="10,0,0,0"></Label>
+                                <Label Content="{Binding Note}" Margin="0,0,20,0"></Label>
                             </WrapPanel>
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>

@@ -121,7 +121,7 @@ namespace AbsMedical.Forms
 
         private void SetStudentInfo(Student student)
         {
-            gbHistoric.Header = gbHistoric.Header + "Historic - " + student.Lastname + " " + student.Firstname;
+            gbHistoric.Header = "Historic - " + student.Lastname + " " + student.Firstname;
             txtFirstname_filters.Text = student.Firstname;
             txtLastname_filters.Text = student.Lastname;
             txtSocialSecurityNumber.Text = student.SocialSecurityNumber;
