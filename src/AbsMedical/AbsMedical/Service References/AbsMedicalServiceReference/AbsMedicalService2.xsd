@@ -19,6 +19,7 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="studentGuid" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="doctorGuid" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

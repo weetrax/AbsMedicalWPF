@@ -115,15 +115,5 @@ namespace AbsMedical.Controllers
                 return serv.RegisterMailConfiguration(mailConfig, doctor);
             }
         }
-
-        /// <summary>
-        /// Verify if a doctor has already configure a mail configuration
-        /// </summary>
-        /// <param name="doctorGuid">Identifier of the doctor</param>
-        /// <returns>Boolean</returns>
-        private static bool MailConfigurationAlreadyExist(string doctorGuid)
-        {
-            return GetMailConfiguration(doctorGuid) != null;
-        }
     }
 }

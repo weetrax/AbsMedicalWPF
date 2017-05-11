@@ -9,10 +9,15 @@ using System.Text;
 
 namespace AbsMedical.WCF
 {
-    // REMARQUE : vous pouvez utiliser la commande Renommer du menu Refactoriser pour changer le nom de classe "StudentService" à la fois dans le code, le fichier svc et le fichier de configuration.
-    // REMARQUE : pour lancer le client test WCF afin de tester ce service, sélectionnez StudentService.svc ou StudentService.svc.cs dans l'Explorateur de solutions et démarrez le débogage.
+
     public class StudentService : IStudentService
     {
+
+        /// <summary>
+        /// Get a student object by its Id
+        /// </summary>
+        /// <param name="studentGuid">Identifier of the student</param>
+        /// <returns>student object</returns>
         public Student GetStudent(string StudentGuid)
         {
             using (rfidEntities db = new rfidEntities())
@@ -23,6 +28,11 @@ namespace AbsMedical.WCF
             }
         }
 
+        /// <summary>
+        /// Get a student object by its social security number
+        /// </summary>
+        /// <param name="value">social security number of the student</param>
+        /// <returns>Student object</returns>
         public Student GetStudentBySocialSecurityNumber(string value)
         {
             using (rfidEntities db = new rfidEntities())
@@ -33,6 +43,11 @@ namespace AbsMedical.WCF
             }
         }
 
+        /// <summary>
+        /// Delete a student from the Database
+        /// </summary>
+        /// <param name="studentGuid">Id of the student</param>
+        /// <returns>True if the suppression was made</returns>
         public bool DeleteStudent(string studentGuid)
         {
             using (rfidEntities db = new rfidEntities())
@@ -44,6 +59,13 @@ namespace AbsMedical.WCF
             }
         }
 
+        /// <summary>
+        /// Get a student object by its firstname, lastname & birthdate
+        /// </summary>
+        /// <param name="firstname">Student's firstname</param>
+        /// <param name="lastname">Student's lastname</param>
+        /// <param name="birthdate">Student's birthdate</param>
+        /// <returns>Student object</returns>
         public Student GetStudentByFilters(string firstname, string lastname, DateTime birthdate)
         {
             List<Student> students = new List<Student>();
@@ -59,6 +81,11 @@ namespace AbsMedical.WCF
             }
         }
 
+        /// <summary>
+        /// Update student's informations
+        /// </summary>
+        /// <param name="student">Student object to update</param>
+        /// <returns>True if the insertion was made</returns>
         public bool UpdateStudent(Student student)
         {
             using (rfidEntities db = new rfidEntities())
@@ -86,6 +113,11 @@ namespace AbsMedical.WCF
             }
         }
 
+        /// <summary>
+        /// Register a student in the Database
+        /// </summary>
+        /// <param name="student">Student object to add</param>
+        /// <returns>True if the insertion was made</returns>
         public bool RegisterStudent(Student student)
         {
             using (rfidEntities db = new rfidEntities())

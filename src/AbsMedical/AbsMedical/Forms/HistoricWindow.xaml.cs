@@ -24,9 +24,16 @@ namespace AbsMedical.Forms
     /// </summary>
     public partial class HistoricWindow : MetroWindow
     {
-        public HistoricWindow()
+        private string CurrentDoctorGuid
+        {
+            get;
+            set;
+        }
+
+        public HistoricWindow(string doctorGuid)
         {
             InitializeComponent();
+            CurrentDoctorGuid = doctorGuid;
         }
 
         #region Click Event
@@ -38,6 +45,7 @@ namespace AbsMedical.Forms
                 if (student != null)
                 {
                     BindHistoric(student.Guid);
+                    SetStudentInfo(student);
                 }
                 else
                 {
@@ -65,6 +73,7 @@ namespace AbsMedical.Forms
                         if (student != null)
                         {
                             BindHistoric(student.Guid);
+                            SetStudentInfo(student);
                         }
                         else
                         {
@@ -98,6 +107,7 @@ namespace AbsMedical.Forms
                 WCF.Student student = StudentController.Get(studentGuid);
                 if (student != null)
                 {
+                    SetStudentInfo(student);
                     BindHistoric(student.Guid);
                 }
                 else
@@ -109,10 +119,19 @@ namespace AbsMedical.Forms
         }
         #endregion
 
+        private void SetStudentInfo(Student student)
+        {
+            gbHistoric.Header = gbHistoric.Header + "Historic - " + student.Lastname + " " + student.Firstname;
+            txtFirstname_filters.Text = student.Firstname;
+            txtLastname_filters.Text = student.Lastname;
+            txtSocialSecurityNumber.Text = student.SocialSecurityNumber;
+            dtBirthdate_filters.SelectedDate = student.Birthdate;
+        }
+
         private void BindHistoric(string studentGuid)
         {
-            List<MedicalAbs> historic = AbsMedicalController.GetAbsMedicalByStudent(studentGuid);
-            //todo
+            List<MedicalAbs> historic = AbsMedicalController.GetAbsMedicalByStudent(studentGuid, CurrentDoctorGuid);
+            icHistoric.ItemsSource = historic;
         }
 
         #region Dialog

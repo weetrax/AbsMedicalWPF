@@ -11,6 +11,11 @@ namespace AbsMedical.WCF
 
     public class CountryService : ICountryService
     {
+
+        /// <summary>
+        /// Get all countries from the Database
+        /// </summary>
+        /// <returns></returns>
         public List<Country> GetCountries()
         {
             List<Country> countries = new List<Country>();

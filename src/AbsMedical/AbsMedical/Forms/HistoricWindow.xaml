@@ -61,11 +61,29 @@
         </GroupBox>
         <GroupBox x:Name="gbHistoric" Margin="10,216,0,0" Header="Historic" HorizontalAlignment="Left" VerticalAlignment="Top" Width="951" Height="279">
             <ScrollViewer HorizontalScrollBarVisibility="Auto">
+                <ItemsControl x:Name="icHistoric">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <WrapPanel>
+                                <Label Content="Visit date: "></Label>
+                                <Label Content="{Binding VisitDate}"></Label>
 
+                                <Label Content="Start date: "></Label>
+                                <Label Content="{Binding StartDate}"></Label>
+
+                                <Label Content="End date: "></Label>
+                                <Label Content="{Binding EndDate}"></Label>
+
+                                <Label Content="Note: "></Label>
+                                <Label Content="{Binding Note}"></Label>
+                            </WrapPanel>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
             </ScrollViewer>
         </GroupBox>
         <Canvas>
-            <Button x:Name="btnClose" Content="Close" Canvas.Left="903" Canvas.Top="498" Width="57" Click="btnClose_Click" Style="{DynamicResource SquareButtonStyle}" Controls:ControlsHelper.ContentCharacterCasing="Normal"/>
+            <Button x:Name="btnClose" Content="Close" Canvas.Left="905" Canvas.Top="498" Width="57" Click="btnClose_Click" Style="{DynamicResource SquareButtonStyle}" Controls:ControlsHelper.ContentCharacterCasing="Normal"/>
         </Canvas>
     </Grid>
 </Controls:MetroWindow>

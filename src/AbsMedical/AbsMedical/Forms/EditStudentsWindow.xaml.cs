@@ -201,7 +201,7 @@ namespace AbsMedical.Forms
                                                         SchoolGuid = cbSchool.SelectedValue.ToString(),
                                                         SocialSecurityNumber = SelectedStudent.SocialSecurityNumber
                                                     };
-                                                    if (StudentController.UpdateStudent(student))
+                                                    if (StudentController.Update(student))
                                                     {
                                                         ShowAlert("Student " + student.Firstname + " " + student.Lastname + " has been updated");
                                                     }
@@ -341,7 +341,7 @@ namespace AbsMedical.Forms
                 switch (result)
                 {
                     case MessageBoxResult.Yes:
-                        if (StudentController.DeleteStudent(SelectedStudent.Guid))
+                        if (StudentController.Delete(SelectedStudent.Guid))
                         {
                             ShowAlert("Student has been deleted");
                             ClearControls();

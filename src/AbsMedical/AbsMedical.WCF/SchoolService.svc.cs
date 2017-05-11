@@ -11,6 +11,11 @@ namespace AbsMedical.WCF
     public class SchoolService : ISchoolService
     {
         
+        /// <summary>
+        /// Get a school object by its Id
+        /// </summary>
+        /// <param name="schoolGuid">Id of the school</param>
+        /// <returns>School object</returns>
         public School GetSchool(string schoolGuid)
         {
             rfidEntities db = new rfidEntities();
@@ -25,6 +30,11 @@ namespace AbsMedical.WCF
             }
         }
 
+
+        /// <summary>
+        /// Get all schools from the Database
+        /// </summary>
+        /// <returns>List of schools</returns>
         public List<School> GetSchools()
         {
             List<School> schools = new List<School>();
@@ -45,6 +55,11 @@ namespace AbsMedical.WCF
 
         }
 
+        /// <summary>
+        /// Get all schools that are in a country
+        /// </summary>
+        /// <param name="countryId">Country Id</param>
+        /// <returns>List of schools</returns>
         public List<School> GetSchoolsByCountry(string countryId)
         {
             List<School> schools = new List<School>();

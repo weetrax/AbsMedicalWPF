@@ -10,6 +10,11 @@ namespace AbsMedical.Controllers
 {
     public static class CountryController
     {
+
+        /// <summary>
+        /// Get a list of all countries
+        /// </summary>
+        /// <returns>List of Country</returns>
         public static List<Country> GetCountries()
         {
             using (CountryServiceReference.CountryServiceClient serv = new CountryServiceReference.CountryServiceClient())

@@ -24,19 +24,6 @@ namespace AbsMedical.Controllers
         }
 
         /// <summary>
-        /// Register a student in the Database
-        /// </summary>
-        /// <param name="student">Student object to add</param>
-        /// <returns>True if the insertion was made</returns>
-        public static bool RegisterStudent(Student student)
-        {
-            using (StudentServiceReference.StudentServiceClient serv = new StudentServiceReference.StudentServiceClient())
-            {
-                return serv.RegisterStudent(student);
-            }
-        }
-
-        /// <summary>
         /// Get a student object by its social security number
         /// </summary>
         /// <param name="value">social security number of the student</param>
@@ -50,12 +37,12 @@ namespace AbsMedical.Controllers
         }
 
         /// <summary>
-        /// Get a list of students by filters
+        /// Get a student object by its firstname, lastname & birthdate
         /// </summary>
         /// <param name="firstname">Student's firstname</param>
         /// <param name="lastname">Student's lastname</param>
         /// <param name="birthdate">Student's birthdate</param>
-        /// <returns></returns>
+        /// <returns>Student object</returns>
         public static Student GetStudentByFilters(string firstname, string lastname, DateTime birthdate)
         {
             using (StudentServiceReference.StudentServiceClient serv = new StudentServiceReference.StudentServiceClient())
@@ -65,11 +52,24 @@ namespace AbsMedical.Controllers
         }
 
         /// <summary>
+        /// Register a student in the Database
+        /// </summary>
+        /// <param name="student">Student object to add</param>
+        /// <returns>True if the insertion was made</returns>
+        public static bool Register(Student student)
+        {
+            using (StudentServiceReference.StudentServiceClient serv = new StudentServiceReference.StudentServiceClient())
+            {
+                return serv.RegisterStudent(student);
+            }
+        }
+
+        /// <summary>
         /// Update student's informations
         /// </summary>
         /// <param name="student">Student object to update</param>
         /// <returns>True if the insertion was made</returns>
-        public static bool UpdateStudent(Student student)
+        public static bool Update(Student student)
         {
             using (StudentServiceReference.StudentServiceClient serv = new StudentServiceReference.StudentServiceClient())
             {
@@ -77,7 +77,12 @@ namespace AbsMedical.Controllers
             }
         }
 
-        public static bool DeleteStudent(string studentGuid)
+        /// <summary>
+        /// Delete a student from the Database
+        /// </summary>
+        /// <param name="studentGuid">Id of the student</param>
+        /// <returns>True if the suppression was made</returns>
+        public static bool Delete(string studentGuid)
         {
             using (StudentServiceReference.StudentServiceClient serv = new StudentServiceReference.StudentServiceClient())
             {

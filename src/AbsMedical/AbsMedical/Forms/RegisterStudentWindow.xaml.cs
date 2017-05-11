@@ -135,7 +135,7 @@ namespace AbsMedical.Forms
                                                                         SchoolGuid = cbSchool.SelectedValue.ToString(),
                                                                         SocialSecurityNumber = txtSocialSecurityNumber.Text
                                                                     };
-                                                                    if (StudentController.RegisterStudent(student) && !Added)
+                                                                    if (StudentController.Register(student) && !Added)
                                                                     {
                                                                         ShowAlert("Student " + student.Firstname + " " + student.Lastname + " has been added.");
                                                                         lblMessage.Foreground = Brushes.Green;

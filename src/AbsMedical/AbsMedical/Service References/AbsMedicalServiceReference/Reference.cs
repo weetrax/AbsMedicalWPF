@@ -22,10 +22,10 @@ namespace AbsMedical.AbsMedicalServiceReference {
         System.Threading.Tasks.Task<bool> RegisterAbsMedicalAsync(AbsMedical.WCF.MedicalAbs medicalAbs);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAbsMedicalService/GetAbsMedicalByStudent", ReplyAction="http://tempuri.org/IAbsMedicalService/GetAbsMedicalByStudentResponse")]
-        System.Collections.Generic.List<AbsMedical.WCF.MedicalAbs> GetAbsMedicalByStudent(string studentGuid);
+        System.Collections.Generic.List<AbsMedical.WCF.MedicalAbs> GetAbsMedicalByStudent(string studentGuid, string doctorGuid);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAbsMedicalService/GetAbsMedicalByStudent", ReplyAction="http://tempuri.org/IAbsMedicalService/GetAbsMedicalByStudentResponse")]
-        System.Threading.Tasks.Task<System.Collections.Generic.List<AbsMedical.WCF.MedicalAbs>> GetAbsMedicalByStudentAsync(string studentGuid);
+        System.Threading.Tasks.Task<System.Collections.Generic.List<AbsMedical.WCF.MedicalAbs>> GetAbsMedicalByStudentAsync(string studentGuid, string doctorGuid);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -63,12 +63,12 @@ namespace AbsMedical.AbsMedicalServiceReference {
             return base.Channel.RegisterAbsMedicalAsync(medicalAbs);
         }
         
-        public System.Collections.Generic.List<AbsMedical.WCF.MedicalAbs> GetAbsMedicalByStudent(string studentGuid) {
-            return base.Channel.GetAbsMedicalByStudent(studentGuid);
+        public System.Collections.Generic.List<AbsMedical.WCF.MedicalAbs> GetAbsMedicalByStudent(string studentGuid, string doctorGuid) {
+            return base.Channel.GetAbsMedicalByStudent(studentGuid, doctorGuid);
         }
         
-        public System.Threading.Tasks.Task<System.Collections.Generic.List<AbsMedical.WCF.MedicalAbs>> GetAbsMedicalByStudentAsync(string studentGuid) {
-            return base.Channel.GetAbsMedicalByStudentAsync(studentGuid);
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<AbsMedical.WCF.MedicalAbs>> GetAbsMedicalByStudentAsync(string studentGuid, string doctorGuid) {
+            return base.Channel.GetAbsMedicalByStudentAsync(studentGuid, doctorGuid);
         }
     }
 }
