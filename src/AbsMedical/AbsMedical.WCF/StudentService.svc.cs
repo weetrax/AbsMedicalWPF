@@ -53,6 +53,7 @@ namespace AbsMedical.WCF
             using (rfidEntities db = new rfidEntities())
             {
                 var studentEntity = db.student.FirstOrDefault(s => s.Guid == studentGuid);
+                //var studentEntity = (from s in db.student where s.Guid == studentGuid select s).FirstOrDefault();
                 db.student.Remove(studentEntity);
                 int result = db.SaveChanges();
                 return result > 0;
@@ -68,7 +69,6 @@ namespace AbsMedical.WCF
         /// <returns>Student object</returns>
         public Student GetStudentByFilters(string firstname, string lastname, DateTime birthdate)
         {
-            List<Student> students = new List<Student>();
             using (rfidEntities db = new rfidEntities())
             {
                 var studentEntity = (from s in db.student where s.Firstname.Contains(firstname) && s.Lastname.Contains(lastname) && s.Birthdate == birthdate select s).FirstOrDefault();
