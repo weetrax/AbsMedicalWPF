@@ -109,7 +109,7 @@ namespace AbsMedical.Forms
             dtEnd.SelectedDate = DateTime.Now;
 
             //Mail
-            txtSubject.Text = "Justificatif Absence Médicale du " + DateTime.Now.ToString("dd/MM/yyyy");
+            txtSubject.Text = "Justificatif Absence Médicale du " + DateTime.Now.ToString("dd/MM/yyyy") + " - " + CurrentStudent.Lastname + " " + CurrentStudent.Firstname;
             txtBody.Text = "";
             chkBxSendStudent.IsChecked = true;
         }
